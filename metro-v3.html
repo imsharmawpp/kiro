@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heritage · Connectivity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Tenor+Sans&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ── Heritage Luxe palette ── */
+:root{
+  --paper:        #f4ede0;   /* warm parchment cream */
+  --paper-deep:   #ebe0cc;   /* slight shadow on paper */
+  --ink:          #1a1815;   /* deep ink for type */
+  --ink-soft:     #4a463e;   /* muted ink */
+  --champagne:    #b8965a;   /* refined gold accent */
+  --champagne-l:  #d6b87a;   /* highlight */
+  --champagne-d:  #8a6f40;   /* shadow */
+  --navy:         #1f2233;   /* statement accent — used sparingly */
+  --hair:         rgba(184,150,90,.22); /* hairline border */
+}
+
+html,body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;
+  font-weight:300;
+  letter-spacing:.01em;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── Preview chrome ── */
+.preview-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(244,237,224,.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--hair);
+  padding:14px 32px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Tenor Sans',sans-serif;
+  font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.preview-bar .l{color:var(--champagne-d)}
+.preview-bar .r{font-size:9px;letter-spacing:.22em}
+
+/* ── Layout ── */
+#connectivity{
+  padding:140px 6% 100px;
+  min-height:100vh;
+  position:relative;
+  background:var(--paper);
+}
+#connectivity::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 1200px 400px at 20% 30%, rgba(184,150,90,.06), transparent),
+    radial-gradient(ellipse 1000px 500px at 80% 70%, rgba(184,150,90,.04), transparent);
+  pointer-events:none;
+}
+
+.container{max-width:1480px;margin:0 auto;width:100%;position:relative}
+
+/* ── Editorial header ── */
+.eyebrow{
+  font-family:'Tenor Sans',sans-serif;
+  font-size:11px;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--champagne-d);
+  text-align:center;
+  margin-bottom:18px;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+}
+.eyebrow::before,.eyebrow::after{
+  content:'';display:block;width:40px;height:1px;background:var(--champagne);opacity:.5;
+}
+
+h1.display{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;
+  font-size:clamp(2.8rem,5.2vw,5rem);
+  line-height:1.05;
+  text-align:center;
+  letter-spacing:-.01em;
+  color:var(--ink);
+}
+h1.display em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--champagne-d);
+}
+
+.lede{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:1.25rem;
+  line-height:1.6;
+  color:var(--ink-soft);
+  text-align:center;
+  max-width:620px;
+  margin:32px auto 80px;
+}
+
+/* ── Stage ── */
+.metro-stage{
+  position:relative;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+  padding:20px 0 40px;
+}
+.metro-svg{
+  width:100%;
+  height:auto;
+  display:block;
+  overflow:visible;
+}
+
+/* ── Status & controls ── */
+.status-line{
+  text-align:center;
+  margin-top:60px;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:1.2rem;
+  color:var(--ink-soft);
+  min-height:32px;
+  transition:color .5s ease;
+  letter-spacing:.01em;
+}
+.status-line.active{color:var(--champagne-d)}
+
+.controls{
+  display:flex;justify-content:center;align-items:center;gap:24px;
+  margin-top:28px;
+}
+.ctrl-btn{
+  padding:14px 36px;
+  background:transparent;
+  border:1px solid var(--champagne);
+  color:var(--champagne-d);
+  font-family:'Tenor Sans',sans-serif;
+  font-size:10px;letter-spacing:.36em;text-transform:uppercase;
+  cursor:pointer;
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  position:relative;overflow:hidden;
+}
+.ctrl-btn::before{
+  content:'';position:absolute;inset:0;
+  background:var(--champagne);transform:scaleX(0);
+  transform-origin:left;transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  z-index:-1;
+}
+.ctrl-btn:hover{color:var(--paper)}
+.ctrl-btn:hover::before{transform:scaleX(1)}
+.ctrl-btn:hover{z-index:1}
+.ctrl-btn span{position:relative;z-index:2}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+@media (max-width: 800px){
+  .metro-svg{min-width:1000px}  /* allow horizontal scroll on small screens */
+  .metro-stage{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+</style>
+</head>
+<body>
+
+<div class="preview-bar">
+  <div class="l">The Heritage &mdash; Connectivity</div>
+  <div class="r">v3 &middot; Heritage Luxe</div>
+</div>
+
+<section id="connectivity">
+  <div class="container">
+
+    <div class="eyebrow">Connectivity</div>
+    <h1 class="display">The Capital, <em>minutes away.</em></h1>
+    <p class="lede">A direct thread of the Delhi Metro Green Line draws nine stations into a single arc &mdash; ending seven hundred metres from the gates of The Heritage.</p>
+
+    <div class="metro-stage">
+      <svg class="metro-svg" viewBox="0 0 1440 540" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+          <!-- Active track shimmer -->
+          <linearGradient id="trackActive" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"  stop-color="#b8965a" stop-opacity=".25"/>
+            <stop offset="60%" stop-color="#d6b87a" stop-opacity=".95"/>
+            <stop offset="100%" stop-color="#b8965a" stop-opacity="1"/>
+          </linearGradient>
+
+          <!-- Champagne gradient -->
+          <linearGradient id="champ" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d6b87a"/>
+            <stop offset="100%" stop-color="#8a6f40"/>
+          </linearGradient>
+
+          <!-- Train body — refined silhouette inspired by a real metro -->
+          <linearGradient id="trainBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fbfaf6"/>
+            <stop offset="40%" stop-color="#ece7da"/>
+            <stop offset="100%" stop-color="#a89d85"/>
+          </linearGradient>
+          <linearGradient id="trainNoseShine" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(255,255,255,.7)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+          </linearGradient>
+          <linearGradient id="windowGlass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(31,34,51,.85)"/>
+            <stop offset="100%" stop-color="rgba(31,34,51,.65)"/>
+          </linearGradient>
+
+          <radialGradient id="orbGrad" cx=".4" cy=".4" r=".6">
+            <stop offset="0%"  stop-color="rgba(255,255,255,1)"/>
+            <stop offset="35%" stop-color="rgba(214,184,122,1)"/>
+            <stop offset="100%" stop-color="rgba(184,150,90,0)"/>
+          </radialGradient>
+
+          <radialGradient id="stationGlow" cx=".5" cy=".5" r=".5">
+            <stop offset="0%"  stop-color="rgba(214,184,122,.5)"/>
+            <stop offset="100%" stop-color="rgba(214,184,122,0)"/>
+          </radialGradient>
+
+          <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+
+          <filter id="orbGlow" x="-200%" y="-200%" width="500%" height="500%">
+            <feGaussianBlur stdDeviation="5"/>
+          </filter>
+        </defs>
+
+        <!-- ============================================================ -->
+        <!-- Stage compass: track at y=300                                -->
+        <!-- Stations alternate labels above/below                        -->
+        <!-- Walk path goes UP-RIGHT from final station                   -->
+        <!-- Pin + Badge sit UPPER-RIGHT (clear of train)                 -->
+        <!-- ============================================================ -->
+
+        <!-- Track infrastructure -->
+        <line x1="60" y1="300" x2="1380" y2="300" stroke="rgba(184,150,90,.18)" stroke-width="1.2"/>
+
+        <!-- Track ties (subtle) -->
+        <g id="track-ties" opacity=".5"></g>
+
+        <!-- Active golden track (drawn behind train as it moves) -->
+        <line id="track-active" x1="60" y1="300" x2="60" y2="300"
+              stroke="url(#trackActive)" stroke-width="2.5" stroke-linecap="round"
+              opacity="0" filter="url(#softGlow)"/>
+
+        <!-- ============================================================ -->
+        <!-- STATIONS — labels alternate above (ABOVE_Y=240) / below (BELOW_Y=360) -->
+        <!-- ============================================================ -->
+        <g id="stations">
+
+          <!-- Station 0 — Kashmere Gate — label ABOVE -->
+          <g class="station st-above" data-i="0" transform="translate(140,300)">
+            <line x1="0" y1="0" x2="0" y2="-30" stroke="rgba(184,150,90,.4)" stroke-width="1" class="st-tick"/>
+            <circle class="st-glow" r="0" fill="url(#stationGlow)" opacity="0"/>
+            <circle class="st-ring" r="0" fill="none" stroke="rgba(214,184,122,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="st-outer" r="9" fill="#f4ede0" stroke="rgba(184,150,90,.5)" stroke-width="1.5"/>
+            <circle class="st-dot" r="4" fill="rgba(184,150,90,.5)"/>
+            <text class="st-label" y="-44" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="500" fill="#1a1815" letter-spacing=".05em">Kashmere Gate</text>
+            <text class="st-meta" y="-28" text-anchor="middle" font-family="Tenor Sans,sans-serif" font-size="9" fill="rgba(74,70,62,0)" letter-spacing=".22em">DEPARTURE</text>
+          </g>
+
+          <!-- Station 1 — Inderlok — label BELOW -->
+          <g class="station st-below" data-i="1" transform="translate(280,300)">
+            <line x1="0" y1="0" x2="0" y2="30" stroke="rgba(184,150,90,.4)" stroke-width="1" class="st-tick"/>
+            <circle class="st-glow" r="0" fill="url(#stationGlow)" opacity="0"/>
+            <circle class="st-ring" r="0" fill="none" stroke="rgba(214,184,122,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="st-outer" r="9" fill="#f4ede0" stroke="rgba(184,150,90,.5)" stroke-width="1.5"/>
+            <circle class="st-dot" r="4" fill="rgba(184,150,90,.5)"/>
+            <text class="st-label" y="50" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="500" fill="#1a1815" letter-spacing=".05em">Inderlok</text>
+          </g>
+
+          <!-- Station 2 — Punjabi Bagh West — label ABOVE -->
+          <g class="station st-above" data-i="2" transform="translate(420,300)">
+            <line x1="0" y1="0" x2="0" y2="-30" stroke="rgba(184,150,90,.4)" stroke-width="1" class="st-tick"/>
+            <circle class="st-glow" r="0" fill="url(#stationGlow)" opacity="0"/>
+            <circle class="st-ring" r="0" fill="none" stroke="rgba(214,184,122,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="st-outer" r="9" fill="#f4ede0" stroke="rgba(184,150,90,.5)" stroke-width="1.5"/>
+            <circle class="st-dot" r="4" fill="rgba(184,150,90,.5)"/>
+            <text class="st-label" y="-40" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="500" fill="#1a1815" letter-spacing=".05em">Punjabi Bagh West</text>
+          </g>
+
+          <!-- Station 3 — Peera Garhi — label BELOW -->
+          <g class="station st-below" data-i="3" transform="translate(560,300)">
+            <line x1="0" y1="0" x2="0" y2="30" stroke="rgba(184,150,90,.4)" stroke-width="1" class="st-tick"/>
+            <circle class="st-glow" r="0" fill="url(#stationGlow)" opacity="0"/>
+            <circle class="st-ring" r="0" fill="none" stroke="rgba(214,184,122,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="st-outer" r="9" fill="#f4ede0" stroke="rgba(184,150,90,.5)" stroke-width="1.5"/>
+            <circle class="st-dot" r="4" fill="rgba(184,150,90,.5)"/>
+            <text class="st-label" y="50" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="500" fill="#1a1815" letter-spacing=".05em">Peera Garhi</text>
+          </g>
+
+          <!-- Station 4 — Nangloi — label ABOVE -->
+          <g class="station st-above" data-i="4" transform="translate(700,300)">
+            <line x1="0" y1="0" x2="0" y2="-30" stroke="rgba(184,150,90,.4)" stroke-width="1" class="st-tick"/>
+            <circle class="st-glow" r="0" fill="url(#stationGlow)" opacity="0"/>
+            <circle class="st-ring" r="0" fill="none" stroke="rgba(214,184,122,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="st-outer" r="9" fill="#f4ede0" stroke="rgba(184,150,90,.5)" stroke-width="1.5"/>
+            <circle class="st-dot" r="4" fill="rgba(184,150,90,.5)"/>
+            <text class="st-label" y="-40" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="500" fill="#1a1815" letter-spacing=".05em">Nangloi</text>
+          </g>
+
+          <!-- Station 5 — Mundka — label BELOW -->
+          <g class="station st-below" data-i="5" transform="translate(840,300)">
+            <line x1="0" y1="0" x2="0" y2="30" stroke="rgba(184,150,90,.4)" stroke-width="1" class="st-tick"/>
+            <circle class="st-glow" r="0" fill="url(#stationGlow)" opacity="0"/>
+            <circle class="st-ring" r="0" fill="none" stroke="rgba(214,184,122,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="st-outer" r="9" fill="#f4ede0" stroke="rgba(184,150,90,.5)" stroke-width="1.5"/>
+            <circle class="st-dot" r="4" fill="rgba(184,150,90,.5)"/>
+            <text class="st-label" y="50" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="500" fill="#1a1815" letter-spacing=".05em">Mundka</text>
+          </g>
+
+          <!-- Station 6 — Tikri Border — label ABOVE — special: DELHI/HARYANA crossing -->
+          <g class="station st-above" data-i="6" transform="translate(980,300)">
+            <line x1="0" y1="0" x2="0" y2="-30" stroke="rgba(184,150,90,.4)" stroke-width="1" class="st-tick"/>
+            <line x1="0" y1="-90" x2="0" y2="90" stroke="rgba(31,34,51,.18)" stroke-width="1" stroke-dasharray="3 5" class="st-border-line"/>
+            <text x="-22" y="-90" text-anchor="end" font-family="Tenor Sans,sans-serif" font-size="9" fill="rgba(74,70,62,.5)" letter-spacing=".3em" class="st-region-l">DELHI</text>
+            <text x="22" y="-90" text-anchor="start" font-family="Tenor Sans,sans-serif" font-size="9" fill="rgba(74,70,62,.5)" letter-spacing=".3em" class="st-region-r">HARYANA</text>
+            <circle class="st-glow" r="0" fill="url(#stationGlow)" opacity="0"/>
+            <circle class="st-ring" r="0" fill="none" stroke="rgba(214,184,122,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="st-outer" r="9" fill="#f4ede0" stroke="rgba(184,150,90,.5)" stroke-width="1.5"/>
+            <circle class="st-dot" r="4" fill="rgba(184,150,90,.5)"/>
+            <text class="st-label" y="-40" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="500" fill="#1a1815" letter-spacing=".05em">Tikri Border</text>
+            <text class="st-meta" y="-58" text-anchor="middle" font-family="Tenor Sans,sans-serif" font-size="8.5" fill="rgba(184,150,90,0)" letter-spacing=".25em">— STATE BORDER —</text>
+          </g>
+
+          <!-- Station 7 — Pt. Shree Ram Sharma — label BELOW -->
+          <g class="station st-below" data-i="7" transform="translate(1130,300)">
+            <line x1="0" y1="0" x2="0" y2="30" stroke="rgba(184,150,90,.4)" stroke-width="1" class="st-tick"/>
+            <circle class="st-glow" r="0" fill="url(#stationGlow)" opacity="0"/>
+            <circle class="st-ring" r="0" fill="none" stroke="rgba(214,184,122,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="st-outer" r="9" fill="#f4ede0" stroke="rgba(184,150,90,.5)" stroke-width="1.5"/>
+            <circle class="st-dot" r="4" fill="rgba(184,150,90,.5)"/>
+            <text class="st-label" y="50" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="500" fill="#1a1815" letter-spacing=".05em">Pt. Shree Ram Sharma</text>
+          </g>
+
+          <!-- Station 8 — Bahadurgarh City Park — FINAL — label ABOVE — special -->
+          <g class="station st-above st-final" data-i="8" transform="translate(1300,300)">
+            <line x1="0" y1="0" x2="0" y2="-32" stroke="rgba(184,150,90,.5)" stroke-width="1.2" class="st-tick"/>
+            <circle class="st-halo" r="0" fill="url(#stationGlow)" opacity="0"/>
+            <circle class="st-glow" r="0" fill="url(#stationGlow)" opacity="0"/>
+            <circle class="st-ring" r="0" fill="none" stroke="rgba(214,184,122,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="st-outer" r="11" fill="#f4ede0" stroke="rgba(184,150,90,.7)" stroke-width="2"/>
+            <circle class="st-dot" r="5" fill="rgba(184,150,90,.6)"/>
+            <text class="st-label" y="-46" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" font-weight="600" fill="#1a1815" letter-spacing=".04em">Bahadurgarh City Park</text>
+            <text class="st-meta" y="-66" text-anchor="middle" font-family="Tenor Sans,sans-serif" font-size="9" fill="rgba(184,150,90,0)" letter-spacing=".4em">— ARRIVAL —</text>
+          </g>
+
+        </g>
+
+        <!-- Track ties between stations -->
+
+        <!-- ============================================================ -->
+        <!-- TRAIN — refined architectural side-elevation                 -->
+        <!-- White body, single champagne pinstripe, narrow window band   -->
+        <!-- Inspired by Bugatti side-render simplicity                   -->
+        <!-- ============================================================ -->
+        <g id="train-shadow" opacity="0">
+          <ellipse cx="-60" cy="22" rx="120" ry="3.5" fill="rgba(31,34,51,.18)" filter="url(#softGlow)"/>
+        </g>
+        <g id="train" transform="translate(140,300)">
+
+          <!-- subtle motion trail behind -->
+          <g id="motion-trail" opacity="0">
+            <line x1="-220" y1="-2" x2="-150" y2="-2" stroke="rgba(214,184,122,.35)" stroke-width=".8" stroke-linecap="round" class="trail-line"/>
+            <line x1="-240" y1="2"  x2="-150" y2="2"  stroke="rgba(214,184,122,.5)"  stroke-width="1.1" stroke-linecap="round" class="trail-line"/>
+            <line x1="-220" y1="6"  x2="-150" y2="6"  stroke="rgba(214,184,122,.35)" stroke-width=".8" stroke-linecap="round" class="trail-line"/>
+          </g>
+
+          <!-- 3 coaches stacked, refined, no cartoon faces -->
+          <!-- Coach C (rear) -->
+          <g transform="translate(-150,0)">
+            <rect x="0" y="-15" width="60" height="30" rx="2" fill="url(#trainBody)" stroke="rgba(74,70,62,.55)" stroke-width=".6"/>
+            <rect x="0" y="-3"  width="60" height="1.2" fill="url(#champ)"/>
+            <rect x="3" y="-11" width="54" height="6" rx="1" fill="url(#windowGlass)"/>
+            <line x1="13" y1="-11" x2="13" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="22" y1="-11" x2="22" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="31" y1="-11" x2="31" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="40" y1="-11" x2="40" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="49" y1="-11" x2="49" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <rect x="27" y="3"  width="6" height="12" fill="rgba(74,70,62,.35)" stroke="rgba(74,70,62,.5)" stroke-width=".4"/>
+          </g>
+          <!-- Connector -->
+          <rect x="-90" y="-2" width="6" height="4" fill="rgba(74,70,62,.5)"/>
+
+          <!-- Coach B (middle) -->
+          <g transform="translate(-84,0)">
+            <rect x="0" y="-15" width="60" height="30" rx="2" fill="url(#trainBody)" stroke="rgba(74,70,62,.55)" stroke-width=".6"/>
+            <rect x="0" y="-3"  width="60" height="1.2" fill="url(#champ)"/>
+            <rect x="3" y="-11" width="54" height="6" rx="1" fill="url(#windowGlass)"/>
+            <line x1="13" y1="-11" x2="13" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="22" y1="-11" x2="22" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="31" y1="-11" x2="31" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="40" y1="-11" x2="40" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="49" y1="-11" x2="49" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <rect x="27" y="3"  width="6" height="12" fill="rgba(74,70,62,.35)" stroke="rgba(74,70,62,.5)" stroke-width=".4"/>
+          </g>
+          <!-- Connector -->
+          <rect x="-24" y="-2" width="6" height="4" fill="rgba(74,70,62,.5)"/>
+
+          <!-- Coach A (front) — aerodynamic nose -->
+          <g transform="translate(-18,0)">
+            <!-- body -->
+            <path d="M 0 -15 L 50 -15 Q 64 -15 70 -8 L 74 0 L 70 8 Q 64 15 50 15 L 0 15 Z"
+                  fill="url(#trainBody)" stroke="rgba(74,70,62,.55)" stroke-width=".6"/>
+            <!-- nose top shine -->
+            <path d="M 50 -15 Q 64 -15 70 -8 L 70 -8 Q 60 -12 52 -13 Z"
+                  fill="url(#trainNoseShine)" opacity=".7"/>
+            <!-- champagne pinstripe -->
+            <path d="M 0 -3 L 64 -3 Q 70 -3 70 0 L 64 0 L 0 0 Z" fill="url(#champ)"/>
+            <!-- driver windshield -->
+            <path d="M 50 -11 L 56 -11 Q 64 -8 64 -3 L 50 -3 Z" fill="url(#windowGlass)" stroke="rgba(74,70,62,.55)" stroke-width=".4"/>
+            <!-- window band -->
+            <rect x="3" y="-11" width="44" height="6" rx="1" fill="url(#windowGlass)"/>
+            <line x1="13" y1="-11" x2="13" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="22" y1="-11" x2="22" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="31" y1="-11" x2="31" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <line x1="40" y1="-11" x2="40" y2="-5" stroke="rgba(244,237,224,.18)" stroke-width=".4"/>
+            <!-- headlight (single subtle) -->
+            <ellipse cx="71" cy="-1" rx="1.6" ry="2" fill="#fff8d8" opacity=".95"/>
+            <!-- door -->
+            <rect x="20" y="3"  width="6" height="12" fill="rgba(74,70,62,.35)" stroke="rgba(74,70,62,.5)" stroke-width=".4"/>
+            <!-- bogie hint -->
+            <rect x="6"  y="14" width="14" height="3" fill="rgba(74,70,62,.4)"/>
+            <rect x="50" y="14" width="14" height="3" fill="rgba(74,70,62,.4)"/>
+          </g>
+        </g>
+
+        <!-- ============================================================ -->
+        <!-- WALK PATH — goes UP-RIGHT from final station to project pin  -->
+        <!-- Final station: (1300, 300). Pin sits at (1370, 110)          -->
+        <!-- ============================================================ -->
+        <path id="walk-path"
+              d="M 1300 280 Q 1320 220 1340 180 Q 1360 140 1370 110"
+              fill="none" stroke="none"/>
+
+        <!-- visible trail (animated dasharray) -->
+        <path id="walk-trail"
+              d="M 1300 280 Q 1320 220 1340 180 Q 1360 140 1370 110"
+              fill="none"
+              stroke="url(#trackActive)" stroke-width="1.5"
+              stroke-dasharray="3 4"
+              stroke-linecap="round"
+              opacity="0"/>
+
+        <!-- distance markers along walk -->
+        <g id="distance-markers" opacity="0">
+          <text x="1322" y="232" font-family="Tenor Sans,sans-serif" font-size="9" fill="rgba(184,150,90,.65)" letter-spacing=".22em" text-anchor="end">300 M</text>
+          <text x="1340" y="172" font-family="Tenor Sans,sans-serif" font-size="9" fill="rgba(184,150,90,.65)" letter-spacing=".22em" text-anchor="end">500 M</text>
+        </g>
+
+        <!-- walking gold orb -->
+        <g id="walk-orb" transform="translate(1300,280)" opacity="0">
+          <circle r="11" fill="url(#orbGrad)" opacity=".55" filter="url(#orbGlow)"/>
+          <circle r="5" fill="url(#orbGrad)"/>
+          <circle r="2"  fill="#fff8e6"/>
+        </g>
+
+        <!-- ============================================================ -->
+        <!-- PROJECT PIN — upper right, fully clear of train              -->
+        <!-- Heritage gate emblem rendered with editorial restraint       -->
+        <!-- ============================================================ -->
+        <g id="project-pin" transform="translate(1370,110)" opacity="0">
+          <!-- Pulsing halos -->
+          <circle class="pin-halo-3" r="0" fill="none" stroke="rgba(184,150,90,.18)" stroke-width="1" opacity="0"/>
+          <circle class="pin-halo-2" r="0" fill="none" stroke="rgba(184,150,90,.32)" stroke-width="1" opacity="0"/>
+          <circle class="pin-halo-1" r="0" fill="none" stroke="rgba(214,184,122,.55)" stroke-width="1.2" opacity="0"/>
+
+          <!-- emblem assembled (same gate motif, refined) -->
+          <g class="pin-emblem" transform="translate(-30,-44) scale(.55)">
+            <!-- pillars -->
+            <rect class="emb-pillar-l" x="10" y="55" width="20" height="55" fill="none" stroke="#8a6f40" stroke-width="2" opacity="0"/>
+            <rect class="emb-pillar-r" x="90" y="55" width="20" height="55" fill="none" stroke="#8a6f40" stroke-width="2" opacity="0"/>
+            <!-- caps -->
+            <rect class="emb-cap-l" x="6" y="53" width="28" height="3" fill="none" stroke="#8a6f40" stroke-width="1.5" opacity="0"/>
+            <rect class="emb-cap-r" x="86" y="53" width="28" height="3" fill="none" stroke="#8a6f40" stroke-width="1.5" opacity="0"/>
+            <!-- finials -->
+            <circle class="emb-finial-l" cx="20" cy="48" r="4" fill="none" stroke="#8a6f40" stroke-width="1.6" opacity="0"/>
+            <circle class="emb-finial-r" cx="100" cy="48" r="4" fill="none" stroke="#8a6f40" stroke-width="1.6" opacity="0"/>
+            <!-- arch -->
+            <path class="emb-arch"
+                  d="M30 110 L30 68 Q30 10 60 6 Q90 10 90 68 L90 110"
+                  fill="none" stroke="url(#champ)" stroke-width="2.5"
+                  stroke-dasharray="240" stroke-dashoffset="240"/>
+            <!-- crown -->
+            <circle class="emb-crown" cx="60" cy="10" r="5" fill="none" stroke="#8a6f40" stroke-width="2" opacity="0"/>
+            <circle class="emb-crown-dot" cx="60" cy="10" r="2.2" fill="#b8965a" opacity="0"/>
+          </g>
+        </g>
+
+        <!-- ============================================================ -->
+        <!-- DESTINATION CARD — Cartier display-case style                -->
+        <!-- Sits to the right of pin                                      -->
+        <!-- ============================================================ -->
+        <g id="destination-card" transform="translate(1240,180)" opacity="0">
+          <!-- hairline rule connecting walk endpoint to card -->
+          <line x1="130" y1="-70" x2="100" y2="-30" stroke="rgba(184,150,90,.4)" stroke-width=".8" class="card-rule"/>
+
+          <!-- Card frame: hairline gold border with corner accents -->
+          <rect x="-5" y="-30" width="200" height="76" fill="rgba(244,237,224,.96)" stroke="rgba(184,150,90,.5)" stroke-width="1"/>
+          <!-- corner ornaments -->
+          <path d="M-5 -30 L-5 -22 M-5 -30 L3 -30" stroke="#b8965a" stroke-width="1.4" fill="none"/>
+          <path d="M195 -30 L195 -22 M195 -30 L187 -30" stroke="#b8965a" stroke-width="1.4" fill="none"/>
+          <path d="M-5 46 L-5 38 M-5 46 L3 46" stroke="#b8965a" stroke-width="1.4" fill="none"/>
+          <path d="M195 46 L195 38 M195 46 L187 46" stroke="#b8965a" stroke-width="1.4" fill="none"/>
+
+          <!-- contents -->
+          <text x="95" y="-9" text-anchor="middle" font-family="Tenor Sans,sans-serif" font-size="9.5" fill="#b8965a" letter-spacing=".4em">THE HERITAGE</text>
+          <line x1="55" y1="-2" x2="135" y2="-2" stroke="rgba(184,150,90,.4)" stroke-width=".5"/>
+          <text x="95" y="16" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-weight="400" font-size="20" fill="#1a1815" letter-spacing=".01em">700 metres away</text>
+          <text x="95" y="36" text-anchor="middle" font-family="Tenor Sans,sans-serif" font-size="8.5" fill="#4a463e" letter-spacing=".32em">A TWO-MINUTE WALK</text>
+        </g>
+      </svg>
+    </div>
+
+    <p class="status-line" id="status">Awaiting departure&hellip;</p>
+
+    <div class="controls">
+      <button class="ctrl-btn" id="replayBtn"><span>&#x21bb; Replay Journey</span></button>
+      <button class="ctrl-btn" id="pauseBtn"><span>&#9208; Pause</span></button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  if (window.gsap && window.MotionPathPlugin) {
+    gsap.registerPlugin(MotionPathPlugin);
+  }
+  const $ = (s, ctx=document) => ctx.querySelector(s);
+  const $$ = (s, ctx=document) => Array.from(ctx.querySelectorAll(s));
+
+  const stations = [
+    { x:140,  name:'Kashmere Gate' },
+    { x:280,  name:'Inderlok' },
+    { x:420,  name:'Punjabi Bagh West' },
+    { x:560,  name:'Peera Garhi' },
+    { x:700,  name:'Nangloi' },
+    { x:840,  name:'Mundka' },
+    { x:980,  name:'Tikri Border' },
+    { x:1130, name:'Pt. Shree Ram Sharma' },
+    { x:1300, name:'Bahadurgarh City Park' }
+  ];
+
+  const train       = $('#train');
+  const trainShadow = $('#train-shadow');
+  const motionTrail = $('#motion-trail');
+  const trackActive = $('#track-active');
+  const stationEls  = $$('.station');
+  const status      = $('#status');
+  const walkOrb     = $('#walk-orb');
+  const walkTrail   = $('#walk-trail');
+  const distanceMarkers = $('#distance-markers');
+  const pin         = $('#project-pin');
+  const pinHalos    = [$('.pin-halo-3'), $('.pin-halo-2'), $('.pin-halo-1')];
+  const destCard    = $('#destination-card');
+  const replayBtn   = $('#replayBtn');
+  const pauseBtn    = $('#pauseBtn');
+
+  let masterTL;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setStatus(msg){
+    status.textContent = msg;
+    status.classList.add('active');
+  }
+
+  function initTrackTies() {
+    const layer = $('#track-ties');
+    layer.innerHTML = '';
+    for (let x = 60; x < 1380; x += 32) {
+      const tie = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      tie.setAttribute('x1', x);
+      tie.setAttribute('y1', 296);
+      tie.setAttribute('x2', x);
+      tie.setAttribute('y2', 304);
+      tie.setAttribute('stroke', 'rgba(184,150,90,.18)');
+      tie.setAttribute('stroke-width', '0.6');
+      layer.appendChild(tie);
+    }
+  }
+
+  function lightStation(g, isFinal, isBorder){
+    const tl = gsap.timeline();
+    const dot     = g.querySelector('.st-dot');
+    const outer   = g.querySelector('.st-outer');
+    const ring    = g.querySelector('.st-ring');
+    const glow    = g.querySelector('.st-glow');
+    const halo    = g.querySelector('.st-halo');
+    const meta    = g.querySelector('.st-meta');
+    const tick    = g.querySelector('.st-tick');
+    const regionL = g.querySelector('.st-region-l');
+    const regionR = g.querySelector('.st-region-r');
+
+    tl.to(dot,   { attr:{ fill:'#b8965a' }, duration:.25 }, 0)
+      .to(outer, { attr:{ stroke:'#b8965a' }, duration:.25 }, 0)
+      .to(tick,  { attr:{ stroke:'rgba(184,150,90,.8)' }, duration:.25 }, 0)
+      .fromTo(g, { scale:1, transformOrigin:'center center' },
+                 { scale:isFinal?1.35:1.18, duration:.32, ease:'back.out(2.2)', transformOrigin:'center center' }, 0)
+      .to(g,     { scale:1, duration:.5, ease:'elastic.out(1,.55)', transformOrigin:'center center' }, .32)
+      .fromTo(ring, { opacity:.85, attr:{ r:8 } },
+                    { opacity:0, attr:{ r:isFinal?40:28 }, duration:1.0, ease:'power2.out' }, .05)
+      .fromTo(glow, { opacity:0, attr:{ r:0 } },
+                    { opacity:.55, attr:{ r:isFinal?34:24 }, duration:.45, ease:'power2.out' }, 0)
+      .to(glow, { opacity:.18, duration:.5 }, .45);
+
+    if (meta) tl.to(meta, { attr:{ fill: isFinal ? 'rgba(184,150,90,1)' : 'rgba(184,150,90,.7)' }, duration:.4 }, .15);
+    if (regionL) tl.to(regionL, { attr:{ fill:'rgba(74,70,62,.85)' }, duration:.4 }, 0);
+    if (regionR) tl.to(regionR, { attr:{ fill:'rgba(74,70,62,.85)' }, duration:.4 }, 0);
+
+    if (isFinal && halo) {
+      tl.fromTo(halo, { opacity:0, attr:{ r:18 } },
+                       { opacity:.5, attr:{ r:48 }, duration:.7 }, .1)
+        .to(halo, { opacity:.22, attr:{ r:42 }, duration:1.3, repeat:-1, yoyo:true, ease:'sine.inOut' }, .8);
+    }
+    return tl;
+  }
+
+  function buildTimeline(){
+    if (masterTL) masterTL.kill();
+
+    // RESET
+    gsap.set(train, { x:0 });
+    gsap.set(trainShadow, { opacity:0 });
+    gsap.set(trainShadow.firstElementChild, { attr:{ cx:80 } });
+    gsap.set(motionTrail, { opacity:0 });
+    gsap.set(trackActive, { attr:{ x2:60 }, opacity:0 });
+
+    stationEls.forEach(s => {
+      gsap.set(s.querySelector('.st-dot'),   { attr:{ fill:'rgba(184,150,90,.5)' } });
+      gsap.set(s.querySelector('.st-outer'), { attr:{ stroke:'rgba(184,150,90,.5)' } });
+      gsap.set(s.querySelector('.st-tick'),  { attr:{ stroke:'rgba(184,150,90,.4)' } });
+      gsap.set(s.querySelector('.st-ring'),  { opacity:0, attr:{ r:0 } });
+      gsap.set(s.querySelector('.st-glow'),  { opacity:0, attr:{ r:0 } });
+      const meta = s.querySelector('.st-meta');
+      if (meta) gsap.set(meta, { attr:{ fill:'rgba(184,150,90,0)' } });
+      const halo = s.querySelector('.st-halo');
+      if (halo) { gsap.killTweensOf(halo); gsap.set(halo, { opacity:0, attr:{ r:0 } }); }
+      const regionL = s.querySelector('.st-region-l');
+      const regionR = s.querySelector('.st-region-r');
+      if (regionL) gsap.set(regionL, { attr:{ fill:'rgba(74,70,62,.5)' } });
+      if (regionR) gsap.set(regionR, { attr:{ fill:'rgba(74,70,62,.5)' } });
+      gsap.set(s, { scale:1, transformOrigin:'center center' });
+    });
+
+    gsap.set(walkOrb, { opacity:0, x:0, y:0, scale:1 });
+    gsap.set(walkTrail, { opacity:0, attr:{ 'stroke-dashoffset':280 }, strokeDasharray:'280' });
+    gsap.set(distanceMarkers, { opacity:0 });
+
+    gsap.set(pin, { opacity:0, y:-12 });
+    pinHalos.forEach(h => gsap.set(h, { opacity:0, attr:{ r:0 } }));
+    gsap.set('.emb-pillar-l, .emb-pillar-r, .emb-cap-l, .emb-cap-r, .emb-finial-l, .emb-finial-r, .emb-crown, .emb-crown-dot', { opacity:0 });
+    gsap.set('.emb-arch', { attr:{ 'stroke-dashoffset':240 } });
+
+    gsap.set(destCard, { opacity:0, x:-10 });
+
+    if (reducedMotion){
+      // snap to final state
+      gsap.set(trackActive, { attr:{ x2:1300 }, opacity:1 });
+      gsap.set(train, { x:1160 });
+      stationEls.forEach((s,i) => lightStation(s, i===8, i===6));
+      gsap.set(walkTrail, { opacity:1, attr:{ 'stroke-dashoffset':0 } });
+      gsap.set(distanceMarkers, { opacity:1 });
+      gsap.set(pin, { opacity:1, y:0 });
+      gsap.set('.emb-pillar-l, .emb-pillar-r, .emb-cap-l, .emb-cap-r, .emb-finial-l, .emb-finial-r, .emb-crown, .emb-crown-dot', { opacity:1 });
+      gsap.set('.emb-arch', { attr:{ 'stroke-dashoffset':0 } });
+      gsap.set(destCard, { opacity:1, x:0 });
+      setStatus('The Heritage. 700 metres from Bahadurgarh metro.');
+      return;
+    }
+
+    masterTL = gsap.timeline({
+      onComplete: () => gsap.delayedCall(3, () => masterTL.restart())
+    });
+
+    // Phase 1 — Departure
+    masterTL.add(lightStation(stationEls[0], false, false), 0);
+    masterTL.call(() => setStatus('Departing Kashmere Gate'), [], .1);
+    masterTL.to(trainShadow, { opacity:1, duration:.5 }, .3);
+    masterTL.to(motionTrail, { opacity:1, duration:.4 }, .5);
+
+    // Phase 2 — Journey through 8 segments
+    let cum = .8;
+    const segDur = .85;
+    for (let i = 1; i < stations.length; i++){
+      const targetX = stations[i].x - stations[0].x;
+      const isLast  = i === stations.length - 1;
+      const isBorder= i === 6;
+      const dur = isLast ? segDur * 1.5 : segDur;
+      const ease = isLast ? 'power3.out' : (i === 1 ? 'power2.in' : 'power1.inOut');
+
+      masterTL.to(train, { x:targetX, duration:dur, ease }, cum);
+      masterTL.to(trainShadow.firstElementChild, { attr:{ cx: stations[i].x - 60 }, duration:dur, ease }, cum);
+      masterTL.to(trackActive, { attr:{ x2: stations[i].x }, duration:dur, ease, opacity:1 }, cum);
+
+      // Status text mid-segment
+      masterTL.call(() => {
+        if (isLast)        setStatus('Arriving at Bahadurgarh\u2026');
+        else if (isBorder) setStatus('Crossing into Haryana\u2026');
+        else               setStatus('En route to ' + stations[i].name);
+      }, [], cum + dur*.35);
+
+      // Light station as nose touches
+      masterTL.add(lightStation(stationEls[i], isLast, isBorder), cum + dur - .1);
+
+      cum += dur;
+    }
+
+    // Phase 3 — Arrival; calm down
+    masterTL.to(motionTrail, { opacity:0, duration:.5 }, cum);
+    masterTL.to(trainShadow, { opacity:.3, duration:.5 }, cum);
+    cum += .6;
+
+    masterTL.call(() => setStatus('Seven hundred metres remain.'), [], cum);
+    cum += .3;
+
+    // Phase 4 — Walking orb travels UP-RIGHT toward pin
+    masterTL.to(walkOrb, { opacity:1, duration:.3 }, cum);
+    masterTL.to(walkTrail, { opacity:1, duration:.3 }, cum);
+    masterTL.to(walkTrail, { attr:{ 'stroke-dashoffset':0 }, duration:1.6, ease:'power1.inOut' }, cum);
+    masterTL.to(distanceMarkers, { opacity:1, duration:.6 }, cum + .3);
+
+    if (window.MotionPathPlugin){
+      masterTL.to(walkOrb, {
+        motionPath:{
+          path:'#walk-path',
+          align:'#walk-path',
+          alignOrigin:[0.5, 0.5]
+        },
+        duration:1.6, ease:'power1.inOut'
+      }, cum);
+    } else {
+      masterTL.to(walkOrb, { x:70, y:-170, duration:1.6, ease:'power1.inOut' }, cum);
+    }
+    cum += 1.6;
+
+    // Orb arrives → quick scale punch then fade
+    masterTL.to(walkOrb, { scale:1.6, duration:.25, ease:'back.out(2.5)', transformOrigin:'center' }, cum)
+            .to(walkOrb, { scale:1, duration:.2 }, cum + .25)
+            .to(walkOrb, { opacity:0, duration:.4 }, cum + .35);
+    cum += .4;
+
+    // Phase 5 — Pin reveals, halos pulse, then emblem assembles
+    masterTL.to(pin, { opacity:1, y:0, duration:.6, ease:'back.out(1.4)' }, cum);
+    pinHalos.forEach((h, i) => {
+      masterTL.fromTo(h,
+        { opacity:0, attr:{ r:8 } },
+        { opacity: i===2 ? .7 : (i===1 ? .35 : .15), attr:{ r: 22 + i*16 }, duration:.7, ease:'power2.out' },
+        cum + .15 + i*.1)
+        .to(h, { opacity:0, attr:{ r: 50 + i*16 }, duration:.8 }, cum + .15 + i*.1 + .7);
+    });
+    cum += .55;
+
+    // Emblem assembly
+    masterTL.fromTo('.emb-cap-l',    { opacity:0, y:-12 }, { opacity:1, y:0, duration:.35, ease:'back.out(2)' }, cum);
+    masterTL.fromTo('.emb-cap-r',    { opacity:0, y:-12 }, { opacity:1, y:0, duration:.35, ease:'back.out(2)' }, cum + .05);
+    cum += .35;
+    masterTL.fromTo('.emb-pillar-l', { opacity:0, scaleY:0, transformOrigin:'center bottom' }, { opacity:1, scaleY:1, duration:.45, ease:'power2.out' }, cum);
+    masterTL.fromTo('.emb-pillar-r', { opacity:0, scaleY:0, transformOrigin:'center bottom' }, { opacity:1, scaleY:1, duration:.45, ease:'power2.out' }, cum + .08);
+    cum += .5;
+    masterTL.fromTo('.emb-finial-l', { opacity:0, scale:0, transformOrigin:'center' }, { opacity:1, scale:1, duration:.3, ease:'back.out(2.5)' }, cum);
+    masterTL.fromTo('.emb-finial-r', { opacity:0, scale:0, transformOrigin:'center' }, { opacity:1, scale:1, duration:.3, ease:'back.out(2.5)' }, cum + .05);
+    cum += .35;
+    masterTL.to('.emb-arch', { attr:{ 'stroke-dashoffset':0 }, duration:.85, ease:'power2.out' }, cum);
+    cum += .85;
+    masterTL.fromTo('.emb-crown',     { opacity:0, scale:0, transformOrigin:'center' }, { opacity:1, scale:1, duration:.35, ease:'back.out(2)' }, cum);
+    masterTL.fromTo('.emb-crown-dot', { opacity:0, scale:0, transformOrigin:'center' }, { opacity:1, scale:1, duration:.35, ease:'back.out(2.5)' }, cum + .12);
+    cum += .5;
+
+    // Phase 6 — Destination card slides in from left
+    masterTL.to(destCard, { opacity:1, x:0, duration:.7, ease:'power3.out' }, cum);
+    masterTL.call(() => setStatus('The Heritage \u2014 Sector 11, Bahadurgarh.'), [], cum + .3);
+
+    // Hold
+    masterTL.to({}, { duration:2.5 });
+  }
+
+  initTrackTies();
+  buildTimeline();
+
+  let paused = false;
+  pauseBtn.addEventListener('click', () => {
+    if (!masterTL) return;
+    if (paused){ masterTL.resume(); pauseBtn.querySelector('span').innerHTML = '&#9208; Pause'; }
+    else       { masterTL.pause();  pauseBtn.querySelector('span').innerHTML = '&#9654; Resume'; }
+    paused = !paused;
+  });
+  replayBtn.addEventListener('click', () => {
+    paused = false;
+    pauseBtn.querySelector('span').innerHTML = '&#9208; Pause';
+    buildTimeline();
+  });
+
+  // Pause when off-screen
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!masterTL || paused) return;
+      if (e.isIntersecting) masterTL.resume();
+      else masterTL.pause();
+    });
+  }, { threshold:.2 });
+  io.observe($('#connectivity'));
+})();
+</script>
+</body>
+</html>
