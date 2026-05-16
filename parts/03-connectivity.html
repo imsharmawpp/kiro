@@ -1,0 +1,185 @@
+<!-- CONNECTIVITY (METRO ANIMATION) -->
+<section id="connectivity">
+  <div class="si">
+    <div style="text-align:center">
+      <div class="slabel rv">Unbeatable Connectivity</div>
+      <h2 class="stitle rv d1" style="text-align:center">Every Direction.<br><span class="g">Minutes Away.</span></h2>
+      <div class="gsep rv d2" style="justify-content:center;max-width:280px;margin:28px auto"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+    </div>
+    <div class="metro-stage rv d2">
+      <svg class="metro-svg" viewBox="0 0 1320 360" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="mTrackGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="rgba(201,168,76,.15)"/>
+            <stop offset="50%" stop-color="rgba(201,168,76,.4)"/>
+            <stop offset="100%" stop-color="rgba(201,168,76,.7)"/>
+          </linearGradient>
+          <linearGradient id="mTrainBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fff"/>
+            <stop offset="50%" stop-color="#e8e8ec"/>
+            <stop offset="100%" stop-color="#b8b8c0"/>
+          </linearGradient>
+          <linearGradient id="mTrainStripe" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f5b800"/>
+            <stop offset="100%" stop-color="#d49800"/>
+          </linearGradient>
+          <filter id="mStGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="mStrongGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <radialGradient id="mHeadlight" cx=".5" cy=".5" r=".5">
+            <stop offset="0%" stop-color="rgba(255,235,180,.9)"/>
+            <stop offset="60%" stop-color="rgba(255,200,100,.25)"/>
+            <stop offset="100%" stop-color="rgba(255,200,100,0)"/>
+          </radialGradient>
+          <linearGradient id="mPinGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8c97a"/>
+            <stop offset="100%" stop-color="#8b6914"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Track -->
+        <line x1="80" y1="180" x2="1240" y2="180" stroke="rgba(201,168,76,.12)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="80" y1="172" x2="1240" y2="172" stroke="rgba(201,168,76,.06)" stroke-width=".5"/>
+        <line x1="80" y1="188" x2="1240" y2="188" stroke="rgba(201,168,76,.06)" stroke-width=".5"/>
+        <line id="m-track-active" x1="80" y1="180" x2="80" y2="180" stroke="url(#mTrackGrad)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+
+        <!-- Stations -->
+        <g id="m-stations">
+          <g class="m-st" data-i="0" transform="translate(120,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9.5" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">KASHMERE GATE</text>
+          </g>
+          <g class="m-st" data-i="1" transform="translate(260,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9.5" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">INDERLOK</text>
+          </g>
+          <g class="m-st" data-i="2" transform="translate(400,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9.5" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">PUNJABI BAGH WEST</text>
+          </g>
+          <g class="m-st" data-i="3" transform="translate(540,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9.5" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">PEERA GARHI</text>
+          </g>
+          <g class="m-st" data-i="4" transform="translate(680,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9.5" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">NANGLOI</text>
+          </g>
+          <g class="m-st" data-i="5" transform="translate(820,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9.5" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">MUNDKA</text>
+          </g>
+          <g class="m-st" data-i="6" transform="translate(960,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9.5" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">TIKRI BORDER</text>
+            <text y="38" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="7.5" fill="rgba(201,168,76,.5)" letter-spacing="2" opacity="0" class="mst-sub">DELHI · HARYANA</text>
+          </g>
+          <g class="m-st" data-i="7" transform="translate(1100,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9.5" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">PT. SHREE RAM SHARMA</text>
+          </g>
+          <g class="m-st m-st-final" data-i="8" transform="translate(1240,180)">
+            <circle class="mst-halo" r="32" fill="none" stroke="rgba(201,168,76,.2)" stroke-width="1" opacity="0"/>
+            <circle class="mst-ring" r="22" fill="none" stroke="rgba(201,168,76,.35)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="13" fill="none" stroke="rgba(201,168,76,.5)" stroke-width="2"/>
+            <circle class="mst-dot" r="6" fill="rgba(201,168,76,.45)"/>
+            <text class="mst-label" y="-34" text-anchor="middle" font-family="'Cinzel',serif" font-size="10.5" font-weight="700" fill="#d4c9b0" letter-spacing="2" opacity=".6">BAHADURGARH CITY PARK</text>
+          </g>
+        </g>
+
+        <!-- Train -->
+        <g id="m-train" transform="translate(120,180)">
+          <ellipse id="m-headlight" cx="65" cy="0" rx="40" ry="14" fill="url(#mHeadlight)" opacity="0"/>
+          <g transform="translate(-110,0)">
+            <rect x="0" y="-14" width="56" height="28" rx="4" fill="url(#mTrainBody)" stroke="#3a3a40" stroke-width=".8"/>
+            <rect x="0" y="-4" width="56" height="3" fill="url(#mTrainStripe)"/>
+            <rect x="0" y="2" width="56" height="1.5" fill="#003d7a"/>
+            <rect x="6" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="18" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="30" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="42" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/>
+            <circle cx="10" cy="14" r="3.5" fill="#222"/><circle cx="46" cy="14" r="3.5" fill="#222"/>
+          </g>
+          <g transform="translate(-50,0)">
+            <rect x="0" y="-14" width="56" height="28" rx="4" fill="url(#mTrainBody)" stroke="#3a3a40" stroke-width=".8"/>
+            <rect x="0" y="-4" width="56" height="3" fill="url(#mTrainStripe)"/>
+            <rect x="0" y="2" width="56" height="1.5" fill="#003d7a"/>
+            <rect x="6" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="18" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="30" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="42" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/>
+            <circle cx="10" cy="14" r="3.5" fill="#222"/><circle cx="46" cy="14" r="3.5" fill="#222"/>
+          </g>
+          <g transform="translate(10,0)">
+            <path d="M0-14L50-14Q60-14 62-8L64 0 62 8Q60 14 50 14L0 14Z" fill="url(#mTrainBody)" stroke="#3a3a40" stroke-width=".8"/>
+            <path d="M0-4L56-4Q60-4 60-1L60 1 56 1 0 1Z" fill="url(#mTrainStripe)"/>
+            <rect x="0" y="2" width="58" height="1.5" fill="#003d7a"/>
+            <path d="M50-10L56-10Q60-8 60-3L60-1 50-1Z" fill="rgba(160,200,230,.85)"/>
+            <rect x="6" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="18" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="30" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="42" y="-10" width="6" height="6" rx="1" fill="rgba(180,210,235,.7)"/>
+            <circle cx="60" cy="-6" r="1.6" fill="#fff8d0"/><circle cx="60" cy="6" r="1.6" fill="#fff8d0"/>
+            <circle cx="10" cy="14" r="3.5" fill="#222"/><circle cx="46" cy="14" r="3.5" fill="#222"/>
+          </g>
+          <rect x="-56" y="-3" width="6" height="6" fill="#1a1a1f"/>
+          <rect x="4" y="-3" width="6" height="6" fill="#1a1a1f"/>
+        </g>
+
+        <!-- Trail dots -->
+        <g id="m-trail" opacity="0">
+          <circle class="m-tdot" cx="1232" cy="200" r="2" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1224" cy="216" r="2.2" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1215" cy="230" r="2.4" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1206" cy="244" r="2.6" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1197" cy="257" r="2.8" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1190" cy="270" r="3" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1184" cy="282" r="3.2" fill="#c9a84c" opacity="0"/>
+        </g>
+
+        <!-- Project Pin (gate emblem) -->
+        <g id="m-pin" transform="translate(1180,300)" opacity="0">
+          <circle class="mpin-halo" r="40" fill="none" stroke="rgba(201,168,76,.15)" stroke-width="1" opacity="0"/>
+          <circle class="mpin-mid" r="28" fill="none" stroke="rgba(201,168,76,.3)" stroke-width="1" opacity="0"/>
+          <g class="mpin-emblem" transform="translate(-22,-22) scale(.36)">
+            <rect x="10" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="2" fill="none"/>
+            <rect x="88" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="2" fill="none"/>
+            <path d="M32 110 L32 68 Q32 10 60 6 Q88 10 88 68 L88 110" stroke="url(#mPinGrad)" stroke-width="2.5" fill="none"/>
+            <circle cx="60" cy="10" r="6" fill="none" stroke="#c9a84c" stroke-width="2"/>
+            <circle cx="60" cy="10" r="2.5" fill="#c9a84c"/>
+            <rect x="5" y="53" width="32" height="4" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+            <rect x="83" y="53" width="32" height="4" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+            <circle cx="21" cy="47" r="5" fill="none" stroke="#c9a84c" stroke-width="2"/>
+            <circle cx="99" cy="47" r="5" fill="none" stroke="#c9a84c" stroke-width="2"/>
+          </g>
+        </g>
+
+        <!-- WE ARE HERE badge -->
+        <g id="m-badge" transform="translate(1180,346)" opacity="0">
+          <rect x="-78" y="-14" width="156" height="28" fill="rgba(7,5,3,.96)" stroke="url(#mPinGrad)" stroke-width="1.5"/>
+          <path d="M-78-14L-72-14M-78-14L-78-8" stroke="#c9a84c" stroke-width="2"/>
+          <path d="M78 14L72 14M78 14L78 8" stroke="#c9a84c" stroke-width="2"/>
+          <text x="0" y="-1" text-anchor="middle" font-family="'Cinzel',serif" font-size="11" font-weight="700" fill="#c9a84c" letter-spacing="3.5">WE ARE HERE</text>
+          <text x="0" y="11" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="7.5" fill="#d4c9b0" letter-spacing="2.5">700 M · 2 MIN WALK</text>
+        </g>
+      </svg>
+    </div>
+    <div class="metro-status" id="m-status">Awaiting departure...</div>
+    <div class="metro-controls">
+      <button class="mcbtn" id="m-replay">↻ Replay</button>
+      <button class="mcbtn" id="m-pause">⏸ Pause</button>
+    </div>
+  </div>
+</section>
