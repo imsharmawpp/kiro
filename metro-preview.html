@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heritage · Metro Animation Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#c9a84c;--gold-light:#e8c97a;--gold-dark:#8b6914;
+  --metro-yellow:#f5b800;--metro-blue:#003d7a;
+  --black:#070503;--dark:#0f0a05;--dark2:#1a1108;
+  --cream:#f5f0e6;--cream-dim:#d4c9b0;
+}
+html,body{background:var(--black);color:var(--cream);font-family:'Josefin Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+
+/* preview chrome */
+.preview-bar{position:fixed;top:0;left:0;right:0;background:rgba(7,5,3,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.18);padding:14px 24px;z-index:100;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.25em;text-transform:uppercase}
+.preview-bar .l{color:var(--gold);font-family:'Cinzel',serif}
+.preview-bar .r{color:var(--cream-dim);font-size:9px}
+
+/* Section */
+#connectivity{padding:120px 6% 80px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative}
+.si{max-width:1400px;margin:0 auto;width:100%}
+
+.slabel{font-size:10px;letter-spacing:.5em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;text-align:center}
+.slabel::before{content:'— '}
+.stitle{font-family:'Cinzel',serif;font-size:clamp(2rem,4.2vw,3.6rem);font-weight:600;color:var(--cream);line-height:1.15;text-align:center}
+.stitle .g{color:var(--gold)}
+.gsep{display:flex;align-items:center;justify-content:center;gap:16px;margin:28px auto;max-width:300px}
+.gsep-l{flex:1;height:1px;background:rgba(201,168,76,.2)}
+.gsep-d{width:6px;height:6px;background:var(--gold);transform:rotate(45deg)}
+.intro-copy{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--cream-dim);text-align:center;max-width:620px;margin:0 auto 60px;font-style:italic;line-height:1.7}
+
+/* metro stage */
+.metro-stage{position:relative;width:100%;max-width:1320px;margin:0 auto;padding:40px 0}
+
+.metro-svg{width:100%;height:auto;display:block;overflow:visible}
+
+/* control row */
+.controls{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:50px}
+.ctrl-btn{padding:10px 24px;border:1px solid rgba(201,168,76,.3);background:transparent;color:var(--gold);font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:.32em;text-transform:uppercase;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:10px}
+.ctrl-btn:hover{background:rgba(201,168,76,.08);border-color:var(--gold)}
+.ctrl-btn .icon{font-size:13px}
+.ctrl-status{font-size:10px;letter-spacing:.32em;color:var(--cream-dim);text-transform:uppercase}
+.ctrl-status .dot{display:inline-block;width:6px;height:6px;background:var(--gold);border-radius:50%;margin-right:8px;animation:pulse 1.6s ease infinite}
+@keyframes pulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+
+/* legend */
+.legend{display:flex;justify-content:center;gap:32px;margin-top:24px;flex-wrap:wrap}
+.lg-item{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.22em;color:var(--cream-dim);text-transform:uppercase}
+.lg-dot{width:10px;height:10px;border-radius:50%}
+
+/* status banner */
+.status-line{text-align:center;margin-top:30px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:rgba(212,201,176,.45);min-height:30px;transition:color .4s}
+.status-line.active{color:var(--gold)}
+
+@media (max-width:840px){
+  .controls{flex-direction:column;gap:12px}
+  .legend{gap:16px}
+  .intro-copy{font-size:1rem}
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<div class="preview-bar">
+  <div class="l">The Heritage · Metro Animation Preview</div>
+  <div class="r">imsharmawpp/kiro · feat/metro-animation</div>
+</div>
+
+<section id="connectivity">
+  <div class="si">
+    <div class="slabel">Unbeatable Connectivity</div>
+    <h2 class="stitle">Every Direction.<br><span class="g">Minutes Away.</span></h2>
+    <div class="gsep"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+    <p class="intro-copy">Watch Delhi Metro's Green Line — your direct connection to the capital. Every station, minutes away. Every journey, ending at home.</p>
+
+    <div class="metro-stage">
+      <svg class="metro-svg" viewBox="0 0 1320 360" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Track gradient -->
+          <linearGradient id="trackGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="rgba(201,168,76,.15)"/>
+            <stop offset="50%" stop-color="rgba(201,168,76,.4)"/>
+            <stop offset="100%" stop-color="rgba(201,168,76,.7)"/>
+          </linearGradient>
+          <!-- Train livery gradient -->
+          <linearGradient id="trainBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fff"/>
+            <stop offset="50%" stop-color="#e8e8ec"/>
+            <stop offset="100%" stop-color="#b8b8c0"/>
+          </linearGradient>
+          <linearGradient id="trainStripe" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f5b800"/>
+            <stop offset="100%" stop-color="#d49800"/>
+          </linearGradient>
+          <!-- Station glow filter -->
+          <filter id="stationGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <filter id="strongGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <!-- Headlight beam -->
+          <radialGradient id="headlightGrad" cx=".5" cy=".5" r=".5">
+            <stop offset="0%" stop-color="rgba(255,235,180,.9)"/>
+            <stop offset="60%" stop-color="rgba(255,200,100,.25)"/>
+            <stop offset="100%" stop-color="rgba(255,200,100,0)"/>
+          </radialGradient>
+          <!-- Project pin gate gradient (matches site loader emblem) -->
+          <linearGradient id="pinGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8c97a"/>
+            <stop offset="100%" stop-color="#8b6914"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Background guide grid (decorative) -->
+        <g opacity=".05" stroke="#c9a84c" stroke-width=".5">
+          <line x1="0" y1="180" x2="1320" y2="180"/>
+        </g>
+
+        <!-- ============================================================ -->
+        <!-- TRACK -->
+        <!-- ============================================================ -->
+        <g id="track-layer">
+          <!-- Base track (dim) -->
+          <line x1="80" y1="180" x2="1240" y2="180" stroke="rgba(201,168,76,.12)" stroke-width="2" stroke-linecap="round"/>
+          <!-- Track ties (subtle horizontal marks) -->
+          <g stroke="rgba(201,168,76,.08)" stroke-width="1">
+            <line x1="80" y1="172" x2="1240" y2="172"/>
+            <line x1="80" y1="188" x2="1240" y2="188"/>
+          </g>
+          <!-- Active track segment (gets revealed by animation) -->
+          <line id="track-active" x1="80" y1="180" x2="80" y2="180" stroke="url(#trackGrad)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+        </g>
+
+        <!-- ============================================================ -->
+        <!-- STATIONS (9 total) -->
+        <!-- Positions evenly spread between x=120 and x=1240 -->
+        <!-- ============================================================ -->
+        <g id="stations">
+          <!-- Each station: <g class="station" data-name="..." data-i="N"> -->
+          <!-- Station 1: Kashmere Gate -->
+          <g class="station" data-name="Kashmere Gate" data-i="0" transform="translate(120,180)">
+            <circle class="st-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="st-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="st-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="st-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#d4c9b0" letter-spacing="1.5" opacity=".55">KASHMERE GATE</text>
+            <text class="st-arrival" y="40" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="8" fill="#c9a84c" letter-spacing="1.8" opacity="0">START</text>
+          </g>
+          <!-- Station 2: Inderlok -->
+          <g class="station" data-name="Inderlok" data-i="1" transform="translate(260,180)">
+            <circle class="st-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="st-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="st-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="st-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#d4c9b0" letter-spacing="1.5" opacity=".55">INDERLOK</text>
+            <text class="st-arrival" y="40" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="8" fill="#c9a84c" letter-spacing="1.8" opacity="0">PASSED</text>
+          </g>
+          <!-- Station 3: Punjabi Bagh West -->
+          <g class="station" data-name="Punjabi Bagh West" data-i="2" transform="translate(400,180)">
+            <circle class="st-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="st-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="st-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="st-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#d4c9b0" letter-spacing="1.5" opacity=".55">PUNJABI BAGH WEST</text>
+            <text class="st-arrival" y="40" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="8" fill="#c9a84c" letter-spacing="1.8" opacity="0">PASSED</text>
+          </g>
+          <!-- Station 4: Peera Garhi -->
+          <g class="station" data-name="Peera Garhi" data-i="3" transform="translate(540,180)">
+            <circle class="st-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="st-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="st-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="st-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#d4c9b0" letter-spacing="1.5" opacity=".55">PEERA GARHI</text>
+            <text class="st-arrival" y="40" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="8" fill="#c9a84c" letter-spacing="1.8" opacity="0">PASSED</text>
+          </g>
+          <!-- Station 5: Nangloi -->
+          <g class="station" data-name="Nangloi" data-i="4" transform="translate(680,180)">
+            <circle class="st-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="st-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="st-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="st-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#d4c9b0" letter-spacing="1.5" opacity=".55">NANGLOI</text>
+            <text class="st-arrival" y="40" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="8" fill="#c9a84c" letter-spacing="1.8" opacity="0">PASSED</text>
+          </g>
+          <!-- Station 6: Mundka -->
+          <g class="station" data-name="Mundka" data-i="5" transform="translate(820,180)">
+            <circle class="st-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="st-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="st-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="st-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#d4c9b0" letter-spacing="1.5" opacity=".55">MUNDKA</text>
+            <text class="st-arrival" y="40" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="8" fill="#c9a84c" letter-spacing="1.8" opacity="0">PASSED</text>
+          </g>
+          <!-- Station 7: Tikri Border -->
+          <g class="station" data-name="Tikri Border" data-i="6" transform="translate(960,180)">
+            <circle class="st-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="st-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="st-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="st-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#d4c9b0" letter-spacing="1.5" opacity=".55">TIKRI BORDER</text>
+            <text class="st-arrival" y="40" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="8" fill="#c9a84c" letter-spacing="1.8" opacity="0">DELHI · HARYANA</text>
+          </g>
+          <!-- Station 8: Pandit Shree Ram Sharma -->
+          <g class="station" data-name="Pandit Shree Ram Sharma" data-i="7" transform="translate(1100,180)">
+            <circle class="st-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="st-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="st-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="st-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#d4c9b0" letter-spacing="1.5" opacity=".55">PT. SHREE RAM SHARMA</text>
+            <text class="st-arrival" y="40" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="8" fill="#c9a84c" letter-spacing="1.8" opacity="0">PASSED</text>
+          </g>
+          <!-- Station 9: Bahadurgarh City Park (FINAL) -->
+          <g class="station st-final" data-name="Bahadurgarh City Park" data-i="8" transform="translate(1240,180)">
+            <circle class="st-halo" r="32" fill="none" stroke="rgba(201,168,76,.2)" stroke-width="1" opacity="0"/>
+            <circle class="st-ring" r="22" fill="none" stroke="rgba(201,168,76,.35)" stroke-width="1" opacity="0"/>
+            <circle class="st-outer" r="13" fill="none" stroke="rgba(201,168,76,.5)" stroke-width="2"/>
+            <circle class="st-dot" r="6" fill="rgba(201,168,76,.45)"/>
+            <text class="st-label" y="-32" text-anchor="middle" font-family="'Cinzel',serif" font-size="11" font-weight="700" fill="#d4c9b0" letter-spacing="2" opacity=".7">BAHADURGARH CITY PARK</text>
+            <text class="st-arrival" y="48" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="#c9a84c" letter-spacing="2.5" font-weight="700" opacity="0">DESTINATION</text>
+          </g>
+        </g>
+
+        <!-- ============================================================ -->
+        <!-- TRAIN -->
+        <!-- Compact 3-coach Delhi Metro design with yellow/blue stripes -->
+        <!-- ============================================================ -->
+        <g id="train" transform="translate(120,180)">
+          <!-- Headlight beam (only visible while moving) -->
+          <ellipse id="headlight-beam" cx="65" cy="0" rx="40" ry="14" fill="url(#headlightGrad)" opacity="0"/>
+
+          <!-- Coach 3 (rear) -->
+          <g transform="translate(-110,0)">
+            <rect x="0" y="-14" width="56" height="28" rx="4" fill="url(#trainBody)" stroke="#3a3a40" stroke-width=".8"/>
+            <rect x="0" y="-4" width="56" height="3" fill="url(#trainStripe)"/>
+            <rect x="0" y="2" width="56" height="1.5" fill="#003d7a"/>
+            <!-- windows -->
+            <rect x="6" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <rect x="18" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <rect x="30" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <rect x="42" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <!-- wheels -->
+            <circle cx="10" cy="14" r="3.5" fill="#222"/>
+            <circle cx="46" cy="14" r="3.5" fill="#222"/>
+            <circle cx="10" cy="14" r="1" fill="#666"/>
+            <circle cx="46" cy="14" r="1" fill="#666"/>
+          </g>
+
+          <!-- Coach 2 (middle) -->
+          <g transform="translate(-50,0)">
+            <rect x="0" y="-14" width="56" height="28" rx="4" fill="url(#trainBody)" stroke="#3a3a40" stroke-width=".8"/>
+            <rect x="0" y="-4" width="56" height="3" fill="url(#trainStripe)"/>
+            <rect x="0" y="2" width="56" height="1.5" fill="#003d7a"/>
+            <rect x="6" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <rect x="18" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <rect x="30" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <rect x="42" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <circle cx="10" cy="14" r="3.5" fill="#222"/>
+            <circle cx="46" cy="14" r="3.5" fill="#222"/>
+            <circle cx="10" cy="14" r="1" fill="#666"/>
+            <circle cx="46" cy="14" r="1" fill="#666"/>
+          </g>
+
+          <!-- Coach 1 (front, with nose) -->
+          <g transform="translate(10,0)">
+            <!-- Body -->
+            <path d="M 0 -14 L 50 -14 Q 60 -14 62 -8 L 64 0 L 62 8 Q 60 14 50 14 L 0 14 Z" fill="url(#trainBody)" stroke="#3a3a40" stroke-width=".8"/>
+            <!-- yellow stripe -->
+            <path d="M 0 -4 L 56 -4 Q 60 -4 60 -1 L 60 1 L 56 1 L 0 1 Z" fill="url(#trainStripe)"/>
+            <!-- blue thin stripe -->
+            <rect x="0" y="2" width="58" height="1.5" fill="#003d7a"/>
+            <!-- Windshield -->
+            <path d="M 50 -10 L 56 -10 Q 60 -8 60 -3 L 60 -1 L 50 -1 Z" fill="rgba(160,200,230,.85)" stroke="#3a3a40" stroke-width=".4"/>
+            <!-- Side windows -->
+            <rect x="6" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <rect x="18" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <rect x="30" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <rect x="42" y="-10" width="6" height="6" rx="1" fill="rgba(180,210,235,.7)" stroke="#3a3a40" stroke-width=".4"/>
+            <!-- Headlight -->
+            <circle cx="60" cy="-6" r="1.6" fill="#fff8d0"/>
+            <circle cx="60" cy="6" r="1.6" fill="#fff8d0"/>
+            <!-- wheels -->
+            <circle cx="10" cy="14" r="3.5" fill="#222"/>
+            <circle cx="46" cy="14" r="3.5" fill="#222"/>
+            <circle cx="10" cy="14" r="1" fill="#666"/>
+            <circle cx="46" cy="14" r="1" fill="#666"/>
+          </g>
+
+          <!-- Inter-coach connectors -->
+          <rect x="-56" y="-3" width="6" height="6" fill="#1a1a1f"/>
+          <rect x="4" y="-3" width="6" height="6" fill="#1a1a1f"/>
+        </g>
+
+        <!-- ============================================================ -->
+        <!-- DOTTED TRAIL (Bahadurgarh station -> project pin) -->
+        <!-- 700m walk visualisation -->
+        <!-- ============================================================ -->
+        <g id="trail-layer" opacity="0">
+          <!-- Trail dots manually placed in arc from station (1240,180) toward project pin (1180,290) -->
+          <!-- Curve: subtle arc downward and slightly left -->
+          <circle class="trail-dot" cx="1232" cy="200" r="2" fill="#c9a84c" opacity="0"/>
+          <circle class="trail-dot" cx="1224" cy="216" r="2.2" fill="#c9a84c" opacity="0"/>
+          <circle class="trail-dot" cx="1215" cy="230" r="2.4" fill="#c9a84c" opacity="0"/>
+          <circle class="trail-dot" cx="1206" cy="244" r="2.6" fill="#c9a84c" opacity="0"/>
+          <circle class="trail-dot" cx="1197" cy="257" r="2.8" fill="#c9a84c" opacity="0"/>
+          <circle class="trail-dot" cx="1190" cy="270" r="3" fill="#c9a84c" opacity="0"/>
+          <circle class="trail-dot" cx="1184" cy="282" r="3.2" fill="#c9a84c" opacity="0"/>
+        </g>
+
+        <!-- ============================================================ -->
+        <!-- PROJECT PIN — Gate emblem matching the loader -->
+        <!-- ============================================================ -->
+        <g id="project-pin" transform="translate(1180,300)" opacity="0">
+          <!-- Halo glow rings -->
+          <circle class="pin-halo-out" r="40" fill="none" stroke="rgba(201,168,76,.15)" stroke-width="1" opacity="0"/>
+          <circle class="pin-halo-mid" r="28" fill="none" stroke="rgba(201,168,76,.3)" stroke-width="1" opacity="0"/>
+
+          <!-- Gate emblem (scaled down loader SVG) -->
+          <g class="pin-emblem" transform="translate(-22,-22) scale(.36)" filter="url(#strongGlow)">
+            <!-- Pillars -->
+            <rect x="10" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="2" fill="none" opacity=".95"/>
+            <rect x="88" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="2" fill="none" opacity=".95"/>
+            <!-- Arch -->
+            <path d="M32 110 L32 68 Q32 10 60 6 Q88 10 88 68 L88 110" stroke="url(#pinGrad)" stroke-width="2.5" fill="none"/>
+            <!-- Crown -->
+            <circle cx="60" cy="10" r="6" fill="none" stroke="#c9a84c" stroke-width="2"/>
+            <circle cx="60" cy="10" r="2.5" fill="#c9a84c" opacity=".9"/>
+            <!-- Pillar caps -->
+            <rect x="5" y="53" width="32" height="4" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".7"/>
+            <rect x="83" y="53" width="32" height="4" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".7"/>
+            <!-- Pillar finials -->
+            <circle cx="21" cy="47" r="5" fill="none" stroke="#c9a84c" stroke-width="2" opacity=".9"/>
+            <circle cx="99" cy="47" r="5" fill="none" stroke="#c9a84c" stroke-width="2" opacity=".9"/>
+          </g>
+        </g>
+
+        <!-- ============================================================ -->
+        <!-- "WE ARE HERE" Badge -->
+        <!-- ============================================================ -->
+        <g id="we-are-here" transform="translate(1180,346)" opacity="0">
+          <!-- Badge frame -->
+          <rect x="-78" y="-14" width="156" height="28" fill="rgba(7,5,3,.96)" stroke="url(#pinGrad)" stroke-width="1.5"/>
+          <!-- Corner accents -->
+          <path d="M-78 -14 L-72 -14 M-78 -14 L-78 -8" stroke="#c9a84c" stroke-width="2"/>
+          <path d="M78 14 L72 14 M78 14 L78 8" stroke="#c9a84c" stroke-width="2"/>
+          <!-- Text -->
+          <text x="0" y="-1" text-anchor="middle" font-family="'Cinzel',serif" font-size="11" font-weight="700" fill="#c9a84c" letter-spacing="3.5">WE ARE HERE</text>
+          <text x="0" y="11" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="7.5" fill="#d4c9b0" letter-spacing="2.5">700 M · 2 MIN WALK</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="status-line" id="status">Awaiting departure...</div>
+
+    <div class="controls">
+      <button class="ctrl-btn" id="replayBtn"><span class="icon">↻</span> Replay Journey</button>
+      <button class="ctrl-btn" id="pauseBtn"><span class="icon">⏸</span> Pause</button>
+      <div class="ctrl-status"><span class="dot"></span><span id="pos-status">Kashmere Gate</span></div>
+    </div>
+
+    <div class="legend">
+      <div class="lg-item"><div class="lg-dot" style="background:#c9a84c"></div>Active Station</div>
+      <div class="lg-item"><div class="lg-dot" style="background:rgba(201,168,76,.3);border:1px solid rgba(201,168,76,.5)"></div>Upcoming</div>
+      <div class="lg-item"><div class="lg-dot" style="background:rgba(245,184,0,.9)"></div>Delhi Metro Green Line</div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const stations = [
+    { name: 'Kashmere Gate',          x: 120 },
+    { name: 'Inderlok',                x: 260 },
+    { name: 'Punjabi Bagh West',       x: 400 },
+    { name: 'Peera Garhi',             x: 540 },
+    { name: 'Nangloi',                 x: 680 },
+    { name: 'Mundka',                  x: 820 },
+    { name: 'Tikri Border',            x: 960 },
+    { name: 'Pandit Shree Ram Sharma', x:1100 },
+    { name: 'Bahadurgarh City Park',   x:1240 }
+  ];
+
+  const $ = (s, ctx=document) => ctx.querySelector(s);
+  const $$ = (s, ctx=document) => Array.from(ctx.querySelectorAll(s));
+
+  const train       = $('#train');
+  const headlight   = $('#headlight-beam');
+  const trackActive = $('#track-active');
+  const status      = $('#status');
+  const posStatus   = $('#pos-status');
+  const stationEls  = $$('.station');
+  const trail       = $('#trail-layer');
+  const trailDots   = $$('.trail-dot');
+  const pin         = $('#project-pin');
+  const pinHaloOut  = $('.pin-halo-out');
+  const pinHaloMid  = $('.pin-halo-mid');
+  const pinEmblem   = $('.pin-emblem');
+  const weAreHere   = $('#we-are-here');
+
+  const replayBtn   = $('#replayBtn');
+  const pauseBtn    = $('#pauseBtn');
+
+  let masterTL;
+
+  // Honour reduced motion: render the final state only.
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setStatus(msg, active=true){
+    status.textContent = msg;
+    status.classList.toggle('active', active);
+  }
+  function setPos(name){ posStatus.textContent = name; }
+
+  function lightStation(g, isFinal=false){
+    const ring   = g.querySelector('.st-ring');
+    const halo   = g.querySelector('.st-halo');
+    const outer  = g.querySelector('.st-outer');
+    const dot    = g.querySelector('.st-dot');
+    const label  = g.querySelector('.st-label');
+    const arrival= g.querySelector('.st-arrival');
+
+    const tl = gsap.timeline();
+    tl.to(dot, { attr:{ fill: '#c9a84c' }, duration: 0.18, ease: 'power2.out' }, 0)
+      .to(outer, { attr:{ stroke: '#c9a84c' }, duration: 0.18 }, 0)
+      .fromTo(g, { scale: 1, transformOrigin:'center' }, {
+        scale: isFinal ? 1.5 : 1.35, duration: 0.3, ease: 'back.out(2.5)',
+        transformOrigin:'center'
+      }, 0)
+      .to(g, { scale: 1, duration: 0.4, ease: 'elastic.out(1,.55)', transformOrigin:'center' }, 0.3)
+      .fromTo(ring, { opacity: 0.7, attr:{ r: 12 } }, {
+        opacity: 0, attr:{ r: 32 }, duration: 0.9, ease: 'power2.out'
+      }, 0.05)
+      .to(label, { opacity: 1, duration: 0.3 }, 0)
+      .to(arrival, { opacity: isFinal ? 1 : 0.65, duration: 0.3 }, 0.1);
+
+    if (isFinal && halo){
+      tl.fromTo(halo, { opacity: 0, attr:{ r: 18 } }, {
+        opacity: 0.6, attr:{ r: 32 }, duration: 0.4
+      }, 0.1)
+        .to(halo, { opacity: 0.25, duration: 0.6, repeat: -1, yoyo: true }, 0.5);
+    }
+    return tl;
+  }
+
+  function buildTimeline(){
+    if (masterTL) masterTL.kill();
+
+    // Reset everything to initial state
+    gsap.set(train, { x: 0, y: 0, scaleX: 1 });
+    gsap.set(headlight, { opacity: 0 });
+    gsap.set(trackActive, { attr:{ x2: 80 }, opacity: 0 });
+    stationEls.forEach(s => {
+      const isFinal = s.classList.contains('st-final');
+      gsap.set(s.querySelector('.st-dot'), { attr:{ fill: 'rgba(201,168,76,.35)' } });
+      gsap.set(s.querySelector('.st-outer'), { attr:{ stroke: 'rgba(201,168,76,.4)' } });
+      gsap.set(s.querySelector('.st-ring'), { opacity: 0, attr:{ r: 14 } });
+      gsap.set(s.querySelector('.st-label'), { opacity: 0.55 });
+      gsap.set(s.querySelector('.st-arrival'), { opacity: 0 });
+      const halo = s.querySelector('.st-halo');
+      if (halo){ gsap.killTweensOf(halo); gsap.set(halo, { opacity: 0 }); }
+      gsap.set(s, { scale: 1, transformOrigin:'center' });
+    });
+    gsap.set(trail, { opacity: 0 });
+    trailDots.forEach(d => gsap.set(d, { opacity: 0, scale: 0, transformOrigin:'center' }));
+    gsap.set(pin, { opacity: 0, y: 20 });
+    gsap.set([pinHaloOut, pinHaloMid], { opacity: 0, attr:{ r: 18 } });
+    gsap.set(pinEmblem, { scale: 0, transformOrigin:'center' });
+    gsap.set(weAreHere, { opacity: 0, y: -20, scale: 0.7, transformOrigin:'center' });
+
+    if (reducedMotion){
+      // Snap to final state.
+      stationEls.forEach((s,i) => lightStation(s, i === 8));
+      gsap.set(trackActive, { attr:{ x2: 1240 }, opacity: 1 });
+      gsap.set(train, { x: 1120 });
+      gsap.set(trail, { opacity: 1 });
+      trailDots.forEach(d => gsap.set(d, { opacity: 1, scale: 1 }));
+      gsap.set(pin, { opacity: 1, y: 0 });
+      gsap.set([pinHaloOut, pinHaloMid], { opacity: 0.4, attr:{ r: 28 } });
+      gsap.set(pinEmblem, { scale: 1 });
+      gsap.set(weAreHere, { opacity: 1, y: 0, scale: 1 });
+      setStatus('The Heritage · 700m from Bahadurgarh Metro');
+      setPos('Arrived');
+      return;
+    }
+
+    masterTL = gsap.timeline({ onComplete: () => {
+      // After hold, restart loop after 2s
+      gsap.delayedCall(2.4, () => { masterTL.restart(); });
+    }});
+
+    // 0.0–0.3s: Light first station, status update
+    masterTL.add(lightStation(stationEls[0]), 0)
+            .call(() => { setStatus('Departing Kashmere Gate...'); setPos('Kashmere Gate'); }, [], 0)
+            .to(headlight, { opacity: 0.85, duration: 0.4 }, 0.1);
+
+    // 0.5s: Train accelerates
+    // Train travels stations[0].x -> stations[8].x = 1240 - 120 = 1120 px
+    // Each segment ~ 140 px. We want decel into final station.
+    const trainStart = 0;       // train sits AT station 0 (transform origin already there)
+    const segDur = 0.78;        // duration per segment
+    const totalTravelStart = 0.5;
+
+    let cumulative = totalTravelStart;
+    for (let i = 1; i < stations.length; i++){
+      const targetX = stations[i].x - stations[0].x;     // 140, 280, ..., 1120
+      const isLast = i === stations.length - 1;
+      const dur = isLast ? segDur * 1.4 : segDur;        // decelerate into Bahadurgarh
+      const ease = isLast ? 'power3.out' : (i === 1 ? 'power2.in' : 'none');
+
+      // Move train
+      masterTL.to(train, { x: targetX, duration: dur, ease: ease }, cumulative);
+
+      // Track reveal progresses with the train (slight lead so it "lays down" ahead)
+      masterTL.to(trackActive, {
+        attr:{ x2: stations[i].x },
+        duration: dur, ease: ease, opacity: 1
+      }, cumulative);
+
+      // Status text mid-segment
+      masterTL.call(() => {
+        if (isLast) setStatus('Arriving at Bahadurgarh City Park...');
+        else setStatus(`En route to ${stations[i].name}...`);
+        setPos(stations[i].name);
+      }, [], cumulative + dur * 0.3);
+
+      // Light up station as nose touches it (end of segment)
+      masterTL.add(lightStation(stationEls[i], isLast), cumulative + dur - 0.1);
+
+      cumulative += dur;
+    }
+
+    // After arrival: kill headlight, declare destination
+    masterTL.to(headlight, { opacity: 0, duration: 0.4 }, cumulative)
+            .call(() => setStatus('Arrived at Bahadurgarh City Park'), [], cumulative + 0.2);
+
+    // Hold 0.4s for the train arrival to register
+    cumulative += 0.6;
+
+    // ============================================================
+    // DOTTED TRAIL — walks from station to project pin
+    // ============================================================
+    masterTL.set(trail, { opacity: 1 }, cumulative)
+            .call(() => setStatus('Just 700 metres from your front gate...'), [], cumulative);
+
+    trailDots.forEach((d, idx) => {
+      masterTL.to(d, {
+        opacity: 1, scale: 1,
+        duration: 0.18, ease: 'back.out(2)'
+      }, cumulative + idx * 0.12);
+    });
+    cumulative += trailDots.length * 0.12 + 0.2;
+
+    // ============================================================
+    // PROJECT PIN — gate emblem rises with halo
+    // ============================================================
+    masterTL.to(pin, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, cumulative)
+            .to(pinEmblem, { scale: 1, duration: 0.7, ease: 'back.out(1.6)' }, cumulative)
+            .fromTo(pinHaloOut, { opacity: 0, attr:{ r: 18 } }, {
+              opacity: 0.7, attr:{ r: 40 }, duration: 0.8, ease: 'power2.out'
+            }, cumulative + 0.2)
+            .to(pinHaloOut, { opacity: 0, duration: 0.6 }, cumulative + 1.0)
+            .fromTo(pinHaloMid, { opacity: 0, attr:{ r: 14 } }, {
+              opacity: 0.5, attr:{ r: 28 }, duration: 1.4, ease: 'sine.inOut',
+              repeat: -1, yoyo: true
+            }, cumulative + 0.3);
+
+    cumulative += 0.9;
+
+    // ============================================================
+    // "WE ARE HERE" badge
+    // ============================================================
+    masterTL.to(weAreHere, {
+      opacity: 1, y: 0, scale: 1,
+      duration: 0.6, ease: 'back.out(2)'
+    }, cumulative)
+      .call(() => {
+        setStatus('The Heritage · Sector 11, Bahadurgarh');
+        setPos('Arrived at Destination');
+      }, [], cumulative + 0.3);
+
+    // Hold final state ~ 2s before timeline.onComplete fires the loop
+    masterTL.to({}, { duration: 2 });
+  }
+
+  buildTimeline();
+
+  // ── controls
+  let paused = false;
+  pauseBtn.addEventListener('click', () => {
+    if (!masterTL) return;
+    if (paused){ masterTL.resume(); pauseBtn.innerHTML = '<span class="icon">⏸</span> Pause'; }
+    else        { masterTL.pause();  pauseBtn.innerHTML = '<span class="icon">▶</span> Resume'; }
+    paused = !paused;
+  });
+  replayBtn.addEventListener('click', () => {
+    paused = false;
+    pauseBtn.innerHTML = '<span class="icon">⏸</span> Pause';
+    buildTimeline();
+  });
+
+  // Pause when section out of view (perf)
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!masterTL || paused) return;
+      if (e.isIntersecting) masterTL.resume();
+      else masterTL.pause();
+    });
+  }, { threshold: 0.2 });
+  io.observe($('#connectivity'));
+})();
+</script>
+</body>
+</html>
