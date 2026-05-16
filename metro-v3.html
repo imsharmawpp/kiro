@@ -441,16 +441,16 @@ h1.display em{
         </g>
 
         <!-- ============================================================ -->
-        <!-- WALK PATH — goes UP-RIGHT from final station to project pin  -->
-        <!-- Final station: (1300, 300). Pin sits at (1370, 110)          -->
+        <!-- WALK PATH — straight UP from final station to composition   -->
+        <!-- Final station (1300, 300) → composition bottom-edge (1300, 192) -->
         <!-- ============================================================ -->
         <path id="walk-path"
-              d="M 1300 280 Q 1320 220 1340 180 Q 1360 140 1370 110"
+              d="M 1300 285 Q 1294 250 1300 220 Q 1306 200 1300 192"
               fill="none" stroke="none"/>
 
         <!-- visible trail (animated dasharray) -->
         <path id="walk-trail"
-              d="M 1300 280 Q 1320 220 1340 180 Q 1360 140 1370 110"
+              d="M 1300 285 Q 1294 250 1300 220 Q 1306 200 1300 192"
               fill="none"
               stroke="url(#trackActive)" stroke-width="1.5"
               stroke-dasharray="3 4"
@@ -459,70 +459,65 @@ h1.display em{
 
         <!-- distance markers along walk -->
         <g id="distance-markers" opacity="0">
-          <text x="1322" y="232" font-family="Tenor Sans,sans-serif" font-size="9" fill="rgba(184,150,90,.65)" letter-spacing=".22em" text-anchor="end">300 M</text>
-          <text x="1340" y="172" font-family="Tenor Sans,sans-serif" font-size="9" fill="rgba(184,150,90,.65)" letter-spacing=".22em" text-anchor="end">500 M</text>
+          <text x="1326" y="252" font-family="Tenor Sans,sans-serif" font-size="9" fill="rgba(184,150,90,.7)" letter-spacing=".22em" text-anchor="start">300 M</text>
+          <text x="1326" y="216" font-family="Tenor Sans,sans-serif" font-size="9" fill="rgba(184,150,90,.7)" letter-spacing=".22em" text-anchor="start">500 M</text>
         </g>
 
         <!-- walking gold orb -->
-        <g id="walk-orb" transform="translate(1300,280)" opacity="0">
+        <g id="walk-orb" transform="translate(1300,285)" opacity="0">
           <circle r="11" fill="url(#orbGrad)" opacity=".55" filter="url(#orbGlow)"/>
           <circle r="5" fill="url(#orbGrad)"/>
           <circle r="2"  fill="#fff8e6"/>
         </g>
 
         <!-- ============================================================ -->
-        <!-- PROJECT PIN — upper right, fully clear of train              -->
-        <!-- Heritage gate emblem rendered with editorial restraint       -->
+        <!-- DESTINATION COMPOSITION — pin + card unified, above station  -->
+        <!-- Card spans x=1148→1452 (width 304), y=112→192 (height 80)   -->
+        <!-- Anchored above station 1300 so walk path lands at center    -->
         <!-- ============================================================ -->
-        <g id="project-pin" transform="translate(1370,110)" opacity="0">
-          <!-- Pulsing halos -->
-          <circle class="pin-halo-3" r="0" fill="none" stroke="rgba(184,150,90,.18)" stroke-width="1" opacity="0"/>
-          <circle class="pin-halo-2" r="0" fill="none" stroke="rgba(184,150,90,.32)" stroke-width="1" opacity="0"/>
-          <circle class="pin-halo-1" r="0" fill="none" stroke="rgba(214,184,122,.55)" stroke-width="1.2" opacity="0"/>
+        <g id="destination-card" transform="translate(1300,152)" opacity="0">
 
-          <!-- emblem assembled (same gate motif, refined) -->
-          <g class="pin-emblem" transform="translate(-30,-44) scale(.55)">
-            <!-- pillars -->
-            <rect class="emb-pillar-l" x="10" y="55" width="20" height="55" fill="none" stroke="#8a6f40" stroke-width="2" opacity="0"/>
-            <rect class="emb-pillar-r" x="90" y="55" width="20" height="55" fill="none" stroke="#8a6f40" stroke-width="2" opacity="0"/>
-            <!-- caps -->
-            <rect class="emb-cap-l" x="6" y="53" width="28" height="3" fill="none" stroke="#8a6f40" stroke-width="1.5" opacity="0"/>
-            <rect class="emb-cap-r" x="86" y="53" width="28" height="3" fill="none" stroke="#8a6f40" stroke-width="1.5" opacity="0"/>
-            <!-- finials -->
-            <circle class="emb-finial-l" cx="20" cy="48" r="4" fill="none" stroke="#8a6f40" stroke-width="1.6" opacity="0"/>
-            <circle class="emb-finial-r" cx="100" cy="48" r="4" fill="none" stroke="#8a6f40" stroke-width="1.6" opacity="0"/>
-            <!-- arch -->
-            <path class="emb-arch"
-                  d="M30 110 L30 68 Q30 10 60 6 Q90 10 90 68 L90 110"
-                  fill="none" stroke="url(#champ)" stroke-width="2.5"
-                  stroke-dasharray="240" stroke-dashoffset="240"/>
-            <!-- crown -->
-            <circle class="emb-crown" cx="60" cy="10" r="5" fill="none" stroke="#8a6f40" stroke-width="2" opacity="0"/>
-            <circle class="emb-crown-dot" cx="60" cy="10" r="2.2" fill="#b8965a" opacity="0"/>
+          <!-- Card frame: hairline gold border -->
+          <rect x="-152" y="-40" width="304" height="80" fill="rgba(244,237,224,.96)" stroke="rgba(184,150,90,.5)" stroke-width="1"/>
+
+          <!-- four corner ornaments -->
+          <path d="M-152 -40 L-152 -32 M-152 -40 L-144 -40" stroke="#b8965a" stroke-width="1.4" fill="none"/>
+          <path d="M152 -40 L152 -32 M152 -40 L144 -40"     stroke="#b8965a" stroke-width="1.4" fill="none"/>
+          <path d="M-152 40 L-152 32 M-152 40 L-144 40"     stroke="#b8965a" stroke-width="1.4" fill="none"/>
+          <path d="M152 40 L152 32 M152 40 L144 40"         stroke="#b8965a" stroke-width="1.4" fill="none"/>
+
+          <!-- vertical hairline divider between emblem and text -->
+          <line x1="-50" y1="-26" x2="-50" y2="26" stroke="rgba(184,150,90,.32)" stroke-width=".6"/>
+
+          <!-- ─── PROJECT PIN (gate emblem) — left third of card ─── -->
+          <g id="project-pin" transform="translate(-100,0)" opacity="0">
+
+            <!-- halos pulse around emblem -->
+            <circle class="pin-halo-3" r="0" fill="none" stroke="rgba(184,150,90,.18)" stroke-width="1" opacity="0"/>
+            <circle class="pin-halo-2" r="0" fill="none" stroke="rgba(184,150,90,.32)" stroke-width="1" opacity="0"/>
+            <circle class="pin-halo-1" r="0" fill="none" stroke="rgba(214,184,122,.55)" stroke-width="1.2" opacity="0"/>
+
+            <g class="pin-emblem" transform="translate(-26,-32) scale(.48)">
+              <rect class="emb-pillar-l" x="10" y="55" width="20" height="55" fill="none" stroke="#8a6f40" stroke-width="2" opacity="0"/>
+              <rect class="emb-pillar-r" x="90" y="55" width="20" height="55" fill="none" stroke="#8a6f40" stroke-width="2" opacity="0"/>
+              <rect class="emb-cap-l"    x="6"  y="53" width="28" height="3"  fill="none" stroke="#8a6f40" stroke-width="1.5" opacity="0"/>
+              <rect class="emb-cap-r"    x="86" y="53" width="28" height="3"  fill="none" stroke="#8a6f40" stroke-width="1.5" opacity="0"/>
+              <circle class="emb-finial-l" cx="20"  cy="48" r="4" fill="none" stroke="#8a6f40" stroke-width="1.6" opacity="0"/>
+              <circle class="emb-finial-r" cx="100" cy="48" r="4" fill="none" stroke="#8a6f40" stroke-width="1.6" opacity="0"/>
+              <path class="emb-arch"
+                    d="M30 110 L30 68 Q30 10 60 6 Q90 10 90 68 L90 110"
+                    fill="none" stroke="url(#champ)" stroke-width="2.5"
+                    stroke-dasharray="240" stroke-dashoffset="240"/>
+              <circle class="emb-crown"     cx="60" cy="10" r="5"   fill="none" stroke="#8a6f40" stroke-width="2" opacity="0"/>
+              <circle class="emb-crown-dot" cx="60" cy="10" r="2.2" fill="#b8965a" opacity="0"/>
+            </g>
           </g>
-        </g>
 
-        <!-- ============================================================ -->
-        <!-- DESTINATION CARD — Cartier display-case style                -->
-        <!-- Sits to the right of pin                                      -->
-        <!-- ============================================================ -->
-        <g id="destination-card" transform="translate(1240,180)" opacity="0">
-          <!-- hairline rule connecting walk endpoint to card -->
-          <line x1="130" y1="-70" x2="100" y2="-30" stroke="rgba(184,150,90,.4)" stroke-width=".8" class="card-rule"/>
-
-          <!-- Card frame: hairline gold border with corner accents -->
-          <rect x="-5" y="-30" width="200" height="76" fill="rgba(244,237,224,.96)" stroke="rgba(184,150,90,.5)" stroke-width="1"/>
-          <!-- corner ornaments -->
-          <path d="M-5 -30 L-5 -22 M-5 -30 L3 -30" stroke="#b8965a" stroke-width="1.4" fill="none"/>
-          <path d="M195 -30 L195 -22 M195 -30 L187 -30" stroke="#b8965a" stroke-width="1.4" fill="none"/>
-          <path d="M-5 46 L-5 38 M-5 46 L3 46" stroke="#b8965a" stroke-width="1.4" fill="none"/>
-          <path d="M195 46 L195 38 M195 46 L187 46" stroke="#b8965a" stroke-width="1.4" fill="none"/>
-
-          <!-- contents -->
-          <text x="95" y="-9" text-anchor="middle" font-family="Tenor Sans,sans-serif" font-size="9.5" fill="#b8965a" letter-spacing=".4em">THE HERITAGE</text>
-          <line x1="55" y1="-2" x2="135" y2="-2" stroke="rgba(184,150,90,.4)" stroke-width=".5"/>
-          <text x="95" y="16" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-weight="400" font-size="20" fill="#1a1815" letter-spacing=".01em">700 metres away</text>
-          <text x="95" y="36" text-anchor="middle" font-family="Tenor Sans,sans-serif" font-size="8.5" fill="#4a463e" letter-spacing=".32em">A TWO-MINUTE WALK</text>
+          <!-- ─── TEXT BLOCK — right two-thirds ─── -->
+          <text x="50" y="-19" text-anchor="middle" font-family="Tenor Sans,sans-serif" font-size="9.5" fill="#b8965a" letter-spacing=".42em">THE HERITAGE</text>
+          <line x1="20" y1="-12" x2="80" y2="-12" stroke="rgba(184,150,90,.4)" stroke-width=".5"/>
+          <text x="50" y="9"  text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-weight="400" font-size="22" fill="#1a1815" letter-spacing=".01em">700 metres away</text>
+          <text x="50" y="28" text-anchor="middle" font-family="Tenor Sans,sans-serif" font-size="8.5" fill="#4a463e" letter-spacing=".34em">A TWO-MINUTE WALK</text>
         </g>
       </svg>
     </div>
@@ -662,12 +657,12 @@ h1.display em{
     gsap.set(walkTrail, { opacity:0, attr:{ 'stroke-dashoffset':280 }, strokeDasharray:'280' });
     gsap.set(distanceMarkers, { opacity:0 });
 
-    gsap.set(pin, { opacity:0, y:-12 });
+    gsap.set(pin, { opacity:0 });
     pinHalos.forEach(h => gsap.set(h, { opacity:0, attr:{ r:0 } }));
     gsap.set('.emb-pillar-l, .emb-pillar-r, .emb-cap-l, .emb-cap-r, .emb-finial-l, .emb-finial-r, .emb-crown, .emb-crown-dot', { opacity:0 });
     gsap.set('.emb-arch', { attr:{ 'stroke-dashoffset':240 } });
 
-    gsap.set(destCard, { opacity:0, x:-10 });
+    gsap.set(destCard, { opacity:0, y:-14 });
 
     if (reducedMotion){
       // snap to final state
@@ -676,10 +671,10 @@ h1.display em{
       stationEls.forEach((s,i) => lightStation(s, i===8, i===6));
       gsap.set(walkTrail, { opacity:1, attr:{ 'stroke-dashoffset':0 } });
       gsap.set(distanceMarkers, { opacity:1 });
-      gsap.set(pin, { opacity:1, y:0 });
+      gsap.set(pin, { opacity:1 });
       gsap.set('.emb-pillar-l, .emb-pillar-r, .emb-cap-l, .emb-cap-r, .emb-finial-l, .emb-finial-r, .emb-crown, .emb-crown-dot', { opacity:1 });
       gsap.set('.emb-arch', { attr:{ 'stroke-dashoffset':0 } });
-      gsap.set(destCard, { opacity:1, x:0 });
+      gsap.set(destCard, { opacity:1, y:0 });
       setStatus('The Heritage. 700 metres from Bahadurgarh metro.');
       return;
     }
@@ -729,7 +724,11 @@ h1.display em{
     masterTL.call(() => setStatus('Seven hundred metres remain.'), [], cum);
     cum += .3;
 
-    // Phase 4 — Walking orb travels UP-RIGHT toward pin
+    // Phase 4 — Destination composition appears (the orb walks toward it)
+    masterTL.to(destCard, { opacity:1, y:0, duration:.7, ease:'power3.out' }, cum);
+    cum += .35;
+
+    // Phase 5 — Walking orb travels UP from station toward composition
     masterTL.to(walkOrb, { opacity:1, duration:.3 }, cum);
     masterTL.to(walkTrail, { opacity:1, duration:.3 }, cum);
     masterTL.to(walkTrail, { attr:{ 'stroke-dashoffset':0 }, duration:1.6, ease:'power1.inOut' }, cum);
@@ -745,18 +744,18 @@ h1.display em{
         duration:1.6, ease:'power1.inOut'
       }, cum);
     } else {
-      masterTL.to(walkOrb, { x:70, y:-170, duration:1.6, ease:'power1.inOut' }, cum);
+      masterTL.to(walkOrb, { x:0, y:-93, duration:1.6, ease:'power1.inOut' }, cum);
     }
     cum += 1.6;
 
-    // Orb arrives → quick scale punch then fade
+    // Orb arrives at composition → punch then fade into emblem
     masterTL.to(walkOrb, { scale:1.6, duration:.25, ease:'back.out(2.5)', transformOrigin:'center' }, cum)
             .to(walkOrb, { scale:1, duration:.2 }, cum + .25)
             .to(walkOrb, { opacity:0, duration:.4 }, cum + .35);
     cum += .4;
 
-    // Phase 5 — Pin reveals, halos pulse, then emblem assembles
-    masterTL.to(pin, { opacity:1, y:0, duration:.6, ease:'back.out(1.4)' }, cum);
+    // Phase 6 — Pin halos pulse, then emblem assembles (inside the card)
+    masterTL.to(pin, { opacity:1, duration:.4, ease:'power2.out' }, cum);
     pinHalos.forEach((h, i) => {
       masterTL.fromTo(h,
         { opacity:0, attr:{ r:8 } },
@@ -766,7 +765,7 @@ h1.display em{
     });
     cum += .55;
 
-    // Emblem assembly
+    // Emblem assembly (caps → pillars → finials → arch → crown)
     masterTL.fromTo('.emb-cap-l',    { opacity:0, y:-12 }, { opacity:1, y:0, duration:.35, ease:'back.out(2)' }, cum);
     masterTL.fromTo('.emb-cap-r',    { opacity:0, y:-12 }, { opacity:1, y:0, duration:.35, ease:'back.out(2)' }, cum + .05);
     cum += .35;
@@ -782,9 +781,7 @@ h1.display em{
     masterTL.fromTo('.emb-crown-dot', { opacity:0, scale:0, transformOrigin:'center' }, { opacity:1, scale:1, duration:.35, ease:'back.out(2.5)' }, cum + .12);
     cum += .5;
 
-    // Phase 6 — Destination card slides in from left
-    masterTL.to(destCard, { opacity:1, x:0, duration:.7, ease:'power3.out' }, cum);
-    masterTL.call(() => setStatus('The Heritage \u2014 Sector 11, Bahadurgarh.'), [], cum + .3);
+    masterTL.call(() => setStatus('The Heritage \u2014 Sector 11, Bahadurgarh.'), [], cum);
 
     // Hold
     masterTL.to({}, { duration:2.5 });
