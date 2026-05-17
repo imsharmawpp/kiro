@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heritage – Bahadurgarh | Premium Plotted Development by Homegram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Josefin+Sans:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#c9a84c;--gold-light:#e8c97a;--gold-dark:#8b6914;
+  --black:#070503;--dark:#0f0a05;--dark2:#1a1108;--dark3:#120d06;
+  --cream:#f5f0e6;--cream-dim:#d4c9b0;--white:#fff;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:'Josefin Sans',sans-serif;overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+.cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .12s,background .2s}
+.cursor-ring{position:fixed;width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .18s ease,opacity .2s;opacity:.55}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--black);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px}
+.loader-emblem svg{width:120px;height:110px}
+.loader-text{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.5em;color:var(--gold);opacity:0;animation:fadeUp .8s ease .4s forwards;text-transform:uppercase}
+.loader-bar-wrap{width:180px;height:1px;background:rgba(201,168,76,.12)}
+.loader-bar-fill{height:100%;background:var(--gold);animation:barGrow 2.4s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes barGrow{from{width:0}to{width:100%}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;transition:all .4s ease}
+nav.scrolled{background:rgba(7,5,3,.96);backdrop-filter:blur(24px);padding:14px 6%;border-bottom:1px solid rgba(201,168,76,.18)}
+.nav-logo{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.35em;color:var(--gold);text-transform:uppercase}
+.nav-logo span{display:block;font-size:17px;letter-spacing:.18em;font-weight:700;line-height:1.1}
+.nav-cta{padding:11px 30px;border:1px solid var(--gold);color:var(--gold);font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;transition:all .3s;position:relative;overflow:hidden}
+.nav-cta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);transition:left .3s ease;z-index:-1}
+.nav-cta:hover::before{left:0}
+.nav-cta:hover{color:var(--black)}
+
+/* HERO */
+#hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-content{position:relative;z-index:10;text-align:center;padding:0 24px}
+.hero-eyebrow{font-size:10px;letter-spacing:.5em;color:var(--gold);text-transform:uppercase;opacity:0;transform:translateY(16px);animation:fadeUp .8s ease 2.6s forwards}
+.hero-title{font-family:'Cinzel Decorative',serif;font-size:clamp(3.5rem,10vw,8rem);font-weight:900;line-height:.95;color:var(--cream);margin:18px 0;opacity:0;transform:translateY(28px);animation:fadeUp .9s ease 2.9s forwards}
+.hero-title .g{color:var(--gold)}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.7rem);font-weight:300;font-style:italic;color:var(--cream-dim);letter-spacing:.06em;opacity:0;transform:translateY(16px);animation:fadeUp .8s ease 3.2s forwards}
+.hero-div{display:flex;align-items:center;justify-content:center;gap:18px;margin:28px 0;opacity:0;animation:fadeUp .8s ease 3.4s forwards}
+.hdl{width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.hdl.r{background:linear-gradient(90deg,var(--gold),transparent)}
+.hdd{width:7px;height:7px;background:var(--gold);transform:rotate(45deg)}
+.hero-loc{font-size:11px;letter-spacing:.32em;color:var(--cream-dim);text-transform:uppercase;opacity:0;animation:fadeUp .8s ease 3.5s forwards}
+.hero-badge{display:inline-flex;align-items:center;gap:16px;margin-top:44px;padding:14px 40px;border:1px solid rgba(201,168,76,.5);font-size:11px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;opacity:0;animation:fadeUp .8s ease 3.7s forwards;position:relative;overflow:hidden}
+.hero-badge::after{content:'';position:absolute;top:0;left:-60%;width:24px;height:100%;background:rgba(201,168,76,.25);transform:skewX(-18deg);animation:sheen 4s ease infinite 4.5s}
+@keyframes sheen{0%{left:-60%}100%{left:140%}}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s ease 4.2s forwards}
+.hero-scroll span{font-size:9px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase}
+.scroll-line{width:1px;height:56px;background:linear-gradient(180deg,var(--gold),transparent);animation:scPulse 2.2s ease infinite}
+@keyframes scPulse{0%,100%{opacity:.3;transform:scaleY(.9)}50%{opacity:1;transform:scaleY(1.05)}}
+
+/* SHARED */
+section{position:relative}
+.si{max-width:1240px;margin:0 auto;padding:110px 6%}
+.slabel{font-size:10px;letter-spacing:.5em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.slabel::before{content:'— '}
+.stitle{font-family:'Cinzel',serif;font-size:clamp(2rem,4vw,3.6rem);font-weight:600;color:var(--cream);line-height:1.15}
+.stitle .g{color:var(--gold)}
+.sbody{font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1.85;color:var(--cream-dim);font-weight:300}
+.gsep{display:flex;align-items:center;gap:16px;margin:28px 0}
+.gsep-l{flex:1;height:1px;background:rgba(201,168,76,.14)}
+.gsep-d{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .85s ease,transform .85s ease}
+.rv.on{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.22s}.rv.d3{transition-delay:.34s}.rv.d4{transition-delay:.46s}
+
+/* GATEWAY */
+#gateway{background:var(--dark)}
+.gw-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.gw-arch{width:100%;filter:drop-shadow(0 0 50px rgba(201,168,76,.28))}
+.gw-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,168,76,.09);border:1px solid rgba(201,168,76,.09);margin-top:40px}
+.gw-stat{padding:26px;background:var(--dark);text-align:center}
+.gw-stat .n{font-family:'Cinzel',serif;font-size:2.2rem;color:var(--gold);line-height:1}
+.gw-stat .l{font-size:10px;letter-spacing:.25em;color:var(--cream-dim);text-transform:uppercase;margin-top:5px}
+
+/* CONNECTIVITY */
+#connectivity{background:var(--black);overflow:hidden}
+.cn-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
+@keyframes rp{0%,100%{opacity:.35}50%{opacity:1}}
+.cn-items{display:flex;flex-direction:column}
+.cn-row{display:flex;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid rgba(201,168,76,.07);transition:all .3s}
+.cn-row:hover{padding-left:10px;border-color:rgba(201,168,76,.3)}
+.cn-ico{width:44px;height:44px;border:1px solid rgba(201,168,76,.25);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:all .3s}
+.cn-row:hover .cn-ico{background:var(--gold);border-color:var(--gold)}
+.cn-name{font-family:'Cinzel',serif;font-size:.88rem;color:var(--cream)}
+.cn-sub{font-size:10px;letter-spacing:.15em;color:rgba(212,201,176,.45);margin-top:2px}
+.cn-time{margin-left:auto;font-size:11px;letter-spacing:.22em;color:var(--gold);font-weight:200;flex-shrink:0;padding-left:10px}
+.ring-wrap{position:relative;width:360px;height:360px;margin:0 auto}
+
+/* INDUSTRIAL */
+#industrial{background:var(--dark2);border-top:1px solid rgba(201,168,76,.1);border-bottom:1px solid rgba(201,168,76,.1)}
+.ind-head{text-align:center;margin-bottom:70px}
+.big-counter{text-align:center;margin:50px 0}
+.bc-num{font-family:'Cinzel',serif;font-size:clamp(5rem,12vw,9rem);font-weight:900;color:var(--gold);line-height:1;display:inline-block}
+.bc-plus{font-size:.38em;vertical-align:top;margin-top:.35em;display:inline-block}
+.bc-label{font-size:11px;letter-spacing:.42em;color:var(--cream-dim);text-transform:uppercase;margin-top:8px}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:10px;margin:44px 0;justify-content:center}
+.tag{padding:8px 20px;border:1px solid rgba(201,168,76,.18);font-size:10px;letter-spacing:.25em;color:var(--cream-dim);text-transform:uppercase;transition:all .3s;cursor:default}
+.tag:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.05)}
+.brands-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,.08)}
+.brand-cell{background:var(--dark2);padding:30px 22px;text-align:center;font-family:'Cinzel',serif;font-size:.85rem;color:var(--cream-dim);letter-spacing:.08em;transition:all .3s;cursor:default}
+.brand-cell:hover{background:rgba(201,168,76,.07);color:var(--gold)}
+.brand-cell .bt{display:block;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.3em;color:var(--gold);opacity:.55;margin-bottom:8px}
+
+/* EDUCATION */
+#education{background:var(--dark)}
+.edu-num{font-family:'Cinzel',serif;font-size:5.5rem;color:var(--gold);line-height:1;font-weight:900}
+.edu-num sup{font-size:2.5rem;vertical-align:top;margin-top:.3em;display:inline-block}
+.spec-row{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(201,168,76,.09);transition:all .3s}
+.spec-row:hover{padding-left:10px;border-color:rgba(201,168,76,.35)}
+.sk{font-size:11px;letter-spacing:.24em;color:var(--cream-dim);text-transform:uppercase}
+.sv{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--gold);text-align:right}
+
+
+/* ================================================================
+   AMENITIES — COMPLETE REDESIGN
+   Layout: Clubhouse hero full-width → Sports bento grid →
+           Nature row → Indoor leisure row → Community row
+   ================================================================ */
+#amenities{background:var(--black);overflow:hidden}
+.am-header{text-align:center;padding:110px 6% 0;max-width:800px;margin:0 auto}
+.am-header .stitle{font-size:clamp(2.4rem,5vw,4.2rem)}
+
+/* ── CLUBHOUSE HERO CARD ── */
+.ch-hero{position:relative;margin:60px 6% 4px;height:560px;overflow:hidden;cursor:pointer}
+.ch-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 8s ease}
+.ch-hero:hover .ch-hero-img{transform:scale(1)}
+.ch-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(7,5,3,.85) 0%,rgba(7,5,3,.3) 60%,rgba(7,5,3,.55) 100%)}
+.ch-hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:52px 56px}
+.ch-hero-eyebrow{font-size:9px;letter-spacing:.55em;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+.ch-hero-title{font-family:'Cinzel',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--cream);line-height:1.1;margin-bottom:16px}
+.ch-hero-title span{color:var(--gold)}
+.ch-hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.ch-pill{padding:6px 18px;border:1px solid rgba(201,168,76,.35);font-size:9px;letter-spacing:.25em;color:var(--cream-dim);text-transform:uppercase;background:rgba(7,5,3,.4);backdrop-filter:blur(8px);transition:all .3s}
+.ch-pill:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.08)}
+.ch-hero-stat{position:absolute;top:48px;right:52px;text-align:right}
+.ch-hero-stat .n{font-family:'Cinzel',serif;font-size:3.4rem;color:var(--gold);line-height:1}
+.ch-hero-stat .u{font-size:9px;letter-spacing:.4em;color:var(--cream-dim);text-transform:uppercase;margin-top:4px}
+
+/* ── BENTO GRID — Sports (4 cards) ── */
+.am-section-label{font-size:9px;letter-spacing:.6em;color:var(--gold);text-transform:uppercase;padding:44px 6% 16px;opacity:.7}
+.am-section-label::before{content:'— '}
+
+.bento-sports{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:0 6%}
+.bento-nature{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:4px;margin:4px 6% 0}
+.bento-leisure{display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:4px;margin:4px 6% 0}
+.bento-community{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:4px 6% 0}
+
+/* Base amenity card */
+.am-card{position:relative;overflow:hidden;cursor:pointer;group}
+.am-card-img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
+.am-card:hover .am-card-img{transform:scale(1.08)}
+.am-card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(7,5,3,.88) 100%);transition:opacity .4s}
+.am-card:hover .am-card-overlay{opacity:.75}
+/* Gold top border reveal on hover */
+.am-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s ease;z-index:3}
+.am-card:hover::before{transform:scaleX(1)}
+
+.am-card-body{position:absolute;bottom:0;left:0;right:0;padding:24px 26px;z-index:2;transform:translateY(6px);transition:transform .4s ease}
+.am-card:hover .am-card-body{transform:translateY(0)}
+.am-card-tag{font-size:8px;letter-spacing:.38em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;opacity:.8}
+.am-card-name{font-family:'Cinzel',serif;font-size:.95rem;color:var(--cream);letter-spacing:.04em;line-height:1.2}
+.am-card-desc{font-size:10px;letter-spacing:.18em;color:rgba(212,201,176,.5);margin-top:4px;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:opacity .35s .05s,transform .35s .05s}
+.am-card:hover .am-card-desc{opacity:1;transform:translateY(0)}
+
+/* Height variants */
+.am-card-tall{height:380px}
+.am-card-mid{height:300px}
+.am-card-short{height:240px}
+.am-card-wide{height:320px}
+
+/* Featured large card (nature row - first col) */
+.am-card-featured{height:100%}
+.bento-nature .am-card:first-child{height:340px}
+.bento-nature .am-card:not(:first-child){height:340px}
+.bento-leisure .am-card{height:320px}
+.bento-community .am-card{height:300px}
+.bento-sports .am-card{height:340px}
+
+/* ── INNER CLUBHOUSE FEATURES ROW ── */
+.ch-features-row{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(201,168,76,.08);margin:4px 6% 0}
+.ch-feat{background:var(--black);padding:28px 20px;text-align:center;transition:all .35s;cursor:default;position:relative;overflow:hidden}
+.ch-feat::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .35s}
+.ch-feat:hover::after{transform:scaleX(1)}
+.ch-feat:hover{background:rgba(201,168,76,.04)}
+.ch-feat-ico{font-size:1.5rem;display:block;margin-bottom:10px}
+.ch-feat-name{font-family:'Cinzel',serif;font-size:.75rem;color:var(--cream);letter-spacing:.05em}
+.ch-feat-sub{font-size:8px;letter-spacing:.2em;color:rgba(212,201,176,.4);margin-top:3px;text-transform:uppercase}
+
+/* PRICING */
+#pricing{background:var(--dark2);border-top:1px solid rgba(201,168,76,.1)}
+.pr-layout{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:50px}
+.pr-card{padding:60px 50px;position:relative;overflow:hidden}
+.pr-pre{background:rgba(201,168,76,.045);border:1px solid rgba(201,168,76,.18)}
+.pr-launch{background:var(--gold)}
+.pr-label{font-size:10px;letter-spacing:.4em;text-transform:uppercase;margin-bottom:18px}
+.pr-pre .pr-label{color:var(--gold)}
+.pr-launch .pr-label{color:rgba(7,5,3,.6)}
+.pr-amount{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,3.8rem);line-height:1}
+.pr-pre .pr-amount{color:var(--gold)}
+.pr-launch .pr-amount{color:var(--black)}
+.pr-unit{font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-top:8px}
+.pr-pre .pr-unit{color:var(--cream-dim)}
+.pr-launch .pr-unit{color:rgba(7,5,3,.6)}
+.pr-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;line-height:1.7;margin-top:26px}
+.pr-pre .pr-note{color:rgba(212,201,176,.45)}
+.pr-launch .pr-note{color:rgba(7,5,3,.65)}
+.pr-btn{display:inline-block;margin-top:28px;padding:10px 24px;font-size:10px;letter-spacing:.25em;text-transform:uppercase;cursor:default}
+.pr-pre .pr-btn{border:1px solid rgba(201,168,76,.3);color:var(--gold)}
+.pr-launch .pr-btn{border:2px solid rgba(7,5,3,.25);color:var(--black)}
+.pr-badge{position:absolute;top:20px;right:20px;width:78px;height:78px;border-radius:50%;border:2px solid rgba(7,5,3,.3);display:flex;align-items:center;justify-content:center;text-align:center;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(7,5,3,.75);line-height:1.5}
+.pr-quote{text-align:center;margin-top:40px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:rgba(212,201,176,.35)}
+
+/* FORM */
+#lead-form{background:var(--black);position:relative;overflow:hidden}
+#lead-form::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(201,168,76,.055) 0%,transparent 70%);pointer-events:none}
+.form-wrap{max-width:720px;margin:0 auto;text-align:center}
+.form-box{border:1px solid rgba(201,168,76,.18);padding:64px 60px;background:rgba(201,168,76,.018);margin-top:50px;position:relative}
+.form-box::before,.form-box::after{content:'';position:absolute;width:22px;height:22px;border-color:var(--gold);border-style:solid}
+.form-box::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.form-box::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.fg{margin-bottom:22px;text-align:left}
+.fl{display:block;font-size:10px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.fi{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,168,76,.2);padding:12px 0;color:var(--cream);font-family:'Josefin Sans',sans-serif;font-size:14px;letter-spacing:.1em;outline:none;transition:border-color .3s;-webkit-appearance:none;border-radius:0}
+.fi::placeholder{color:rgba(212,201,176,.28)}
+.fi:focus{border-color:var(--gold)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.fsub{width:100%;padding:18px;background:var(--gold);color:var(--black);border:none;font-family:'Cinzel',serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;cursor:pointer;margin-top:30px;transition:all .3s;position:relative;overflow:hidden}
+.fsub:hover{background:var(--gold-light)}
+.fsub::before{content:'';position:absolute;top:50%;left:-60%;width:28px;height:100%;background:rgba(255,255,255,.28);transform:skewX(-18deg) translateY(-50%);transition:left .4s}
+.fsub:hover::before{left:140%}
+.form-success{display:none;padding:50px 20px}
+.fs-icon{font-size:3rem;display:block;margin-bottom:20px}
+.fs-title{font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gold)}
+.fs-msg{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--cream-dim);font-size:1.1rem;margin-top:12px}
+.contact-strip{display:flex;justify-content:center;gap:60px;margin-top:54px;padding-top:50px;border-top:1px solid rgba(201,168,76,.1)}
+.ct-item{text-align:center}
+.ct-label{font-size:9px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
+.ct-val{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--cream)}
+.ct-val a{color:var(--cream);text-decoration:none;transition:color .3s}
+.ct-val a:hover{color:var(--gold)}
+
+/* FOOTER */
+footer{background:var(--dark2);border-top:1px solid rgba(201,168,76,.1);padding:48px 6%;text-align:center}
+.ft-logo{font-family:'Cinzel Decorative',serif;font-size:1.6rem;color:var(--gold);letter-spacing:.18em}
+.ft-tag{font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(212,201,176,.38);font-size:1rem;margin-top:8px}
+.ft-sep{display:flex;align-items:center;justify-content:center;gap:16px;margin:28px 0}
+.ft-sep-l{width:120px;height:1px;background:rgba(201,168,76,.1)}
+.ft-sep-d{width:6px;height:6px;background:var(--gold);transform:rotate(45deg)}
+.ft-copy{font-size:9px;letter-spacing:.28em;color:rgba(212,201,176,.18);text-transform:uppercase;line-height:1.9;max-width:700px;margin:0 auto}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .bento-sports{grid-template-columns:1fr 1fr}
+  .bento-nature{grid-template-columns:1fr 1fr}
+  .bento-leisure{grid-template-columns:1fr 1fr}
+  .ch-features-row{grid-template-columns:repeat(3,1fr)}
+  .gw-grid,.cn-layout{grid-template-columns:1fr;gap:50px}
+  .ring-wrap{width:280px;height:280px}
+}
+@media(max-width:768px){
+  .bento-sports,.bento-nature,.bento-leisure,.bento-community{grid-template-columns:1fr;margin:0 4%}
+  .bento-sports .am-card,.bento-nature .am-card,.bento-leisure .am-card,.bento-community .am-card{height:260px!important}
+  .ch-hero{margin:40px 4% 4px;height:420px}
+  .ch-hero-stat{top:24px;right:24px}
+  .ch-hero-content{padding:30px 28px}
+  .ch-features-row{grid-template-columns:1fr 1fr;margin:4px 4% 0}
+  .am-section-label{padding:32px 4% 12px}
+  .pr-layout,.fr,.contact-strip{grid-template-columns:1fr;flex-direction:column;gap:3px}
+  .contact-strip{gap:24px}
+  .pr-card{padding:40px 28px}
+  .form-box{padding:36px 22px}
+  .brands-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .bento-sports,.bento-nature,.bento-leisure,.bento-community{margin:0 3%}
+  .ch-hero{margin:30px 3% 4px}
+  .ch-features-row{margin:4px 3% 0}
+  .si{padding:80px 5%}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-emblem">
+    <svg viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="1.5" opacity=".9"/>
+      <rect x="88" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="1.5" opacity=".9"/>
+      <path d="M32 110 L32 68 Q32 10 60 6 Q88 10 88 68 L88 110" stroke="#c9a84c" stroke-width="2" fill="none" stroke-dasharray="300" stroke-dashoffset="300">
+        <animate attributeName="stroke-dashoffset" from="300" to="0" dur="1.8s" fill="freeze"/>
+      </path>
+      <circle cx="60" cy="10" r="6" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+      <circle cx="60" cy="10" r="2.5" fill="#c9a84c" opacity=".8"/>
+      <rect x="5" y="53" width="32" height="4" stroke="#c9a84c" stroke-width="1" opacity=".5"/>
+      <rect x="83" y="53" width="32" height="4" stroke="#c9a84c" stroke-width="1" opacity=".5"/>
+      <circle cx="21" cy="47" r="5" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity=".8"/>
+      <circle cx="99" cy="47" r="5" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity=".8"/>
+    </svg>
+  </div>
+  <div class="loader-text">The Heritage · Bahadurgarh</div>
+  <div class="loader-bar-wrap"><div class="loader-bar-fill"></div></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo"><span>THE HERITAGE</span>By Homegram Estate</div>
+  <a href="#lead-form" class="nav-cta">Book Site Visit</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Premium Plotted Development · Sector 11, Bahadurgarh, Haryana</div>
+    <h1 class="hero-title">THE<br><span class="g">HERITAGE</span></h1>
+    <div class="hero-sub">Where Delhi Ends, Legacy Begins</div>
+    <div class="hero-div">
+      <div class="hdl"></div><div class="hdd"></div><div class="hdl r"></div>
+    </div>
+    <div class="hero-loc">Gateway of Haryana · Satellite Town of West Delhi</div>
+    <div class="hero-badge">
+      <span>Pre-Launch</span>
+      <span style="color:rgba(201,168,76,.3)">|</span>
+      <span>₹90,000 / Sq. Yd.</span>
+      <span style="color:rgba(201,168,76,.3)">|</span>
+      <span>236 Plots Only</span>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Discover</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- GATEWAY / LOCATION -->
+<section id="gateway">
+  <div class="si">
+    <div class="gw-grid">
+      <div class="rv">
+        <svg viewBox="0 0 400 320" class="gw-arch" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="pillarGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c9a84c" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#8b6914" stop-opacity=".6"/>
+            </linearGradient>
+          </defs>
+          <line x1="0" y1="308" x2="400" y2="308" stroke="#c9a84c" stroke-width="1" opacity=".3"/>
+          <rect x="52" y="118" width="58" height="190" fill="none" stroke="url(#pillarGrad)" stroke-width="1.5"/>
+          <rect x="44" y="118" width="74" height="12" fill="none" stroke="#c9a84c" stroke-width="1.2" opacity=".8"/>
+          <rect x="48" y="130" width="66" height="7" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".5"/>
+          <line x1="78" y1="145" x2="78" y2="295" stroke="#c9a84c" stroke-width=".6" opacity=".4"/>
+          <line x1="92" y1="145" x2="92" y2="295" stroke="#c9a84c" stroke-width=".6" opacity=".4"/>
+          <rect x="290" y="118" width="58" height="190" fill="none" stroke="url(#pillarGrad)" stroke-width="1.5"/>
+          <rect x="282" y="118" width="74" height="12" fill="none" stroke="#c9a84c" stroke-width="1.2" opacity=".8"/>
+          <rect x="286" y="130" width="66" height="7" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".5"/>
+          <line x1="308" y1="145" x2="308" y2="295" stroke="#c9a84c" stroke-width=".6" opacity=".4"/>
+          <line x1="322" y1="145" x2="322" y2="295" stroke="#c9a84c" stroke-width=".6" opacity=".4"/>
+          <rect x="36" y="106" width="90" height="14" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".6"/>
+          <rect x="274" y="106" width="90" height="14" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".6"/>
+          <circle cx="81" cy="96" r="11" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+          <circle cx="81" cy="96" r="4" fill="#c9a84c" opacity=".7"/>
+          <circle cx="319" cy="96" r="11" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+          <circle cx="319" cy="96" r="4" fill="#c9a84c" opacity=".7"/>
+          <path d="M110 308 L110 176 Q110 52 200 34 Q290 52 290 176 L290 308" fill="none" stroke="#c9a84c" stroke-width="2.2"/>
+          <path d="M130 308 L130 180 Q130 76 200 60 Q270 76 270 180 L270 308" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".35"/>
+          <circle cx="200" cy="38" r="16" fill="none" stroke="#c9a84c" stroke-width="1.8"/>
+          <circle cx="200" cy="38" r="7" fill="#c9a84c" opacity=".55"/>
+          <line x1="200" y1="22" x2="200" y2="8" stroke="#c9a84c" stroke-width="1.5" opacity=".7"/>
+          <polygon points="200,4 203,10 197,10" fill="#c9a84c" opacity=".8"/>
+          <text x="200" y="260" text-anchor="middle" font-family="'Cinzel',serif" font-size="11" fill="#c9a84c" letter-spacing="6" opacity=".6">BAHADURGARH</text>
+        </svg>
+        <div class="gw-stats">
+          <div class="gw-stat"><div class="n">15.83</div><div class="l">Acres</div></div>
+          <div class="gw-stat"><div class="n">236</div><div class="l">Total Plots</div></div>
+          <div class="gw-stat"><div class="n">126–177</div><div class="l">Sq. Yd. Sizes</div></div>
+          <div class="gw-stat"><div class="n">25K</div><div class="l">Sq. Ft. Clubhouse</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="slabel rv">Strategic Location</div>
+        <h2 class="stitle rv d1">Gateway of<br><span class="g">Haryana</span></h2>
+        <div class="gsep rv d2"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+        <p class="sbody rv d2">Positioned at the luminous frontier where Delhi surrenders to Haryana, The Heritage occupies one of Bahadurgarh's most coveted addresses. Sector 11 is a well-established micro-market witnessing accelerated growth, backed by world-class infrastructure and unmatched proximity to India's capital.</p>
+        <p class="sbody rv d3" style="margin-top:18px">This is not merely a plot. It is a founding stake in a satellite city that is reshaping NCR's geography of opportunity — a place where affordability and aspiration meet without compromise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECTIVITY -->
+<section id="connectivity">
+  <div class="si">
+    <div class="cn-layout">
+      <div>
+        <div class="slabel rv">Unbeatable Connectivity</div>
+        <h2 class="stitle rv d1">Every Direction.<br><span class="g">Minutes Away.</span></h2>
+        <div class="gsep rv d2"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+        <div class="cn-items rv d2">
+          <div class="cn-row"><div class="cn-ico">🚇</div><div><div class="cn-name">Bahadurgarh Metro</div><div class="cn-sub">Green Line · 2 km from project</div></div><div class="cn-time">2 KM</div></div>
+          <div class="cn-row"><div class="cn-ico">🏟</div><div><div class="cn-name">Bahadurgarh Stadium</div><div class="cn-sub">700 metres direct access</div></div><div class="cn-time">1 MIN</div></div>
+          <div class="cn-row"><div class="cn-ico">🛣</div><div><div class="cn-name">Delhi Border</div><div class="cn-sub">Via Rohtak Road Bypass</div></div><div class="cn-time">5 MINS</div></div>
+          <div class="cn-row"><div class="cn-ico">🛤</div><div><div class="cn-name">UER II</div><div class="cn-sub">Urban Extension Road II</div></div><div class="cn-time">10 MINS</div></div>
+          <div class="cn-row"><div class="cn-ico">✈️</div><div><div class="cn-name">IGI Airport</div><div class="cn-sub">Via UER II expressway</div></div><div class="cn-time">25 MINS</div></div>
+          <div class="cn-row"><div class="cn-ico">🏙</div><div><div class="cn-name">Gurugram</div><div class="cn-sub">NCR's corporate capital</div></div><div class="cn-time">25 MINS</div></div>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div class="ring-wrap">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <div style="position:absolute;width:94%;height:94%;border-radius:50%;border:1px solid rgba(201,168,76,.07);animation:rp 3.2s ease 1.4s infinite"></div>
+            <div style="position:absolute;width:76%;height:76%;border-radius:50%;border:1px solid rgba(201,168,76,.12);animation:rp 3.2s ease 1.1s infinite"></div>
+            <div style="position:absolute;width:58%;height:58%;border-radius:50%;border:1px solid rgba(201,168,76,.22);animation:rp 3.2s ease .8s infinite"></div>
+            <div style="position:absolute;width:40%;height:40%;border-radius:50%;border:1px solid rgba(201,168,76,.4);animation:rp 3.2s ease .4s infinite"></div>
+            <div style="position:absolute;width:17%;height:17%;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 0 28px rgba(201,168,76,.55)">
+              <span style="font-family:'Cinzel',serif;font-size:6px;color:var(--black);text-align:center;letter-spacing:.04em;font-weight:700;line-height:1.3">THE<br>HERITAGE</span>
+            </div>
+            <div style="position:absolute;top:10%;left:12%;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 6px var(--gold)"></div><span style="font-family:'Josefin Sans';font-size:8px;color:var(--cream-dim);letter-spacing:.15em;background:var(--black);padding:2px 6px;border:1px solid rgba(201,168,76,.2)">METRO</span></div>
+            <div style="position:absolute;top:14%;right:8%;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 6px var(--gold)"></div><span style="font-family:'Josefin Sans';font-size:8px;color:var(--cream-dim);letter-spacing:.15em;background:var(--black);padding:2px 6px;border:1px solid rgba(201,168,76,.2)">DELHI</span></div>
+            <div style="position:absolute;bottom:16%;right:5%;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 6px var(--gold)"></div><span style="font-family:'Josefin Sans';font-size:8px;color:var(--cream-dim);letter-spacing:.15em;background:var(--black);padding:2px 6px;border:1px solid rgba(201,168,76,.2)">AIRPORT</span></div>
+            <div style="position:absolute;bottom:8%;left:18%;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:7px;height:7px;background:rgba(201,168,76,.5);border-radius:50%;"></div><span style="font-family:'Josefin Sans';font-size:8px;color:var(--cream-dim);letter-spacing:.15em;background:var(--black);padding:2px 6px;border:1px solid rgba(201,168,76,.18)">GURUGRAM</span></div>
+            <div style="position:absolute;top:3%;left:38%;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="font-family:'Josefin Sans';font-size:8px;color:var(--cream-dim);letter-spacing:.15em;background:var(--black);padding:2px 6px;border:1px solid rgba(201,168,76,.18)">KMP EXPWY</span><div style="width:7px;height:7px;background:rgba(201,168,76,.5);border-radius:50%;"></div></div>
+            <div style="position:absolute;top:45%;left:2%;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:7px;height:7px;background:rgba(201,168,76,.5);border-radius:50%;"></div><span style="font-family:'Josefin Sans';font-size:8px;color:var(--cream-dim);letter-spacing:.1em;background:var(--black);padding:2px 6px;border:1px solid rgba(201,168,76,.18)">UER II</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- INDUSTRIAL -->
+<section id="industrial">
+  <div class="si">
+    <div class="ind-head">
+      <div class="slabel rv">Economic Strength</div>
+      <h2 class="stitle rv d1" style="text-align:center">Industrial<br><span class="g">Powerhouse</span></h2>
+      <div class="gsep rv d2" style="justify-content:center;max-width:280px;margin:28px auto"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+      <p class="sbody rv d2" style="max-width:620px;margin:0 auto;text-align:center">Bahadurgarh is home to one of NCR's most robust industrial ecosystems — a 490-acre belt that powers real employment, drives commercial demand, and fuels sustained property appreciation.</p>
+    </div>
+    <div class="big-counter rv">
+      <div class="bc-num" data-target="2800" id="cnt1">0<span class="bc-plus">+</span></div>
+      <div class="bc-label">Industries · NCR's Largest Industrial Belt · ~490 Acres</div>
+    </div>
+    <div class="tag-cloud rv d1">
+      <div class="tag">Ceramics</div><div class="tag">Chemicals</div><div class="tag">Electronics</div><div class="tag">Engineering</div><div class="tag">Chinaware</div><div class="tag">Footwear</div><div class="tag">Steel Pipes</div><div class="tag">Glass</div>
+    </div>
+    <div class="brands-grid rv d2">
+      <div class="brand-cell"><span class="bt">Glass</span>Hindustan National Glass</div>
+      <div class="brand-cell"><span class="bt">Ceramics</span>Somany Ceramics</div>
+      <div class="brand-cell"><span class="bt">FMCG</span>Parle Products</div>
+      <div class="brand-cell"><span class="bt">Automotive</span>Yokohama</div>
+      <div class="brand-cell"><span class="bt">Footwear</span>Relaxo</div>
+      <div class="brand-cell"><span class="bt">Sanitaryware</span>Hindustan Sanitaryware</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="si">
+    <div class="gw-grid">
+      <div>
+        <div class="slabel rv">Social Infrastructure</div>
+        <h2 class="stitle rv d1">Education<br><span class="g">Ecosystem</span></h2>
+        <div class="gsep rv d2"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+        <p class="sbody rv d2">A thriving academic landscape surrounds The Heritage — premier universities, medical colleges, and over 75 schools ensure your family has access to excellence at every stage of life.</p>
+        <div style="margin-top:40px" class="rv d3">
+          <div class="spec-row"><span class="sk">University</span><span class="sv" style="font-size:.9rem">HIT Bahadurgarh</span></div>
+          <div class="spec-row"><span class="sk">University</span><span class="sv" style="font-size:.9rem">PDM University</span></div>
+          <div class="spec-row"><span class="sk">Campus</span><span class="sv" style="font-size:.9rem">Delhi Technical Campus</span></div>
+          <div class="spec-row"><span class="sk">Institute</span><span class="sv" style="font-size:.9rem">BGS Institute</span></div>
+          <div class="spec-row"><span class="sk">Medical</span><span class="sv" style="font-size:.9rem">Maharaja Agrasen Medical</span></div>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div style="border:1px solid rgba(201,168,76,.16);padding:56px 40px;text-align:center;background:rgba(201,168,76,.018)">
+          <div class="edu-num">75<sup>+</sup></div>
+          <div style="font-size:11px;letter-spacing:.4em;color:var(--cream-dim);text-transform:uppercase;margin-top:10px">Schools Nearby</div>
+          <div class="gsep" style="margin:24px 0;justify-content:center"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+          <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+            <div style="padding:8px 18px;border:1px solid rgba(201,168,76,.2);font-size:10px;letter-spacing:.22em;color:var(--cream-dim)">CBSE</div>
+            <div style="padding:8px 18px;border:1px solid rgba(201,168,76,.2);font-size:10px;letter-spacing:.22em;color:var(--cream-dim)">ICSE</div>
+            <div style="padding:8px 18px;border:1px solid rgba(201,168,76,.2);font-size:10px;letter-spacing:.22em;color:var(--cream-dim)">STATE BOARD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     AMENITIES — FULL REDESIGN WITH PHOTOS
+     (Project Specifications section removed as instructed)
+================================================================ -->
+<section id="amenities">
+
+  <!-- Section Header -->
+  <div class="am-header rv">
+    <div class="slabel" style="text-align:center">World-Class Living</div>
+    <h2 class="stitle rv d1" style="text-align:center">Life Beyond<br><span class="g">the Ordinary</span></h2>
+    <div class="gsep rv d2" style="justify-content:center;max-width:300px;margin:24px auto">
+      <div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div>
+    </div>
+    <p class="sbody rv d3" style="text-align:center;margin-top:0">Every amenity at The Heritage is designed not just to impress, but to become part of your daily life — spaces to play, gather, breathe, and belong.</p>
+  </div>
+
+  <!-- ── CLUBHOUSE HERO ── -->
+  <div class="am-section-label rv">Grand Clubhouse · 25,000 Sq. Ft.</div>
+  <div class="ch-hero rv">
+    <img class="ch-hero-img" 
+         src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1800&q=85&fit=crop&crop=center" 
+         alt="Grand Clubhouse Interior — The Heritage" 
+         loading="lazy">
+    <div class="ch-hero-overlay"></div>
+    <div class="ch-hero-content">
+      <div class="ch-hero-eyebrow">The Grand Clubhouse</div>
+      <div class="ch-hero-title">25,000 Sq. Ft.<br>of <span>Pure Indulgence</span></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(212,201,176,.7);max-width:480px;line-height:1.7;margin-top:8px">A landmark social destination at the heart of the community — where every visit feels like an occasion.</p>
+      <div class="ch-hero-pills">
+        <div class="ch-pill">Gymnasium</div>
+        <div class="ch-pill">Banquet Hall</div>
+        <div class="ch-pill">Lounge</div>
+        <div class="ch-pill">Waiting Areas</div>
+        <div class="ch-pill">Reception</div>
+        <div class="ch-pill">Table Tennis</div>
+        <div class="ch-pill">Billiards</div>
+        <div class="ch-pill">Pool Table</div>
+        <div class="ch-pill">Terrace Café</div>
+      </div>
+    </div>
+    <div class="ch-hero-stat">
+      <div class="n">25,000</div>
+      <div class="u">Sq. Ft.</div>
+    </div>
+  </div>
+
+  <!-- Clubhouse features row (5 icons) -->
+  <div class="ch-features-row rv d1">
+    <div class="ch-feat">
+      <span class="ch-feat-ico">🏋️</span>
+      <div class="ch-feat-name">Gymnasium</div>
+      <div class="ch-feat-sub">Fully Equipped</div>
+    </div>
+    <div class="ch-feat">
+      <span class="ch-feat-ico">🎪</span>
+      <div class="ch-feat-name">Banquet Hall</div>
+      <div class="ch-feat-sub">Grand Events</div>
+    </div>
+    <div class="ch-feat">
+      <span class="ch-feat-ico">🛋</span>
+      <div class="ch-feat-name">Members Lounge</div>
+      <div class="ch-feat-sub">Premium Interiors</div>
+    </div>
+    <div class="ch-feat">
+      <span class="ch-feat-ico">🎱</span>
+      <div class="ch-feat-name">Billiards & Pool</div>
+      <div class="ch-feat-sub">Table Games</div>
+    </div>
+    <div class="ch-feat">
+      <span class="ch-feat-ico">☕</span>
+      <div class="ch-feat-name">Terrace Café</div>
+      <div class="ch-feat-sub">Sky Dining</div>
+    </div>
+  </div>
+
+  <!-- ── SPORTS — 4-col bento ── -->
+  <div class="am-section-label rv">Sports & Recreation</div>
+  <div class="bento-sports rv d1">
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:340px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=700&q=80&fit=crop&crop=center"
+           alt="Cricket Pitch" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Sport</div>
+        <div class="am-card-name">Cricket Pitch</div>
+        <div class="am-card-desc">Box Cricket · Turf Ground</div>
+      </div>
+    </div>
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:340px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=700&q=80&fit=crop&crop=center"
+           alt="Badminton Court" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Sport</div>
+        <div class="am-card-name">Badminton Court</div>
+        <div class="am-card-desc">Professional · Indoor</div>
+      </div>
+    </div>
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:340px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=700&q=80&fit=crop&crop=center"
+           alt="Basketball Court" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Sport</div>
+        <div class="am-card-name">Basketball Court</div>
+        <div class="am-card-desc">Full Size · Floodlit</div>
+      </div>
+    </div>
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:340px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80&fit=crop&crop=center"
+           alt="Pickleball Court" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Trending Sport</div>
+        <div class="am-card-name">Pickleball</div>
+        <div class="am-card-desc">NCR's Fastest Growing Sport</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── NATURE — 3-col asymmetric ── -->
+  <div class="am-section-label rv">Nature & Green Spaces</div>
+  <div class="bento-nature rv d1">
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:340px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&q=80&fit=crop&crop=center"
+           alt="Miyawaki Forest" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Urban Forest</div>
+        <div class="am-card-name">Miyawaki Forest</div>
+        <div class="am-card-desc">Dense Native Tree Canopy</div>
+      </div>
+    </div>
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:340px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=80&fit=crop&crop=center"
+           alt="Flower Valley" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Landscape</div>
+        <div class="am-card-name">Flower Valley</div>
+        <div class="am-card-desc">Curated Seasonal Gardens</div>
+      </div>
+    </div>
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:340px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=700&q=80&fit=crop&crop=center"
+           alt="Rock Garden" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Feature</div>
+        <div class="am-card-name">Rock Garden</div>
+        <div class="am-card-desc">Sculptural Landscape</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── LEISURE & ENTERTAINMENT — 3-col ── -->
+  <div class="am-section-label rv">Entertainment & Culture</div>
+  <div class="bento-leisure rv d1">
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:320px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=700&q=80&fit=crop&crop=center"
+           alt="Amphitheatre" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Culture</div>
+        <div class="am-card-name">Amphitheatre</div>
+        <div class="am-card-desc">Open Air Stage · Community Events</div>
+      </div>
+    </div>
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:320px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&q=80&fit=crop&crop=center"
+           alt="Terrace Café" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Dining</div>
+        <div class="am-card-name">Terrace Café</div>
+        <div class="am-card-desc">Sky Dining · Premium Views</div>
+      </div>
+    </div>
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:320px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80&fit=crop&crop=center"
+           alt="Modern Gymnasium" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Wellness</div>
+        <div class="am-card-name">Modern Gymnasium</div>
+        <div class="am-card-desc">State-of-the-Art Equipment</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── COMMUNITY — 2-col ── -->
+  <div class="am-section-label rv">Family & Community</div>
+  <div class="bento-community rv d1">
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:300px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1555009393-f20bdb245c4d?w=900&q=80&fit=crop&crop=center"
+           alt="Kids' Play Area" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Family</div>
+        <div class="am-card-name">Kids' Play Area</div>
+        <div class="am-card-desc">Safe · Joyful · Stimulating</div>
+      </div>
+    </div>
+
+    <div class="am-card">
+      <img class="am-card-img" style="height:300px;object-fit:cover;display:block;width:100%"
+           src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80&fit=crop&crop=center"
+           alt="Senior Citizen Park" loading="lazy">
+      <div class="am-card-overlay"></div>
+      <div class="am-card-body">
+        <div class="am-card-tag">Wellness</div>
+        <div class="am-card-name">Senior Citizen Park</div>
+        <div class="am-card-desc">Peaceful · Accessible · Serene</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom breathing room -->
+  <div style="height:80px"></div>
+
+</section>
+
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="si">
+    <div style="text-align:center">
+      <div class="slabel rv">Investment Opportunity</div>
+      <h2 class="stitle rv d1" style="text-align:center">Secure Your<br><span class="g">Legacy Plot</span></h2>
+    </div>
+    <div class="pr-layout rv d2">
+      <div class="pr-card pr-pre">
+        <div class="pr-label">Pre-Launch Price</div>
+        <div class="pr-amount">₹90,000</div>
+        <div class="pr-unit">Per Sq. Yd.</div>
+        <div class="pr-note">A rare window before the official launch — act now to lock in the lowest entry price and maximum upside on this landmark Bahadurgarh address.</div>
+        <div class="pr-btn">Available Now</div>
+      </div>
+      <div class="pr-card pr-launch">
+        <div class="pr-badge">LIMITED<br>OFFER</div>
+        <div class="pr-label">Launch Price</div>
+        <div class="pr-amount">₹1.12 – 1.25</div>
+        <div class="pr-unit">Lakh Per Sq. Yd.</div>
+        <div class="pr-note">Projected launch pricing reflects the infrastructure premium, industrial backbone, and rapid appreciation already underway in the Bahadurgarh corridor.</div>
+        <div class="pr-btn">Upcoming Launch</div>
+      </div>
+    </div>
+    <div class="pr-quote rv d3">The gap between pre-launch and launch pricing is where legacies are built.</div>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section id="lead-form">
+  <div class="si">
+    <div class="form-wrap">
+      <div class="slabel rv" style="text-align:center">Register Your Interest</div>
+      <h2 class="stitle rv d1" style="text-align:center">Own A Plot At<br><span class="g">The Heritage</span></h2>
+      <p class="sbody rv d2" style="text-align:center;margin-top:14px">Complete the form and a Heritage Advisor will connect with you within 24 hours.</p>
+      <div class="form-box rv d2">
+        <div id="form-main">
+          <div class="fr">
+            <div class="fg"><label class="fl">Full Name *</label><input type="text" class="fi" placeholder="Your full name" id="fname"></div>
+            <div class="fg"><label class="fl">Phone Number *</label><input type="tel" class="fi" placeholder="+91 00000 00000" id="fphone"></div>
+          </div>
+          <div class="fg"><label class="fl">Email Address</label><input type="email" class="fi" placeholder="your@email.com" id="femail"></div>
+          <div class="fg">
+            <label class="fl">Plot Size Interest</label>
+            <select class="fi" id="fsize" style="cursor:pointer">
+              <option value="" style="background:#0f0a05">Select preferred size</option>
+              <option value="126" style="background:#0f0a05">126 sq. yd.</option>
+              <option value="136" style="background:#0f0a05">136 sq. yd.</option>
+              <option value="146" style="background:#0f0a05">146 sq. yd.</option>
+              <option value="162" style="background:#0f0a05">162 sq. yd.</option>
+              <option value="176" style="background:#0f0a05">176 sq. yd.</option>
+              <option value="177" style="background:#0f0a05">177 sq. yd.</option>
+            </select>
+          </div>
+          <div class="fg"><label class="fl">Message (Optional)</label><input type="text" class="fi" placeholder="Any specific questions or requirements" id="fmsg"></div>
+          <button class="fsub" onclick="submitForm()">Request a Site Visit</button>
+        </div>
+        <div class="form-success" id="form-success">
+          <span class="fs-icon">✦</span>
+          <div class="fs-title">Thank You</div>
+          <div class="fs-msg">Your interest has been registered. A Heritage Advisor will contact you within 24 hours.</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-strip rv">
+      <div class="ct-item">
+        <div class="ct-label">Call / WhatsApp</div>
+        <div class="ct-val"><a href="tel:+919654803560">+91 96548 03560</a></div>
+      </div>
+      <div class="ct-item">
+        <div class="ct-label">Email</div>
+        <div class="ct-val"><a href="mailto:gaurav.sobti@homegramestate.com">gaurav.sobti@homegramestate.com</a></div>
+      </div>
+      <div class="ct-item">
+        <div class="ct-label">Location</div>
+        <div class="ct-val"><a href="https://maps.app.goo.gl/v5cuPT7DoP5JsrWY8" target="_blank">Sector 11, Bahadurgarh</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">THE HERITAGE</div>
+  <div class="ft-tag">By Homegram Estate · Bahadurgarh, Haryana</div>
+  <div class="ft-sep"><div class="ft-sep-l"></div><div class="ft-sep-d"></div><div class="ft-sep-l"></div></div>
+  <div class="ft-copy">© 2026 Homegram Estate. All Rights Reserved. RERA Registration Pending.<br>This is marketing collateral. Prices, specifications, and amenities are indicative and subject to change without notice. All images are licensed from Unsplash for representational purposes only.</div>
+</footer>
+
+
+<script>
+// ── LOADER ──
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const l = document.getElementById('loader');
+    l.style.transition = 'opacity .9s ease';
+    l.style.opacity = '0';
+    setTimeout(() => { if(l.parentNode) l.parentNode.removeChild(l); }, 900);
+  }, 2600);
+});
+
+// ── CURSOR ──
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+});
+(function tick() {
+  rx += (mx - rx) * .13; ry += (my - ry) * .13;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button,.am-card,.brand-cell,.tag,.ch-feat,.ch-pill').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cur.style.transform = 'translate(-50%,-50%) scale(2.2)';
+    ring.style.transform = 'translate(-50%,-50%) scale(1.6)';
+    ring.style.opacity = '.9';
+  });
+  el.addEventListener('mouseleave', () => {
+    cur.style.transform = 'translate(-50%,-50%) scale(1)';
+    ring.style.transform = 'translate(-50%,-50%) scale(1)';
+    ring.style.opacity = '.55';
+  });
+});
+
+// ── HERO CANVAS ──
+const cv = document.getElementById('hero-canvas');
+const ctx = cv.getContext('2d');
+function resize() { cv.width = window.innerWidth; cv.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+
+class P {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * cv.width; this.y = cv.height + 20;
+    this.vx = (Math.random() - .5) * .4; this.vy = -(Math.random() * .6 + .15);
+    this.r = Math.random() * 1.4 + .3; this.op = Math.random() * .5 + .1;
+    this.life = 0; this.max = Math.random() * 280 + 120;
+  }
+  step() { this.x += this.vx; this.y += this.vy; this.life++; if (this.life > this.max || this.y < -10) this.reset(); }
+  draw() {
+    const fi = Math.min(this.life / 40, 1), fo = Math.min((this.max - this.life) / 40, 1);
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(201,168,76,' + (this.op * fi * fo) + ')'; ctx.fill();
+  }
+}
+const pts = Array.from({ length: 130 }, () => new P());
+
+function drawLines() {
+  for (let i = 0; i < pts.length; i++) {
+    for (let j = i + 1; j < pts.length; j++) {
+      const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 80) {
+        ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+        ctx.strokeStyle = 'rgba(201,168,76,' + ((1 - d / 80) * .04) + ')';
+        ctx.lineWidth = .5; ctx.stroke();
+      }
+    }
+  }
+}
+
+let archT = 0;
+function drawArch() {
+  archT += .005;
+  const pulse = .04 + Math.sin(archT) * .015;
+  const cx = cv.width / 2, cy = cv.height * .72, sc = Math.min(cv.width / 900, 1.3);
+  ctx.save(); ctx.translate(cx, cy); ctx.scale(sc, sc);
+  ctx.strokeStyle = 'rgba(201,168,76,' + pulse + ')'; ctx.lineWidth = 1.5;
+  ctx.strokeRect(-260, -220, 64, 220); ctx.strokeRect(196, -220, 64, 220);
+  ctx.beginPath(); ctx.moveTo(-196, 0); ctx.lineTo(-196, -150);
+  ctx.bezierCurveTo(-196, -280, 196, -280, 196, -150); ctx.lineTo(196, 0); ctx.stroke();
+  ctx.beginPath(); ctx.arc(0, -290, 18, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore();
+}
+
+function heroLoop() {
+  ctx.clearRect(0, 0, cv.width, cv.height);
+  const g = ctx.createRadialGradient(cv.width / 2, cv.height * .6, 0, cv.width / 2, cv.height * .6, cv.height * .6);
+  g.addColorStop(0, 'rgba(201,168,76,.045)'); g.addColorStop(1, 'transparent');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, cv.width, cv.height);
+  drawArch(); drawLines();
+  pts.forEach(p => { p.step(); p.draw(); });
+  requestAnimationFrame(heroLoop);
+}
+heroLoop();
+
+// ── NAVBAR ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', scrollY > 70);
+});
+
+// ── PARALLAX HERO ──
+window.addEventListener('scroll', () => {
+  const el = document.querySelector('.hero-content');
+  if (!el || scrollY > innerHeight) return;
+  el.style.transform = 'translateY(' + (scrollY * .28) + 'px)';
+  el.style.opacity = Math.max(0, 1 - scrollY / (innerHeight * .75));
+});
+
+// ── REVEAL ON SCROLL ──
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target); } });
+}, { threshold: .07, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+
+// ── COUNTER ──
+function animCount(el, target, dur) {
+  dur = dur || 2200;
+  const s = Date.now();
+  (function up() {
+    const p = Math.min((Date.now() - s) / dur, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(e * target).toLocaleString();
+    if (p < 1) requestAnimationFrame(up);
+    else el.innerHTML = target.toLocaleString() + '<span class="bc-plus">+</span>';
+  })();
+}
+const co = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { animCount(e.target, parseInt(e.target.dataset.target)); co.unobserve(e.target); }
+  });
+}, { threshold: .3 });
+document.querySelectorAll('[data-target]').forEach(el => co.observe(el));
+
+// ── GSAP AMENITY CARD STAGGER (scroll-triggered) ──
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Each bento row: cards stagger in from below
+  ['.bento-sports', '.bento-nature', '.bento-leisure', '.bento-community'].forEach(sel => {
+    const cards = document.querySelectorAll(sel + ' .am-card');
+    if (!cards.length) return;
+    gsap.fromTo(cards,
+      { y: 60, opacity: 0 },
+      {
+        y: 0, opacity: 1,
+        duration: .9,
+        ease: 'power3.out',
+        stagger: .12,
+        scrollTrigger: {
+          trigger: sel,
+          start: 'top 85%',
+          once: true
+        }
+      }
+    );
+  });
+
+  // Clubhouse hero: subtle scale-up reveal
+  gsap.fromTo('.ch-hero',
+    { opacity: 0, scale: .97 },
+    {
+      opacity: 1, scale: 1,
+      duration: 1.1, ease: 'power2.out',
+      scrollTrigger: { trigger: '.ch-hero', start: 'top 88%', once: true }
+    }
+  );
+
+  // Features row
+  gsap.fromTo('.ch-feat',
+    { y: 30, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      duration: .65, ease: 'power2.out',
+      stagger: .09,
+      scrollTrigger: { trigger: '.ch-features-row', start: 'top 88%', once: true }
+    }
+  );
+
+  // Section labels slide in from left
+  gsap.utils.toArray('.am-section-label').forEach(el => {
+    gsap.fromTo(el,
+      { x: -24, opacity: 0 },
+      {
+        x: 0, opacity: .7,
+        duration: .7, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+      }
+    );
+  });
+}
+
+// ── FORM ──
+function submitForm() {
+  const n = document.getElementById('fname').value.trim();
+  const p = document.getElementById('fphone').value.trim();
+  if (!n || !p) { alert('Please enter your name and phone number.'); return; }
+  document.getElementById('form-main').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+document.querySelector('.nav-cta').addEventListener('click', e => {
+  e.preventDefault();
+  document.getElementById('lead-form').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+</body>
+</html>
