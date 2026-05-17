@@ -1,0 +1,2177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>The Heritage &middot; Homegram Estate &middot; Sector 11, Bahadurgarh</title>
+<meta name="description" content="A gated plotted community of 236 homes, 25 minutes from Delhi. Pre-launch from Rs.90,000 / sq.yd. By Homegram Estate." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+:root{
+  --ink:#0E0E0F;
+  --ink-2:#1A1A1C;
+  --paper:#F5F1E8;
+  --paper-2:#EBE5D6;
+  --gold:#B8862A;
+  --gold-light:#D4A84A;
+  --rust:#8B4513;
+  --ink-mid:#3A3A3C;
+  --ink-light:#6B6B6E;
+  --hair:rgba(184,134,42,.18);
+  --hair-d:rgba(245,241,232,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{background:var(--paper);color:var(--ink)}
+body{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-weight:400;
+  font-size:18px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+/* ── typography helpers ── */
+.f-display{font-family:'Fraunces',Georgia,serif;font-weight:900;letter-spacing:-.02em;line-height:1.02}
+.f-display em{font-family:'Fraunces',Georgia,serif;font-weight:400;font-style:italic;font-variation-settings:"opsz" 144}
+.f-serif{font-family:'Cormorant Garamond',Georgia,serif}
+.f-mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:500;letter-spacing:.08em}
+.upper{text-transform:uppercase}
+.gold{color:var(--gold)}
+.rust{color:var(--rust)}
+
+/* ── containers ── */
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+section{position:relative;padding:140px 0;overflow:hidden}
+section.dark{background:var(--ink);color:var(--paper)}
+section.dark .f-display em{color:var(--gold-light)}
+section.light{background:var(--paper);color:var(--ink)}
+section.light-2{background:var(--paper-2);color:var(--ink)}
+
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::before{content:"[ ";opacity:.7}
+.eyebrow::after{content:" ]";opacity:.7}
+.lede{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:1.35rem;color:var(--ink-light);max-width:680px}
+section.dark .lede{color:rgba(245,241,232,.7)}
+
+/* ── nav ── */
+nav.top{
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  padding:18px 40px;display:flex;align-items:center;justify-content:space-between;
+  background:transparent;
+  transition:background .35s ease, border-color .35s ease, color .35s ease;
+  border-bottom:1px solid transparent;
+  color:var(--paper);
+}
+nav.top.scrolled{
+  background:rgba(245,241,232,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--hair);
+  color:var(--ink);
+}
+nav.top .logo{display:flex;flex-direction:column;line-height:1}
+nav.top .logo .word{font-family:'Fraunces',serif;font-weight:900;font-size:21px;letter-spacing:.04em}
+nav.top .logo .sub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.34em;text-transform:uppercase;margin-top:4px;opacity:.65}
+nav.top .actions{display:flex;align-items:center;gap:24px}
+nav.top .actions a.txt{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
+nav.top .actions a.txt:hover{color:var(--gold)}
+nav.top .btn-gold{
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  padding:12px 22px;background:var(--gold);color:#fff;border:1px solid var(--gold);
+  transition:background .25s ease,transform .25s ease;
+}
+nav.top .btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+/* ── buttons ── */
+.btn{
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  padding:16px 28px;display:inline-flex;align-items:center;gap:10px;
+  border:1px solid var(--gold);transition:all .3s ease;cursor:pointer;
+}
+.btn-fill{background:var(--gold);color:#fff}
+.btn-fill:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--paper)}
+section.light .btn-line{color:var(--ink)}
+.btn-line:hover{background:var(--gold);color:#fff}
+
+/* ── cursor ── */
+.cur-dot,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:200;border-radius:50%;mix-blend-mode:difference;transform:translate(-50%,-50%);will-change:transform}
+.cur-dot{width:8px;height:8px;background:var(--gold-light)}
+.cur-ring{width:32px;height:32px;border:1px solid var(--gold-light);transition:width .25s ease,height .25s ease,border-color .25s ease}
+.cur-ring.big{width:56px;height:56px;border-color:var(--gold)}
+@media (max-width:900px){.cur-dot,.cur-ring{display:none}}
+
+/* ── HERO BLUEPRINT ── */
+#hero{padding:0;min-height:100vh;background:var(--ink);color:var(--paper);display:flex;align-items:stretch}
+#hero canvas{position:absolute;inset:0;pointer-events:none;z-index:1}
+#hero svg.bp{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.95}
+#hero .hero-grid{position:relative;z-index:2;width:100%;display:grid;grid-template-rows:auto 1fr auto;padding:120px 60px 60px}
+#hero .hero-top{max-width:680px}
+#hero .hero-top h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(64px,11vw,180px);line-height:.92;letter-spacing:-.03em;margin:18px 0 18px}
+#hero .hero-top h1 em{font-weight:400;font-style:italic;color:var(--gold-light);font-variation-settings:"opsz" 144}
+#hero .hero-top .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:1.7rem;color:rgba(245,241,232,.78);margin:0 0 36px;max-width:520px;letter-spacing:.005em}
+#hero .hero-top .ctas{display:flex;gap:14px;flex-wrap:wrap}
+#hero .hero-bot{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-top:auto;padding-top:60px}
+#hero .hero-stats{display:flex;gap:36px;flex-wrap:wrap}
+#hero .hero-stats .item{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,241,232,.7);display:flex;align-items:center;gap:10px}
+#hero .hero-stats .item i{color:var(--gold);font-size:13px}
+#hero .geo{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);text-align:right}
+#hero .geo .sml{display:block;color:rgba(245,241,232,.55);margin-top:6px;font-size:9.5px}
+
+/* hero blueprint stroke draw */
+.bp-line{stroke:var(--gold);stroke-width:1;fill:none;opacity:.55}
+.bp-line.thin{opacity:.32;stroke-width:.6}
+.bp-line.gate{stroke-width:1.6;opacity:.85}
+.bp-tree{fill:rgba(184,134,42,.45)}
+.bp-hatch{stroke:var(--gold);stroke-width:.5;opacity:.4}
+.bp-anim{stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+
+/* ── THE MATH ledger ── */
+#math{background:var(--paper)}
+#math .ledger{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-top:80px;align-items:stretch;border:1px solid var(--hair);background:#fff}
+#math .col{padding:60px 50px;display:flex;flex-direction:column;gap:24px;position:relative}
+#math .col h3{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-light)}
+#math .col .big{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.02em}
+#math .col .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-light);margin-top:12px}
+#math .col .future{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-light);margin-top:30px;padding-top:30px;border-top:1px dashed var(--hair)}
+#math .col .future-num{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(48px,6vw,88px);line-height:.95;letter-spacing:-.025em;margin-top:8px}
+#math .col.left .future-num{color:var(--rust)}
+#math .col.right .future-num{color:var(--gold)}
+#math .col .bar{height:6px;background:rgba(0,0,0,.06);position:relative;overflow:hidden;margin-top:24px}
+#math .col .bar .fill{position:absolute;inset:0;width:0%;}
+#math .col.left .bar .fill{background:linear-gradient(90deg,var(--rust),#c46e2a)}
+#math .col.right .bar .fill{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+#math .col .verdict{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--ink-mid);margin-top:18px}
+#math .col.left .verdict{color:var(--rust)}
+#math .col.right .verdict{color:var(--gold)}
+#math .divider-v{width:1px;background:var(--hair);position:relative}
+#math .divider-v::before{content:"VS";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:14px 6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.3em;color:var(--ink-light)}
+#math .pull{margin:80px 0 30px;text-align:center;font-family:'Fraunces',serif;font-weight:400;font-style:italic;font-size:clamp(28px,4vw,48px);line-height:1.2;max-width:880px;margin-left:auto;margin-right:auto;color:var(--ink)}
+#math .pull em{font-weight:900;font-style:normal;color:var(--gold)}
+#math .foot{display:flex;flex-direction:column;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);letter-spacing:.16em;text-align:center;margin-top:20px}
+
+/* ── ANATOMY orbits ── */
+#anatomy{background:var(--ink);color:var(--paper)}
+#anatomy .stage{position:relative;width:min(800px,95vw);height:min(800px,95vw);margin:60px auto 0}
+#anatomy .stage svg{position:absolute;inset:0;width:100%;height:100%}
+#anatomy .ring{fill:none;stroke:rgba(184,134,42,.22);stroke-dasharray:2 6;stroke-width:1}
+#anatomy .ring.solid{stroke:rgba(184,134,42,.4);stroke-dasharray:none}
+#anatomy .stage .center-emblem{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:160px;height:160px}
+#anatomy .sat{position:absolute;width:200px;text-align:center;transform:translate(-50%,-50%)}
+#anatomy .sat .num{font-family:'Fraunces',serif;font-weight:900;font-size:42px;line-height:1;color:var(--gold-light);letter-spacing:-.02em}
+#anatomy .sat .num em{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:.55em;color:rgba(245,241,232,.7);font-style:normal;margin-left:4px;vertical-align:0.18em}
+#anatomy .sat .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(245,241,232,.7);margin-top:10px}
+#anatomy .sat .vis{margin-top:14px;height:64px;display:flex;justify-content:center;align-items:center}
+#anatomy .sat .desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:rgba(245,241,232,.55);margin-top:8px}
+#anatomy .closer{text-align:center;margin-top:40px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:rgba(245,241,232,.7)}
+.spin-slow{animation:spin 60s linear infinite}
+.spin-slow-rev{animation:spin 90s linear infinite reverse}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* ── METRO ── */
+#connectivity{background:var(--ink);color:var(--paper)}
+#connectivity .metro-wrap{position:relative;margin-top:60px}
+#connectivity svg.metro{width:100%;height:auto;display:block;overflow:visible}
+.m-station text{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;fill:rgba(245,241,232,.78)}
+#connectivity .replay{position:absolute;top:0;right:0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-flex;gap:8px;align-items:center;padding:10px 16px;border:1px solid rgba(184,134,42,.4)}
+#connectivity .replay:hover{background:rgba(184,134,42,.1)}
+#connectivity .status{text-align:center;margin-top:30px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:rgba(245,241,232,.7);min-height:32px}
+#connectivity .way-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(184,134,42,.18);margin-top:80px;border:1px solid rgba(184,134,42,.18)}
+#connectivity .way{padding:28px 26px;background:var(--ink);display:flex;align-items:center;gap:18px;transition:background .3s ease}
+#connectivity .way:hover{background:var(--ink-2)}
+#connectivity .way i{color:var(--gold);font-size:22px;width:32px;text-align:center}
+#connectivity .way .title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,241,232,.92)}
+#connectivity .way .meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+
+/* ── TRY IT ON ── */
+#try-it-on{background:var(--paper)}
+#try-it-on .tabs{display:flex;gap:0;margin-top:50px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);justify-content:center;flex-wrap:wrap}
+#try-it-on .plot-tab{
+  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.18em;
+  padding:22px 28px;color:var(--ink-light);border-right:1px solid var(--hair);
+  transition:color .25s ease,background .25s ease;cursor:pointer;
+}
+#try-it-on .plot-tab:last-child{border-right:0}
+#try-it-on .plot-tab .yd{font-size:9px;display:block;margin-top:4px;opacity:.6;letter-spacing:.32em}
+#try-it-on .plot-tab.on{color:var(--gold);background:#fff}
+#try-it-on .plot-tab:hover{color:var(--ink)}
+#try-it-on .plot-tab.on:hover{color:var(--gold)}
+#try-it-on .stage-fit{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;margin-top:60px;align-items:center}
+#try-it-on .plot-stage{position:relative;width:100%;aspect-ratio:1.1/1;background:#fff;border:1px solid var(--hair);overflow:hidden}
+#try-it-on .plot-stage svg{width:100%;height:100%;display:block}
+#try-it-on .price-side{padding-left:30px}
+#try-it-on .price-side .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-light)}
+#try-it-on .price-side .price{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(64px,8vw,120px);line-height:.95;letter-spacing:-.025em;color:var(--ink);margin:8px 0 0}
+#try-it-on .price-side .price em{font-style:italic;font-weight:400;font-size:.4em;color:var(--gold);vertical-align:0.4em;margin-left:8px}
+#try-it-on .price-side .specs{margin-top:30px;display:flex;flex-direction:column;gap:14px}
+#try-it-on .price-side .specs .row{display:flex;justify-content:space-between;align-items:center;border-bottom:1px dashed var(--hair);padding-bottom:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-light)}
+#try-it-on .price-side .specs .row strong{font-weight:600;color:var(--ink)}
+#try-it-on .price-side .note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--ink-light);margin-top:24px}
+
+/* ── MASTER PLAN ── */
+#master-plan{background:var(--ink);color:var(--paper)}
+#master-plan .mp-wrap{position:relative;margin-top:80px}
+#master-plan svg.mp{width:100%;height:auto;display:block;overflow:visible}
+#master-plan .amenity-pin{cursor:pointer}
+#master-plan .amenity-pin .dot{transition:r .25s ease}
+#master-plan .amenity-pin:hover .dot{r:9}
+.polaroid{
+  position:absolute;width:240px;background:#f5f1e8;padding:14px 14px 36px;
+  box-shadow:0 18px 40px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.3);
+  transform:rotate(-3deg) scale(.9);opacity:0;pointer-events:none;
+  transition:opacity .25s ease,transform .25s ease;z-index:5;
+}
+.polaroid.show{opacity:1;transform:rotate(-3deg) scale(1)}
+.polaroid img{width:100%;aspect-ratio:1.05/1;object-fit:cover;display:block;background:#0a0a0a}
+.polaroid .lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:#0E0E0F;margin-top:14px}
+.polaroid .note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--ink-light);margin-top:4px;line-height:1.4}
+#master-plan .legend{display:flex;flex-wrap:wrap;gap:18px 36px;margin-top:60px;padding:30px;border:1px solid rgba(184,134,42,.22)}
+#master-plan .legend .item{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,241,232,.85);display:flex;align-items:center;gap:10px}
+#master-plan .legend .item i{color:var(--gold)}
+#master-plan .mp-mobile{display:none}
+
+/* ── ECOSYSTEM ── */
+#ecosystem{background:var(--paper)}
+#ecosystem .eco-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;margin-top:80px;align-items:center}
+#ecosystem svg.eco{width:100%;height:auto;display:block}
+.eco-line{stroke:rgba(184,134,42,.5);stroke-width:1;fill:none;stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+#ecosystem .brands{padding:30px 36px;border:1px solid var(--hair);background:#fff}
+#ecosystem .brands h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+#ecosystem .brands .brow{display:flex;justify-content:space-between;border-bottom:1px dashed var(--hair);padding:14px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+#ecosystem .brands .brow:last-child{border-bottom:0}
+#ecosystem .brands .brow .nm{color:var(--ink);font-weight:600}
+#ecosystem .brands .brow .ct{color:var(--ink-light)}
+#ecosystem .big-num{text-align:center;margin-top:24px}
+#ecosystem .big-num .n{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(64px,8vw,128px);line-height:.95;color:var(--ink)}
+#ecosystem .big-num .n em{font-style:italic;font-weight:400;color:var(--gold)}
+#ecosystem .big-num .l{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-light);margin-top:6px}
+
+/* ── RADIUS ── */
+#radius{background:var(--ink);color:var(--paper)}
+#radius .rad-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;margin-top:60px;align-items:center}
+#radius svg.rad{width:100%;height:auto;display:block;overflow:visible}
+#radius .rad-circle{fill:none;stroke:rgba(184,134,42,.32);stroke-dasharray:3 6;stroke-width:1}
+#radius .rad-pin{font-family:'Font Awesome 6 Free';font-weight:900;font-size:14px;fill:var(--gold)}
+#radius .rad-cat{padding:22px 0;border-bottom:1px solid rgba(245,241,232,.1)}
+#radius .rad-cat:last-child{border-bottom:0}
+#radius .rad-cat h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+#radius .rad-cat h4 .ct{color:rgba(245,241,232,.55);margin-left:auto;font-weight:400}
+#radius .rad-cat ul{list-style:none}
+#radius .rad-cat li{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:rgba(245,241,232,.78);padding:5px 0;display:flex;justify-content:space-between;border-bottom:1px dashed rgba(245,241,232,.06)}
+#radius .rad-cat li:last-child{border-bottom:0}
+#radius .rad-cat li .km{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.18em}
+#radius .closer{margin-top:50px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:rgba(245,241,232,.65);max-width:740px;margin-left:auto;margin-right:auto}
+
+/* ── WINDOW PRICING ── */
+#window{background:var(--paper)}
+#window .chart-wrap{margin-top:60px;background:#fff;border:1px solid var(--hair);padding:50px 30px}
+#window svg.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart-line{stroke:var(--gold);stroke-width:2;fill:none}
+.chart-line-proj{stroke:var(--gold);stroke-width:2;fill:none;stroke-dasharray:5 5}
+.chart-shade{fill:rgba(184,134,42,.12)}
+.chart-grid{stroke:rgba(0,0,0,.06);stroke-width:1}
+.chart-tick{font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--ink-light);letter-spacing:.18em}
+.chart-pin{fill:var(--gold)}
+.chart-pin-pulse{fill:var(--gold);opacity:.4}
+#window .windows-2{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:50px}
+#window .wcard{padding:34px 32px;border:1px solid var(--hair);background:#fff;position:relative}
+#window .wcard.now{background:var(--ink);color:var(--paper);border-color:var(--gold)}
+#window .wcard .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+#window .wcard .price{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(40px,5vw,72px);line-height:.95;margin-top:14px}
+#window .wcard .price em{font-style:italic;font-weight:400;font-size:.4em;color:var(--gold);vertical-align:0.4em;margin-left:6px}
+#window .wcard .desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;margin-top:12px;color:inherit;opacity:.85}
+#window .wcard.now .desc{color:rgba(245,241,232,.78)}
+#window .wcta{margin-top:40px;text-align:center}
+
+/* ── VISITOR'S BOOK ── */
+#visitor{background:var(--paper);padding-bottom:0}
+#visitor .book{
+  max-width:720px;margin:60px auto 0;background:#fffdf6;
+  background-image:radial-gradient(rgba(184,134,42,.05) 1px, transparent 1px);
+  background-size:14px 14px;
+  border:1px solid var(--hair);
+  padding:80px 70px;position:relative;
+  box-shadow:0 30px 80px rgba(14,14,15,.18),0 8px 20px rgba(14,14,15,.08);
+}
+#visitor .corner{position:absolute;width:48px;height:48px}
+#visitor .corner.tl{top:8px;left:8px}
+#visitor .corner.tr{top:8px;right:8px;transform:scaleX(-1)}
+#visitor .corner.bl{bottom:8px;left:8px;transform:scaleY(-1)}
+#visitor .corner.br{bottom:8px;right:8px;transform:scale(-1,-1)}
+#visitor .corner svg{width:100%;height:100%;overflow:visible}
+#visitor .corner path{fill:none;stroke:var(--gold);stroke-width:1.2;stroke-dasharray:120;stroke-dashoffset:120}
+#visitor .field{margin-top:24px}
+#visitor .field label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-light);display:block;margin-bottom:8px}
+#visitor .field label .req{color:var(--gold)}
+#visitor .field input,
+#visitor .field select,
+#visitor .field textarea{
+  width:100%;padding:14px 0 12px;background:transparent;border:0;border-bottom:1px solid var(--hair);
+  font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--ink);
+  outline:none;transition:border-color .25s ease;font-style:italic;font-weight:400;
+}
+#visitor .field input::placeholder,
+#visitor .field textarea::placeholder{color:var(--ink-light);font-style:italic;opacity:.6}
+#visitor .field input:focus,#visitor .field textarea:focus,#visitor .field select:focus{border-bottom-color:var(--gold)}
+#visitor .field textarea{resize:vertical;min-height:80px;font-family:'Cormorant Garamond',serif;font-style:italic}
+#visitor .field.phone{display:flex;align-items:flex-end;gap:12px}
+#visitor .field.phone .pfx{font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:var(--ink-light);padding-bottom:14px}
+#visitor .field.phone input{flex:1}
+#visitor .submit{margin-top:40px;width:100%;padding:18px;background:var(--gold);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;border:0;cursor:pointer;transition:background .25s ease,transform .25s ease}
+#visitor .submit:hover{background:var(--gold-light);transform:translateY(-1px)}
+#visitor .thanks{display:none;text-align:center;padding:40px 20px}
+#visitor .thanks.on{display:block}
+#visitor .thanks h3{font-family:'Fraunces',serif;font-weight:900;font-size:48px;font-style:italic;font-weight:400;color:var(--gold);font-variation-settings:"opsz" 144;font-style:italic}
+#visitor .thanks .signed{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--ink-light);margin-top:30px;display:flex;justify-content:center;gap:14px;align-items:center}
+#visitor .thanks .signed::before{content:"";display:block;width:120px;height:1px;background:var(--gold)}
+#visitor .thanks p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--ink-light);margin-top:14px}
+#visitor .contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:80px 0 0}
+#visitor .ccard{padding:30px 26px;border:1px solid var(--hair);background:#fff;text-align:center}
+#visitor .ccard i{color:var(--gold);font-size:24px;margin-bottom:14px}
+#visitor .ccard .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px}
+#visitor .ccard .val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ink);font-style:italic}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(245,241,232,.65);padding:80px 0 40px;margin-top:120px}
+footer .top-row{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px}
+footer .word{font-family:'Fraunces',serif;font-weight:900;font-size:42px;letter-spacing:-.01em;color:var(--paper);line-height:.95}
+footer .sub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+footer address{font-style:normal;font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.7;font-style:italic;max-width:340px}
+footer .socials{display:flex;gap:14px;margin-top:18px}
+footer .socials a{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(184,134,42,.4);color:var(--gold);transition:background .25s ease,color .25s ease}
+footer .socials a:hover{background:var(--gold);color:#fff}
+footer .rera{margin-top:40px;border-top:1px solid rgba(245,241,232,.1);padding-top:24px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;line-height:1.7;color:rgba(245,241,232,.4)}
+footer .copy{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:rgba(245,241,232,.35)}
+
+/* ── reveals ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.06s}
+.rv.d2{transition-delay:.16s}
+.rv.d3{transition-delay:.28s}
+.rv.d4{transition-delay:.4s}
+
+/* ── responsive ── */
+@media (max-width:1024px){
+  section{padding:100px 0}
+  .wrap{padding:0 30px}
+  #math .ledger{grid-template-columns:1fr;grid-template-rows:1fr auto 1fr}
+  #math .divider-v{height:1px;width:auto}
+  #math .divider-v::before{padding:6px 14px}
+  #try-it-on .stage-fit,
+  #ecosystem .eco-grid,
+  #radius .rad-grid{grid-template-columns:1fr;gap:40px}
+  #connectivity .way-grid{grid-template-columns:repeat(2,1fr)}
+  #anatomy .stage{height:600px}
+  #anatomy .sat{width:160px}
+  #anatomy .sat .num{font-size:32px}
+}
+@media (max-width:768px){
+  body{font-size:16px}
+  nav.top{padding:14px 20px}
+  nav.top .actions a.txt{display:none}
+  .wrap{padding:0 20px}
+  section{padding:80px 0}
+  #hero .hero-grid{padding:120px 22px 30px}
+  #hero .hero-bot{flex-direction:column;align-items:flex-start}
+  #hero .geo{text-align:left}
+  #hero .hero-stats{gap:16px;flex-direction:column}
+  #math .col{padding:40px 24px}
+  #anatomy .stage{height:520px}
+  #anatomy .sat{width:140px}
+  #anatomy .sat .num{font-size:24px}
+  #anatomy .sat .vis{height:48px}
+  #connectivity .way-grid{grid-template-columns:1fr}
+  #try-it-on .tabs{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
+  #try-it-on .plot-tab{flex:0 0 auto;padding:18px 20px}
+  #master-plan .mp-wrap svg.mp{display:none}
+  #master-plan .mp-mobile{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  #master-plan .mp-mobile .pcard{background:#1a1a1c;padding:0;border:1px solid rgba(184,134,42,.2)}
+  #master-plan .mp-mobile .pcard img{aspect-ratio:1.1/1;object-fit:cover;width:100%}
+  #master-plan .mp-mobile .pcard .b{padding:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+  #visitor .book{padding:50px 28px}
+  #visitor .contact-cards{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  #hero .hero-top h1{font-size:54px}
+  .f-display{font-size:34px !important}
+  section h2.f-display{font-size:38px !important}
+  #anatomy .sat{width:120px}
+  #anatomy .sat .num{font-size:20px}
+  #connectivity .metro-wrap svg.metro{transform:scale(1.4) translateX(8%);transform-origin:center}
+}
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .spin-slow,.spin-slow-rev{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="cur-dot"></div>
+<div class="cur-ring"></div>
+
+<nav class="top" id="topnav">
+  <div class="logo">
+    <span class="word">THE HERITAGE</span>
+    <span class="sub">Homegram Estate</span>
+  </div>
+  <div class="actions">
+    <a href="#" class="txt"><i class="fa-solid fa-download"></i> Brochure</a>
+    <a href="#visitor" class="btn-gold">Reserve a plot</a>
+  </div>
+</nav>
+
+
+
+<!-- ─────────────────────────────────────────────────── 1. HERO BLUEPRINT -->
+<section id="hero">
+  <canvas id="heroCanvas"></canvas>
+  <svg class="bp" id="heroBP" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="bp-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(184,134,42,.07)" stroke-width=".5"/>
+      </pattern>
+      <pattern id="bp-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(184,134,42,.5)" stroke-width=".6"/>
+      </pattern>
+    </defs>
+    <rect width="1600" height="900" fill="url(#bp-grid)"/>
+    <!-- perimeter -->
+    <path class="bp-line bp-anim" style="--len:5600" d="M 200 240 L 1400 240 L 1400 740 L 200 740 Z"/>
+    <!-- inner perimeter (offset wall) -->
+    <path class="bp-line thin bp-anim" style="--len:5400" d="M 220 260 L 1380 260 L 1380 720 L 220 720 Z"/>
+    <!-- gate at bottom -->
+    <g>
+      <line class="bp-line gate bp-anim" style="--len:60" x1="760" y1="740" x2="760" y2="800"/>
+      <line class="bp-line gate bp-anim" style="--len:60" x1="840" y1="740" x2="840" y2="800"/>
+      <line class="bp-line gate bp-anim" style="--len:80" x1="760" y1="800" x2="840" y2="800"/>
+      <line class="bp-line gate bp-anim" style="--len:80" x1="700" y1="740" x2="760" y2="740"/>
+      <line class="bp-line gate bp-anim" style="--len:80" x1="840" y1="740" x2="900" y2="740"/>
+      <text x="800" y="830" text-anchor="middle" fill="rgba(184,134,42,.7)" font-family="JetBrains Mono" font-size="10" letter-spacing="3">MAIN GATE</text>
+    </g>
+    <!-- internal main road curve -->
+    <path class="bp-line bp-anim" style="--len:1800" d="M 800 740 Q 800 600 600 500 Q 400 420 380 320 L 380 260" />
+    <path class="bp-line bp-anim" style="--len:1800" d="M 800 740 Q 800 600 1000 500 Q 1200 420 1220 320 L 1220 260" />
+    <!-- horizontal cross road -->
+    <path class="bp-line thin bp-anim" style="--len:1300" d="M 240 480 L 1360 480"/>
+    <!-- plot grid (6x8 small rectangles) - left -->
+    <g id="bp-plots-l">
+      <!-- generated below visually -->
+      <g>
+        <rect class="bp-line thin bp-anim" style="--len:140" x="260" y="290" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="305" y="290" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="350" y="290" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="260" y="325" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="305" y="325" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="350" y="325" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="260" y="360" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="305" y="360" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="350" y="360" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="260" y="395" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="305" y="395" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="350" y="395" width="40" height="30" />
+        <!-- below cross road -->
+        <rect class="bp-line thin bp-anim" style="--len:140" x="260" y="510" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="305" y="510" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="350" y="510" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="260" y="545" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="305" y="545" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="350" y="545" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="260" y="580" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="305" y="580" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="350" y="580" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="260" y="615" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="305" y="615" width="40" height="30" />
+        <rect class="bp-line thin bp-anim" style="--len:140" x="350" y="615" width="40" height="30" />
+      </g>
+    </g>
+    <!-- plot grid right -->
+    <g id="bp-plots-r">
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1210" y="290" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1255" y="290" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1300" y="290" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1210" y="325" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1255" y="325" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1300" y="325" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1210" y="360" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1255" y="360" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1300" y="360" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1210" y="395" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1255" y="395" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1300" y="395" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1210" y="510" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1255" y="510" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1300" y="510" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1210" y="545" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1255" y="545" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1300" y="545" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1210" y="580" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1255" y="580" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1300" y="580" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1210" y="615" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1255" y="615" width="40" height="30" />
+      <rect class="bp-line thin bp-anim" style="--len:140" x="1300" y="615" width="40" height="30" />
+    </g>
+    <!-- central clubhouse with hatching -->
+    <g id="bp-club">
+      <rect x="720" y="430" width="160" height="120" fill="url(#bp-hatch)" stroke="var(--gold)" stroke-width="1.4" stroke-dasharray="560" stroke-dashoffset="560" class="bp-anim-club" opacity=".9"/>
+      <text x="800" y="494" text-anchor="middle" fill="rgba(184,134,42,.85)" font-family="JetBrains Mono" font-size="10" letter-spacing="2.5">CLUBHOUSE</text>
+      <text x="800" y="510" text-anchor="middle" fill="rgba(184,134,42,.65)" font-family="JetBrains Mono" font-size="9" letter-spacing="2">25,000 SQ FT</text>
+    </g>
+    <!-- trees scattered -->
+    <g id="bp-trees">
+      <circle class="bp-tree" cx="430" cy="280" r="2.5"/><circle class="bp-tree" cx="450" cy="296" r="2"/>
+      <circle class="bp-tree" cx="690" cy="290" r="2.5"/><circle class="bp-tree" cx="710" cy="306" r="2"/>
+      <circle class="bp-tree" cx="900" cy="290" r="2.5"/><circle class="bp-tree" cx="920" cy="306" r="2"/>
+      <circle class="bp-tree" cx="1180" cy="280" r="2.5"/><circle class="bp-tree" cx="1160" cy="296" r="2"/>
+      <circle class="bp-tree" cx="430" cy="700" r="2.5"/><circle class="bp-tree" cx="450" cy="686" r="2"/>
+      <circle class="bp-tree" cx="690" cy="700" r="2.5"/><circle class="bp-tree" cx="710" cy="686" r="2"/>
+      <circle class="bp-tree" cx="900" cy="700" r="2.5"/><circle class="bp-tree" cx="920" cy="686" r="2"/>
+      <circle class="bp-tree" cx="1180" cy="700" r="2.5"/><circle class="bp-tree" cx="1160" cy="686" r="2"/>
+      <circle class="bp-tree" cx="240" cy="480" r="2.5"/><circle class="bp-tree" cx="1360" cy="480" r="2.5"/>
+      <circle class="bp-tree" cx="600" cy="450" r="2"/><circle class="bp-tree" cx="1000" cy="450" r="2"/>
+    </g>
+    <!-- N indicator -->
+    <g transform="translate(1450,300)">
+      <circle r="22" fill="none" stroke="rgba(184,134,42,.5)" stroke-width=".6"/>
+      <line x1="0" y1="-22" x2="0" y2="22" stroke="rgba(184,134,42,.5)" stroke-width=".6"/>
+      <polygon points="0,-22 -5,-12 5,-12" fill="rgba(184,134,42,.85)"/>
+      <text y="-30" text-anchor="middle" fill="rgba(184,134,42,.85)" font-family="JetBrains Mono" font-size="11" letter-spacing="3">N</text>
+    </g>
+    <!-- scale bar -->
+    <g transform="translate(220,840)">
+      <line x1="0" y1="0" x2="80" y2="0" stroke="rgba(184,134,42,.7)" stroke-width="1"/>
+      <line x1="0" y1="-4" x2="0" y2="4" stroke="rgba(184,134,42,.7)" stroke-width="1"/>
+      <line x1="40" y1="-3" x2="40" y2="3" stroke="rgba(184,134,42,.5)" stroke-width=".7"/>
+      <line x1="80" y1="-4" x2="80" y2="4" stroke="rgba(184,134,42,.7)" stroke-width="1"/>
+      <text y="-10" fill="rgba(184,134,42,.65)" font-family="JetBrains Mono" font-size="9" letter-spacing="2">0    50M    100M</text>
+    </g>
+  </svg>
+
+  <div class="hero-grid">
+    <div class="hero-top">
+      <div class="eyebrow">Pre-Launch &middot; Sector 11 Bahadurgarh</div>
+      <h1>The <em>Heritage</em></h1>
+      <p class="sub">A gated plotted community,<br/>twenty-five minutes from Delhi.</p>
+      <div class="ctas">
+        <a href="#visitor" class="btn btn-fill"><i class="fa-solid fa-bookmark"></i> Reserve a plot</a>
+        <a href="#master-plan" class="btn btn-line"><i class="fa-solid fa-map"></i> View masterplan</a>
+      </div>
+    </div>
+    <div></div>
+    <div class="hero-bot">
+      <div class="hero-stats">
+        <div class="item"><i class="fa-solid fa-house"></i> 236 PLOTS</div>
+        <div class="item"><i class="fa-solid fa-building"></i> 25K CLUBHOUSE</div>
+        <div class="item"><i class="fa-solid fa-shield-halved"></i> RERA PENDING</div>
+      </div>
+      <div class="geo">
+        28&deg;41'N &middot; 76&deg;56'E &middot; 15.83 ACRES
+        <span class="sml">Sector 11, Bahadurgarh, Haryana</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────── 2. THE MATH -->
+<section id="math" class="light">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow">The Math</div>
+      <h2 class="f-display rv d1" style="font-size:clamp(48px,7vw,96px);margin:14px auto 18px">Why <em>Heritage</em>.</h2>
+      <p class="lede rv d2" style="margin:0 auto">Run the same numbers Delhi runs. Run them honestly.</p>
+    </div>
+
+    <div class="ledger rv d3">
+      <div class="col left">
+        <h3>Renting in Delhi</h3>
+        <div class="big" data-counter="35000" data-prefix="&#8377;">&#8377;0<span style="font-family:'JetBrains Mono',monospace;font-size:.4em;color:var(--ink-light);font-weight:500;letter-spacing:.18em;margin-left:8px">/month</span></div>
+        <div class="lbl">Average 3BHK rent &middot; South / West Delhi</div>
+        <div class="future">After 30 years</div>
+        <div class="future-num"><span data-counter="25200000" data-prefix="&#8377;">&#8377;0</span></div>
+        <div class="lbl" style="margin-top:6px">Two crore fifty-two lakh, paid out</div>
+        <div class="bar"><div class="fill" data-w="100"></div></div>
+        <div class="verdict">Spent. Gone. Without ownership.</div>
+      </div>
+      <div class="divider-v"></div>
+      <div class="col right">
+        <h3>Owning at Heritage</h3>
+        <div class="big" data-counter="11300000" data-prefix="&#8377;">&#8377;0<span style="font-family:'JetBrains Mono',monospace;font-size:.4em;color:var(--ink-light);font-weight:500;letter-spacing:.18em;margin-left:8px">one-time</span></div>
+        <div class="lbl">126 sq.yd. plot at pre-launch price</div>
+        <div class="future">Projected in 30 years</div>
+        <div class="future-num"><span data-counter="48000000" data-prefix="&#8377;">&#8377;0</span></div>
+        <div class="lbl" style="margin-top:6px">Four crore eighty lakh, retained</div>
+        <div class="bar"><div class="fill" data-w="92"></div></div>
+        <div class="verdict">Yours. With every monsoon, more valuable.</div>
+      </div>
+    </div>
+
+    <p class="pull rv d2">The Delhi rent trap is real. <em>The exit</em> is twenty-five minutes away.</p>
+
+    <div class="foot rv d3">
+      <div>* Based on average 3% annual rent inflation in NCR</div>
+      <div>* Land appreciation conservative at ~5% CAGR</div>
+      <div>* Heritage plot includes 236 sq.ft. green per resident</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────── 3. ANATOMY -->
+<section id="anatomy" class="dark">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow">The Anatomy</div>
+      <h2 class="f-display rv d1" style="font-size:clamp(48px,7vw,96px);margin:14px auto 18px">A community, <em>measured.</em></h2>
+      <p class="lede rv d2" style="margin:0 auto">Four numbers. One address.</p>
+    </div>
+
+    <div class="stage rv d3" id="anatomyStage">
+      <!-- orbital rings -->
+      <svg viewBox="0 0 800 800" class="spin-slow" aria-hidden="true">
+        <circle cx="400" cy="400" r="180" class="ring solid"/>
+        <circle cx="400" cy="400" r="240" class="ring"/>
+      </svg>
+      <svg viewBox="0 0 800 800" class="spin-slow-rev" aria-hidden="true">
+        <circle cx="400" cy="400" r="300" class="ring"/>
+        <circle cx="400" cy="400" r="360" class="ring"/>
+      </svg>
+
+      <!-- center emblem -->
+      <svg class="center-emblem" viewBox="0 0 160 160">
+        <circle cx="80" cy="80" r="60" fill="none" stroke="var(--gold)" stroke-width="1"/>
+        <circle cx="80" cy="80" r="48" fill="none" stroke="var(--gold-light)" stroke-width=".8" stroke-dasharray="2 4"/>
+        <!-- gate emblem -->
+        <rect x="56" y="60" width="48" height="44" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+        <line x1="60" y1="56" x2="100" y2="56" stroke="var(--gold)" stroke-width="1.5"/>
+        <rect x="62" y="56" width="6" height="-4" fill="none"/>
+        <rect x="66" y="60" width="8" height="44" fill="none" stroke="var(--gold)" stroke-width="1"/>
+        <rect x="86" y="60" width="8" height="44" fill="none" stroke="var(--gold)" stroke-width="1"/>
+        <path d="M68 60 Q80 40 92 60" fill="none" stroke="var(--gold-light)" stroke-width="1.5"/>
+        <circle cx="80" cy="46" r="3" fill="var(--gold)"/>
+        <text x="80" y="124" text-anchor="middle" fill="var(--gold)" font-family="JetBrains Mono" font-size="7" letter-spacing="3">THE HERITAGE</text>
+      </svg>
+
+      <!-- 4 satellites at compass positions -->
+      <!-- N : 236 plots -->
+      <div class="sat" style="top:8%;left:50%">
+        <div class="num">236<em>plots</em></div>
+        <div class="lbl">Total Homes</div>
+        <div class="vis">
+          <svg viewBox="0 0 60 48" width="60" height="48">
+            <g fill="var(--gold)">
+              <circle cx="6" cy="6" r="2"/><circle cx="14" cy="6" r="2"/><circle cx="22" cy="6" r="2"/><circle cx="30" cy="6" r="2"/><circle cx="38" cy="6" r="2"/><circle cx="46" cy="6" r="2"/><circle cx="54" cy="6" r="2"/>
+              <circle cx="6" cy="14" r="2"/><circle cx="14" cy="14" r="2"/><circle cx="22" cy="14" r="2"/><circle cx="30" cy="14" r="2"/><circle cx="38" cy="14" r="2"/><circle cx="46" cy="14" r="2"/><circle cx="54" cy="14" r="2"/>
+              <circle cx="6" cy="22" r="2"/><circle cx="14" cy="22" r="2"/><circle cx="22" cy="22" r="2"/><circle cx="30" cy="22" r="2"/><circle cx="38" cy="22" r="2"/><circle cx="46" cy="22" r="2"/><circle cx="54" cy="22" r="2"/>
+              <circle cx="6" cy="30" r="2"/><circle cx="14" cy="30" r="2"/><circle cx="22" cy="30" r="2"/><circle cx="30" cy="30" r="2"/><circle cx="38" cy="30" r="2"/><circle cx="46" cy="30" r="2"/><circle cx="54" cy="30" r="2"/>
+              <circle cx="6" cy="38" r="2" opacity=".5"/><circle cx="14" cy="38" r="2" opacity=".5"/><circle cx="22" cy="38" r="2" opacity=".5"/><circle cx="30" cy="38" r="2" opacity=".5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="desc">Hand-numbered, every one.</div>
+      </div>
+      <!-- E : 15.83 acres -->
+      <div class="sat" style="top:50%;left:92%">
+        <div class="num">15.83<em>acres</em></div>
+        <div class="lbl">Land Parcel</div>
+        <div class="vis">
+          <svg viewBox="0 0 100 48" width="120" height="56">
+            <rect x="2" y="14" width="40" height="20" fill="none" stroke="rgba(245,241,232,.4)" stroke-width="1"/>
+            <text x="22" y="44" text-anchor="middle" fill="rgba(245,241,232,.55)" font-family="JetBrains Mono" font-size="6" letter-spacing="1">PITCH</text>
+            <rect x="50" y="6" width="48" height="36" fill="none" stroke="var(--gold)" stroke-width="1.4"/>
+            <text x="74" y="28" text-anchor="middle" fill="var(--gold)" font-family="JetBrains Mono" font-size="6" letter-spacing="1">HERITAGE</text>
+          </svg>
+        </div>
+        <div class="desc">Larger than nine football pitches.</div>
+      </div>
+      <!-- S : 25,000 sq.ft. -->
+      <div class="sat" style="top:92%;left:50%">
+        <div class="num">25,000<em>sq ft</em></div>
+        <div class="lbl">Clubhouse</div>
+        <div class="vis">
+          <svg viewBox="0 0 80 48" width="80" height="48">
+            <rect x="6" y="20" width="68" height="22" fill="none" stroke="var(--gold)" stroke-width="1.2"/>
+            <polygon points="6,20 40,6 74,20" fill="none" stroke="var(--gold)" stroke-width="1.2"/>
+            <line x1="20" y1="42" x2="20" y2="32" stroke="var(--gold)" stroke-width=".8"/>
+            <line x1="36" y1="42" x2="36" y2="32" stroke="var(--gold)" stroke-width=".8"/>
+            <line x1="44" y1="42" x2="44" y2="32" stroke="var(--gold)" stroke-width=".8"/>
+            <line x1="60" y1="42" x2="60" y2="32" stroke="var(--gold)" stroke-width=".8"/>
+            <rect x="36" y="30" width="8" height="12" fill="rgba(184,134,42,.4)"/>
+          </svg>
+        </div>
+        <div class="desc">Pool, gym, library, terrace.</div>
+      </div>
+      <!-- W : ₹90,000 / sq.yd. -->
+      <div class="sat" style="top:50%;left:8%">
+        <div class="num">&#8377;90K<em>/sq yd</em></div>
+        <div class="lbl">Pre-Launch</div>
+        <div class="vis">
+          <svg viewBox="0 0 100 48" width="100" height="48">
+            <polyline points="4,40 20,34 36,30 52,22 68,16 84,10 96,4" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+            <circle cx="96" cy="4" r="3" fill="var(--gold-light)"/>
+            <line x1="0" y1="44" x2="100" y2="44" stroke="rgba(245,241,232,.18)" stroke-width=".6"/>
+          </svg>
+        </div>
+        <div class="desc">Today's price. Tomorrow's regret.</div>
+      </div>
+    </div>
+
+    <p class="closer rv d4">Anatomy of a 15.83-acre community.</p>
+  </div>
+</section>
+
+
+
+<!-- ─────────────────────────────────────────────────── 4. METRO -->
+<section id="connectivity" class="dark">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow">Green Line 5</div>
+      <h2 class="f-display rv d1" style="font-size:clamp(48px,7vw,96px);margin:14px auto 18px">From Kashmere Gate <em>to your front gate.</em></h2>
+      <p class="lede rv d2" style="margin:0 auto">Nine stations. One thread. Seven hundred metres from the gates of The Heritage.</p>
+    </div>
+
+    <div class="metro-wrap rv d3">
+      <button class="replay" id="metroReplay"><i class="fa-solid fa-rotate-right"></i> Replay</button>
+      <svg class="metro" id="metro-svg" viewBox="0 0 1320 380" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="m-active" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#B8862A" stop-opacity=".25"/>
+            <stop offset="60%" stop-color="#D4A84A" stop-opacity=".95"/>
+            <stop offset="100%" stop-color="#B8862A" stop-opacity="1"/>
+          </linearGradient>
+          <linearGradient id="m-body" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fbfaf6"/>
+            <stop offset="40%" stop-color="#ece7da"/>
+            <stop offset="100%" stop-color="#a89d85"/>
+          </linearGradient>
+          <linearGradient id="m-glass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(20,22,32,.85)"/>
+            <stop offset="100%" stop-color="rgba(20,22,32,.65)"/>
+          </linearGradient>
+          <radialGradient id="m-glow" cx=".5" cy=".5" r=".5">
+            <stop offset="0%" stop-color="rgba(212,168,74,.6)"/>
+            <stop offset="100%" stop-color="rgba(212,168,74,0)"/>
+          </radialGradient>
+          <filter id="m-soft" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="2.5"/>
+          </filter>
+        </defs>
+
+        <!-- track -->
+        <line x1="60" y1="220" x2="1280" y2="220" stroke="rgba(184,134,42,.18)" stroke-width="1.2"/>
+        <g id="m-ties" opacity=".5"></g>
+        <line id="m-track-active" x1="60" y1="220" x2="60" y2="220" stroke="url(#m-active)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+
+        <!-- 9 stations -->
+        <g id="m-stations">
+          <g class="m-station" data-i="0" transform="translate(100,220)">
+            <line x1="0" y1="0" x2="0" y2="-26" stroke="rgba(184,134,42,.4)" stroke-width="1" class="m-tick"/>
+            <circle class="m-glow" r="0" fill="url(#m-glow)" opacity="0"/>
+            <circle class="m-ring" r="0" fill="none" stroke="rgba(212,168,74,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="m-outer" r="8" fill="#0E0E0F" stroke="rgba(184,134,42,.5)" stroke-width="1.5"/>
+            <circle class="m-dot" r="3.5" fill="rgba(184,134,42,.5)"/>
+            <text y="-38" text-anchor="middle">Kashmere Gate</text>
+          </g>
+          <g class="m-station" data-i="1" transform="translate(240,220)">
+            <line x1="0" y1="0" x2="0" y2="26" stroke="rgba(184,134,42,.4)" stroke-width="1" class="m-tick"/>
+            <circle class="m-glow" r="0" fill="url(#m-glow)" opacity="0"/>
+            <circle class="m-ring" r="0" fill="none" stroke="rgba(212,168,74,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="m-outer" r="8" fill="#0E0E0F" stroke="rgba(184,134,42,.5)" stroke-width="1.5"/>
+            <circle class="m-dot" r="3.5" fill="rgba(184,134,42,.5)"/>
+            <text y="44" text-anchor="middle">Inderlok</text>
+          </g>
+          <g class="m-station" data-i="2" transform="translate(380,220)">
+            <line x1="0" y1="0" x2="0" y2="-26" stroke="rgba(184,134,42,.4)" stroke-width="1" class="m-tick"/>
+            <circle class="m-glow" r="0" fill="url(#m-glow)" opacity="0"/>
+            <circle class="m-ring" r="0" fill="none" stroke="rgba(212,168,74,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="m-outer" r="8" fill="#0E0E0F" stroke="rgba(184,134,42,.5)" stroke-width="1.5"/>
+            <circle class="m-dot" r="3.5" fill="rgba(184,134,42,.5)"/>
+            <text y="-38" text-anchor="middle">Punjabi Bagh West</text>
+          </g>
+          <g class="m-station" data-i="3" transform="translate(520,220)">
+            <line x1="0" y1="0" x2="0" y2="26" stroke="rgba(184,134,42,.4)" stroke-width="1" class="m-tick"/>
+            <circle class="m-glow" r="0" fill="url(#m-glow)" opacity="0"/>
+            <circle class="m-ring" r="0" fill="none" stroke="rgba(212,168,74,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="m-outer" r="8" fill="#0E0E0F" stroke="rgba(184,134,42,.5)" stroke-width="1.5"/>
+            <circle class="m-dot" r="3.5" fill="rgba(184,134,42,.5)"/>
+            <text y="44" text-anchor="middle">Peera Garhi</text>
+          </g>
+          <g class="m-station" data-i="4" transform="translate(660,220)">
+            <line x1="0" y1="0" x2="0" y2="-26" stroke="rgba(184,134,42,.4)" stroke-width="1" class="m-tick"/>
+            <circle class="m-glow" r="0" fill="url(#m-glow)" opacity="0"/>
+            <circle class="m-ring" r="0" fill="none" stroke="rgba(212,168,74,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="m-outer" r="8" fill="#0E0E0F" stroke="rgba(184,134,42,.5)" stroke-width="1.5"/>
+            <circle class="m-dot" r="3.5" fill="rgba(184,134,42,.5)"/>
+            <text y="-38" text-anchor="middle">Nangloi</text>
+          </g>
+          <g class="m-station" data-i="5" transform="translate(800,220)">
+            <line x1="0" y1="0" x2="0" y2="26" stroke="rgba(184,134,42,.4)" stroke-width="1" class="m-tick"/>
+            <circle class="m-glow" r="0" fill="url(#m-glow)" opacity="0"/>
+            <circle class="m-ring" r="0" fill="none" stroke="rgba(212,168,74,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="m-outer" r="8" fill="#0E0E0F" stroke="rgba(184,134,42,.5)" stroke-width="1.5"/>
+            <circle class="m-dot" r="3.5" fill="rgba(184,134,42,.5)"/>
+            <text y="44" text-anchor="middle">Mundka</text>
+          </g>
+          <g class="m-station" data-i="6" transform="translate(940,220)">
+            <line x1="0" y1="0" x2="0" y2="-26" stroke="rgba(184,134,42,.4)" stroke-width="1" class="m-tick"/>
+            <line x1="0" y1="-90" x2="0" y2="90" stroke="rgba(245,241,232,.18)" stroke-width="1" stroke-dasharray="3 5"/>
+            <text x="-22" y="-86" text-anchor="end" fill="rgba(245,241,232,.5)" style="font-size:8px;letter-spacing:.3em">DELHI</text>
+            <text x="22" y="-86" text-anchor="start" fill="rgba(245,241,232,.5)" style="font-size:8px;letter-spacing:.3em">HARYANA</text>
+            <circle class="m-glow" r="0" fill="url(#m-glow)" opacity="0"/>
+            <circle class="m-ring" r="0" fill="none" stroke="rgba(212,168,74,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="m-outer" r="8" fill="#0E0E0F" stroke="rgba(184,134,42,.5)" stroke-width="1.5"/>
+            <circle class="m-dot" r="3.5" fill="rgba(184,134,42,.5)"/>
+            <text y="-38" text-anchor="middle">Tikri Border</text>
+          </g>
+          <g class="m-station" data-i="7" transform="translate(1100,220)">
+            <line x1="0" y1="0" x2="0" y2="26" stroke="rgba(184,134,42,.4)" stroke-width="1" class="m-tick"/>
+            <circle class="m-glow" r="0" fill="url(#m-glow)" opacity="0"/>
+            <circle class="m-ring" r="0" fill="none" stroke="rgba(212,168,74,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="m-outer" r="8" fill="#0E0E0F" stroke="rgba(184,134,42,.5)" stroke-width="1.5"/>
+            <circle class="m-dot" r="3.5" fill="rgba(184,134,42,.5)"/>
+            <text y="44" text-anchor="middle">Pt. Shree Ram Sharma</text>
+          </g>
+          <g class="m-station m-final" data-i="8" transform="translate(1260,220)">
+            <line x1="0" y1="0" x2="0" y2="-30" stroke="rgba(184,134,42,.5)" stroke-width="1.2" class="m-tick"/>
+            <circle class="m-halo" r="0" fill="url(#m-glow)" opacity="0"/>
+            <circle class="m-glow" r="0" fill="url(#m-glow)" opacity="0"/>
+            <circle class="m-ring" r="0" fill="none" stroke="rgba(212,168,74,.7)" stroke-width="1.2" opacity="0"/>
+            <circle class="m-outer" r="11" fill="#0E0E0F" stroke="rgba(212,168,74,.85)" stroke-width="2"/>
+            <circle class="m-dot" r="5" fill="rgba(184,134,42,.6)"/>
+            <text y="-46" text-anchor="middle" style="font-size:11px;font-weight:600;fill:#D4A84A">Bahadurgarh City Park</text>
+            <text y="-60" text-anchor="middle" style="font-size:8px;letter-spacing:.36em;fill:#B8862A">DESTINATION</text>
+          </g>
+        </g>
+
+        <!-- shadow + train -->
+        <g id="m-shadow" opacity="0">
+          <ellipse cx="-60" cy="22" rx="120" ry="3.5" fill="rgba(0,0,0,.5)" filter="url(#m-soft)"/>
+        </g>
+        <g id="m-train" transform="translate(100,220)">
+          <g id="m-trail" opacity="0">
+            <line x1="-220" y1="-2" x2="-150" y2="-2" stroke="rgba(212,168,74,.35)" stroke-width=".8"/>
+            <line x1="-240" y1="2" x2="-150" y2="2" stroke="rgba(212,168,74,.5)" stroke-width="1.1"/>
+            <line x1="-220" y1="6" x2="-150" y2="6" stroke="rgba(212,168,74,.35)" stroke-width=".8"/>
+          </g>
+          <g transform="translate(-150,0)">
+            <rect x="0" y="-12" width="60" height="24" rx="2" fill="url(#m-body)" stroke="rgba(74,70,62,.55)" stroke-width=".6"/>
+            <rect x="0" y="-2" width="60" height="1" fill="#B8862A"/>
+            <rect x="3" y="-9" width="54" height="5" rx="1" fill="url(#m-glass)"/>
+          </g>
+          <rect x="-90" y="-2" width="6" height="4" fill="rgba(74,70,62,.5)"/>
+          <g transform="translate(-84,0)">
+            <rect x="0" y="-12" width="60" height="24" rx="2" fill="url(#m-body)" stroke="rgba(74,70,62,.55)" stroke-width=".6"/>
+            <rect x="0" y="-2" width="60" height="1" fill="#B8862A"/>
+            <rect x="3" y="-9" width="54" height="5" rx="1" fill="url(#m-glass)"/>
+          </g>
+          <rect x="-24" y="-2" width="6" height="4" fill="rgba(74,70,62,.5)"/>
+          <g transform="translate(-18,0)">
+            <path d="M 0 -12 L 50 -12 Q 64 -12 70 -6 L 74 0 L 70 6 Q 64 12 50 12 L 0 12 Z" fill="url(#m-body)" stroke="rgba(74,70,62,.55)" stroke-width=".6"/>
+            <rect x="0" y="-2" width="64" height="1" fill="#B8862A"/>
+            <rect x="3" y="-9" width="44" height="5" rx="1" fill="url(#m-glass)"/>
+            <rect x="50" y="-9" width="14" height="5" rx="1" fill="url(#m-glass)"/>
+            <ellipse cx="71" cy="-1" rx="1.6" ry="2" fill="#fff8d8"/>
+          </g>
+        </g>
+
+        <!-- destination marker badge -->
+        <g id="m-badge" transform="translate(1260,140)" opacity="0">
+          <rect x="-110" y="-30" width="220" height="48" fill="rgba(245,241,232,.95)" stroke="#B8862A" stroke-width="1"/>
+          <path d="M-110 -30 L-110 -22 M-110 -30 L-102 -30" stroke="#B8862A" stroke-width="1.4" fill="none"/>
+          <path d="M110 -30 L110 -22 M110 -30 L102 -30" stroke="#B8862A" stroke-width="1.4" fill="none"/>
+          <path d="M-110 18 L-110 10 M-110 18 L-102 18" stroke="#B8862A" stroke-width="1.4" fill="none"/>
+          <path d="M110 18 L110 10 M110 18 L102 18" stroke="#B8862A" stroke-width="1.4" fill="none"/>
+          <text x="0" y="-12" text-anchor="middle" fill="#B8862A" font-family="JetBrains Mono" font-size="9" letter-spacing=".34em">WE ARE HERE</text>
+          <text x="0" y="6" text-anchor="middle" fill="#0E0E0F" font-family="Cormorant Garamond" font-style="italic" font-size="14">700m &middot; 2 minute walk</text>
+        </g>
+
+        <!-- 7 dotted trail dots from final station to badge -->
+        <g id="m-trail-arc" opacity="0">
+          <circle cx="1260" cy="200" r="2" fill="#B8862A"/>
+          <circle cx="1260" cy="190" r="2" fill="#B8862A"/>
+          <circle cx="1260" cy="180" r="2" fill="#B8862A"/>
+          <circle cx="1260" cy="170" r="2" fill="#B8862A"/>
+          <circle cx="1260" cy="162" r="2" fill="#B8862A"/>
+          <circle cx="1260" cy="156" r="2" fill="#B8862A"/>
+          <circle cx="1260" cy="150" r="2" fill="#B8862A"/>
+        </g>
+      </svg>
+      <p class="status" id="m-status">Awaiting departure&hellip;</p>
+    </div>
+
+    <div class="way-grid rv d4">
+      <div class="way"><i class="fa-solid fa-train-subway"></i><div><div class="title">Bahadurgarh Metro</div><div class="meta">2 KM &middot; Direct</div></div></div>
+      <div class="way"><i class="fa-solid fa-flag"></i><div><div class="title">Bahadurgarh Stadium</div><div class="meta">700M &middot; 1 MIN</div></div></div>
+      <div class="way"><i class="fa-solid fa-road"></i><div><div class="title">Delhi Border</div><div class="meta">5 MINUTES</div></div></div>
+      <div class="way"><i class="fa-solid fa-route"></i><div><div class="title">UER II Expressway</div><div class="meta">10 MINUTES</div></div></div>
+      <div class="way"><i class="fa-solid fa-plane"></i><div><div class="title">IGI Airport</div><div class="meta">25 MINUTES</div></div></div>
+      <div class="way"><i class="fa-solid fa-city"></i><div><div class="title">Gurugram</div><div class="meta">25 MINUTES</div></div></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ─────────────────────────────────────────────────── 5. TRY IT ON -->
+<section id="try-it-on" class="light">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow">Plot Configurations</div>
+      <h2 class="f-display rv d1" style="font-size:clamp(48px,7vw,96px);margin:14px auto 18px">Find your <em>fit.</em></h2>
+      <p class="lede rv d2" style="margin:0 auto">Six configurations. One legacy.</p>
+    </div>
+
+    <div class="tabs rv d3" id="plotTabs">
+      <button class="plot-tab on" data-i="0">126<span class="yd">SQ.YD</span></button>
+      <button class="plot-tab" data-i="1">136<span class="yd">SQ.YD</span></button>
+      <button class="plot-tab" data-i="2">146<span class="yd">SQ.YD</span></button>
+      <button class="plot-tab" data-i="3">162<span class="yd">SQ.YD</span></button>
+      <button class="plot-tab" data-i="4">174<span class="yd">SQ.YD</span></button>
+      <button class="plot-tab" data-i="5">177<span class="yd">SQ.YD</span></button>
+    </div>
+
+    <div class="stage-fit rv d4">
+      <div class="plot-stage" id="plotStage">
+        <svg viewBox="0 0 600 540" id="plotSvg">
+          <defs>
+            <pattern id="ps-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,0,0,.04)" stroke-width=".5"/>
+            </pattern>
+          </defs>
+          <rect width="600" height="540" fill="url(#ps-grid)"/>
+          <!-- compass -->
+          <g transform="translate(540,40)" opacity=".55">
+            <circle r="14" fill="none" stroke="var(--gold)" stroke-width=".6"/>
+            <polygon points="0,-14 -3,-6 3,-6" fill="var(--gold)"/>
+            <text y="-20" text-anchor="middle" fill="var(--gold)" font-family="JetBrains Mono" font-size="9" letter-spacing="2">N</text>
+          </g>
+          <!-- plot rect (will scale) -->
+          <g id="plotG" transform="translate(300,270)">
+            <rect id="plotRect" x="-150" y="-120" width="300" height="240" fill="#fff" stroke="var(--gold)" stroke-width="2"/>
+            <!-- house silhouette inside -->
+            <g id="plotHouse" stroke="var(--gold)" stroke-width="1" stroke-dasharray="3 4" fill="none">
+              <rect x="-100" y="-80" width="200" height="160" />
+              <rect x="-90" y="-60" width="80" height="60" />
+              <rect x="20" y="-60" width="70" height="60" />
+              <rect x="-90" y="10" width="180" height="60" />
+              <line x1="-100" y1="0" x2="100" y2="0"/>
+              <text y="44" text-anchor="middle" fill="rgba(184,134,42,.5)" font-family="JetBrains Mono" font-size="8" letter-spacing="2">BUILT-UP</text>
+            </g>
+            <!-- dimension lines top -->
+            <line x1="-150" y1="-140" x2="150" y2="-140" stroke="var(--ink-mid)" stroke-width=".8"/>
+            <line x1="-150" y1="-145" x2="-150" y2="-135" stroke="var(--ink-mid)" stroke-width=".8"/>
+            <line x1="150" y1="-145" x2="150" y2="-135" stroke="var(--ink-mid)" stroke-width=".8"/>
+            <text id="dim-w" x="0" y="-150" text-anchor="middle" fill="var(--ink-mid)" font-family="JetBrains Mono" font-size="11" letter-spacing="2">30 FT</text>
+            <!-- dimension right -->
+            <line x1="170" y1="-120" x2="170" y2="120" stroke="var(--ink-mid)" stroke-width=".8"/>
+            <line x1="165" y1="-120" x2="175" y2="-120" stroke="var(--ink-mid)" stroke-width=".8"/>
+            <line x1="165" y1="120" x2="175" y2="120" stroke="var(--ink-mid)" stroke-width=".8"/>
+            <text id="dim-d" x="180" y="4" fill="var(--ink-mid)" font-family="JetBrains Mono" font-size="11" letter-spacing="2">39 FT</text>
+            <!-- corner pins -->
+            <circle cx="-150" cy="-120" r="3" fill="var(--gold)"/>
+            <circle cx="150" cy="-120" r="3" fill="var(--gold)"/>
+            <circle cx="-150" cy="120" r="3" fill="var(--gold)"/>
+            <circle cx="150" cy="120" r="3" fill="var(--gold)"/>
+            <!-- area label inside -->
+            <text id="plot-area" x="0" y="-100" text-anchor="middle" fill="var(--gold)" font-family="JetBrains Mono" font-size="10" letter-spacing="3">126 SQ.YD.</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="price-side">
+        <div class="lbl">Pre-Launch Price</div>
+        <div class="price"><span id="plotPrice">&#8377;1.13</span><em>Cr</em></div>
+        <div class="specs">
+          <div class="row"><span>Plot Area</span><strong id="sp-area">126 sq.yd.</strong></div>
+          <div class="row"><span>Built-Up</span><strong id="sp-bua">1,650 sq.ft.</strong></div>
+          <div class="row"><span>Footprint</span><strong id="sp-foot">30 &times; 39 ft</strong></div>
+          <div class="row"><span>Per Sq.Yd.</span><strong>&#8377;90,000</strong></div>
+        </div>
+        <p class="note">Floor-to-ceiling 11 ft. North-facing options available on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ─────────────────────────────────────────────────── 6. MASTER PLAN -->
+<section id="master-plan" class="dark">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow">The Masterplan</div>
+      <h2 class="f-display rv d1" style="font-size:clamp(48px,7vw,96px);margin:14px auto 18px">The <em>Master Plan.</em></h2>
+      <p class="lede rv d2" style="margin:0 auto">Twelve amenities. One community. One address. Hover any pin to peek inside.</p>
+    </div>
+
+    <div class="mp-wrap rv d3">
+      <svg class="mp" id="mpSvg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="mp-line" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#B8862A"/>
+            <stop offset="100%" stop-color="#D4A84A"/>
+          </linearGradient>
+        </defs>
+        <!-- perimeter wall -->
+        <path class="mp-draw" d="M 80 80 L 1120 80 L 1120 620 L 80 620 Z" fill="none" stroke="url(#mp-line)" stroke-width="1.6" stroke-dasharray="3000" stroke-dashoffset="3000" style="--len:3000"/>
+        <!-- inner offset -->
+        <path class="mp-draw" d="M 100 100 L 1100 100 L 1100 600 L 100 600 Z" fill="none" stroke="rgba(184,134,42,.3)" stroke-width=".7" stroke-dasharray="3000" stroke-dashoffset="3000" style="--len:3000"/>
+        <!-- main gate -->
+        <g>
+          <line class="mp-draw" x1="580" y1="620" x2="580" y2="660" stroke="#D4A84A" stroke-width="2" stroke-dasharray="40" stroke-dashoffset="40" style="--len:40"/>
+          <line class="mp-draw" x1="620" y1="620" x2="620" y2="660" stroke="#D4A84A" stroke-width="2" stroke-dasharray="40" stroke-dashoffset="40" style="--len:40"/>
+          <text x="600" y="680" text-anchor="middle" fill="#D4A84A" font-family="JetBrains Mono" font-size="10" letter-spacing="3">MAIN GATE</text>
+        </g>
+        <!-- main road from gate to clubhouse -->
+        <path class="mp-draw" d="M 600 620 L 600 360" fill="none" stroke="rgba(184,134,42,.45)" stroke-width="1" stroke-dasharray="260" stroke-dashoffset="260" style="--len:260"/>
+        <!-- horizontal cross road -->
+        <path class="mp-draw" d="M 100 360 L 1100 360" fill="none" stroke="rgba(184,134,42,.45)" stroke-width="1" stroke-dasharray="1000" stroke-dashoffset="1000" style="--len:1000"/>
+        <!-- top loop -->
+        <path class="mp-draw" d="M 600 360 Q 400 280 320 200 Q 600 120 880 200 Q 800 280 600 360" fill="none" stroke="rgba(184,134,42,.32)" stroke-width=".8" stroke-dasharray="1400" stroke-dashoffset="1400" style="--len:1400"/>
+
+        <!-- central clubhouse -->
+        <rect class="mp-draw" x="540" y="320" width="120" height="80" fill="rgba(184,134,42,.06)" stroke="#D4A84A" stroke-width="1.6" stroke-dasharray="400" stroke-dashoffset="400" style="--len:400"/>
+        <text x="600" y="354" text-anchor="middle" fill="#D4A84A" font-family="JetBrains Mono" font-size="9" letter-spacing="2.5">CLUBHOUSE</text>
+        <text x="600" y="370" text-anchor="middle" fill="rgba(212,168,74,.7)" font-family="JetBrains Mono" font-size="8" letter-spacing="2">25,000 SQ.FT.</text>
+
+        <!-- amenity zones (circles) -->
+        <g id="mp-zones">
+          <circle class="mp-zone" cx="200" cy="180" r="55" fill="none" stroke="rgba(184,134,42,.18)" stroke-width=".8" stroke-dasharray="2 4"/>
+          <circle class="mp-zone" cx="380" cy="160" r="42" fill="none" stroke="rgba(184,134,42,.18)" stroke-width=".8" stroke-dasharray="2 4"/>
+          <circle class="mp-zone" cx="820" cy="160" r="42" fill="none" stroke="rgba(184,134,42,.18)" stroke-width=".8" stroke-dasharray="2 4"/>
+          <circle class="mp-zone" cx="1000" cy="180" r="55" fill="none" stroke="rgba(184,134,42,.18)" stroke-width=".8" stroke-dasharray="2 4"/>
+          <circle class="mp-zone" cx="200" cy="500" r="55" fill="none" stroke="rgba(184,134,42,.18)" stroke-width=".8" stroke-dasharray="2 4"/>
+          <circle class="mp-zone" cx="380" cy="540" r="42" fill="none" stroke="rgba(184,134,42,.18)" stroke-width=".8" stroke-dasharray="2 4"/>
+          <circle class="mp-zone" cx="820" cy="540" r="42" fill="none" stroke="rgba(184,134,42,.18)" stroke-width=".8" stroke-dasharray="2 4"/>
+          <circle class="mp-zone" cx="1000" cy="500" r="55" fill="none" stroke="rgba(184,134,42,.18)" stroke-width=".8" stroke-dasharray="2 4"/>
+        </g>
+
+        <!-- 13 amenity pins -->
+        <g class="amenity-pin" data-i="0" transform="translate(200,180)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <circle r="14" fill="none" stroke="rgba(212,168,74,.4)"/>
+          <text y="-20" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">CRICKET</text>
+        </g>
+        <g class="amenity-pin" data-i="1" transform="translate(380,160)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="-14" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">BADMINTON</text>
+        </g>
+        <g class="amenity-pin" data-i="2" transform="translate(820,160)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="-14" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">BASKETBALL</text>
+        </g>
+        <g class="amenity-pin" data-i="3" transform="translate(1000,180)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="-20" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">PICKLEBALL</text>
+        </g>
+        <g class="amenity-pin" data-i="4" transform="translate(180,300)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="-14" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">MIYAWAKI FOREST</text>
+        </g>
+        <g class="amenity-pin" data-i="5" transform="translate(420,420)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="-14" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">FLOWER GARDEN</text>
+        </g>
+        <g class="amenity-pin" data-i="6" transform="translate(780,420)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="-14" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">ROCK GARDEN</text>
+        </g>
+        <g class="amenity-pin" data-i="7" transform="translate(1020,300)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="-14" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">AMPHITHEATRE</text>
+        </g>
+        <g class="amenity-pin" data-i="8" transform="translate(200,500)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="22" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">TERRACE CAF&Eacute;</text>
+        </g>
+        <g class="amenity-pin" data-i="9" transform="translate(380,540)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="22" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">GYMNASIUM</text>
+        </g>
+        <g class="amenity-pin" data-i="10" transform="translate(820,540)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="22" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">KIDS PLAY</text>
+        </g>
+        <g class="amenity-pin" data-i="11" transform="translate(1000,500)">
+          <circle class="dot" r="6" fill="#D4A84A"/>
+          <text y="22" text-anchor="middle" fill="rgba(245,241,232,.85)" font-family="JetBrains Mono" font-size="9" letter-spacing="1.6">SENIOR PARK</text>
+        </g>
+        <g class="amenity-pin" data-i="12" transform="translate(600,360)">
+          <circle class="dot" r="7" fill="#D4A84A"/>
+          <circle r="14" fill="none" stroke="rgba(212,168,74,.5)"/>
+        </g>
+
+        <!-- N indicator -->
+        <g transform="translate(1130,120)" opacity=".7">
+          <circle r="16" fill="none" stroke="rgba(184,134,42,.6)" stroke-width=".6"/>
+          <polygon points="0,-16 -4,-6 4,-6" fill="rgba(212,168,74,.95)"/>
+          <text y="-22" text-anchor="middle" fill="rgba(212,168,74,.95)" font-family="JetBrains Mono" font-size="10" letter-spacing="2">N</text>
+        </g>
+      </svg>
+
+      <!-- Polaroid container -->
+      <div id="polaroidLayer"></div>
+
+      <!-- Mobile fallback grid -->
+      <div class="mp-mobile" id="mpMobile"></div>
+    </div>
+
+    <div class="legend">
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Cricket Pitch</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Badminton</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Basketball</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Pickleball</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Miyawaki Forest</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Flower Garden</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Rock Garden</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Amphitheatre</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Terrace Caf&eacute;</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Gymnasium</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Kids Play</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Senior Park</div>
+      <div class="item"><i class="fa-solid fa-circle" style="font-size:8px"></i> Clubhouse</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ─────────────────────────────────────────────────── 7. ECOSYSTEM -->
+<section id="ecosystem" class="light">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow">The Ecosystem</div>
+      <h2 class="f-display rv d1" style="font-size:clamp(48px,7vw,96px);margin:14px auto 18px">An economy that <em>compounds.</em></h2>
+      <p class="lede rv d2" style="margin:0 auto">2,800+ industries. 490 acres. The NCR's most diversified manufacturing belt.</p>
+    </div>
+
+    <div class="eco-grid rv d3">
+      <div>
+        <svg class="eco" id="ecoSvg" viewBox="0 0 1100 600" preserveAspectRatio="xMidYMid meet">
+          <!-- center -->
+          <g id="eco-center" transform="translate(550,300)">
+            <circle r="120" fill="none" stroke="rgba(184,134,42,.18)" stroke-dasharray="3 6"/>
+            <circle r="100" fill="rgba(184,134,42,.08)" stroke="var(--gold)" stroke-width="1.5"/>
+            <circle r="78" fill="#fff" stroke="rgba(184,134,42,.4)" stroke-width=".6"/>
+            <text y="-6" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono" font-size="14" font-weight="600" letter-spacing=".22em">BAHADURGARH</text>
+            <text y="14" text-anchor="middle" fill="var(--gold)" font-family="JetBrains Mono" font-size="10" letter-spacing=".26em">490 ACRE BELT</text>
+          </g>
+
+          <!-- 8 satellite hexagonal positions; we'll place at compass points -->
+          <!-- N (0,-220) NE (190,-110) E (220,0) SE (190,110) S (0,220) SW (-190,110) W (-220,0) NW (-190,-110) -->
+          <!-- center (550,300) -->
+          <line class="eco-line" style="--len:120" x1="550" y1="200" x2="550" y2="100"/>
+          <line class="eco-line" style="--len:217" x1="640" y1="252" x2="740" y2="190"/>
+          <line class="eco-line" style="--len:120" x1="650" y1="300" x2="770" y2="300"/>
+          <line class="eco-line" style="--len:217" x1="640" y1="348" x2="740" y2="410"/>
+          <line class="eco-line" style="--len:120" x1="550" y1="400" x2="550" y2="500"/>
+          <line class="eco-line" style="--len:217" x1="460" y1="348" x2="360" y2="410"/>
+          <line class="eco-line" style="--len:120" x1="450" y1="300" x2="330" y2="300"/>
+          <line class="eco-line" style="--len:217" x1="460" y1="252" x2="360" y2="190"/>
+
+          <!-- 8 satellites -->
+          <g class="eco-sat" transform="translate(550,80)">
+            <circle r="38" fill="#fff" stroke="var(--gold)" stroke-width="1"/>
+            <text y="-2" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono" font-size="9" font-weight="600" letter-spacing=".2em">CERAMICS</text>
+            <text y="14" text-anchor="middle" fill="var(--gold)" font-family="Font Awesome 6 Free" font-weight="900" font-size="14">&#xf6f1;</text>
+          </g>
+          <g class="eco-sat" transform="translate(760,180)">
+            <circle r="38" fill="#fff" stroke="var(--gold)" stroke-width="1"/>
+            <text y="-2" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono" font-size="9" font-weight="600" letter-spacing=".2em">GLASS</text>
+            <text y="14" text-anchor="middle" fill="var(--gold)" font-family="Font Awesome 6 Free" font-weight="900" font-size="14">&#xf72f;</text>
+          </g>
+          <g class="eco-sat" transform="translate(800,300)">
+            <circle r="38" fill="#fff" stroke="var(--gold)" stroke-width="1"/>
+            <text y="-2" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono" font-size="9" font-weight="600" letter-spacing=".2em">FOOTWEAR</text>
+            <text y="14" text-anchor="middle" fill="var(--gold)" font-family="Font Awesome 6 Free" font-weight="900" font-size="14">&#xf54b;</text>
+          </g>
+          <g class="eco-sat" transform="translate(760,420)">
+            <circle r="38" fill="#fff" stroke="var(--gold)" stroke-width="1"/>
+            <text y="-2" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono" font-size="9" font-weight="600" letter-spacing=".2em">FMCG</text>
+            <text y="14" text-anchor="middle" fill="var(--gold)" font-family="Font Awesome 6 Free" font-weight="900" font-size="14">&#xf788;</text>
+          </g>
+          <g class="eco-sat" transform="translate(550,520)">
+            <circle r="38" fill="#fff" stroke="var(--gold)" stroke-width="1"/>
+            <text y="-2" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono" font-size="9" font-weight="600" letter-spacing=".2em">AUTOMOTIVE</text>
+            <text y="14" text-anchor="middle" fill="var(--gold)" font-family="Font Awesome 6 Free" font-weight="900" font-size="14">&#xf5e4;</text>
+          </g>
+          <g class="eco-sat" transform="translate(340,420)">
+            <circle r="38" fill="#fff" stroke="var(--gold)" stroke-width="1"/>
+            <text y="-2" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono" font-size="9" font-weight="600" letter-spacing=".2em">ELECTRONICS</text>
+            <text y="14" text-anchor="middle" fill="var(--gold)" font-family="Font Awesome 6 Free" font-weight="900" font-size="14">&#xf2db;</text>
+          </g>
+          <g class="eco-sat" transform="translate(300,300)">
+            <circle r="38" fill="#fff" stroke="var(--gold)" stroke-width="1"/>
+            <text y="-2" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono" font-size="9" font-weight="600" letter-spacing=".2em">CHEMICALS</text>
+            <text y="14" text-anchor="middle" fill="var(--gold)" font-family="Font Awesome 6 Free" font-weight="900" font-size="14">&#xf0c3;</text>
+          </g>
+          <g class="eco-sat" transform="translate(340,180)">
+            <circle r="38" fill="#fff" stroke="var(--gold)" stroke-width="1"/>
+            <text y="-2" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono" font-size="9" font-weight="600" letter-spacing=".2em">STEEL</text>
+            <text y="14" text-anchor="middle" fill="var(--gold)" font-family="Font Awesome 6 Free" font-weight="900" font-size="14">&#xf275;</text>
+          </g>
+        </svg>
+
+        <div class="big-num">
+          <div class="n"><span data-counter="2800">0</span><em>+</em></div>
+          <div class="l">Industries within the belt</div>
+        </div>
+      </div>
+
+      <div class="brands">
+        <h4>Anchor Brands</h4>
+        <div class="brow"><span class="nm">HNG Glass</span><span class="ct">Glass</span></div>
+        <div class="brow"><span class="nm">Somany</span><span class="ct">Ceramics</span></div>
+        <div class="brow"><span class="nm">Parle</span><span class="ct">FMCG</span></div>
+        <div class="brow"><span class="nm">Yokohama</span><span class="ct">Tyres</span></div>
+        <div class="brow"><span class="nm">Relaxo</span><span class="ct">Footwear</span></div>
+        <div class="brow"><span class="nm">HSIL</span><span class="ct">Sanitaryware</span></div>
+        <div class="brow"><span class="nm">Surya Roshni</span><span class="ct">Steel Pipes</span></div>
+        <div class="brow"><span class="nm">Asian Paints</span><span class="ct">Coatings</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────── 8. THE RADIUS -->
+<section id="radius" class="dark">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow">Within Reach</div>
+      <h2 class="f-display rv d1" style="font-size:clamp(48px,7vw,96px);margin:14px auto 18px">Everything <em>within reach.</em></h2>
+      <p class="lede rv d2" style="margin:0 auto">75+ schools, 5 universities, 3 medical colleges within a 10&#8209;km radius.</p>
+    </div>
+
+    <div class="rad-grid rv d3">
+      <div>
+        <svg class="rad" id="radSvg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
+          <!-- compass cross -->
+          <line x1="400" y1="40" x2="400" y2="760" stroke="rgba(245,241,232,.06)" stroke-width=".5"/>
+          <line x1="40" y1="400" x2="760" y2="400" stroke="rgba(245,241,232,.06)" stroke-width=".5"/>
+          <!-- 4 concentric rings -->
+          <circle class="rad-circle rad-r1" cx="400" cy="400" r="80"/>
+          <circle class="rad-circle rad-r2" cx="400" cy="400" r="180"/>
+          <circle class="rad-circle rad-r3" cx="400" cy="400" r="280"/>
+          <circle class="rad-circle rad-r4" cx="400" cy="400" r="370"/>
+          <!-- ring labels -->
+          <text x="404" y="324" fill="var(--gold)" font-family="JetBrains Mono" font-size="10" letter-spacing="2">1 KM</text>
+          <text x="404" y="224" fill="var(--gold)" font-family="JetBrains Mono" font-size="10" letter-spacing="2">3 KM</text>
+          <text x="404" y="124" fill="var(--gold)" font-family="JetBrains Mono" font-size="10" letter-spacing="2">5 KM</text>
+          <text x="404" y="34" fill="var(--gold)" font-family="JetBrains Mono" font-size="10" letter-spacing="2">10 KM</text>
+
+          <!-- center pin = project -->
+          <g transform="translate(400,400)">
+            <circle r="14" fill="rgba(212,168,74,.2)"/>
+            <circle r="8" fill="#D4A84A"/>
+            <circle r="3" fill="#fff"/>
+            <text y="34" text-anchor="middle" fill="#D4A84A" font-family="JetBrains Mono" font-size="9" letter-spacing="2">HERITAGE</text>
+          </g>
+
+          <!-- 1km ring: 5 schools -->
+          <g class="rad-pinG" id="radPins">
+            <!-- 1 km -->
+            <g transform="translate(420,340)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(340,420)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(460,440)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(360,360)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(440,380)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+
+            <!-- 3 km -->
+            <g transform="translate(540,300)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(260,320)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(560,500)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(280,520)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf0f8;</text></g>
+            <g transform="translate(440,260)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf19d;</text></g>
+
+            <!-- 5 km -->
+            <g transform="translate(640,260)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(180,280)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(620,540)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(220,580)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(420,200)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf0f8;</text></g>
+            <g transform="translate(420,640)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf0c3;</text></g>
+
+            <!-- 10 km -->
+            <g transform="translate(720,200)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(120,260)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(700,580)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(160,620)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf549;</text></g>
+            <g transform="translate(420,80)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf19d;</text></g>
+            <g transform="translate(420,720)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf19d;</text></g>
+            <g transform="translate(60,460)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf0f8;</text></g>
+            <g transform="translate(740,420)"><circle r="11" fill="#0E0E0F" stroke="#D4A84A"/><text text-anchor="middle" y="4" fill="#D4A84A" font-family="Font Awesome 6 Free" font-weight="900" font-size="11">&#xf0f8;</text></g>
+          </g>
+        </svg>
+      </div>
+
+      <div>
+        <div class="rad-cat">
+          <h4><i class="fa-solid fa-school"></i> Schools <span class="ct">75+</span></h4>
+          <ul>
+            <li>Mount Olympus School<span class="km">1.4 KM</span></li>
+            <li>Delhi Public School<span class="km">2.2 KM</span></li>
+            <li>St. Mary's Convent<span class="km">3.1 KM</span></li>
+            <li>Ryan International<span class="km">4.5 KM</span></li>
+            <li>K.R. Mangalam<span class="km">6.0 KM</span></li>
+          </ul>
+        </div>
+        <div class="rad-cat">
+          <h4><i class="fa-solid fa-graduation-cap"></i> Universities <span class="ct">5</span></h4>
+          <ul>
+            <li>HIT Bahadurgarh<span class="km">3.0 KM</span></li>
+            <li>PDM University<span class="km">5.5 KM</span></li>
+            <li>BPS Women's University<span class="km">8.0 KM</span></li>
+            <li>BGS Institute<span class="km">6.4 KM</span></li>
+            <li>Delhi Technical Campus<span class="km">9.0 KM</span></li>
+          </ul>
+        </div>
+        <div class="rad-cat">
+          <h4><i class="fa-solid fa-hospital"></i> Medical <span class="ct">3</span></h4>
+          <ul>
+            <li>Maharaja Agrasen Medical<span class="km">4.6 KM</span></li>
+            <li>SGT Medical College<span class="km">8.2 KM</span></li>
+            <li>BPS Medical College<span class="km">8.0 KM</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="closer">Built for the family that doesn't compromise on its children's education.</p>
+  </div>
+</section>
+
+
+
+<!-- ─────────────────────────────────────────────────── 9. THE WINDOW (PRICING) -->
+<section id="window" class="light">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow">Pricing &middot; Pre-Launch</div>
+      <h2 class="f-display rv d1" style="font-size:clamp(48px,7vw,96px);margin:14px auto 18px;text-transform:lowercase">the <em>window.</em></h2>
+      <p class="lede rv d2" style="margin:0 auto">Pre-launch prices close on public launch. The math is on your side.</p>
+    </div>
+
+    <div class="chart-wrap rv d3">
+      <svg class="chart price-chart" id="priceChart" viewBox="0 0 1100 500" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="ch-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(184,134,42,.28)"/>
+            <stop offset="100%" stop-color="rgba(184,134,42,0)"/>
+          </linearGradient>
+        </defs>
+        <!-- horizontal grid lines + Y ticks -->
+        <line class="chart-grid" x1="100" y1="80" x2="1060" y2="80"/>
+        <line class="chart-grid" x1="100" y1="160" x2="1060" y2="160"/>
+        <line class="chart-grid" x1="100" y1="240" x2="1060" y2="240"/>
+        <line class="chart-grid" x1="100" y1="320" x2="1060" y2="320"/>
+        <line class="chart-grid" x1="100" y1="400" x2="1060" y2="400"/>
+        <line class="chart-grid" x1="100" y1="80" x2="100" y2="430" stroke="rgba(0,0,0,.18)" stroke-width="1"/>
+        <line class="chart-grid" x1="100" y1="430" x2="1060" y2="430" stroke="rgba(0,0,0,.18)" stroke-width="1"/>
+
+        <!-- Y axis labels -->
+        <text class="chart-tick" x="90" y="404" text-anchor="end">&#8377;35K</text>
+        <text class="chart-tick" x="90" y="324" text-anchor="end">&#8377;50K</text>
+        <text class="chart-tick" x="90" y="244" text-anchor="end">&#8377;75K</text>
+        <text class="chart-tick" x="90" y="164" text-anchor="end">&#8377;90K</text>
+        <text class="chart-tick" x="90" y="124" text-anchor="end">&#8377;1L</text>
+        <text class="chart-tick" x="90" y="84" text-anchor="end">&#8377;1.25L</text>
+
+        <!-- X labels -->
+        <text class="chart-tick" x="180" y="450" text-anchor="middle">2018</text>
+        <text class="chart-tick" x="320" y="450" text-anchor="middle">2020</text>
+        <text class="chart-tick" x="460" y="450" text-anchor="middle">2022</text>
+        <text class="chart-tick" x="600" y="450" text-anchor="middle">2024</text>
+        <text class="chart-tick" x="740" y="450" text-anchor="middle" font-weight="600" fill="var(--gold)">TODAY</text>
+        <text class="chart-tick" x="880" y="450" text-anchor="middle">2026</text>
+        <text class="chart-tick" x="1020" y="450" text-anchor="middle">2027</text>
+
+        <!-- shaded gold area between TODAY and 2027 -->
+        <path id="chartShade" class="chart-shade" d="M 740 164 L 1020 90 L 1020 430 L 740 430 Z" opacity="0"/>
+
+        <!-- main historic line: 2018 -> TODAY -->
+        <path id="chartLineHist" class="chart-line"
+              d="M 180 404 L 320 360 L 460 300 L 600 230 L 740 164"
+              stroke-dasharray="700" stroke-dashoffset="700"/>
+        <!-- projected line: TODAY -> 2027 -->
+        <path id="chartLineProj" class="chart-line-proj"
+              d="M 740 164 L 880 130 L 1020 90"
+              stroke-dasharray="400" stroke-dashoffset="400"/>
+
+        <!-- callouts: 2018 -->
+        <g transform="translate(180,404)">
+          <circle r="6" fill="#fff" stroke="var(--gold)" stroke-width="1.5"/>
+          <line x1="0" y1="-12" x2="0" y2="-32" stroke="rgba(184,134,42,.5)" stroke-width=".7" stroke-dasharray="2 3"/>
+          <text y="-40" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="var(--ink-light)" letter-spacing="2">&#8377;35K</text>
+          <text y="-54" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--ink-light)" letter-spacing="2">HISTORIC</text>
+        </g>
+        <!-- TODAY pulse -->
+        <g transform="translate(740,164)">
+          <circle id="chartPulse" class="chart-pin-pulse" r="14"/>
+          <circle r="9" fill="var(--gold)" stroke="#fff" stroke-width="2"/>
+          <line x1="0" y1="14" x2="0" y2="40" stroke="var(--gold)" stroke-width="1"/>
+          <text y="56" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="600" fill="var(--gold)" letter-spacing="3">YOU ARE HERE</text>
+          <text y="-22" text-anchor="middle" font-family="Fraunces" font-weight="900" font-size="20" fill="var(--ink)">&#8377;90,000</text>
+          <text y="-36" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="var(--ink-light)" letter-spacing="2.5">PRE-LAUNCH</text>
+        </g>
+        <!-- 2027 projected -->
+        <g transform="translate(1020,90)">
+          <circle r="6" fill="#fff" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="2 2"/>
+          <line x1="0" y1="-12" x2="0" y2="-32" stroke="rgba(184,134,42,.5)" stroke-width=".7" stroke-dasharray="2 3"/>
+          <text y="-40" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="var(--gold)" letter-spacing="2">&#8377;1.12&ndash;1.25L</text>
+          <text y="-54" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--ink-light)" letter-spacing="2">PROJECTED</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="windows-2 rv d4">
+      <div class="wcard now">
+        <div class="lbl">Today &middot; Pre-Launch</div>
+        <div class="price">&#8377;90,000<em>/sq.yd.</em></div>
+        <div class="desc">Lock today's price. Limited inventory at this rate.</div>
+      </div>
+      <div class="wcard">
+        <div class="lbl">Public Launch (Q4 2026)</div>
+        <div class="price">&#8377;1.12<span style="font-family:'JetBrains Mono',monospace;font-size:.4em;color:var(--ink-light);font-weight:500">&ndash;</span>1.25L<em>/sq.yd.</em></div>
+        <div class="desc">Public launch pricing. Subject to market conditions.</div>
+      </div>
+    </div>
+
+    <div class="wcta rv d4">
+      <a href="#visitor" class="btn btn-fill"><i class="fa-solid fa-bookmark"></i> Reserve at pre-launch price</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────── 10. THE VISITOR'S BOOK -->
+<section id="visitor" class="light">
+  <div class="wrap">
+    <div class="book rv">
+      <!-- corner ornaments -->
+      <div class="corner tl"><svg viewBox="0 0 48 48"><path d="M 4 4 L 22 4 M 4 4 L 4 22 M 4 4 Q 14 4 18 8 M 4 4 Q 4 14 8 18"/></svg></div>
+      <div class="corner tr"><svg viewBox="0 0 48 48"><path d="M 4 4 L 22 4 M 4 4 L 4 22 M 4 4 Q 14 4 18 8 M 4 4 Q 4 14 8 18"/></svg></div>
+      <div class="corner bl"><svg viewBox="0 0 48 48"><path d="M 4 4 L 22 4 M 4 4 L 4 22 M 4 4 Q 14 4 18 8 M 4 4 Q 4 14 8 18"/></svg></div>
+      <div class="corner br"><svg viewBox="0 0 48 48"><path d="M 4 4 L 22 4 M 4 4 L 4 22 M 4 4 Q 14 4 18 8 M 4 4 Q 4 14 8 18"/></svg></div>
+
+      <div style="text-align:center">
+        <div class="eyebrow">Register Your Interest</div>
+        <h2 class="f-display" style="font-size:clamp(40px,5.5vw,72px);margin:14px 0 8px">The Visitor's <em>Book.</em></h2>
+        <p class="lede" style="font-size:1.2rem;margin:0 auto 12px">Sign here, and we'll arrange your private tour.</p>
+      </div>
+
+      <form id="visitorForm" novalidate style="margin-top:30px">
+        <div class="field">
+          <label>Name <span class="req">*</span></label>
+          <input type="text" name="name" placeholder="Your name in full&hellip;" required/>
+        </div>
+        <div class="field phone">
+          <div style="flex:1">
+            <label>Phone <span class="req">*</span></label>
+            <div style="display:flex;align-items:flex-end;gap:12px">
+              <span class="pfx">+91</span>
+              <input type="tel" name="phone" placeholder="Ten digits, please." pattern="[0-9]{10}" required style="border-bottom:1px solid var(--hair)"/>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="Where shall we send the brochure?"/>
+        </div>
+        <div class="field">
+          <label>Plot Interest</label>
+          <select name="plot">
+            <option value="">Pick a configuration&hellip;</option>
+            <option>126 sq.yd. &middot; &#8377;1.13 Cr</option>
+            <option>136 sq.yd. &middot; &#8377;1.22 Cr</option>
+            <option>146 sq.yd. &middot; &#8377;1.31 Cr</option>
+            <option>162 sq.yd. &middot; &#8377;1.46 Cr</option>
+            <option>174 sq.yd. &middot; &#8377;1.57 Cr</option>
+            <option>177 sq.yd. &middot; &#8377;1.59 Cr</option>
+            <option>Show me everything</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Tell us about your plans</label>
+          <textarea name="plans" rows="3" placeholder="Holiday home? Weekend retreat? Investment? All of the above? Tell us in your own words&hellip;"></textarea>
+        </div>
+        <button type="submit" class="submit"><i class="fa-solid fa-feather"></i> &nbsp; Sign and submit</button>
+      </form>
+
+      <div class="thanks" id="thanks">
+        <h3 style="font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:64px;color:var(--gold);font-variation-settings:'opsz' 144">Thank you.</h3>
+        <p>We'll be in touch within twenty-four hours to arrange your private site visit.</p>
+        <div class="signed"><span>The Heritage, Sector 11</span></div>
+      </div>
+    </div>
+
+    <div class="contact-cards rv d2">
+      <div class="ccard">
+        <i class="fa-solid fa-phone"></i>
+        <div class="lbl">Call &amp; WhatsApp</div>
+        <div class="val"><a href="tel:+919654803560">+91 96548 03560</a></div>
+      </div>
+      <div class="ccard">
+        <i class="fa-solid fa-envelope"></i>
+        <div class="lbl">Email</div>
+        <div class="val"><a href="mailto:gaurav.sobti@homegramestate.com">gaurav.sobti@homegramestate.com</a></div>
+      </div>
+      <div class="ccard">
+        <i class="fa-solid fa-location-dot"></i>
+        <div class="lbl">Site Office</div>
+        <div class="val"><a href="https://maps.app.goo.gl/v5cuPT7DoP5JsrWY8" target="_blank" rel="noopener">Sector 11, Bahadurgarh</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <div class="top-row">
+      <div>
+        <div class="word">THE HERITAGE</div>
+        <div class="sub">Homegram Estate &middot; Pre-Launch</div>
+        <address style="margin-top:24px">
+          Sector 11, Bahadurgarh,<br/>
+          Haryana, India<br/>
+          <a href="tel:+919654803560" style="color:var(--gold)">+91 96548 03560</a>
+        </address>
+      </div>
+      <div style="text-align:right">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(245,241,232,.55);margin-bottom:14px">Follow</div>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/919654803560" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rera">
+      RERA Registration: Pending. Disclaimer: All visualisations are conceptual and indicative. Final layout, dimensions, specifications, amenities and pricing are subject to approval and change. Project marketed by Homegram Estate. This communication does not constitute an offer or contract.
+    </div>
+    <div class="copy">&copy; 2025 Homegram Estate. All rights reserved.</div>
+  </div>
+</footer>
+
+
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (window.gsap && window.ScrollTrigger){ gsap.registerPlugin(ScrollTrigger); }
+
+  // ─────── NAV scroll
+  var nav = $('#topnav');
+  function navScroll(){ if (window.scrollY > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
+  navScroll(); window.addEventListener('scroll', navScroll, {passive:true});
+
+  // ─────── Reveals
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  $$('.rv').forEach(function(el){ io.observe(el); });
+
+  // ─────── Custom cursor
+  var dot = $('.cur-dot'), ring = $('.cur-ring');
+  var mx=window.innerWidth/2, my=window.innerHeight/2, dx=mx, dy=my, rx=mx, ry=my;
+  window.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; });
+  function tick(){
+    dx += (mx-dx)*.45; dy += (my-dy)*.45;
+    rx += (mx-rx)*.14; ry += (my-ry)*.14;
+    dot.style.transform = 'translate('+dx+'px,'+dy+'px) translate(-50%,-50%)';
+    ring.style.transform= 'translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';
+    requestAnimationFrame(tick);
+  }
+  if (window.innerWidth > 900) tick();
+
+  // magnetic + ring grow on interactive
+  $$('a, button, .btn, .plot-tab, .amenity-pin, .way, .ccard').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ ring.classList.add('big'); });
+    el.addEventListener('mouseleave', function(){ ring.classList.remove('big'); });
+  });
+  $$('.btn-fill, .btn-gold, .submit').forEach(function(el){
+    el.addEventListener('mousemove', function(e){
+      var r = el.getBoundingClientRect();
+      var cx = r.left + r.width/2, cy = r.top + r.height/2;
+      var x = (e.clientX - cx) * .25, y = (e.clientY - cy) * .35;
+      el.style.transform = 'translate('+x+'px,'+y+'px)';
+    });
+    el.addEventListener('mouseleave', function(){ el.style.transform = ''; });
+  });
+
+  // smooth nav anchor
+  $$('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if (id.length > 1){
+        var t = $(id);
+        if (t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+      }
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
+  // 1. HERO BLUEPRINT — stroke-dasharray draw on load
+  // ──────────────────────────────────────────────────────────────
+  function drawBlueprint(){
+    var lines = $$('.bp-anim');
+    lines.forEach(function(el,i){
+      var len = parseFloat(el.style.getPropertyValue('--len')) || 1000;
+      el.style.strokeDasharray = len;
+      el.style.strokeDashoffset = len;
+    });
+    // animate progressively
+    var dur = REDUCED ? 0 : 5500;
+    var start = performance.now();
+    function frame(t){
+      var p = Math.min(1, (t - start) / dur);
+      lines.forEach(function(el, i){
+        var len = parseFloat(el.style.getPropertyValue('--len')) || 1000;
+        var slot = i / lines.length;
+        var local = Math.min(1, Math.max(0, (p - slot*.6) * 2.5));
+        el.style.strokeDashoffset = len * (1 - local);
+      });
+      var club = $('.bp-anim-club');
+      if (club){ club.style.strokeDashoffset = 560 * (1 - p); }
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  drawBlueprint();
+
+  // hero gold particles
+  (function heroParticles(){
+    var c = $('#heroCanvas');
+    if (!c) return;
+    var ctx = c.getContext('2d');
+    var W, H, parts = [];
+    function resize(){
+      W = c.width = c.offsetWidth * (window.devicePixelRatio||1);
+      H = c.height = c.offsetHeight * (window.devicePixelRatio||1);
+    }
+    resize(); window.addEventListener('resize', resize);
+    var N = 50;
+    for (var i=0;i<N;i++){
+      parts.push({
+        x: Math.random()*1, y: Math.random()*1,
+        s: Math.random()*1.4 + .4,
+        v: (Math.random()*.3+.15)/600,
+        a: Math.random()*.4 + .1,
+        d: Math.random()*.5 - .25
+      });
+    }
+    function loop(){
+      if (REDUCED){ return; }
+      ctx.clearRect(0,0,W,H);
+      parts.forEach(function(p){
+        p.y -= p.v; if (p.y < -.05){ p.y = 1.05; p.x = Math.random(); }
+        p.x += p.d/3000;
+        ctx.beginPath();
+        ctx.arc(p.x*W, p.y*H, p.s*(window.devicePixelRatio||1), 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(212,168,74,'+p.a+')';
+        ctx.fill();
+      });
+      requestAnimationFrame(loop);
+    }
+    loop();
+  })();
+
+  // ──────────────────────────────────────────────────────────────
+  // 2. THE MATH — counters + bars + pull quote letter reveal
+  // ──────────────────────────────────────────────────────────────
+  function fmtINR(n){
+    n = Math.round(n);
+    var s = n.toString();
+    var lastThree = s.substring(s.length-3);
+    var other = s.substring(0, s.length-3);
+    if (other !== '') lastThree = ',' + lastThree;
+    return '\u20B9' + (other.replace(/\B(?=(\d{2})+(?!\d))/g, ',')) + lastThree;
+  }
+  function fmtCompact(n){
+    if (n >= 10000000) return '\u20B9' + (n/10000000).toFixed(2).replace(/\.00$/,'') + ' Cr';
+    if (n >= 100000) return '\u20B9' + (n/100000).toFixed(2).replace(/\.00$/,'') + ' L';
+    return fmtINR(n);
+  }
+  function animateCounter(el, target){
+    var dur = 1800;
+    var start = performance.now();
+    function step(t){
+      var p = Math.min(1, (t-start)/dur);
+      var e = 1 - Math.pow(1-p, 3);
+      el.textContent = fmtINR(target * e);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = fmtINR(target);
+    }
+    requestAnimationFrame(step);
+  }
+  var mathSeen = false;
+  var mathIO = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting && !mathSeen){
+        mathSeen = true;
+        $$('#math [data-counter]').forEach(function(el){
+          var t = parseInt(el.getAttribute('data-counter'),10);
+          animateCounter(el, t);
+        });
+        $$('#math .bar .fill').forEach(function(el){
+          var w = parseFloat(el.getAttribute('data-w'));
+          el.animate([{width:'0%'},{width:w+'%'}], {duration:1600,easing:'cubic-bezier(.2,.6,.2,1)',fill:'forwards'});
+        });
+        // letter reveal
+        var pull = $('#math .pull');
+        if (pull){
+          pull.style.opacity = 0;
+          pull.animate([{opacity:0,transform:'translateY(20px)'},{opacity:1,transform:'none'}],{duration:1200,easing:'cubic-bezier(.2,.6,.2,1)',fill:'forwards',delay:600});
+        }
+        mathIO.disconnect();
+      }
+    });
+  },{threshold:.25});
+  if ($('#math')) mathIO.observe($('#math'));
+
+  // also generic counter for ecosystem 2800
+  var ecoSeen=false;
+  var ecoCntIO = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting && !ecoSeen){
+        ecoSeen = true;
+        var n = $('#ecosystem [data-counter]');
+        if(n){
+          var target = parseInt(n.getAttribute('data-counter'),10);
+          var dur=1800, start=performance.now();
+          function step(t){
+            var p=Math.min(1,(t-start)/dur), e=1-Math.pow(1-p,3);
+            n.textContent = Math.round(target*e).toLocaleString('en-IN');
+            if (p<1) requestAnimationFrame(step); else n.textContent = target.toLocaleString('en-IN');
+          }
+          requestAnimationFrame(step);
+        }
+        ecoCntIO.disconnect();
+      }
+    });
+  },{threshold:.3});
+  if ($('#ecosystem')) ecoCntIO.observe($('#ecosystem'));
+
+
+
+  // ──────────────────────────────────────────────────────────────
+  // 3. ANATOMY — satellites scale-in stagger
+  // ──────────────────────────────────────────────────────────────
+  var anatSeen=false;
+  var anatIO = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting && !anatSeen){
+        anatSeen=true;
+        $$('#anatomy .sat').forEach(function(el,i){
+          el.animate([{opacity:0,transform:'translate(-50%,-50%) scale(.4)'},{opacity:1,transform:'translate(-50%,-50%) scale(1)'}],{duration:900,delay:i*180,easing:'cubic-bezier(.2,.7,.2,1)',fill:'forwards'});
+        });
+        anatIO.disconnect();
+      }
+    });
+  },{threshold:.2});
+  if ($('#anatomy')) anatIO.observe($('#anatomy'));
+
+  // ──────────────────────────────────────────────────────────────
+  // 4. METRO — full GSAP timeline
+  // ──────────────────────────────────────────────────────────────
+  var stations = [
+    {x:100,name:'Kashmere Gate'},{x:240,name:'Inderlok'},
+    {x:380,name:'Punjabi Bagh West'},{x:520,name:'Peera Garhi'},
+    {x:660,name:'Nangloi'},{x:800,name:'Mundka'},
+    {x:940,name:'Tikri Border'},{x:1100,name:'Pt. Shree Ram Sharma'},
+    {x:1260,name:'Bahadurgarh City Park'}
+  ];
+  var mtrain = $('#m-train'), mshadow = $('#m-shadow'), mtrail = $('#m-trail'),
+      mtrack = $('#m-track-active'), mstEls = $$('#m-stations .m-station'),
+      mstatus = $('#m-status'), mbadge = $('#m-badge'), mTrailArc = $('#m-trail-arc');
+  var masterTL;
+
+  // Track ties
+  (function(){
+    var layer = $('#m-ties');
+    if (!layer) return;
+    layer.innerHTML = '';
+    for (var x = 60; x < 1280; x += 28){
+      var t = document.createElementNS('http://www.w3.org/2000/svg','line');
+      t.setAttribute('x1',x); t.setAttribute('y1',216); t.setAttribute('x2',x); t.setAttribute('y2',224);
+      t.setAttribute('stroke','rgba(184,134,42,.18)'); t.setAttribute('stroke-width','.6');
+      layer.appendChild(t);
+    }
+  })();
+
+  function lightStation(g, isFinal){
+    var tl = gsap.timeline();
+    var dot = g.querySelector('.m-dot'),
+        outer = g.querySelector('.m-outer'),
+        ring = g.querySelector('.m-ring'),
+        glow = g.querySelector('.m-glow'),
+        halo = g.querySelector('.m-halo'),
+        tick = g.querySelector('.m-tick');
+    tl.to(dot,   { attr:{fill:'#D4A84A'},   duration:.25 }, 0)
+      .to(outer, { attr:{stroke:'#D4A84A'}, duration:.25 }, 0);
+    if (tick) tl.to(tick, { attr:{stroke:'rgba(212,168,74,.85)'}, duration:.25 }, 0);
+    tl.fromTo(g, { scale:1, transformOrigin:'center center' },
+                 { scale:isFinal?1.35:1.18, duration:.32, ease:'back.out(2.2)', transformOrigin:'center center' }, 0)
+      .to(g, { scale:1, duration:.5, ease:'elastic.out(1,.55)', transformOrigin:'center center' }, .32)
+      .fromTo(ring, { opacity:.85, attr:{r:8} },  { opacity:0, attr:{r:isFinal?40:28}, duration:1, ease:'power2.out' }, .05)
+      .fromTo(glow, { opacity:0,  attr:{r:0} },   { opacity:.55, attr:{r:isFinal?34:24}, duration:.45, ease:'power2.out' }, 0)
+      .to(glow, { opacity:.22, duration:.5 }, .45);
+    if (isFinal && halo){
+      tl.fromTo(halo, { opacity:0, attr:{r:18} }, { opacity:.5, attr:{r:48}, duration:.7 }, .1)
+        .to(halo, { opacity:.22, attr:{r:42}, duration:1.3, repeat:-1, yoyo:true, ease:'sine.inOut' }, .8);
+    }
+    return tl;
+  }
+
+  function buildMetro(){
+    if (!window.gsap) return;
+    if (masterTL) masterTL.kill();
+
+    gsap.set(mtrain, { x:0 });
+    gsap.set(mshadow, { opacity:0 });
+    gsap.set(mshadow.firstElementChild, { attr:{cx:80} });
+    gsap.set(mtrail, { opacity:0 });
+    gsap.set(mtrack, { attr:{x2:60}, opacity:0 });
+    mstEls.forEach(function(s){
+      gsap.set(s.querySelector('.m-dot'),   { attr:{fill:'rgba(184,134,42,.5)'} });
+      gsap.set(s.querySelector('.m-outer'), { attr:{stroke:'rgba(184,134,42,.5)'} });
+      var tk = s.querySelector('.m-tick'); if (tk) gsap.set(tk, { attr:{stroke:'rgba(184,134,42,.4)'} });
+      gsap.set(s.querySelector('.m-ring'),  { opacity:0, attr:{r:0} });
+      gsap.set(s.querySelector('.m-glow'),  { opacity:0, attr:{r:0} });
+      var halo = s.querySelector('.m-halo');
+      if (halo){ gsap.killTweensOf(halo); gsap.set(halo, { opacity:0, attr:{r:0} }); }
+      gsap.set(s, { scale:1, transformOrigin:'center center' });
+    });
+    gsap.set(mbadge, { opacity:0, y:-14 });
+    gsap.set(mTrailArc, { opacity:0 });
+
+    if (REDUCED){
+      gsap.set(mtrack, { attr:{x2:1260}, opacity:1 });
+      gsap.set(mtrain, { x:1160 });
+      mstEls.forEach(function(s,i){ lightStation(s, i===8); });
+      gsap.set(mbadge, { opacity:1, y:0 });
+      gsap.set(mTrailArc, { opacity:1 });
+      mstatus.textContent = 'The Heritage \u2014 700 metres from Bahadurgarh metro.';
+      return;
+    }
+
+    masterTL = gsap.timeline();
+
+    // Phase 1 — Departure
+    masterTL.add(lightStation(mstEls[0], false), 0);
+    masterTL.call(function(){ mstatus.textContent = 'Departing Kashmere Gate'; }, [], .1);
+    masterTL.to(mshadow, { opacity:1, duration:.5 }, .3);
+    masterTL.to(mtrail,  { opacity:1, duration:.4 }, .5);
+
+    // Phase 2 — Journey
+    var cum = .8;
+    var segDur = .7;
+    for (var i = 1; i < stations.length; i++){
+      (function(i){
+        var targetX = stations[i].x - stations[0].x;
+        var isLast = i === stations.length - 1;
+        var isBorder = i === 6;
+        var dur = isLast ? segDur*1.5 : segDur;
+        var ease = isLast ? 'power3.out' : (i===1 ? 'power2.in' : 'power1.inOut');
+        masterTL.to(mtrain, { x:targetX, duration:dur, ease:ease }, cum);
+        masterTL.to(mshadow.firstElementChild, { attr:{cx: stations[i].x - 60}, duration:dur, ease:ease }, cum);
+        masterTL.to(mtrack, { attr:{x2: stations[i].x}, duration:dur, ease:ease, opacity:1 }, cum);
+        masterTL.call(function(){
+          if (isLast)        mstatus.textContent = 'Arriving at Bahadurgarh\u2026';
+          else if (isBorder) mstatus.textContent = 'Crossing into Haryana\u2026';
+          else               mstatus.textContent = 'En route to ' + stations[i].name;
+        }, [], cum + dur*.35);
+        masterTL.add(lightStation(mstEls[i], isLast), cum + dur - .1);
+        cum += dur;
+      })(i);
+    }
+    masterTL.to(mtrail, { opacity:0, duration:.5 }, cum);
+    masterTL.to(mshadow, { opacity:.3, duration:.5 }, cum);
+    cum += .4;
+    masterTL.call(function(){ mstatus.textContent = 'Seven hundred metres remain.'; }, [], cum);
+    cum += .2;
+
+    // Trail arc dots stagger up
+    masterTL.to(mTrailArc, { opacity:1, duration:.3 }, cum);
+    var dots = mTrailArc.querySelectorAll('circle');
+    dots.forEach(function(d, idx){
+      masterTL.fromTo(d, { scale:0, transformOrigin:'center' }, { scale:1, duration:.25, ease:'back.out(2.5)' }, cum + idx*.08);
+    });
+    cum += dots.length * .08 + .2;
+
+    masterTL.to(mbadge, { opacity:1, y:0, duration:.7, ease:'power3.out' }, cum);
+    cum += .8;
+    masterTL.call(function(){ mstatus.textContent = 'The Heritage \u2014 Sector 11, Bahadurgarh.'; }, [], cum);
+  }
+
+  if ($('#connectivity') && window.ScrollTrigger){
+    ScrollTrigger.create({
+      trigger:'#connectivity', start:'top 70%', once:true,
+      onEnter: buildMetro
+    });
+  }
+  var rep = $('#metroReplay');
+  if (rep) rep.addEventListener('click', function(){ buildMetro(); });
+
+  // ──────────────────────────────────────────────────────────────
+  // 5. TRY IT ON — plot resize + price counter roll
+  // ──────────────────────────────────────────────────────────────
+  var plotData = [
+    {yd:126, price:1.13, bua:1650, w:30,    d:39,    scale:1.0},
+    {yd:136, price:1.22, bua:1780, w:31,    d:39,    scale:1.05},
+    {yd:146, price:1.31, bua:1910, w:33,    d:40,    scale:1.10},
+    {yd:162, price:1.46, bua:2120, w:35,    d:42,    scale:1.20},
+    {yd:174, price:1.57, bua:2275, w:36,    d:43.5,  scale:1.30},
+    {yd:177, price:1.59, bua:2315, w:36,    d:44,    scale:1.32}
+  ];
+  function rollPrice(target){
+    var el = $('#plotPrice');
+    if (!el) return;
+    var startStr = el.textContent.replace(/[^\d.]/g,'');
+    var start = parseFloat(startStr) || 0;
+    var dur = 600, t0 = performance.now();
+    function step(t){
+      var p = Math.min(1, (t-t0)/dur);
+      var e = 1 - Math.pow(1-p,3);
+      var v = start + (target - start)*e;
+      el.textContent = '\u20B9' + v.toFixed(2);
+      if (p<1) requestAnimationFrame(step);
+      else el.textContent = '\u20B9' + target.toFixed(2);
+    }
+    requestAnimationFrame(step);
+  }
+  function setPlot(i){
+    var d = plotData[i];
+    var rect = $('#plotRect'), house = $('#plotHouse'), area = $('#plot-area');
+    var dimW = $('#dim-w'), dimD = $('#dim-d');
+    var spArea = $('#sp-area'), spBua = $('#sp-bua'), spFoot = $('#sp-foot');
+    if (!rect) return;
+    if (window.gsap){
+      gsap.to('#plotG', { scale: d.scale, transformOrigin:'center center', duration:.7, ease:'power3.out' });
+    } else {
+      $('#plotG').setAttribute('transform', 'translate(300,270) scale('+d.scale+')');
+    }
+    rollPrice(d.price);
+    if (area) area.textContent = d.yd + ' SQ.YD.';
+    if (dimW) dimW.textContent = d.w + ' FT';
+    if (dimD) dimD.textContent = d.d + ' FT';
+    if (spArea) spArea.textContent = d.yd + ' sq.yd.';
+    if (spBua) spBua.textContent = d.bua.toLocaleString('en-IN') + ' sq.ft.';
+    if (spFoot) spFoot.textContent = d.w + ' \u00D7 ' + d.d + ' ft';
+  }
+  $$('#plotTabs .plot-tab').forEach(function(b){
+    b.addEventListener('click', function(){
+      $$('#plotTabs .plot-tab').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      setPlot(parseInt(b.getAttribute('data-i'),10));
+    });
+  });
+  setPlot(0);
+
+
+
+  // ──────────────────────────────────────────────────────────────
+  // 6. MASTER PLAN — stroke draw on scroll + polaroid hover
+  // ──────────────────────────────────────────────────────────────
+  var amenityData = [
+    {label:'Cricket Pitch',   img:'1622279457486-62dcc4a431d6', note:'Full-size pitch under floodlights.'},
+    {label:'Badminton Court', img:'1558981806-ec527fa84c39',    note:'Two regulation courts. Synthetic surface.'},
+    {label:'Basketball Court',img:'1546519638-68e109498ffc',    note:'FIBA-spec half-court, glass backboards.'},
+    {label:'Pickleball',      img:'1611974789855-9c2a0a7236a3', note:'The fastest-growing sport in India.'},
+    {label:'Miyawaki Forest', img:'1448375240586-882707db888b', note:'1,200 native trees, planted dense.'},
+    {label:'Flower Garden',   img:'1416879595882-3373a0480b5b', note:'Seasonal blooms, twelve months a year.'},
+    {label:'Rock Garden',     img:'1441974231531-c6227db76b6e', note:'Sculptural stone, contemplative.'},
+    {label:'Amphitheatre',    img:'1533174072545-7a4b6ad7a6c3', note:'Open-air, 200-seat stage.'},
+    {label:'Terrace Caf\u00E9',     img:'1554118811-1e0d58224f24',    note:'Sky-deck, sunset orientation.'},
+    {label:'Gymnasium',       img:'1534438327276-14e5300c3a48', note:'Strength, cardio, yoga, all-glass.'},
+    {label:'Kids Play Area',  img:'1555009393-f20bdb245c4d',    note:'Soft-fall, sun-shaded.'},
+    {label:'Senior Park',     img:'1571019613454-1cb2f99b2d8b', note:'Reflexology path, shaded benches.'},
+    {label:'Clubhouse',       img:'1560179707-f14e90ef3623',    note:'25,000 sq.ft. of community space.'}
+  ];
+
+  // create polaroid layer
+  var polaroidLayer = $('#polaroidLayer');
+  function getMpRect(){ return $('#mpSvg').getBoundingClientRect(); }
+  $$('#mpSvg .amenity-pin').forEach(function(p, i){
+    var data = amenityData[i]; if (!data) return;
+    // build polaroid once
+    var pol = document.createElement('div');
+    pol.className = 'polaroid';
+    pol.innerHTML =
+      '<img src="https://images.unsplash.com/photo-'+data.img+'?w=400&q=70&auto=format&fit=crop" alt="'+data.label+'" loading="lazy"/>'+
+      '<div class="lbl">'+data.label.toUpperCase()+'</div>'+
+      '<div class="note">'+data.note+'</div>';
+    polaroidLayer.appendChild(pol);
+    // position on hover
+    p.addEventListener('mouseenter', function(){
+      var bb = p.getBoundingClientRect();
+      var wrap = $('#master-plan .mp-wrap').getBoundingClientRect();
+      var left = bb.left - wrap.left + bb.width/2 - 120;
+      var top  = bb.top  - wrap.top  - 280;
+      // keep within
+      if (top < 10) top = bb.top - wrap.top + 30;
+      if (left < 10) left = 10;
+      if (left + 240 > wrap.width-10) left = wrap.width - 250;
+      pol.style.left = left + 'px';
+      pol.style.top  = top + 'px';
+      pol.classList.add('show');
+    });
+    p.addEventListener('mouseleave', function(){
+      pol.classList.remove('show');
+    });
+  });
+  // mobile fallback grid
+  var mob = $('#mpMobile');
+  if (mob){
+    amenityData.forEach(function(a){
+      mob.innerHTML += '<div class="pcard"><img src="https://images.unsplash.com/photo-'+a.img+'?w=300&q=60&auto=format&fit=crop" alt="'+a.label+'" loading="lazy"/><div class="b">'+a.label+'</div></div>';
+    });
+  }
+
+  // animate stroke draw on scroll-in
+  if (window.gsap && window.ScrollTrigger){
+    ScrollTrigger.create({
+      trigger:'#master-plan', start:'top 65%', once:true,
+      onEnter: function(){
+        $$('#mpSvg .mp-draw').forEach(function(p, idx){
+          var len = parseFloat(p.style.getPropertyValue('--len')) || p.getAttribute('stroke-dasharray') || 1000;
+          gsap.to(p, { attr:{'stroke-dashoffset':0}, duration:1.6, delay:idx*.08, ease:'power2.out' });
+        });
+        $$('#mpSvg .amenity-pin').forEach(function(pin, idx){
+          gsap.fromTo(pin, {opacity:0, scale:0, transformOrigin:'center'}, {opacity:1, scale:1, duration:.45, delay:1.4 + idx*.06, ease:'back.out(2.2)'});
+        });
+      }
+    });
+  } else {
+    // fallback: just show
+    $$('#mpSvg .mp-draw').forEach(function(p){ p.style.strokeDashoffset=0; });
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  // 7. ECOSYSTEM — connection lines progressive draw
+  // ──────────────────────────────────────────────────────────────
+  if (window.gsap && window.ScrollTrigger){
+    ScrollTrigger.create({
+      trigger:'#ecosystem', start:'top 65%', once:true,
+      onEnter: function(){
+        $$('#ecoSvg .eco-line').forEach(function(p, idx){
+          var len = parseFloat(p.style.getPropertyValue('--len')) || 200;
+          p.style.strokeDasharray = len;
+          p.style.strokeDashoffset = len;
+          gsap.to(p, { attr:{'stroke-dashoffset':0}, duration:1.2, delay:idx*.12, ease:'power2.out' });
+        });
+        $$('#ecoSvg .eco-sat').forEach(function(s, idx){
+          gsap.fromTo(s, {opacity:0, scale:0, transformOrigin:'center center'},
+                      {opacity:1, scale:1, duration:.5, delay:1.0 + idx*.1, ease:'back.out(2)'});
+        });
+      }
+    });
+  } else {
+    $$('#ecoSvg .eco-line').forEach(function(p){ p.style.strokeDashoffset = 0; });
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  // 8. RADIUS — rings expand from 0, pins stagger
+  // ──────────────────────────────────────────────────────────────
+  if (window.gsap && window.ScrollTrigger){
+    ScrollTrigger.create({
+      trigger:'#radius', start:'top 65%', once:true,
+      onEnter: function(){
+        var rings = ['.rad-r1','.rad-r2','.rad-r3','.rad-r4'];
+        var rs = [80,180,280,370];
+        rings.forEach(function(sel,i){
+          var el = $(sel);
+          if (!el) return;
+          gsap.fromTo(el, {attr:{r:0}, opacity:0}, {attr:{r:rs[i]}, opacity:1, duration:1.1, delay:i*.18, ease:'power2.out'});
+        });
+        $$('#radPins g').forEach(function(g, idx){
+          gsap.fromTo(g, {opacity:0, scale:0, transformOrigin:'center center'},
+                      {opacity:1, scale:1, duration:.4, delay:.8 + idx*.04, ease:'back.out(2.2)'});
+        });
+      }
+    });
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  // 9. PRICE CHART — line stroke animates l→r, gold shade fades
+  // ──────────────────────────────────────────────────────────────
+  if (window.gsap && window.ScrollTrigger){
+    ScrollTrigger.create({
+      trigger:'#window', start:'top 65%', once:true,
+      onEnter: function(){
+        var hist = $('#chartLineHist');
+        var proj = $('#chartLineProj');
+        var shade = $('#chartShade');
+        var pulse = $('#chartPulse');
+        if (hist){
+          var len = hist.getTotalLength ? hist.getTotalLength() : 700;
+          hist.style.strokeDasharray = len;
+          hist.style.strokeDashoffset = len;
+          gsap.to(hist, { attr:{'stroke-dashoffset':0}, duration:2.2, ease:'power2.out' });
+        }
+        if (proj){
+          var len2 = proj.getTotalLength ? proj.getTotalLength() : 400;
+          proj.style.strokeDasharray = len2 + ',' + len2;
+          proj.style.strokeDashoffset = len2;
+          gsap.to(proj, { attr:{'stroke-dashoffset':0}, duration:1.4, delay:2.0, ease:'power2.out' });
+        }
+        if (shade) gsap.to(shade, { opacity:1, duration:1.4, delay:2.4 });
+        if (pulse){
+          gsap.to(pulse, { attr:{r:24}, opacity:0, duration:1.6, delay:1.8, repeat:-1, ease:'power1.out' });
+        }
+      }
+    });
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  // 10. VISITOR'S BOOK — corner ornaments draw + form submit
+  // ──────────────────────────────────────────────────────────────
+  if (window.gsap && window.ScrollTrigger){
+    ScrollTrigger.create({
+      trigger:'#visitor', start:'top 70%', once:true,
+      onEnter: function(){
+        $$('#visitor .corner path').forEach(function(p, i){
+          gsap.to(p, { attr:{'stroke-dashoffset':0}, duration:1.6, delay:i*.15, ease:'power2.out' });
+        });
+      }
+    });
+  }
+  var form = $('#visitorForm');
+  if (form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var data = new FormData(form);
+      // basic validation
+      if (!data.get('name') || !data.get('phone')){
+        form.querySelector('input[name="phone"]').focus();
+        return;
+      }
+      form.style.display = 'none';
+      $('#thanks').classList.add('on');
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>
