@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heritage — Plotted Development | Bahadurgarh | Homegram Estate</title>
+<meta name="description" content="236 exclusive plots at Sector 11, Bahadurgarh. Where Delhi ends, legacy begins. Pre-launch at ₹90,000/sq.yd. by Homegram Estate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:#0a0705;color:#f0ebe0;font-family:'Cormorant Garamond',serif;overflow-x:hidden;cursor:none}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ===== CUSTOM CURSOR ===== */
+#cursor{position:fixed;width:12px;height:12px;background:#c9a84c;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference}
+#cursor-follower{position:fixed;width:36px;height:36px;border:1px solid rgba(201,168,76,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .12s ease,width .25s,height .25s,opacity .25s}
+body:hover #cursor-follower{opacity:1}
+.cursor-grow #cursor{width:20px;height:20px;background:#e8c97a}
+.cursor-grow #cursor-follower{width:60px;height:60px}
+
+/* ===== LOADER ===== */
+#loader{position:fixed;inset:0;background:#0a0705;z-index:9000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+#loader-gate{width:160px;height:200px}
+#loader-progress{width:200px;height:1px;background:rgba(201,168,76,.2);position:relative;overflow:hidden}
+#loader-progress::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a84c,transparent);animation:loaderSweep 1.8s ease-in-out forwards}
+@keyframes loaderSweep{to{left:100%}}
+#loader-text{font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.4em;color:#c9a84c;text-transform:uppercase}
+
+/* ===== NAV ===== */
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s ease}
+#nav.scrolled{background:rgba(10,7,5,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.15);padding:1rem 4rem}
+.nav-logo{font-family:'Cinzel Decorative',serif;font-size:1.1rem;letter-spacing:.1em;color:#c9a84c;line-height:1.2}
+.nav-logo span{display:block;font-family:'Josefin Sans',sans-serif;font-size:.55rem;letter-spacing:.35em;color:rgba(201,168,76,.6);text-transform:uppercase;margin-top:.2rem}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,224,.6);transition:color .3s}
+.nav-links a:hover{color:#c9a84c}
+.nav-cta{font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid #c9a84c;color:#c9a84c;padding:.65rem 1.5rem;transition:all .3s}
+.nav-cta:hover{background:#c9a84c;color:#0a0705}
+#nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
+#nav-hamburger span{width:24px;height:1px;background:#c9a84c;display:block;transition:all .3s}
+@media(max-width:768px){
+  #nav{padding:1.2rem 1.5rem}
+  #nav.scrolled{padding:.8rem 1.5rem}
+  .nav-links,.nav-cta{display:none}
+  #nav-hamburger{display:flex}
+}
+
+/* ===== HERO ===== */
+#hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+#hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,7,5,.3) 0%,rgba(10,7,5,.5) 50%,rgba(10,7,5,.85) 100%);z-index:1}
+#hero-canvas{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hero-ghost{position:absolute;font-family:'Cinzel Decorative',serif;font-size:clamp(6rem,18vw,18rem);font-weight:900;color:rgba(201,168,76,.04);letter-spacing:.2em;z-index:2;white-space:nowrap;top:50%;left:50%;transform:translate(-50%,-50%);user-select:none;pointer-events:none}
+.hero-content{position:relative;z-index:3;text-align:center;max-width:900px;padding:0 2rem}
+.hero-eyebrow{font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.5em;color:#c9a84c;text-transform:uppercase;margin-bottom:1.5rem;opacity:0}
+.hero-title{font-family:'Cinzel Decorative',serif;font-size:clamp(2.5rem,6vw,6rem);font-weight:700;line-height:1.1;color:#f0ebe0;margin-bottom:1.5rem;perspective:800px}
+.hero-char{display:inline-block;transform-origin:center top}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2vw,1.3rem);font-weight:300;color:rgba(240,235,224,.7);letter-spacing:.05em;margin-bottom:2.5rem;opacity:0}
+.hero-ctas{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;opacity:0}
+.btn-gold{font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;background:#c9a84c;color:#0a0705;padding:.9rem 2.5rem;font-weight:600;transition:all .3s;border:1px solid #c9a84c}
+.btn-gold:hover{background:transparent;color:#c9a84c}
+.btn-outline{font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;background:transparent;color:#f0ebe0;padding:.9rem 2.5rem;border:1px solid rgba(240,235,224,.3);transition:all .3s}
+.btn-outline:hover{border-color:#c9a84c;color:#c9a84c}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0}
+.hero-scroll span{font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:.3em;color:rgba(240,235,224,.4);text-transform:uppercase}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,#c9a84c);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.2)}}
+</style>
+<style>
+/* ===== TRUST BAR ===== */
+#trust{background:#f7f2e8;padding:3.5rem 4rem}
+.trust-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+.trust-stat{text-align:center;flex:1;min-width:120px}
+.trust-stat .num{font-family:'Cinzel',serif;font-size:2rem;font-weight:700;color:#15140f;line-height:1}
+.trust-stat .num span{font-size:1.2rem;color:#c9a84c}
+.trust-stat .lbl{font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(21,20,15,.5);margin-top:.4rem}
+.trust-sep{width:1px;height:40px;background:linear-gradient(to bottom,transparent,#c9a84c,transparent);flex-shrink:0}
+@media(max-width:768px){#trust{padding:2.5rem 1.5rem}.trust-sep{display:none}.trust-stat{min-width:45%}}
+
+/* ===== GATEWAY ===== */
+#gateway{background:linear-gradient(160deg,#0a0705 55%,#f7f2e8 55%);padding:7rem 4rem;position:relative;overflow:hidden}
+.gateway-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.gateway-arch-wrap{display:flex;justify-content:center;align-items:center}
+#gateway-arch{width:280px;height:380px}
+.gateway-content{}
+.section-eyebrow{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:.4em;color:#c9a84c;text-transform:uppercase;margin-bottom:1rem}
+.gateway-content .section-eyebrow{color:#c9a84c}
+.gateway-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:600;line-height:1.2;color:#0a0705;margin-bottom:1.5rem}
+.gateway-body{font-size:1.1rem;font-weight:300;line-height:1.9;color:rgba(21,20,15,.7);margin-bottom:2.5rem}
+.gateway-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.g-stat{border-top:1px solid rgba(201,168,76,.3);padding-top:1rem}
+.g-stat .val{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:600;color:#15140f}
+.g-stat .val em{color:#c9a84c;font-style:normal;font-size:1rem}
+.g-stat .desc{font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(21,20,15,.5);margin-top:.3rem}
+@media(max-width:768px){
+  #gateway{background:#0a0705;padding:4rem 1.5rem}
+  .gateway-inner{grid-template-columns:1fr;gap:3rem}
+  .gateway-title{color:#f0ebe0}
+  .gateway-body{color:rgba(240,235,224,.7)}
+  .g-stat .val{color:#f0ebe0}
+  .g-stat .desc{color:rgba(240,235,224,.5)}
+}
+
+/* ===== METRO MAP ===== */
+#metro{background:#0a0705;padding:7rem 4rem;position:relative}
+.metro-header{text-align:center;max-width:700px;margin:0 auto 4rem}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:600;line-height:1.2;color:#f0ebe0}
+.section-title.dark{color:#15140f}
+.section-body{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;line-height:1.9;color:rgba(240,235,224,.6);margin-top:1rem}
+.section-body.dark{color:rgba(21,20,15,.6)}
+#map{height:480px;width:100%;border:1px solid rgba(201,168,76,.2);position:relative;z-index:10}
+.we-are-here{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:.3em;background:#c9a84c;color:#0a0705;padding:.35rem .8rem;white-space:nowrap;font-weight:600;text-transform:uppercase;border-radius:2px}
+.map-legend{display:flex;align-items:center;gap:2rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center}
+.legend-item{display:flex;align-items:center;gap:.6rem;font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:.15em;color:rgba(240,235,224,.5);text-transform:uppercase}
+.legend-dot{width:10px;height:10px;border-radius:50%;background:#c9a84c}
+.legend-line{width:30px;height:2px;background:#c9a84c}
+@media(max-width:768px){#metro{padding:4rem 1rem}#map{height:320px}}
+
+/* ===== INDUSTRIAL ===== */
+#industrial{background:#f7f2e8;padding:7rem 4rem;overflow:hidden}
+.industrial-inner{max-width:1200px;margin:0 auto}
+.industrial-top{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start;margin-bottom:5rem}
+.counter-block{text-align:center}
+.big-counter{font-family:'Cinzel Decorative',serif;font-size:clamp(4rem,8vw,8rem);font-weight:900;color:#15140f;line-height:1}
+.big-counter span{color:#c9a84c}
+.counter-label{font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(21,20,15,.5);margin-top:.5rem}
+.industrial-copy{font-size:1.25rem;font-weight:300;line-height:1.9;color:rgba(21,20,15,.75)}
+.industrial-copy strong{font-weight:600;color:#15140f}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:3rem}
+.tag{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;padding:.5rem 1.1rem;border:1px solid rgba(21,20,15,.2);color:rgba(21,20,15,.6);transition:all .3s;cursor:default}
+.tag:hover{border-color:#c9a84c;color:#c9a84c;background:rgba(201,168,76,.05)}
+@media(max-width:768px){#industrial{padding:4rem 1.5rem}.industrial-top{grid-template-columns:1fr;gap:2rem}.big-counter{font-size:4rem}}
+
+/* ===== PROJECT SPECS ===== */
+#specs{background:#0a0705;padding:7rem 0;position:relative}
+.specs-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;padding:0 4rem}
+.specs-left{padding-right:4rem}
+.specs-header{margin-bottom:4rem}
+.spec-row{display:flex;align-items:flex-start;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid rgba(201,168,76,.1);opacity:0;transform:translateX(-30px);transition:all .5s ease}
+.spec-row.visible{opacity:1;transform:translateX(0)}
+.spec-icon{width:40px;height:40px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,168,76,.3);color:#c9a84c}
+.spec-icon svg{width:20px;height:20px}
+.spec-info{}
+.spec-name{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(240,235,224,.4);margin-bottom:.3rem}
+.spec-val{font-family:'Cinzel',serif;font-size:1.1rem;color:#f0ebe0}
+.spec-val small{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:.1em;color:rgba(240,235,224,.4);font-weight:400}
+.plot-bars{margin-top:2rem}
+.plot-bar-item{margin-bottom:1.2rem}
+.plot-bar-label{display:flex;justify-content:space-between;font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,235,224,.5);margin-bottom:.4rem}
+.plot-bar-track{height:3px;background:rgba(240,235,224,.08);border-radius:2px;overflow:hidden}
+.plot-bar-fill{height:100%;background:linear-gradient(90deg,#8b6914,#c9a84c,#e8c97a);width:0;border-radius:2px;transition:width 1.2s cubic-bezier(.25,.46,.45,.94)}
+.specs-right{position:sticky;top:100px;padding-left:2rem}
+.site-plan-wrap{border:1px solid rgba(201,168,76,.2);padding:1.5rem;background:rgba(201,168,76,.03)}
+.site-plan-title{font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(240,235,224,.4);text-align:center;margin-bottom:1rem}
+#site-plan-svg{width:100%;height:auto}
+@media(max-width:768px){
+  #specs{padding:4rem 0}
+  .specs-inner{grid-template-columns:1fr;padding:0 1.5rem}
+  .specs-left{padding-right:0}
+  .specs-right{position:relative;top:auto;padding-left:0;margin-top:3rem}
+}
+</style>
+<style>
+/* ===== AMENITIES ===== */
+#amenities{background:#f7f2e8;padding:7rem 4rem}
+.amenities-inner{max-width:1200px;margin:0 auto}
+.amenities-header{text-align:center;margin-bottom:4rem}
+.am-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.am-card{background:#fff;padding:2rem 1.5rem;text-align:center;border:1px solid rgba(21,20,15,.06);transition:all .35s ease;cursor:default;position:relative;overflow:hidden}
+.am-card::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,#8b6914,#c9a84c,#e8c97a);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.am-card:hover::before{transform:scaleX(1)}
+.am-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(201,168,76,.1)}
+.am-icon{width:56px;height:56px;margin:0 auto 1.2rem;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,168,76,.3);color:#c9a84c;transition:transform .3s ease}
+.am-card:hover .am-icon{animation:var(--am-anim,.3s ease)}
+.am-name{font-family:'Cinzel',serif;font-size:.9rem;color:#15140f;margin-bottom:.4rem}
+.am-desc{font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(21,20,15,.4)}
+
+/* Per-card icon animations */
+@keyframes amRotate{to{transform:rotate(15deg)}}
+@keyframes amBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes amScale{to{transform:scale(1.18)}}
+@keyframes amShake{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+@keyframes amSpin{to{transform:rotate(360deg)}}
+@keyframes amPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+@keyframes amWave{0%,100%{transform:skewX(0)}50%{transform:skewX(5deg)}}
+@keyframes amFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(5deg)}}
+.am-card.sport:hover .am-icon{animation:amRotate .4s ease forwards}
+.am-card.plant:hover .am-icon{animation:amBounce .5s ease}
+.am-card.gym:hover .am-icon{animation:amScale .3s ease forwards}
+.am-card.cricket:hover .am-icon{animation:amShake .4s ease}
+.am-card.pool:hover .am-icon{animation:amWave .5s ease}
+.am-card.kids:hover .am-icon{animation:amBounce .4s ease}
+.am-card.jog:hover .am-icon{animation:amFloat .5s ease}
+.am-card.yoga:hover .am-icon{animation:amSpin .6s ease}
+.am-card.club:hover .am-icon{animation:amPulse .4s ease}
+.am-card.tennis:hover .am-icon{animation:amRotate .4s ease forwards}
+.am-card.security:hover .am-icon{animation:amScale .3s ease forwards}
+.am-card.power:hover .am-icon{animation:amPulse .4s ease}
+@media(max-width:1024px){.am-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){#amenities{padding:4rem 1.5rem}.am-grid{grid-template-columns:repeat(2,1fr);gap:1rem}}
+
+/* ===== PRICING ===== */
+#pricing{background:#0a0705;padding:7rem 4rem}
+.pricing-inner{max-width:1100px;margin:0 auto}
+.pricing-header{text-align:center;margin-bottom:1rem}
+.pricing-subhead{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:rgba(240,235,224,.5);text-align:center;margin-bottom:4rem;max-width:600px;margin-left:auto;margin-right:auto}
+.pricing-cards{display:grid;grid-template-columns:1fr 1fr;gap:2rem;perspective:1200px}
+.price-card{padding:3rem 2.5rem;border:1px solid rgba(201,168,76,.2);position:relative;transform-style:preserve-3d;transition:box-shadow .3s;cursor:default}
+.price-card.gold-card{background:linear-gradient(135deg,rgba(139,105,20,.15) 0%,rgba(201,168,76,.08) 100%);border-color:rgba(201,168,76,.4)}
+.price-card.white-card{background:rgba(240,235,224,.03)}
+.card-badge{font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;padding:.3rem .8rem;display:inline-block;margin-bottom:1.5rem}
+.gold-card .card-badge{background:#c9a84c;color:#0a0705}
+.white-card .card-badge{border:1px solid rgba(240,235,224,.3);color:rgba(240,235,224,.5)}
+.card-title{font-family:'Cinzel',serif;font-size:1.5rem;color:#f0ebe0;margin-bottom:.5rem}
+.card-price{font-family:'Cinzel Decorative',serif;font-size:2.5rem;font-weight:700;line-height:1;margin:1.5rem 0 .5rem}
+.gold-card .card-price{color:#c9a84c}
+.white-card .card-price{color:#f0ebe0}
+.card-price small{font-family:'Josefin Sans',sans-serif;font-size:.7rem;font-weight:400;color:rgba(240,235,224,.4);letter-spacing:.1em;display:block;margin-top:.3rem}
+.card-divider{height:1px;background:rgba(201,168,76,.2);margin:1.5rem 0}
+.card-features{list-style:none;display:flex;flex-direction:column;gap:.85rem;margin-bottom:2rem}
+.card-features li{display:flex;align-items:center;gap:.75rem;font-family:'Josefin Sans',sans-serif;font-size:.68rem;letter-spacing:.1em;color:rgba(240,235,224,.6)}
+.card-features li::before{content:'◆';color:#c9a84c;font-size:.5rem;flex-shrink:0}
+.card-cta{display:block;text-align:center;font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;padding:.9rem;transition:all .3s}
+.gold-card .card-cta{background:#c9a84c;color:#0a0705;font-weight:600}
+.gold-card .card-cta:hover{background:#e8c97a}
+.white-card .card-cta{border:1px solid rgba(240,235,224,.3);color:#f0ebe0}
+.white-card .card-cta:hover{border-color:#c9a84c;color:#c9a84c}
+.price-disclaimer{text-align:center;margin-top:2rem;font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:.1em;color:rgba(240,235,224,.25)}
+@media(max-width:768px){#pricing{padding:4rem 1.5rem}.pricing-cards{grid-template-columns:1fr;gap:1.5rem}}
+
+/* ===== GALLERY ===== */
+#gallery{background:#0a0705;padding:5rem 0 7rem}
+.gallery-header{text-align:center;padding:0 4rem;margin-bottom:4rem}
+.gallery-track-wrap{overflow:hidden;position:relative}
+.gallery-track-wrap::before,.gallery-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.gallery-track-wrap::before{left:0;background:linear-gradient(to right,#0a0705,transparent)}
+.gallery-track-wrap::after{right:0;background:linear-gradient(to left,#0a0705,transparent)}
+.gallery-track{display:flex;gap:1.5rem;padding:0 4rem;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
+.gallery-track::-webkit-scrollbar{display:none}
+.gallery-track.grabbing{cursor:grabbing}
+.gallery-item{flex:0 0 560px;height:380px;overflow:hidden;position:relative;border:1px solid rgba(201,168,76,.1)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;filter:saturate(.8) brightness(.85)}
+.gallery-item:hover img{transform:scale(1.05);filter:saturate(1) brightness(.9)}
+.gallery-item-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,7,5,.85),transparent);padding:1.5rem 1.2rem .9rem;font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(240,235,224,.6)}
+.gallery-controls{display:flex;gap:1rem;justify-content:center;margin-top:2rem}
+.gallery-btn{width:44px;height:44px;border:1px solid rgba(201,168,76,.3);background:none;color:#c9a84c;font-size:1.2rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.gallery-btn:hover{background:#c9a84c;color:#0a0705}
+@media(max-width:768px){#gallery{padding:3rem 0}.gallery-header{padding:0 1.5rem}.gallery-track{padding:0 1.5rem}.gallery-item{flex:0 0 300px;height:220px}}
+</style>
+<style>
+/* ===== LEAD FORM ===== */
+#lead{background:#f7f2e8;padding:7rem 4rem}
+.lead-inner{max-width:760px;margin:0 auto}
+.lead-header{text-align:center;margin-bottom:3.5rem}
+.lead-title{font-family:'Cinzel Decorative',serif;font-size:clamp(1.6rem,3.5vw,3rem);font-weight:700;color:#15140f;line-height:1.2;margin-bottom:.75rem}
+.lead-sub{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:rgba(21,20,15,.55);font-style:italic}
+.lead-form{display:grid;grid-template-columns:1fr 1fr;gap:2rem 2.5rem}
+.field-wrap{position:relative;padding-top:1.2rem}
+.field-wrap.full{grid-column:1/-1}
+.fl-input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(21,20,15,.2);padding:.6rem 0;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#15140f;outline:none;transition:border-color .3s}
+.fl-input:focus{border-color:#c9a84c}
+.fl-label{position:absolute;left:0;top:1.8rem;font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(21,20,15,.4);pointer-events:none;transition:all .3s ease;transform-origin:left}
+.fl-input:focus~.fl-label,.fl-input:not(:placeholder-shown)~.fl-label{top:.1rem;font-size:.58rem;color:#c9a84c;letter-spacing:.25em}
+.fl-line{position:absolute;bottom:0;left:0;height:2px;width:0;background:linear-gradient(90deg,#8b6914,#e8c97a);transition:width .4s ease}
+.fl-input:focus~.fl-label~.fl-line,.fl-input:focus+.fl-label+.fl-line{width:100%}
+.fl-input:focus~.fl-line{width:100%}
+select.fl-input{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;cursor:pointer}
+select.fl-input option{background:#f7f2e8;color:#15140f}
+.form-submit{grid-column:1/-1;margin-top:1rem}
+.btn-submit{width:100%;padding:1.1rem;background:#c9a84c;color:#0a0705;font-family:'Josefin Sans',sans-serif;font-size:.75rem;letter-spacing:.35em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;position:relative;overflow:hidden;transition:background .3s}
+.btn-submit::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .5s ease}
+.btn-submit:hover{background:#e8c97a}
+.btn-submit:hover::after{left:100%}
+.form-note{grid-column:1/-1;text-align:center;font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:.12em;color:rgba(21,20,15,.35)}
+@media(max-width:768px){#lead{padding:4rem 1.5rem}.lead-form{grid-template-columns:1fr;gap:1.5rem 0}.field-wrap.full{grid-column:1}}
+
+/* ===== FOOTER ===== */
+#footer{background:#0a0705;border-top:1px solid rgba(201,168,76,.1);padding:5rem 4rem 3rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:4rem;margin-bottom:4rem}
+.footer-brand .brand-name{font-family:'Cinzel Decorative',serif;font-size:1.3rem;color:#c9a84c;margin-bottom:.4rem}
+.footer-brand .brand-sub{font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(240,235,224,.3)}
+.footer-brand p{font-family:'Cormorant Garamond',serif;font-size:.95rem;line-height:1.8;color:rgba(240,235,224,.4);margin-top:1rem}
+.footer-col-title{font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:#c9a84c;margin-bottom:1.2rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.footer-links a{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:.1em;color:rgba(240,235,224,.35);transition:color .3s}
+.footer-links a:hover{color:#c9a84c}
+.footer-contact p{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:rgba(240,235,224,.4);line-height:1.8;margin-bottom:.75rem}
+.footer-contact a{color:#c9a84c;transition:color .3s}
+.footer-contact a:hover{color:#e8c97a}
+.footer-bottom{border-top:1px solid rgba(240,235,224,.06);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap}
+.footer-copy{font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:.15em;color:rgba(240,235,224,.2)}
+.footer-legal{display:flex;gap:2rem;list-style:none}
+.footer-legal a{font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:.1em;color:rgba(240,235,224,.2);transition:color .3s}
+.footer-legal a:hover{color:rgba(240,235,224,.5)}
+@media(max-width:768px){
+  #footer{padding:4rem 1.5rem 2rem}
+  .footer-top{grid-template-columns:1fr;gap:2.5rem}
+  .footer-bottom{flex-direction:column;gap:1rem;align-items:flex-start}
+}
+
+/* ===== UTILITY ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.gold-line{width:40px;height:2px;background:linear-gradient(90deg,#8b6914,#c9a84c);margin-bottom:1.5rem}
+.gold-line.center{margin-left:auto;margin-right:auto}
+.leaflet-container{background:#0a0705}
+.station-label{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <svg id="loader-gate" viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#8b6914"/>
+        <stop offset="50%" stop-color="#c9a84c"/>
+        <stop offset="100%" stop-color="#e8c97a"/>
+      </linearGradient>
+    </defs>
+    <!-- Gate pillars -->
+    <rect class="gate-part" x="10" y="80" width="18" height="120" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="240" stroke-dashoffset="240"/>
+    <rect class="gate-part" x="132" y="80" width="18" height="120" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="240" stroke-dashoffset="240"/>
+    <!-- Arch -->
+    <path class="gate-part" d="M28 80 Q80 10 132 80" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-dasharray="200" stroke-dashoffset="200"/>
+    <!-- Inner arch -->
+    <path class="gate-part" d="M36 80 Q80 25 124 80" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="170" stroke-dashoffset="170" opacity=".5"/>
+    <!-- Finial -->
+    <polygon class="gate-part" points="80,2 85,18 80,14 75,18" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-dasharray="60" stroke-dashoffset="60"/>
+    <!-- Base decorations -->
+    <line class="gate-part" x1="10" y1="96" x2="28" y2="96" stroke="#c9a84c" stroke-width="1" stroke-dasharray="20" stroke-dashoffset="20"/>
+    <line class="gate-part" x1="132" y1="96" x2="150" y2="96" stroke="#c9a84c" stroke-width="1" stroke-dasharray="20" stroke-dashoffset="20"/>
+    <!-- Center diamond -->
+    <polygon class="gate-part" points="80,44 85,52 80,60 75,52" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="50" stroke-dashoffset="50"/>
+    <!-- H monogram -->
+    <text x="80" y="130" text-anchor="middle" font-family="Cinzel, serif" font-size="28" fill="none" stroke="#c9a84c" stroke-width=".8" opacity=".9" class="gate-part" stroke-dasharray="120" stroke-dashoffset="120">H</text>
+  </svg>
+  <div id="loader-progress"></div>
+  <div id="loader-text">Homegram Estate · The Heritage</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-logo">
+    The Heritage
+    <span>Homegram Estate · Bahadurgarh</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#gateway">Location</a></li>
+    <li><a href="#metro">Connectivity</a></li>
+    <li><a href="#specs">Specifications</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
+  <a href="#lead" class="nav-cta">Book Site Visit</a>
+  <button id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero" aria-label="Hero section">
+  <video id="hero-video" autoplay muted loop playsinline preload="metadata"
+    poster="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80">
+    <source src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4" type="video/mp4">
+    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80"
+      alt="Aerial view of premium residential development" loading="eager">
+  </video>
+  <div id="hero-overlay"></div>
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-ghost" aria-hidden="true">LEGACY</div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Homegram Estate Presents</p>
+    <h1 class="hero-title" id="hero-title" aria-label="Where Delhi Ends, Legacy Begins"></h1>
+    <p class="hero-subtitle">236 Exclusive Plots &nbsp;·&nbsp; Sector 11, Bahadurgarh &nbsp;·&nbsp; Pre-Launch ₹90,000/sq.yd.</p>
+    <div class="hero-ctas">
+      <a href="#lead" class="btn-gold">Book Site Visit</a>
+      <a href="#specs" class="btn-outline">View Specifications</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Discover</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section id="trust" aria-label="Key statistics">
+  <div class="trust-inner">
+    <div class="trust-stat reveal">
+      <div class="num"><span id="cnt-plots">0</span><span>+</span></div>
+      <div class="lbl">Exclusive Plots</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-stat reveal">
+      <div class="num"><span id="cnt-acres">0</span></div>
+      <div class="lbl">Acres Master Plan</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-stat reveal">
+      <div class="num"><span id="cnt-metro">0</span><span> km</span></div>
+      <div class="lbl">From Metro Station</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-stat reveal">
+      <div class="num"><span id="cnt-delhi">0</span><span> min</span></div>
+      <div class="lbl">From Delhi Border</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-stat reveal">
+      <div class="num">₹<span id="cnt-price">0</span><span>K</span></div>
+      <div class="lbl">Pre-Launch /sq.yd.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GATEWAY -->
+<section id="gateway" aria-label="Location overview">
+  <div class="gateway-inner">
+    <div class="gateway-arch-wrap">
+      <svg id="gateway-arch" viewBox="0 0 280 380" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="archGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8c97a"/>
+            <stop offset="100%" stop-color="#8b6914"/>
+          </linearGradient>
+          <filter id="archGlow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Outer arch -->
+        <path class="arch-draw" d="M30 360 L30 140 Q140 20 250 140 L250 360" stroke="url(#archGrad)" stroke-width="2" fill="none" stroke-dasharray="900" stroke-dashoffset="900" filter="url(#archGlow)"/>
+        <!-- Inner arch -->
+        <path class="arch-draw" d="M52 360 L52 150 Q140 50 228 150 L228 360" stroke="#c9a84c" stroke-width="1" fill="none" stroke-dasharray="780" stroke-dashoffset="780" opacity=".5"/>
+        <!-- Top finial -->
+        <polygon class="arch-draw" points="140,5 148,28 140,22 132,28" stroke="#c9a84c" stroke-width="1.5" fill="none" stroke-dasharray="80" stroke-dashoffset="80"/>
+        <!-- Horizontal details -->
+        <line class="arch-draw" x1="30" y1="185" x2="52" y2="185" stroke="#c9a84c" stroke-width="1" stroke-dasharray="30" stroke-dashoffset="30"/>
+        <line class="arch-draw" x1="228" y1="185" x2="250" y2="185" stroke="#c9a84c" stroke-width="1" stroke-dasharray="30" stroke-dashoffset="30"/>
+        <line class="arch-draw" x1="30" y1="225" x2="52" y2="225" stroke="#c9a84c" stroke-width="1" stroke-dasharray="30" stroke-dashoffset="30"/>
+        <line class="arch-draw" x1="228" y1="225" x2="250" y2="225" stroke="#c9a84c" stroke-width="1" stroke-dasharray="30" stroke-dashoffset="30"/>
+        <!-- Center diamond -->
+        <polygon class="arch-draw" points="140,75 150,92 140,109 130,92" stroke="#c9a84c" stroke-width="1.2" fill="none" stroke-dasharray="70" stroke-dashoffset="70"/>
+        <!-- Ground line -->
+        <line x1="0" y1="368" x2="280" y2="368" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <!-- H monogram -->
+        <text x="140" y="290" text-anchor="middle" font-family="Cinzel, serif" font-size="48" fill="none" stroke="#c9a84c" stroke-width="1" class="arch-draw" stroke-dasharray="200" stroke-dashoffset="200" opacity=".7">H</text>
+      </svg>
+    </div>
+    <div class="gateway-content">
+      <div class="section-eyebrow" style="color:#c9a84c;">The Address</div>
+      <div class="gold-line"></div>
+      <h2 class="gateway-title">Sector 11,<br>Bahadurgarh</h2>
+      <p class="gateway-body">Bahadurgarh sits at the exact inflection point — where Delhi's density surrenders to Haryana's sky. Sector 11 is the address that captures both worlds. Seamlessly connected to the capital yet breathing free of its constraints, The Heritage offers what Delhi never could: space, scale, and sky.</p>
+      <div class="gateway-stats">
+        <div class="g-stat reveal">
+          <div class="val">2 <em>km</em></div>
+          <div class="desc">To Metro Station</div>
+        </div>
+        <div class="g-stat reveal">
+          <div class="val">~35 <em>min</em></div>
+          <div class="desc">To Connaught Place</div>
+        </div>
+        <div class="g-stat reveal">
+          <div class="val">NH-10</div>
+          <div class="desc">Direct Access</div>
+        </div>
+        <div class="g-stat reveal">
+          <div class="val">DMIC</div>
+          <div class="desc">Corridor Proximity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- METRO MAP -->
+<section id="metro" aria-label="Metro connectivity">
+  <div class="metro-header">
+    <div class="section-eyebrow" style="margin-bottom:.5rem;">Connectivity</div>
+    <div class="gold-line center"></div>
+    <h2 class="section-title">Green Line Direct</h2>
+    <p class="section-body">Delhi Metro's Green Line makes Bahadurgarh an extension of the city, not a departure from it. 9 stations. One ride to the heart of NCR.</p>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:0 4rem;">
+    <div id="map" role="application" aria-label="Interactive metro connectivity map"></div>
+    <div class="map-legend">
+      <div class="legend-item"><div class="legend-line"></div> Green Line Route</div>
+      <div class="legend-item"><div class="legend-dot"></div> Metro Station</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e8c97a;box-shadow:0 0 6px #e8c97a"></div> The Heritage</div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIAL -->
+<section id="industrial" aria-label="Industrial ecosystem">
+  <div class="industrial-inner">
+    <div class="industrial-top">
+      <div class="counter-block reveal">
+        <div class="big-counter"><span id="ind-counter">0</span><span>+</span></div>
+        <div class="counter-label">Industries in Bahadurgarh</div>
+      </div>
+      <div class="reveal">
+        <div class="section-eyebrow">The Economic Engine</div>
+        <div class="gold-line"></div>
+        <h2 class="section-title dark">2,800 Industries.<br>490 Acres.<br>Your Neighbourhood.</h2>
+        <p style="margin-top:1.5rem;font-size:1.1rem;line-height:1.9;color:rgba(21,20,15,.65);font-weight:300">
+          <strong style="color:#15140f;font-weight:600">2,800+ industries. 490 acres.</strong> The NCR's most underrated economic engine — and your neighbourhood. Bahadurgarh hosts one of Haryana's densest industrial clusters: paper, textiles, FMCG, packaging. This isn't just proximity — it's sustained demand. A plot here doesn't sit idle; it appreciates.
+        </p>
+        <div class="tag-cloud">
+          <span class="tag">Paper Industry</span>
+          <span class="tag">FMCG Cluster</span>
+          <span class="tag">Textiles</span>
+          <span class="tag">Packaging Hub</span>
+          <span class="tag">DMIC Corridor</span>
+          <span class="tag">HSIIDC Zone</span>
+          <span class="tag">Export Units</span>
+          <span class="tag">Warehousing</span>
+          <span class="tag">Auto Ancillary</span>
+          <span class="tag">Food Processing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT SPECS -->
+<section id="specs" aria-label="Project specifications">
+  <div class="specs-inner">
+    <div class="specs-left">
+      <div class="specs-header">
+        <div class="section-eyebrow">The Blueprint</div>
+        <div class="gold-line"></div>
+        <h2 class="section-title">Project Specifications</h2>
+      </div>
+      <div class="spec-row" id="sr1">
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="spec-info"><div class="spec-name">Total Plots</div><div class="spec-val">236 <small>exclusive units</small></div></div>
+      </div>
+      <div class="spec-row" id="sr2">
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="spec-info"><div class="spec-name">Plot Sizes</div><div class="spec-val">100 – 500 sq.yd. <small>multiple configurations</small></div></div>
+      </div>
+      <div class="spec-row" id="sr3">
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="spec-info"><div class="spec-name">Location</div><div class="spec-val">Sector 11, Bahadurgarh <small>Haryana</small></div></div>
+      </div>
+      <div class="spec-row" id="sr4">
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="spec-info"><div class="spec-name">Approvals</div><div class="spec-val">DTCP Approved <small>Haryana government</small></div></div>
+      </div>
+      <div class="spec-row" id="sr5">
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="spec-info"><div class="spec-name">Developer</div><div class="spec-val">Homegram Estate <small>premium residential</small></div></div>
+      </div>
+      <div class="spec-row" id="sr6">
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="spec-info"><div class="spec-name">Price</div><div class="spec-val">₹90,000/sq.yd. <small>pre-launch offer</small></div></div>
+      </div>
+      <div style="margin-top:3rem">
+        <div class="section-eyebrow" style="margin-bottom:1.5rem;">Plot Configuration</div>
+        <div class="plot-bars">
+          <div class="plot-bar-item">
+            <div class="plot-bar-label"><span>100 sq.yd.</span><span>Limited Units</span></div>
+            <div class="plot-bar-track"><div class="plot-bar-fill" data-width="45"></div></div>
+          </div>
+          <div class="plot-bar-item">
+            <div class="plot-bar-label"><span>150 sq.yd.</span><span>Most Popular</span></div>
+            <div class="plot-bar-track"><div class="plot-bar-fill" data-width="85"></div></div>
+          </div>
+          <div class="plot-bar-item">
+            <div class="plot-bar-label"><span>200 sq.yd.</span><span>Premium Lots</span></div>
+            <div class="plot-bar-track"><div class="plot-bar-fill" data-width="65"></div></div>
+          </div>
+          <div class="plot-bar-item">
+            <div class="plot-bar-label"><span>300–500 sq.yd.</span><span>Estate Plots</span></div>
+            <div class="plot-bar-track"><div class="plot-bar-fill" data-width="35"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="specs-right">
+      <div class="site-plan-wrap">
+        <div class="site-plan-title">Conceptual Site Layout</div>
+        <svg id="site-plan-svg" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Conceptual site plan of The Heritage plotted development">
+          <rect width="400" height="480" fill="#0a0705"/>
+          <!-- Boundary -->
+          <rect x="20" y="20" width="360" height="440" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".4"/>
+          <!-- Main road -->
+          <rect x="0" y="215" width="400" height="22" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.15)" stroke-width=".5"/>
+          <line x1="0" y1="226" x2="400" y2="226" stroke="#c9a84c" stroke-width=".5" stroke-dasharray="6 4" opacity=".3"/>
+          <text x="200" y="232" text-anchor="middle" font-family="Josefin Sans, sans-serif" font-size="7" fill="rgba(201,168,76,.4)" letter-spacing="2">MAIN BOULEVARD</text>
+          <!-- Internal road -->
+          <rect x="175" y="20" width="18" height="440" fill="rgba(201,168,76,.04)" stroke="rgba(201,168,76,.1)" stroke-width=".5"/>
+          <!-- Plot blocks -->
+          <g opacity=".7">
+            <!-- Block A -->
+            <rect x="35" y="35" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="95" y="35" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="35" y="85" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="95" y="85" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="35" y="135" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="95" y="135" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="35" y="185" width="55" height="25" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="95" y="185" width="55" height="25" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <!-- Block B -->
+            <rect x="198" y="35" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="258" y="35" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="318" y="35" width="47" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="198" y="85" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="258" y="85" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="318" y="85" width="47" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="198" y="135" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="258" y="135" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="318" y="135" width="47" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <!-- Lower block -->
+            <rect x="35" y="242" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="95" y="242" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="35" y="292" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="95" y="292" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="35" y="342" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="95" y="342" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="35" y="392" width="55" height="50" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="95" y="392" width="55" height="50" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="198" y="242" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="258" y="242" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="318" y="242" width="47" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="198" y="292" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="258" y="292" width="55" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <rect x="318" y="292" width="47" height="45" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+          </g>
+          <!-- Clubhouse -->
+          <rect x="198" y="342" width="167" height="100" rx="2" fill="rgba(201,168,76,.08)" stroke="#c9a84c" stroke-width="1"/>
+          <text x="281" y="396" text-anchor="middle" font-family="Josefin Sans,sans-serif" font-size="8" fill="#c9a84c" letter-spacing="2">CLUBHOUSE</text>
+          <!-- Green areas -->
+          <circle cx="155" cy="280" r="12" fill="rgba(34,85,34,.25)" stroke="rgba(60,140,60,.3)" stroke-width=".8"/>
+          <circle cx="155" cy="165" r="12" fill="rgba(34,85,34,.25)" stroke="rgba(60,140,60,.3)" stroke-width=".8"/>
+          <!-- Labels -->
+          <text x="62" y="60" text-anchor="middle" font-family="Josefin Sans,sans-serif" font-size="6.5" fill="rgba(201,168,76,.5)" letter-spacing="1">A1</text>
+          <text x="122" y="60" text-anchor="middle" font-family="Josefin Sans,sans-serif" font-size="6.5" fill="rgba(201,168,76,.5)" letter-spacing="1">A2</text>
+          <!-- North arrow -->
+          <g transform="translate(355,45)">
+            <circle r="12" fill="none" stroke="rgba(201,168,76,.3)" stroke-width=".8"/>
+            <polygon points="0,-8 3,4 0,2 -3,4" fill="#c9a84c" opacity=".8"/>
+            <text y="18" text-anchor="middle" font-family="Josefin Sans,sans-serif" font-size="7" fill="rgba(201,168,76,.5)" letter-spacing="1">N</text>
+          </g>
+          <!-- Scale -->
+          <line x1="35" y1="458" x2="135" y2="458" stroke="rgba(201,168,76,.4)" stroke-width="1"/>
+          <line x1="35" y1="454" x2="35" y2="462" stroke="rgba(201,168,76,.4)" stroke-width="1"/>
+          <line x1="135" y1="454" x2="135" y2="462" stroke="rgba(201,168,76,.4)" stroke-width="1"/>
+          <text x="85" y="470" text-anchor="middle" font-family="Josefin Sans,sans-serif" font-size="7" fill="rgba(201,168,76,.4)" letter-spacing="1">100m</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- AMENITIES -->
+<section id="amenities" aria-label="Amenities">
+  <div class="amenities-inner">
+    <div class="amenities-header">
+      <div class="section-eyebrow" style="color:#c9a84c;">Life Within</div>
+      <div class="gold-line center"></div>
+      <h2 class="section-title dark">World-Class Amenities</h2>
+      <p class="section-body dark" style="margin-top:.75rem;">Every facility curated so residents never need to leave — and never want to.</p>
+    </div>
+    <div class="am-grid">
+      <div class="am-card sport reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+        <div class="am-name">Club Sports</div>
+        <div class="am-desc">Multi-sport arena</div>
+      </div>
+      <div class="am-card pool reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 18c1.5-2 3.5-2 5 0s3.5 2 5 0 3.5-2 5 0"/><path d="M6 18V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12"/></svg></div>
+        <div class="am-name">Swimming Pool</div>
+        <div class="am-desc">Olympic-size pool</div>
+      </div>
+      <div class="am-card gym reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 6.5h11M6.5 17.5h11M3 3l18 18M3 21 21 3"/></svg></div>
+        <div class="am-name">Fitness Centre</div>
+        <div class="am-desc">State-of-the-art gym</div>
+      </div>
+      <div class="am-card cricket reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="19" x2="19" y2="5"/><path d="M15 5l4 4-10 10-4-4z"/></svg></div>
+        <div class="am-name">Cricket Pitch</div>
+        <div class="am-desc">Full-size turf</div>
+      </div>
+      <div class="am-card plant reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12C12 7 7 4 2 6c0 5 3 9 10 6M12 12c0-5 5-8 10-6c0 5-3 9-10 6"/></svg></div>
+        <div class="am-name">Landscaped Parks</div>
+        <div class="am-desc">Green open spaces</div>
+      </div>
+      <div class="am-card kids reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="am-name">Kids' Zone</div>
+        <div class="am-desc">Play area & creche</div>
+      </div>
+      <div class="am-card jog reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="am-name">Jogging Track</div>
+        <div class="am-desc">Perimeter running trail</div>
+      </div>
+      <div class="am-card yoga reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="am-name">Yoga Lawn</div>
+        <div class="am-desc">Open-air meditation</div>
+      </div>
+      <div class="am-card club reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <div class="am-name">Clubhouse</div>
+        <div class="am-desc">Premium social hub</div>
+      </div>
+      <div class="am-card tennis reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M18 6C14 10 14 14 18 18M6 6c4 4 4 8 0 12"/></svg></div>
+        <div class="am-name">Tennis Court</div>
+        <div class="am-desc">Professional surface</div>
+      </div>
+      <div class="am-card security reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="am-name">24×7 Security</div>
+        <div class="am-desc">CCTV + gate guard</div>
+      </div>
+      <div class="am-card power reveal">
+        <div class="am-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="am-name">Power Backup</div>
+        <div class="am-desc">100% DG backup</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" aria-label="Pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <div class="section-eyebrow" style="color:#c9a84c;text-align:center;display:block;">Investment</div>
+      <div class="gold-line center"></div>
+      <h2 class="section-title">Price Your Legacy</h2>
+    </div>
+    <p class="pricing-subhead">"The gap between pre-launch and launch is where legacies are built."</p>
+    <div class="pricing-cards">
+      <!-- Gold Card -->
+      <div class="price-card gold-card" id="priceCard1">
+        <span class="card-badge">Pre-Launch Exclusive</span>
+        <h3 class="card-title">The Heritage — Pre-Launch</h3>
+        <div class="card-price">
+          ₹90,000
+          <small>per sq.yd. · limited window</small>
+        </div>
+        <div class="card-divider"></div>
+        <ul class="card-features">
+          <li>Priority plot selection from master plan</li>
+          <li>Pre-launch pricing locked for 30 days</li>
+          <li>Direct developer pricing — zero brokerage</li>
+          <li>Flexible payment plan: 30-40-30</li>
+          <li>Free site visit with project team</li>
+          <li>DTCP approved, clean title deed</li>
+        </ul>
+        <a href="#lead" class="card-cta">Claim Pre-Launch Price</a>
+      </div>
+      <!-- White Card -->
+      <div class="price-card white-card" id="priceCard2">
+        <span class="card-badge">Post-Launch</span>
+        <h3 class="card-title">The Heritage — Launch</h3>
+        <div class="card-price">
+          ₹1,10,000+
+          <small>per sq.yd. · expected launch price</small>
+        </div>
+        <div class="card-divider"></div>
+        <ul class="card-features">
+          <li>Open to all buyers post soft launch</li>
+          <li>All amenities fully operational</li>
+          <li>Construction-linked payment plan</li>
+          <li>Higher entry, same appreciation story</li>
+          <li>Bank loan available from empanelled banks</li>
+          <li>Possession within 18 months</li>
+        </ul>
+        <a href="#lead" class="card-cta">Register Interest</a>
+      </div>
+    </div>
+    <p class="price-disclaimer">* Prices are indicative and subject to change. GST, registration, and stamp duty extra. This is not a solicitation. RERA registration in progress.</p>
+  </div>
+</section>
+<!-- GALLERY -->
+<section id="gallery" aria-label="Photo gallery">
+  <div class="gallery-header">
+    <div class="section-eyebrow" style="color:#c9a84c;display:block;text-align:center;margin-bottom:.5rem;">Visualise</div>
+    <div class="gold-line center"></div>
+    <h2 class="section-title">The Landscape of Legacy</h2>
+  </div>
+  <div class="gallery-track-wrap">
+    <div class="gallery-track" id="galleryTrack" role="list">
+      <div class="gallery-item" role="listitem">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
+          alt="Aerial view of luxury residential plots" loading="lazy">
+        <div class="gallery-item-label">Aerial · Plot Landscape</div>
+      </div>
+      <div class="gallery-item" role="listitem">
+        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"
+          alt="Premium residential neighbourhood from aerial perspective" loading="lazy">
+        <div class="gallery-item-label">Neighbourhood · Premium Zone</div>
+      </div>
+      <div class="gallery-item" role="listitem">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"
+          alt="Premium interior architecture inspiration" loading="lazy">
+        <div class="gallery-item-label">Architecture · Interior Vision</div>
+      </div>
+      <div class="gallery-item" role="listitem">
+        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80"
+          alt="Clubhouse and pool amenity" loading="lazy">
+        <div class="gallery-item-label">Clubhouse · Pool Deck</div>
+      </div>
+      <div class="gallery-item" role="listitem">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+          alt="Green landscaped areas within the development" loading="lazy">
+        <div class="gallery-item-label">Landscape · Green Canopy</div>
+      </div>
+    </div>
+  </div>
+  <div class="gallery-controls" aria-label="Gallery navigation">
+    <button class="gallery-btn" id="galleryPrev" aria-label="Previous">&#8592;</button>
+    <button class="gallery-btn" id="galleryNext" aria-label="Next">&#8594;</button>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section id="lead" aria-label="Contact and booking">
+  <div class="lead-inner">
+    <div class="lead-header">
+      <h2 class="lead-title">Your plot is waiting.<br>Let's talk.</h2>
+      <p class="lead-sub">Share your details and our team will connect within 2 business hours.</p>
+    </div>
+    <form class="lead-form" id="leadForm" novalidate>
+      <div class="field-wrap">
+        <input type="text" id="fname" class="fl-input" placeholder=" " required autocomplete="given-name">
+        <label for="fname" class="fl-label">Full Name *</label>
+        <div class="fl-line"></div>
+      </div>
+      <div class="field-wrap">
+        <input type="tel" id="fphone" class="fl-input" placeholder=" " required autocomplete="tel">
+        <label for="fphone" class="fl-label">Phone Number *</label>
+        <div class="fl-line"></div>
+      </div>
+      <div class="field-wrap">
+        <input type="email" id="femail" class="fl-input" placeholder=" " autocomplete="email">
+        <label for="femail" class="fl-label">Email Address</label>
+        <div class="fl-line"></div>
+      </div>
+      <div class="field-wrap">
+        <input type="text" id="fcity" class="fl-input" placeholder=" " autocomplete="address-level2">
+        <label for="fcity" class="fl-label">Current City</label>
+        <div class="fl-line"></div>
+      </div>
+      <div class="field-wrap full">
+        <select id="fplotsize" class="fl-input" required>
+          <option value="" disabled selected></option>
+          <option value="100">100 sq.yd.</option>
+          <option value="150">150 sq.yd.</option>
+          <option value="200">200 sq.yd.</option>
+          <option value="300">300 sq.yd.</option>
+          <option value="500">500 sq.yd. (Estate)</option>
+        </select>
+        <label for="fplotsize" class="fl-label">Preferred Plot Size *</label>
+        <div class="fl-line"></div>
+      </div>
+      <div class="field-wrap full">
+        <input type="text" id="fmessage" class="fl-input" placeholder=" ">
+        <label for="fmessage" class="fl-label">Message / Query (optional)</label>
+        <div class="fl-line"></div>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">Request Site Visit &nbsp;→</button>
+      </div>
+      <p class="form-note">By submitting, you agree to be contacted by Homegram Estate regarding The Heritage. Your data is never sold or shared.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand-name">The Heritage</div>
+        <div class="brand-sub">By Homegram Estate</div>
+        <p>236 exclusive plotted units at Sector 11, Bahadurgarh — where Delhi's promise meets Haryana's horizon.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="#gateway">Location</a></li>
+          <li><a href="#metro">Connectivity</a></li>
+          <li><a href="#industrial">Ecosystem</a></li>
+          <li><a href="#specs">Specifications</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Project</div>
+        <ul class="footer-links">
+          <li><a href="#specs">Plot Sizes</a></li>
+          <li><a href="#pricing">Pre-Launch Offer</a></li>
+          <li><a href="#lead">Site Visit</a></li>
+          <li><a href="#lead">Download Brochure</a></li>
+          <li><a href="#">RERA Details</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-col-title">Reach Us</div>
+        <p><a href="tel:+919654803560">+91 96548 03560</a></p>
+        <p><a href="mailto:gaurav.sobti@homegramestate.com">gaurav.sobti@homegramestate.com</a></p>
+        <p style="margin-top:1rem;font-size:.85rem;">Sector 11, Bahadurgarh,<br>Haryana — 124507</p>
+        <p style="margin-top:.75rem;"><a href="https://maps.app.goo.gl/v5cuPT7DoP5JsrWY8" target="_blank" rel="noopener" aria-label="Open in Google Maps">View on Google Maps →</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Homegram Estate. All rights reserved. The Heritage is a pre-launch project. Subject to RERA approvals. Prices indicative.</p>
+      <ul class="footer-legal">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">RERA</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ============================================================
+   CUSTOM CURSOR
+============================================================ */
+const cur = document.getElementById('cursor');
+const curF = document.getElementById('cursor-follower');
+let mx = -100, my = -100, fx = -100, fy = -100;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  gsap.to(cur, { x: mx, y: my, duration: 0.1, ease: 'power1.out' });
+  gsap.to(curF, { x: mx, y: my, duration: 0.18, ease: 'power1.out' });
+});
+
+document.querySelectorAll('a,button,.am-card,.price-card,.gallery-btn').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-grow'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-grow'));
+});
+
+/* ============================================================
+   LOADER
+============================================================ */
+function animateLoader() {
+  const parts = document.querySelectorAll('.gate-part');
+  const tl = gsap.timeline({ onComplete: hideLoader });
+  parts.forEach((p, i) => {
+    const len = p.getTotalLength ? p.getTotalLength() : 100;
+    tl.to(p, {
+      strokeDashoffset: 0,
+      duration: 0.5 + i * 0.08,
+      ease: 'power2.out'
+    }, i * 0.07);
+  });
+  tl.to('#loader-text', { opacity: 1, duration: 0.4 }, 0.5);
+}
+
+function hideLoader() {
+  gsap.to('#loader', {
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power2.inOut',
+    delay: 0.6,
+    onComplete: () => {
+      document.getElementById('loader').style.display = 'none';
+      startHeroAnimations();
+    }
+  });
+}
+
+// SVG elements: set initial dashoffset from dasharray
+document.querySelectorAll('.gate-part').forEach(p => {
+  const da = p.getAttribute('stroke-dasharray');
+  if (da) p.setAttribute('stroke-dashoffset', da);
+});
+
+window.addEventListener('load', animateLoader);
+// Fallback: trigger after 1s if load fires slowly
+setTimeout(() => {
+  if (document.getElementById('loader').style.display !== 'none') {
+    animateLoader();
+  }
+}, 800);
+
+/* ============================================================
+   HERO ANIMATIONS
+============================================================ */
+function startHeroAnimations() {
+  // Inject character spans into title
+  const titleEl = document.getElementById('hero-title');
+  const lines = ['Where Delhi Ends,', 'Legacy Begins'];
+  lines.forEach((line, li) => {
+    const wrap = document.createElement('span');
+    wrap.style.cssText = 'display:block;';
+    [...line].forEach(ch => {
+      const s = document.createElement('span');
+      s.className = 'hero-char';
+      s.textContent = ch === ' ' ? '\u00A0' : ch;
+      s.style.cssText = 'display:inline-block;';
+      wrap.appendChild(s);
+    });
+    titleEl.appendChild(wrap);
+    if (li < lines.length - 1) {
+      const br = document.createElement('br');
+      titleEl.appendChild(br);
+    }
+  });
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced) {
+    // Ghost drift
+    gsap.to('.hero-ghost', {
+      x: 30, y: -20, duration: 12, repeat: -1, yoyo: true, ease: 'sine.inOut'
+    });
+
+    // Eyebrow
+    gsap.to('.hero-eyebrow', { opacity: 1, y: 0, duration: 0.7, delay: 2.5, ease: 'power2.out',
+      from: { opacity: 0, y: 20 }
+    });
+    gsap.from('.hero-eyebrow', { opacity: 0, y: 20, duration: 0.7, delay: 2.5, ease: 'power2.out' });
+
+    // Char-by-char title
+    gsap.from('.hero-char', {
+      opacity: 0, y: 60, rotateX: -90,
+      stagger: 0.04, duration: 0.8,
+      ease: 'back.out(1.7)',
+      delay: 2.8
+    });
+
+    // Subtitle + CTAs + scroll
+    gsap.to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.8, delay: 4.2, ease: 'power2.out' });
+    gsap.from('.hero-subtitle', { y: 30, duration: 0.8, delay: 4.2, ease: 'power2.out' });
+    gsap.to('.hero-ctas', { opacity: 1, y: 0, duration: 0.8, delay: 4.5, ease: 'power2.out' });
+    gsap.from('.hero-ctas', { y: 30, duration: 0.8, delay: 4.5, ease: 'power2.out' });
+    gsap.to('.hero-scroll', { opacity: 1, duration: 0.8, delay: 5.0, ease: 'power2.out' });
+  } else {
+    document.querySelectorAll('.hero-char,.hero-eyebrow,.hero-subtitle,.hero-ctas,.hero-scroll')
+      .forEach(e => { e.style.opacity = '1'; e.style.transform = 'none'; });
+  }
+}
+
+/* ============================================================
+   PARTICLE CANVAS
+============================================================ */
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 1.5 + 0.3;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = -Math.random() * 0.4 - 0.1;
+    this.opacity = Math.random() * 0.5 + 0.1;
+    this.gold = Math.random() > 0.7;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.y < -5 || this.x < -5 || this.x > canvas.width + 5) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.gold
+      ? `rgba(201,168,76,${this.opacity})`
+      : `rgba(240,235,224,${this.opacity * 0.5})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+function animParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+
+/* ============================================================
+   NAV SCROLL BEHAVIOUR
+============================================================ */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ============================================================
+   GSAP SCROLL TRIGGERS
+============================================================ */
+gsap.registerPlugin(ScrollTrigger);
+
+// Generic reveal
+document.querySelectorAll('.reveal').forEach(el => {
+  ScrollTrigger.create({
+    trigger: el,
+    start: 'top 85%',
+    onEnter: () => el.classList.add('visible')
+  });
+});
+
+// Trust bar counters
+function animCount(id, target, prefix = '', suffix = '') {
+  ScrollTrigger.create({
+    trigger: '#trust',
+    start: 'top 80%',
+    once: true,
+    onEnter: () => {
+      let obj = { val: 0 };
+      gsap.to(obj, {
+        val: target, duration: 1.8, ease: 'power2.out',
+        onUpdate: () => {
+          document.getElementById(id).textContent = prefix + Math.floor(obj.val) + suffix;
+        }
+      });
+    }
+  });
+}
+animCount('cnt-plots', 236);
+animCount('cnt-acres', 18);
+animCount('cnt-metro', 2);
+animCount('cnt-delhi', 25);
+animCount('cnt-price', 90);
+
+// Industrial counter
+ScrollTrigger.create({
+  trigger: '#industrial',
+  start: 'top 75%',
+  once: true,
+  onEnter: () => {
+    let obj = { val: 0 };
+    gsap.to(obj, {
+      val: 2800, duration: 2.2, ease: 'power2.out',
+      onUpdate: () => {
+        document.getElementById('ind-counter').textContent = Math.floor(obj.val).toLocaleString('en-IN');
+      }
+    });
+  }
+});
+
+// Gateway arch draw
+ScrollTrigger.create({
+  trigger: '#gateway',
+  start: 'top 70%',
+  once: true,
+  onEnter: () => {
+    document.querySelectorAll('.arch-draw').forEach((el, i) => {
+      gsap.to(el, {
+        strokeDashoffset: 0,
+        duration: 1.2,
+        delay: i * 0.12,
+        ease: 'power2.out'
+      });
+    });
+  }
+});
+
+// Set arch dashoffsets
+document.querySelectorAll('.arch-draw').forEach(el => {
+  const da = el.getAttribute('stroke-dasharray');
+  if (da) el.setAttribute('stroke-dashoffset', da);
+});
+
+// Spec rows
+document.querySelectorAll('.spec-row').forEach((row, i) => {
+  ScrollTrigger.create({
+    trigger: row,
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.to(row, { opacity: 1, x: 0, duration: 0.6, delay: i * 0.1, ease: 'power2.out' });
+    }
+  });
+});
+
+// Plot bars
+ScrollTrigger.create({
+  trigger: '.plot-bars',
+  start: 'top 80%',
+  once: true,
+  onEnter: () => {
+    document.querySelectorAll('.plot-bar-fill').forEach(bar => {
+      bar.style.width = bar.dataset.width + '%';
+    });
+  }
+});
+
+// Section title reveals
+gsap.utils.toArray('#gateway .gateway-title, #metro .section-title, #specs .section-title, #amenities .section-title, #industrial h2, #pricing .section-title').forEach(el => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none none' },
+    opacity: 0, y: 40, duration: 0.9, ease: 'power2.out'
+  });
+});
+
+// Amenity cards stagger
+gsap.from('.am-card', {
+  scrollTrigger: { trigger: '.am-grid', start: 'top 80%', toggleActions: 'play none none none' },
+  opacity: 0, y: 40, duration: 0.6, stagger: 0.06, ease: 'power2.out'
+});
+
+// Pricing cards
+gsap.from('.price-card', {
+  scrollTrigger: { trigger: '.pricing-cards', start: 'top 80%', toggleActions: 'play none none none' },
+  opacity: 0, y: 50, duration: 0.8, stagger: 0.2, ease: 'power2.out'
+});
+
+// Gallery items
+gsap.from('.gallery-item', {
+  scrollTrigger: { trigger: '.gallery-track', start: 'top 85%', toggleActions: 'play none none none' },
+  opacity: 0, x: 60, duration: 0.7, stagger: 0.12, ease: 'power2.out'
+});
+
+/* ============================================================
+   3D TILT ON PRICING CARDS
+============================================================ */
+document.querySelectorAll('.price-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    gsap.to(card, {
+      rotateY: x * 8, rotateX: -y * 8,
+      duration: 0.4, ease: 'power2.out',
+      transformPerspective: 800
+    });
+  });
+  card.addEventListener('mouseleave', () => {
+    gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'elastic.out(1,0.5)' });
+  });
+});
+
+/* ============================================================
+   GALLERY DRAG SCROLL
+============================================================ */
+const track = document.getElementById('galleryTrack');
+let isDown = false, startX, scrollLeft;
+
+track.addEventListener('mousedown', e => {
+  isDown = true;
+  track.classList.add('grabbing');
+  startX = e.pageX - track.offsetLeft;
+  scrollLeft = track.scrollLeft;
+});
+track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('grabbing'); });
+track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('grabbing'); });
+track.addEventListener('mousemove', e => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - track.offsetLeft;
+  const walk = (x - startX) * 1.5;
+  track.scrollLeft = scrollLeft - walk;
+});
+
+document.getElementById('galleryPrev').addEventListener('click', () => {
+  track.scrollBy({ left: -580, behavior: 'smooth' });
+});
+document.getElementById('galleryNext').addEventListener('click', () => {
+  track.scrollBy({ left: 580, behavior: 'smooth' });
+});
+
+/* ============================================================
+   LEAD FORM
+============================================================ */
+document.getElementById('leadForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.btn-submit');
+  btn.textContent = 'Thank You — We\'ll Be In Touch Shortly ✓';
+  btn.style.background = '#2d5a27';
+  btn.style.color = '#f0ebe0';
+  btn.disabled = true;
+  // Reset after 5s for demo
+  setTimeout(() => {
+    btn.textContent = 'Request Site Visit →';
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.disabled = false;
+    this.reset();
+  }, 5000);
+});
+
+// fl-line activation for select
+document.querySelectorAll('.fl-input').forEach(inp => {
+  inp.addEventListener('focus', () => {
+    const line = inp.parentElement.querySelector('.fl-line');
+    if (line) line.style.width = '100%';
+  });
+  inp.addEventListener('blur', () => {
+    const line = inp.parentElement.querySelector('.fl-line');
+    if (line && !inp.value) line.style.width = '0';
+  });
+});
+
+/* ============================================================
+   LEAFLET MAP + METRO ANIMATION
+============================================================ */
+const stations = [
+  { name: 'Kashmere Gate',         latlng: [28.6672, 77.2280] },
+  { name: 'Inderlok',              latlng: [28.6748, 77.1882] },
+  { name: 'Punjabi Bagh West',     latlng: [28.6697, 77.1374] },
+  { name: 'Peera Garhi',           latlng: [28.6667, 77.0906] },
+  { name: 'Nangloi',               latlng: [28.6667, 77.0573] },
+  { name: 'Mundka',                latlng: [28.6681, 77.0273] },
+  { name: 'Tikri Border',          latlng: [28.6681, 76.9978] },
+  { name: 'Pandit Shree Ram Sharma', latlng: [28.6869, 76.9691] },
+  { name: 'Bahadurgarh City Park', latlng: [28.6975, 76.9231] }
+];
+const projectPin = [28.7010, 76.9180];
+
+const map = L.map('map', {
+  center: [28.6830, 77.0760],
+  zoom: 11,
+  zoomControl: false,
+  scrollWheelZoom: false
+});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_matter_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(map);
+
+L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+// Gold polyline for route
+const routeLatLngs = stations.map(s => s.latlng);
+const routeLine = L.polyline(routeLatLngs, {
+  color: '#c9a84c', weight: 3, opacity: 0.5, dashArray: '6 4'
+}).addTo(map);
+
+// Station markers (dim initially)
+const stationMarkers = stations.map((s, i) => {
+  const isLast = i === stations.length - 1;
+  const m = L.circleMarker(s.latlng, {
+    radius: isLast ? 8 : 6,
+    color: '#c9a84c',
+    weight: isLast ? 2 : 1,
+    fillColor: '#2a1f08',
+    fillOpacity: 1,
+    opacity: 0.4
+  }).addTo(map);
+  m.bindTooltip(s.name, {
+    permanent: false,
+    className: 'station-label',
+    direction: 'top',
+    offset: [0, -8]
+  });
+  return m;
+});
+
+// Train marker (gold circle)
+const trainMarker = L.circleMarker(stations[0].latlng, {
+  radius: 7,
+  color: '#e8c97a',
+  weight: 2,
+  fillColor: '#c9a84c',
+  fillOpacity: 1,
+  opacity: 0
+}).addTo(map);
+
+let trainAnimated = false;
+
+function animateTrain() {
+  if (trainAnimated) return;
+  trainAnimated = true;
+  trainMarker.setStyle({ opacity: 1 });
+
+  const totalStations = stations.length;
+  let stationIdx = 0;
+
+  function moveToNextStation() {
+    if (stationIdx >= totalStations) {
+      // Draw dotted project line
+      L.polyline([stations[totalStations - 1].latlng, projectPin], {
+        color: '#c9a84c', weight: 2, opacity: 0.7, dashArray: '4 6'
+      }).addTo(map);
+
+      // Project pin icon
+      const gateIcon = L.divIcon({
+        className: '',
+        html: `<div style="
+          background:#c9a84c;color:#0a0705;
+          width:36px;height:36px;
+          display:flex;align-items:center;justify-content:center;
+          border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+          box-shadow:0 0 12px rgba(201,168,76,.6);
+          border:2px solid #e8c97a;font-size:14px;font-weight:bold;
+        ">
+          <span style="transform:rotate(45deg);font-family:Cinzel,serif;">H</span>
+        </div>`,
+        iconSize: [36, 36],
+        iconAnchor: [18, 36]
+      });
+      L.marker(projectPin, { icon: gateIcon }).addTo(map);
+
+      // "WE ARE HERE" badge
+      const badgeIcon = L.divIcon({
+        className: '',
+        html: `<div class="we-are-here">WE ARE HERE</div>`,
+        iconSize: [110, 24],
+        iconAnchor: [-5, 44]
+      });
+      L.marker(projectPin, { icon: badgeIcon }).addTo(map);
+      return;
+    }
+
+    const targetLatLng = stations[stationIdx].latlng;
+    const currentLatLng = trainMarker.getLatLng();
+    const steps = 40;
+    let step = 0;
+
+    const dLat = (targetLatLng[0] - currentLatLng.lat) / steps;
+    const dLng = (targetLatLng[1] - currentLatLng.lng) / steps;
+
+    function stepFn() {
+      step++;
+      trainMarker.setLatLng([
+        currentLatLng.lat + dLat * step,
+        currentLatLng.lng + dLng * step
+      ]);
+      if (step < steps) {
+        setTimeout(stepFn, 25);
+      } else {
+        // Light up station
+        stationMarkers[stationIdx].setStyle({
+          fillColor: '#c9a84c',
+          opacity: 1,
+          fillOpacity: 1,
+          radius: stationIdx === stations.length - 1 ? 9 : 7
+        });
+        stationIdx++;
+        setTimeout(moveToNextStation, 180);
+      }
+    }
+    stepFn();
+  }
+
+  moveToNextStation();
+}
+
+// Trigger on IntersectionObserver
+const mapSection = document.getElementById('metro');
+const mapObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(animateTrain, 600);
+      mapObserver.unobserve(mapSection);
+    }
+  });
+}, { threshold: 0.3 });
+mapObserver.observe(mapSection);
+
+/* ============================================================
+   MOBILE NAV HAMBURGER
+============================================================ */
+const hamburger = document.getElementById('nav-hamburger');
+let mobileNavOpen = false;
+
+hamburger.addEventListener('click', () => {
+  mobileNavOpen = !mobileNavOpen;
+  const links = document.querySelector('.nav-links');
+  const cta = document.querySelector('.nav-cta');
+  if (mobileNavOpen) {
+    links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:rgba(10,7,5,.97);padding:2rem;gap:1.5rem;backdrop-filter:blur(20px);z-index:499;border-bottom:1px solid rgba(201,168,76,.1)';
+    cta.style.cssText = 'display:block;text-align:center;margin:0 2rem 2rem;position:fixed;top:calc(60px + 9rem);left:0;right:0;z-index:499';
+    hamburger.querySelectorAll('span')[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
+    hamburger.querySelectorAll('span')[1].style.opacity = '0';
+    hamburger.querySelectorAll('span')[2].style.transform = 'rotate(-45deg) translate(4px, -4px)';
+  } else {
+    links.style.cssText = 'display:none';
+    cta.style.cssText = 'display:none';
+    hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  }
+});
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a, .nav-cta').forEach(link => {
+  link.addEventListener('click', () => {
+    if (mobileNavOpen) hamburger.click();
+  });
+});
+
+})();
+</script>
+</body>
+</html>
