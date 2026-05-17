@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heritage — Premium Plotted Development · Bahadurgarh, Haryana</title>
+<meta name="description" content="Own your holiday home 25 minutes from Delhi. The Heritage by Homegram Estate — 236 gated plots in Sector 11, Bahadurgarh, from ₹90,000/sq.yd.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<style>
+/* ===== CSS RESET & ROOT VARS ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;background:#F9F6F0;color:#1C1917;overflow-x:hidden;cursor:none}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font-family:'Inter',sans-serif;border:none;cursor:none}
+ul{list-style:none}
+
+:root{
+  --navy:#111827;
+  --navy2:#1F2937;
+  --cream:#F9F6F0;
+  --cream2:#F0EBE1;
+  --warm-white:#FEFCF8;
+  --gold:#C9943A;
+  --gold-light:#E8B86D;
+  --teal:#0F766E;
+  --teal-light:#14B8A6;
+  --text-dark:#1C1917;
+  --text-mid:#44403C;
+  --text-light:#78716C;
+  --white:#FFFFFF;
+}
+
+/* ===== CUSTOM CURSOR ===== */
+#cursor-dot,#cursor-ring{position:fixed;pointer-events:none;z-index:9999;top:0;left:0;transition:opacity .3s}
+#cursor-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;z-index:9999}
+#cursor-ring{width:32px;height:32px;border:1.5px solid var(--gold);border-radius:50%;z-index:9998;opacity:.7}
+/* ===== NAV ===== */
+#main-nav{position:fixed;top:0;left:0;width:100%;z-index:1000;transition:background .35s,box-shadow .35s,border-bottom .35s;padding:0}
+#main-nav.scrolled{background:var(--white);box-shadow:0 2px 24px rgba(0,0,0,.08);border-bottom:1px solid var(--cream2)}
+.nav-container{display:flex;align-items:center;justify-content:space-between;max-width:1280px;margin:0 auto;padding:20px 40px}
+.nav-logo{display:flex;flex-direction:column;line-height:1}
+.logo-main{font-family:'Playfair Display',serif;font-weight:900;font-size:1.25rem;letter-spacing:.12em;color:var(--white);transition:color .35s}
+#main-nav.scrolled .logo-main{color:var(--navy)}
+.logo-sub{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .35s;margin-top:2px}
+#main-nav.scrolled .logo-sub{color:var(--text-light)}
+.nav-ctas{display:flex;gap:12px;align-items:center}
+.btn-outline{padding:9px 22px;border:1.5px solid rgba(255,255,255,.7);border-radius:4px;color:var(--white);font-size:.8rem;font-weight:500;letter-spacing:.06em;transition:all .25s}
+.btn-outline:hover{background:rgba(255,255,255,.12);border-color:var(--white)}
+#main-nav.scrolled .btn-outline{border-color:var(--navy);color:var(--navy)}
+#main-nav.scrolled .btn-outline:hover{background:var(--navy);color:var(--white)}
+.btn-teal{padding:9px 22px;background:var(--teal);border-radius:4px;color:var(--white);font-size:.8rem;font-weight:600;letter-spacing:.06em;transition:background .25s,transform .2s}
+.btn-teal:hover{background:var(--teal-light);transform:translateY(-1px)}
+/* ===== SECTION BASE ===== */
+.section-dark{background:var(--navy);color:var(--white)}
+.section-light{background:var(--cream);color:var(--text-dark)}
+section{padding:100px 40px}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-label{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.section-headline{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin-bottom:20px}
+.section-sub{font-size:1.05rem;color:var(--text-mid);line-height:1.7;max-width:560px}
+.section-dark .section-sub{color:rgba(255,255,255,.65)}
+
+/* ===== HERO ===== */
+#hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:0;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1800&q=85&fit=crop');background-size:cover;background-position:center;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:rgba(17,24,39,.6);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%;padding:0 40px;padding-top:180px;padding-bottom:120px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(201,148,58,.18);border:1px solid rgba(201,148,58,.45);border-radius:100px;padding:6px 18px;margin-bottom:28px}
+.hero-tag span{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-light)}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse-dot 1.6s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.hero-h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.8rem,6vw,5.2rem);line-height:1.08;color:var(--white);margin-bottom:22px}
+.hero-accent{color:var(--gold-light);font-style:italic}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,.75);margin-bottom:42px;line-height:1.6;letter-spacing:.01em}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:80px}
+.btn-gold{padding:15px 36px;background:var(--gold);color:var(--white);font-weight:600;font-size:.95rem;letter-spacing:.06em;border-radius:4px;transition:background .25s,transform .2s}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-white-outline{padding:15px 36px;border:1.5px solid rgba(255,255,255,.75);color:var(--white);font-weight:500;font-size:.95rem;letter-spacing:.06em;border-radius:4px;transition:all .25s}
+.btn-white-outline:hover{background:rgba(255,255,255,.1);border-color:var(--white)}
+.hero-stats-bar{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.15)}
+.hero-stat{flex:1;padding:24px 28px;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;gap:4px}
+.hero-stat:last-child{border-right:none}
+.hero-stat-value{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--white)}
+.hero-stat-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.scroll-indicator{position:absolute;bottom:0;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;padding-bottom:32px;opacity:.7}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,transparent,var(--gold-light));animation:scroll-anim 1.8s ease-in-out infinite}
+@keyframes scroll-anim{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* ===== WHY HERITAGE ===== */
+#why{padding:100px 40px}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1280px;margin:0 auto}
+.why-left p{font-size:1rem;line-height:1.78;color:var(--text-mid);margin-bottom:18px}
+.why-cards{display:flex;flex-direction:column;gap:20px}
+.why-card{background:var(--white);border:1px solid var(--cream2);border-radius:12px;padding:28px 30px;transition:transform .3s,box-shadow .3s;border-left:4px solid var(--gold)}
+.why-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.why-card-icon{font-size:1.8rem;margin-bottom:12px}
+.why-card-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;margin-bottom:8px;color:var(--text-dark)}
+.why-card-text{font-size:.92rem;color:var(--text-mid);line-height:1.65}
+
+/* ===== STATS / NUMBERS ===== */
+#numbers{padding:100px 40px}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:60px}
+.stat-box{padding:50px 30px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.stat-box:last-child{border-right:none}
+.stat-num{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.2rem,4vw,3.4rem);color:var(--gold-light);display:block;margin-bottom:8px}
+.stat-label{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.stats-divider{border:none;border-top:1px solid rgba(255,255,255,.1);margin-bottom:48px}
+.stats-blockquote{text-align:center}
+.stats-blockquote blockquote{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.2vw,1.45rem);font-style:italic;color:rgba(255,255,255,.88);line-height:1.6;max-width:760px;margin:0 auto 18px;position:relative;padding:0 40px}
+.stats-blockquote blockquote::before,.stats-blockquote blockquote::after{content:'"';font-size:4rem;color:var(--gold);opacity:.3;position:absolute;font-family:'Playfair Display',serif;line-height:1}
+.stats-blockquote blockquote::before{top:-10px;left:0}
+.stats-blockquote blockquote::after{bottom:-30px;right:0;content:'"'}
+.stats-blockquote cite{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-style:normal}
+/* ===== CONNECTIVITY ===== */
+#connectivity{padding:100px 40px}
+.metro-stage{width:100%;overflow:hidden;margin:40px 0 16px;background:rgba(17,24,39,.04);border-radius:12px;position:relative}
+.metro-stage svg{display:block;width:100%;height:auto}
+.metro-status{text-align:center;font-size:.82rem;color:var(--text-light);letter-spacing:.1em;margin-bottom:12px;min-height:20px}
+#hv3-replay-btn{display:block;margin:0 auto 40px;padding:9px 28px;background:transparent;border:1.5px solid var(--gold);border-radius:100px;color:var(--gold);font-size:.8rem;font-weight:600;letter-spacing:.1em;cursor:none;transition:all .25s}
+#hv3-replay-btn:hover{background:var(--gold);color:var(--white)}
+.connectivity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.conn-card{background:var(--white);border:1px solid var(--cream2);border-radius:12px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.conn-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.conn-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.1)}
+.conn-card:hover::before{transform:scaleX(1)}
+.conn-icon{font-size:2rem;line-height:1}
+.conn-dest{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--text-dark)}
+.conn-mode{font-size:.8rem;color:var(--text-light);letter-spacing:.04em}
+.conn-time{display:inline-block;margin-top:auto;padding:4px 14px;background:var(--gold);color:var(--white);border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:.08em;align-self:flex-start}
+/* ===== PLOT SIZES ===== */
+#plots{padding:100px 40px}
+.plots-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1280px;margin:0 auto}
+.plot-bars{display:flex;flex-direction:column;gap:22px;margin-top:32px}
+.plot-bar-row{display:flex;flex-direction:column;gap:6px}
+.plot-bar-meta{display:flex;justify-content:space-between;align-items:baseline}
+.plot-bar-label{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.85)}
+.plot-bar-price{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold-light);font-weight:700}
+.plot-bar-track{height:8px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden}
+.plot-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:100px;width:0;transition:none}
+.invest-card{background:var(--white);border-radius:16px;padding:40px;color:var(--text-dark)}
+.invest-card-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.4rem;margin-bottom:28px;color:var(--navy)}
+.invest-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--cream2)}
+.invest-row:last-of-type{border-bottom:none;margin-bottom:8px}
+.invest-key{font-size:.85rem;color:var(--text-light);font-weight:500}
+.invest-val{font-size:.95rem;font-weight:600;color:var(--text-dark);text-align:right;max-width:180px}
+.invest-highlight{color:var(--teal);font-weight:700}
+.btn-gold-full{display:block;width:100%;padding:16px;background:var(--gold);color:var(--white);text-align:center;font-weight:700;font-size:.95rem;letter-spacing:.06em;border-radius:8px;margin-top:28px;transition:background .25s,transform .2s}
+.btn-gold-full:hover{background:var(--gold-light);transform:translateY(-2px)}
+/* ===== AMENITIES ===== */
+#amenities{padding:100px 40px}
+.amenities-header{text-align:center;max-width:700px;margin:0 auto 56px}
+.amenities-header .section-headline{text-align:center}
+.clubhouse-card{position:relative;width:100%;height:480px;border-radius:16px;overflow:hidden;margin-bottom:20px}
+.clubhouse-card img,.bento-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.clubhouse-card:hover img,.bento-card:hover img{transform:scale(1.06)}
+.clubhouse-card .card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,24,39,.85) 0%,rgba(17,24,39,.2) 60%,transparent 100%);z-index:1}
+.clubhouse-card .card-content{position:absolute;bottom:0;left:0;right:0;padding:36px;z-index:2}
+.clubhouse-card .card-title{font-family:'Playfair Display',serif;font-weight:900;font-size:2rem;color:var(--white);margin-bottom:16px}
+.card-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:5px 14px;background:rgba(201,148,58,.25);border:1px solid rgba(201,148,58,.4);border-radius:100px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light)}
+.bento-row{display:grid;gap:16px;margin-bottom:16px}
+.bento-row-4{grid-template-columns:repeat(4,1fr)}
+.bento-row-3a{grid-template-columns:1.5fr 1fr 1fr}
+.bento-row-3b{grid-template-columns:1fr 1fr 1.5fr}
+.bento-row-2{grid-template-columns:1fr 1fr}
+.bento-row-4 .bento-card{height:280px}
+.bento-row-3a .bento-card{height:300px}
+.bento-row-3b .bento-card{height:280px}
+.bento-row-2 .bento-card{height:260px}
+.bento-card{position:relative;border-radius:12px;overflow:hidden;cursor:none}
+.bento-card .card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,24,39,.8) 0%,transparent 55%);z-index:1}
+.bento-card .card-content{position:absolute;bottom:0;left:0;right:0;padding:20px;z-index:2}
+.bento-tag{display:inline-block;padding:3px 10px;background:rgba(201,148,58,.3);border:1px solid rgba(201,148,58,.4);border-radius:100px;font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:6px}
+.bento-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white)}
+.bento-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:3}
+.bento-card:hover::after{transform:scaleX(1)}
+/* ===== LOCATION ===== */
+#location{padding:100px 40px}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1280px;margin:0 auto}
+.location-copy p{font-size:1rem;line-height:1.78;color:rgba(255,255,255,.68);margin-bottom:18px}
+.industries-counter{font-family:'Playfair Display',serif;font-size:clamp(4rem,8vw,7rem);font-weight:900;color:var(--gold-light);line-height:1;margin-bottom:8px}
+.industries-label{font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:36px}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:10px}
+.tag-pill{padding:8px 20px;border:1px solid rgba(201,148,58,.35);border-radius:100px;font-size:.8rem;color:var(--gold-light);letter-spacing:.06em;transition:background .2s,color .2s}
+.tag-pill:hover{background:var(--gold);color:var(--white);border-color:var(--gold)}
+
+/* ===== EDUCATION ===== */
+#education{padding:100px 40px}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1280px;margin:0 auto}
+.edu-stat-big{font-family:'Playfair Display',serif;font-size:clamp(4.5rem,8vw,7rem);font-weight:900;color:var(--gold);line-height:1}
+.edu-stat-label{font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-top:6px;margin-bottom:30px}
+.edu-list{display:flex;flex-direction:column;gap:14px}
+.edu-item{display:flex;gap:12px;align-items:flex-start;padding:16px 20px;background:var(--white);border-radius:8px;border-left:3px solid var(--gold)}
+.edu-item-icon{font-size:1.2rem;flex-shrink:0}
+.edu-item-text{font-size:.9rem;color:var(--text-mid);line-height:1.5}
+.edu-right .section-headline{font-size:clamp(1.6rem,3vw,2.4rem)}
+.edu-right p{font-size:.98rem;line-height:1.75;color:var(--text-mid);margin-bottom:18px}
+.edu-bullet{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.edu-bullet-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:6px}
+.edu-bullet-text{font-size:.95rem;color:var(--text-mid);line-height:1.6}
+/* ===== PRICING ===== */
+#pricing{padding:100px 40px}
+.pricing-cards{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:900px;margin:40px auto 48px}
+.pricing-card{border-radius:16px;padding:44px;position:relative}
+.pricing-card-outline{border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.04)}
+.pricing-card-gold{background:var(--gold);color:var(--navy)}
+.pricing-badge{display:inline-block;padding:4px 14px;border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
+.pricing-card-outline .pricing-badge{background:rgba(201,148,58,.2);color:var(--gold-light);border:1px solid rgba(201,148,58,.3)}
+.pricing-card-gold .pricing-badge{background:rgba(17,24,39,.2);color:var(--navy)}
+.pricing-type{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:6px;opacity:.7}
+.pricing-amount{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3rem);font-weight:900;line-height:1;margin-bottom:6px}
+.pricing-unit{font-size:.82rem;opacity:.65;margin-bottom:24px}
+.pricing-desc{font-size:.9rem;opacity:.75;line-height:1.6}
+.pricing-card-gold .pricing-type,.pricing-card-gold .pricing-amount,.pricing-card-gold .pricing-desc{color:var(--navy)}
+.pricing-quote{text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.6);max-width:620px;margin:0 auto;line-height:1.65}
+
+/* ===== LEAD FORM ===== */
+#form{padding:100px 40px}
+.form-inner{max-width:720px;margin:0 auto}
+.form-header{text-align:center;margin-bottom:52px}
+.form-header .section-headline{margin-bottom:12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px 40px;margin-bottom:36px}
+.form-field{display:flex;flex-direction:column;gap:8px}
+.form-field.full{grid-column:1/-1}
+.form-label{font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-mid)}
+.form-input,.form-select{background:transparent;border:none;border-bottom:1.5px solid var(--cream2);padding:10px 0;font-size:.98rem;color:var(--text-dark);width:100%;transition:border-color .25s;font-family:'Inter',sans-serif;appearance:none;outline:none}
+.form-input:focus,.form-select:focus{border-bottom-color:var(--gold)}
+.form-input::placeholder{color:var(--text-light)}
+.phone-wrap{display:flex;align-items:flex-end;gap:0}
+.phone-prefix{font-size:.98rem;color:var(--text-mid);padding:10px 8px 10px 0;border-bottom:1.5px solid var(--cream2);white-space:nowrap;line-height:1.5}
+.phone-wrap .form-input{flex:1}
+.btn-teal-full{display:block;width:100%;padding:18px;background:var(--teal);color:var(--white);text-align:center;font-weight:700;font-size:1.05rem;letter-spacing:.05em;border-radius:8px;border:none;margin-top:8px;transition:background .25s,transform .2s;cursor:none}
+.btn-teal-full:hover{background:var(--teal-light);transform:translateY(-2px)}
+.contact-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.contact-tile{text-align:center;padding:28px 20px;background:var(--white);border-radius:12px;border:1px solid var(--cream2)}
+.contact-tile-icon{font-size:1.6rem;margin-bottom:10px}
+.contact-tile-label{font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-light);margin-bottom:6px}
+.contact-tile-value{font-size:.9rem;font-weight:600;color:var(--text-dark);line-height:1.5}
+.contact-tile a{color:var(--teal);transition:color .2s}
+.contact-tile a:hover{color:var(--teal-light)}
+/* ===== FOOTER ===== */
+#footer{padding:60px 40px;background:var(--navy)}
+.footer-inner{max-width:1280px;margin:0 auto;text-align:center}
+.footer-logo-main{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;letter-spacing:.12em;color:var(--white)}
+.footer-logo-sub{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:4px;margin-bottom:6px}
+.footer-tagline{font-size:.88rem;color:rgba(255,255,255,.45);margin-bottom:32px}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin-bottom:28px}
+.footer-rera{font-size:.75rem;color:rgba(255,255,255,.3);line-height:1.8;max-width:820px;margin:0 auto 20px}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .why-grid,.plots-grid,.location-grid,.edu-grid{grid-template-columns:1fr;gap:48px}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .connectivity-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-cards{grid-template-columns:1fr;max-width:480px}
+  .bento-row-4{grid-template-columns:repeat(2,1fr)}
+  .bento-row-3a,.bento-row-3b{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  section{padding:72px 24px}
+  .nav-container{padding:16px 24px}
+  .hero-content{padding:0 24px;padding-top:140px;padding-bottom:0}
+  .hero-stats-bar{flex-direction:column}
+  .hero-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .connectivity-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .contact-tiles{grid-template-columns:1fr}
+  .bento-row-4{grid-template-columns:1fr 1fr}
+  .bento-row-3a,.bento-row-3b{grid-template-columns:1fr}
+  .bento-row-2{grid-template-columns:1fr}
+  .nav-ctas .btn-outline{display:none}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr}
+  .hero-h1{font-size:2.4rem}
+  .hero-btns{flex-direction:column}
+  .btn-gold,.btn-white-outline{text-align:center}
+  .bento-row-4{grid-template-columns:1fr}
+  .pricing-cards{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .scroll-line{animation:none}
+}
+</style>
+</head>
+<body>
+<div id="cursor-dot" style="position:fixed;width:8px;height:8px;background:#C9943A;border-radius:50%;pointer-events:none;z-index:9999;top:0;left:0;"></div>
+<div id="cursor-ring" style="position:fixed;width:32px;height:32px;border:1.5px solid #C9943A;border-radius:50%;pointer-events:none;z-index:9998;top:0;left:0;opacity:0.7;"></div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <span class="logo-main">THE HERITAGE</span>
+      <span class="logo-sub">By Homegram Estate</span>
+    </div>
+    <div class="nav-ctas">
+      <a href="#form" class="btn-outline">Download Brochure</a>
+      <a href="#form" class="btn-teal">Book Site Visit</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag"><span>Pre-Launch · Bahadurgarh, Haryana</span></div>
+    <h1 class="hero-h1">Your Holiday Home<br><span class="hero-accent">25 Mins from Delhi</span></h1>
+    <p class="hero-sub">Gated plotted community &nbsp;·&nbsp; 15.83 acres &nbsp;·&nbsp; From ₹90,000 / sq. yd.</p>
+    <div class="hero-btns">
+      <a href="#plots" class="btn-gold">Explore Plots</a>
+      <a href="#form" class="btn-white-outline">Watch the Journey</a>
+    </div>
+    <div class="hero-stats-bar">
+      <div class="hero-stat">
+        <span class="hero-stat-value">236 Plots</span>
+        <span class="hero-stat-label">Available Units</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">25,000 Sq.Ft.</span>
+        <span class="hero-stat-label">Grand Clubhouse</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">RERA Pending</span>
+        <span class="hero-stat-label">Registration</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- WHY HERITAGE -->
+<section id="why" class="section-light">
+  <div class="why-grid">
+    <div class="why-left">
+      <span class="section-label">Why The Heritage</span>
+      <h2 class="section-headline">Stop Renting.<br>Start Owning.</h2>
+      <p class="hero-sub" style="margin-bottom:28px;">Delhi prices out your dream. Bahadurgarh brings it back.</p>
+      <p>For a generation priced out of Delhi's plotted development market, The Heritage is a different kind of answer. Located in Sector 11, Bahadurgarh — just 25 minutes from the capital — it offers 236 gated residential plots on 15.83 acres of curated land at a price point that still makes sense.</p>
+      <p>Bahadurgarh is no longer a satellite town. It is the next growth corridor of the NCR — with a direct metro connection, a rapidly expanding industrial base, and the kind of infrastructure investment that historically precedes a decade of appreciation. The window is open now. It will not stay open.</p>
+      <p>The Heritage by Homegram Estate is built on a founding principle: that a family home — with your name on the land title, a garden you can plant, and a weekend morning that feels like a world away from the city — should not require a compromise on quality, safety, or return.</p>
+    </div>
+    <div class="why-right">
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="why-card-icon">🏡</div>
+          <div class="why-card-title">Own Land, Not a Flat</div>
+          <p class="why-card-text">A plot title is generational wealth. No maintenance charges eating your returns. No builder delays dictating your timeline. The land appreciates on its own terms — and it belongs to you outright.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">📈</div>
+          <div class="why-card-title">Tier-2 Appreciation</div>
+          <p class="why-card-text">Historically, Tier-2 NCR locations adjacent to metro lines have outpaced Delhi's own appreciation curve in the 5–10 year window following connectivity upgrades. Bahadurgarh crossed that threshold in 2024.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🌿</div>
+          <div class="why-card-title">Weekend Ready</div>
+          <p class="why-card-text">The Heritage is not a future promise. The clubhouse, green zones, sports courts, Miyawaki forest, and internal roads are all part of the master plan — so your weekend is ready when you are.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE NUMBERS -->
+<section id="numbers" class="section-dark">
+  <div class="section-inner">
+    <div class="stats-row">
+      <div class="stat-box">
+        <span class="stat-num" data-count="236" data-suffix="">0</span>
+        <span class="stat-label">Plots Available</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" data-count="15.83" data-suffix=" Acres">0</span>
+        <span class="stat-label">of Green Space</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" data-count="25000" data-suffix="">0</span>
+        <span class="stat-label">Sq.Ft. Clubhouse</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" data-count="90" data-prefix="₹" data-suffix="K">0</span>
+        <span class="stat-label">Entry Price / Sq.Yd.</span>
+      </div>
+    </div>
+    <hr class="stats-divider">
+    <div class="stats-blockquote">
+      <blockquote>"At this price, 25 minutes from Delhi — this is the investment we should have made 10 years ago."</blockquote>
+      <cite>— Homegram Estate, Sector 11 Bahadurgarh</cite>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECTIVITY -->
+<section id="connectivity" class="section-light">
+  <div class="section-inner">
+    <div style="text-align:center;max-width:700px;margin:0 auto 16px">
+      <span class="section-label">Metro Line 5 — Green Line</span>
+      <h2 class="section-headline">Every Direction.<br>Minutes Away.</h2>
+      <p class="section-sub" style="margin:0 auto;">Direct metro connectivity from Bahadurgarh City Park station, walking distance from The Heritage. Watch the Green Line bring the city to your doorstep.</p>
+    </div>
+    <!-- METRO SVG STAGE -->
+    <div class="metro-stage">
+      <svg viewBox="0 0 1320 380" xmlns="http://www.w3.org/2000/svg" aria-label="Metro connectivity animation from Kashmere Gate to Bahadurgarh City Park">
+        <defs>
+          <filter id="glow-gold">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <linearGradient id="track-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#C9943A;stop-opacity:0.15"/>
+            <stop offset="100%" style="stop-color:#C9943A;stop-opacity:0.4"/>
+          </linearGradient>
+          <linearGradient id="train-body-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#FEFCF8"/>
+            <stop offset="100%" style="stop-color:#E8E0D4"/>
+          </linearGradient>
+          <path id="hv3-walk-path-def" d="M1260,185 C1240,160 1220,140 1200,100"/>
+        </defs>
+        <!-- Background track -->
+        <line x1="80" y1="200" x2="1280" y2="200" stroke="url(#track-grad)" stroke-width="10" stroke-linecap="round"/>
+        <!-- Active track -->
+        <line id="hv3-track-active" x1="80" y1="200" x2="80" y2="200" stroke="#C9943A" stroke-width="5" stroke-linecap="round" filter="url(#glow-gold)" opacity="0"/>
+        <!-- DELHI / HARYANA boundary -->
+        <line x1="940" y1="140" x2="940" y2="265" stroke="rgba(201,148,58,0.4)" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <text x="910" y="132" font-family="Inter,sans-serif" font-size="9" fill="rgba(201,148,58,0.7)" letter-spacing="1.5" text-anchor="middle" font-weight="600">DELHI</text>
+        <text x="980" y="132" font-family="Inter,sans-serif" font-size="9" fill="rgba(201,148,58,0.7)" letter-spacing="1.5" text-anchor="middle" font-weight="600">HARYANA</text>
+
+        <!-- Station 0: Kashmere Gate x=100 -->
+        <g id="hv3-st-0">
+          <circle class="hv3-ring" cx="100" cy="200" r="8" fill="none" stroke="#C9943A" stroke-width="1.5" opacity="0"/>
+          <circle class="hv3-dot" cx="100" cy="200" r="6" fill="rgba(201,148,58,0.3)" stroke="#C9943A" stroke-width="1.5"/>
+          <text x="100" y="178" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">Kashmere</text>
+          <text x="100" y="189" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">Gate</text>
+        </g>
+        <!-- Station 1: Inderlok x=240 -->
+        <g id="hv3-st-1">
+          <circle class="hv3-ring" cx="240" cy="200" r="8" fill="none" stroke="#C9943A" stroke-width="1.5" opacity="0"/>
+          <circle class="hv3-dot" cx="240" cy="200" r="6" fill="rgba(201,148,58,0.3)" stroke="#C9943A" stroke-width="1.5"/>
+          <text x="240" y="222" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">Inderlok</text>
+        </g>
+        <!-- Station 2: Punjabi Bagh West x=380 -->
+        <g id="hv3-st-2">
+          <circle class="hv3-ring" cx="380" cy="200" r="8" fill="none" stroke="#C9943A" stroke-width="1.5" opacity="0"/>
+          <circle class="hv3-dot" cx="380" cy="200" r="6" fill="rgba(201,148,58,0.3)" stroke="#C9943A" stroke-width="1.5"/>
+          <text x="380" y="178" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">Punjabi Bagh</text>
+          <text x="380" y="189" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">West</text>
+        </g>
+        <!-- Station 3: Peera Garhi x=520 -->
+        <g id="hv3-st-3">
+          <circle class="hv3-ring" cx="520" cy="200" r="8" fill="none" stroke="#C9943A" stroke-width="1.5" opacity="0"/>
+          <circle class="hv3-dot" cx="520" cy="200" r="6" fill="rgba(201,148,58,0.3)" stroke="#C9943A" stroke-width="1.5"/>
+          <text x="520" y="222" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">Peera Garhi</text>
+        </g>
+        <!-- Station 4: Nangloi x=660 -->
+        <g id="hv3-st-4">
+          <circle class="hv3-ring" cx="660" cy="200" r="8" fill="none" stroke="#C9943A" stroke-width="1.5" opacity="0"/>
+          <circle class="hv3-dot" cx="660" cy="200" r="6" fill="rgba(201,148,58,0.3)" stroke="#C9943A" stroke-width="1.5"/>
+          <text x="660" y="178" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">Nangloi</text>
+        </g>
+        <!-- Station 5: Mundka x=800 -->
+        <g id="hv3-st-5">
+          <circle class="hv3-ring" cx="800" cy="200" r="8" fill="none" stroke="#C9943A" stroke-width="1.5" opacity="0"/>
+          <circle class="hv3-dot" cx="800" cy="200" r="6" fill="rgba(201,148,58,0.3)" stroke="#C9943A" stroke-width="1.5"/>
+          <text x="800" y="222" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">Mundka</text>
+        </g>
+        <!-- Station 6: Tikri Border x=940 -->
+        <g id="hv3-st-6">
+          <circle class="hv3-ring" cx="940" cy="200" r="8" fill="none" stroke="#C9943A" stroke-width="1.5" opacity="0"/>
+          <circle class="hv3-dot" cx="940" cy="200" r="6" fill="rgba(201,148,58,0.3)" stroke="#C9943A" stroke-width="1.5"/>
+          <text x="940" y="178" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">Tikri Border</text>
+        </g>
+        <!-- Station 7: Pt. Shree Ram Sharma x=1100 -->
+        <g id="hv3-st-7">
+          <circle class="hv3-ring" cx="1100" cy="200" r="8" fill="none" stroke="#C9943A" stroke-width="1.5" opacity="0"/>
+          <circle class="hv3-dot" cx="1100" cy="200" r="6" fill="rgba(201,148,58,0.3)" stroke="#C9943A" stroke-width="1.5"/>
+          <text x="1100" y="222" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">Pt. Shree Ram</text>
+          <text x="1100" y="233" font-family="Inter,sans-serif" font-size="9.5" fill="#44403C" text-anchor="middle" font-weight="500">Sharma</text>
+        </g>
+        <!-- Station 8: Bahadurgarh City Park x=1260 (final, larger) -->
+        <g id="hv3-st-8">
+          <circle class="hv3-ring" cx="1260" cy="200" r="10" fill="none" stroke="#C9943A" stroke-width="2" opacity="0"/>
+          <circle class="hv3-dot" cx="1260" cy="200" r="10" fill="rgba(201,148,58,0.3)" stroke="#C9943A" stroke-width="2"/>
+          <text x="1260" y="174" font-family="Inter,sans-serif" font-size="9.5" fill="#1C1917" text-anchor="middle" font-weight="700">Bahadurgarh</text>
+          <text x="1260" y="185" font-family="Inter,sans-serif" font-size="9.5" fill="#1C1917" text-anchor="middle" font-weight="700">City Park</text>
+        </g>
+
+        <!-- Walk trail from station 8 toward destination badge -->
+        <path id="hv3-walk-trail" d="M1260,185 C1245,160 1220,135 1200,100" fill="none" stroke="#C9943A" stroke-width="2" stroke-dasharray="300" stroke-dashoffset="300" opacity="0" stroke-linecap="round"/>
+        <!-- Walk orb -->
+        <circle id="hv3-walk-orb" cx="1260" cy="185" r="5" fill="#C9943A" opacity="0" filter="url(#glow-gold)"/>
+
+        <!-- Destination badge group -->
+        <g id="hv3-dest-badge" opacity="0" transform="translate(1200,88)">
+          <rect x="-80" y="-22" width="160" height="44" rx="8" fill="#C9943A"/>
+          <rect x="-82" y="-24" width="164" height="48" rx="9" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <text x="0" y="-5" font-family="Inter,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="700" letter-spacing="1.5">WE ARE HERE</text>
+          <text x="0" y="11" font-family="Inter,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.85)" text-anchor="middle" font-weight="500">700M · 2 MIN WALK</text>
+        </g>
+
+        <!-- Train group (starts at station 0, x=100) -->
+        <g id="hv3-train" transform="translate(100,200)">
+          <!-- Coach C (rear) -->
+          <rect x="-192" y="-14" width="60" height="28" rx="3" fill="url(#train-body-grad)" stroke="#C8BEB0" stroke-width="0.5"/>
+          <rect x="-192" y="-8" width="60" height="4" rx="1" fill="#E8B86D" opacity="0.7"/>
+          <rect x="-183" y="-12" width="12" height="8" rx="1.5" fill="#BFDBFE" opacity="0.7"/>
+          <rect x="-167" y="-12" width="12" height="8" rx="1.5" fill="#BFDBFE" opacity="0.7"/>
+          <rect x="-151" y="-12" width="12" height="8" rx="1.5" fill="#BFDBFE" opacity="0.7"/>
+          <!-- Coach B (middle) -->
+          <rect x="-128" y="-14" width="60" height="28" rx="3" fill="url(#train-body-grad)" stroke="#C8BEB0" stroke-width="0.5"/>
+          <rect x="-128" y="-8" width="60" height="4" rx="1" fill="#E8B86D" opacity="0.7"/>
+          <rect x="-119" y="-12" width="12" height="8" rx="1.5" fill="#BFDBFE" opacity="0.7"/>
+          <rect x="-103" y="-12" width="12" height="8" rx="1.5" fill="#BFDBFE" opacity="0.7"/>
+          <rect x="-87" y="-12" width="12" height="8" rx="1.5" fill="#BFDBFE" opacity="0.7"/>
+          <!-- Coupler between B and C -->
+          <rect x="-131" y="-3" width="6" height="6" rx="1" fill="#A89A8A"/>
+          <!-- Coach A (front) -->
+          <rect x="-64" y="-14" width="55" height="28" rx="3" fill="url(#train-body-grad)" stroke="#C8BEB0" stroke-width="0.5"/>
+          <rect x="-64" y="-8" width="55" height="4" rx="1" fill="#E8B86D" opacity="0.7"/>
+          <!-- Curved nose -->
+          <path d="M-9,-14 Q8,-14 10,-8 L10,8 Q8,14 -9,14 Z" fill="url(#train-body-grad)" stroke="#C8BEB0" stroke-width="0.5"/>
+          <!-- Windows coach A -->
+          <rect x="-56" y="-12" width="12" height="8" rx="1.5" fill="#BFDBFE" opacity="0.7"/>
+          <rect x="-40" y="-12" width="12" height="8" rx="1.5" fill="#BFDBFE" opacity="0.7"/>
+          <!-- Headlight -->
+          <circle cx="9" cy="0" r="3.5" fill="#FEF3C7" opacity="0.9"/>
+          <circle cx="9" cy="0" r="2" fill="#FDE68A"/>
+          <!-- Coupler between A and B -->
+          <rect x="-67" y="-3" width="6" height="6" rx="1" fill="#A89A8A"/>
+          <!-- Train roof detail -->
+          <rect x="-192" y="-16" width="202" height="4" rx="2" fill="rgba(200,190,176,0.4)"/>
+        </g>
+      </svg>
+    </div>
+    <p class="metro-status" id="hv3-status">Starting journey from Kashmere Gate...</p>
+    <button id="hv3-replay-btn">↺ Replay Animation</button>
+
+    <!-- Connectivity Cards Grid -->
+    <div class="connectivity-grid">
+      <div class="conn-card">
+        <div class="conn-icon">🚇</div>
+        <div class="conn-dest">Bahadurgarh Metro</div>
+        <div class="conn-mode">Green Line · Direct Connection</div>
+        <span class="conn-time">2 KM</span>
+      </div>
+      <div class="conn-card">
+        <div class="conn-icon">🏟</div>
+        <div class="conn-dest">Bahadurgarh Stadium</div>
+        <div class="conn-mode">700m Walk from The Heritage</div>
+        <span class="conn-time">1 MIN</span>
+      </div>
+      <div class="conn-card">
+        <div class="conn-icon">🛣</div>
+        <div class="conn-dest">Delhi Border</div>
+        <div class="conn-mode">Rohtak Road Bypass</div>
+        <span class="conn-time">5 MINS</span>
+      </div>
+      <div class="conn-card">
+        <div class="conn-icon">🛤</div>
+        <div class="conn-dest">UER II Expressway</div>
+        <div class="conn-mode">Urban Extension Road</div>
+        <span class="conn-time">10 MINS</span>
+      </div>
+      <div class="conn-card">
+        <div class="conn-icon">✈️</div>
+        <div class="conn-dest">IGI Airport</div>
+        <div class="conn-mode">Via UER II Expressway</div>
+        <span class="conn-time">25 MINS</span>
+      </div>
+      <div class="conn-card">
+        <div class="conn-icon">🏙</div>
+        <div class="conn-dest">Gurugram</div>
+        <div class="conn-mode">NCR Corporate Capital</div>
+        <span class="conn-time">25 MINS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLOT SIZES & INVESTMENT -->
+<section id="plots" class="section-dark">
+  <div class="section-inner">
+    <div class="plots-grid">
+      <div class="plots-left">
+        <span class="section-label">Plot Configurations</span>
+        <h2 class="section-headline">Find Your<br>Plot Size</h2>
+        <div class="plot-bars">
+          <div class="plot-bar-row">
+            <div class="plot-bar-meta">
+              <span class="plot-bar-label">126 sq.yd.</span>
+              <span class="plot-bar-price">₹1.13 Cr</span>
+            </div>
+            <div class="plot-bar-track"><div class="plot-bar-fill" data-width="60"></div></div>
+          </div>
+          <div class="plot-bar-row">
+            <div class="plot-bar-meta">
+              <span class="plot-bar-label">136 sq.yd.</span>
+              <span class="plot-bar-price">₹1.22 Cr</span>
+            </div>
+            <div class="plot-bar-track"><div class="plot-bar-fill" data-width="65"></div></div>
+          </div>
+          <div class="plot-bar-row">
+            <div class="plot-bar-meta">
+              <span class="plot-bar-label">146 sq.yd.</span>
+              <span class="plot-bar-price">₹1.31 Cr</span>
+            </div>
+            <div class="plot-bar-track"><div class="plot-bar-fill" data-width="70"></div></div>
+          </div>
+          <div class="plot-bar-row">
+            <div class="plot-bar-meta">
+              <span class="plot-bar-label">162 sq.yd.</span>
+              <span class="plot-bar-price">₹1.46 Cr</span>
+            </div>
+            <div class="plot-bar-track"><div class="plot-bar-fill" data-width="78"></div></div>
+          </div>
+          <div class="plot-bar-row">
+            <div class="plot-bar-meta">
+              <span class="plot-bar-label">174 sq.yd.</span>
+              <span class="plot-bar-price">₹1.57 Cr</span>
+            </div>
+            <div class="plot-bar-track"><div class="plot-bar-fill" data-width="84"></div></div>
+          </div>
+          <div class="plot-bar-row">
+            <div class="plot-bar-meta">
+              <span class="plot-bar-label">176–177 sq.yd.</span>
+              <span class="plot-bar-price">₹1.58–1.59 Cr</span>
+            </div>
+            <div class="plot-bar-track"><div class="plot-bar-fill" data-width="85"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="plots-right">
+        <div class="invest-card">
+          <div class="invest-card-title">Investment Snapshot</div>
+          <div class="invest-row">
+            <span class="invest-key">Pre-launch Price</span>
+            <span class="invest-val invest-highlight">₹90,000 / sq.yd.</span>
+          </div>
+          <div class="invest-row">
+            <span class="invest-key">Expected Launch Price</span>
+            <span class="invest-val">₹1.12–1.25 lakh / sq.yd.</span>
+          </div>
+          <div class="invest-row">
+            <span class="invest-key">Projected Upside</span>
+            <span class="invest-val invest-highlight">~25–38%</span>
+          </div>
+          <div class="invest-row">
+            <span class="invest-key">Possession</span>
+            <span class="invest-val">On completion</span>
+          </div>
+          <div class="invest-row">
+            <span class="invest-key">Internal Roads</span>
+            <span class="invest-val">9m &amp; 12m wide</span>
+          </div>
+          <div class="invest-row">
+            <span class="invest-key">Developer</span>
+            <span class="invest-val">Homegram Estate</span>
+          </div>
+          <div class="invest-row">
+            <span class="invest-key">Location</span>
+            <span class="invest-val">Sector 11, Bahadurgarh (HUDA)</span>
+          </div>
+          <a href="#form" class="btn-gold-full">Register Now for Pre-Launch Price</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities" class="section-light">
+  <div class="section-inner">
+    <div class="amenities-header">
+      <span class="section-label">Life at The Heritage</span>
+      <h2 class="section-headline">More Than a Plot.<br>A Complete Life.</h2>
+      <p class="section-sub" style="margin:0 auto;text-align:center;">Every amenity designed for the family that has earned the right to live well — without driving to a resort every weekend.</p>
+    </div>
+    <!-- Clubhouse Hero Card -->
+    <div class="clubhouse-card">
+      <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1600&q=85&fit=crop" alt="25,000 Sq.Ft. Grand Clubhouse at The Heritage" loading="lazy">
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <div class="card-title">25,000 Sq.Ft. Grand Clubhouse</div>
+        <div class="card-chips">
+          <span class="chip">Swimming Pool</span>
+          <span class="chip">Banquet Hall</span>
+          <span class="chip">Gymnasium</span>
+          <span class="chip">Spa &amp; Wellness</span>
+          <span class="chip">Indoor Games</span>
+          <span class="chip">Café Lounge</span>
+        </div>
+      </div>
+    </div>
+    <!-- Bento Row 1: Sports courts -->
+    <div class="bento-row bento-row-4">
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=800&q=80&fit=crop" alt="Cricket Ground" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Sport</div>
+          <div class="bento-name">Cricket Ground</div>
+        </div>
+      </div>
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800&q=80&fit=crop" alt="Badminton Court" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Sport</div>
+          <div class="bento-name">Badminton Court</div>
+        </div>
+      </div>
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80&fit=crop" alt="Basketball Court" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Sport</div>
+          <div class="bento-name">Basketball Court</div>
+        </div>
+      </div>
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&fit=crop" alt="Pickleball Court" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Sport</div>
+          <div class="bento-name">Pickleball Court</div>
+        </div>
+      </div>
+    </div>
+    <!-- Bento Row 2: Green spaces -->
+    <div class="bento-row bento-row-3a">
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1000&q=80&fit=crop" alt="Miyawaki Forest" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Nature</div>
+          <div class="bento-name">Miyawaki Forest</div>
+        </div>
+      </div>
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80&fit=crop" alt="Flower Valley" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Nature</div>
+          <div class="bento-name">Flower Valley</div>
+        </div>
+      </div>
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80&fit=crop" alt="Rock Garden" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Nature</div>
+          <div class="bento-name">Rock Garden</div>
+        </div>
+      </div>
+    </div>
+    <!-- Bento Row 3: Social spaces -->
+    <div class="bento-row bento-row-3b">
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80&fit=crop" alt="Amphitheatre" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Community</div>
+          <div class="bento-name">Amphitheatre</div>
+        </div>
+      </div>
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80&fit=crop" alt="Terrace Café" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Lifestyle</div>
+          <div class="bento-name">Terrace Café</div>
+        </div>
+      </div>
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1000&q=80&fit=crop" alt="Gymnasium" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Wellness</div>
+          <div class="bento-name">Gymnasium</div>
+        </div>
+      </div>
+    </div>
+    <!-- Bento Row 4: Family spaces -->
+    <div class="bento-row bento-row-2">
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1555009393-f20bdb245c4d?w=1000&q=80&fit=crop" alt="Kids Play Area" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Family</div>
+          <div class="bento-name">Kids Play Area</div>
+        </div>
+      </div>
+      <div class="bento-card">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1000&q=80&fit=crop" alt="Senior Park" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="bento-tag">Family</div>
+          <div class="bento-name">Senior Park</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION & INDUSTRIAL STRENGTH -->
+<section id="location" class="section-dark">
+  <div class="section-inner">
+    <div class="location-grid">
+      <div class="location-left">
+        <span class="section-label">Industrial Backbone</span>
+        <h2 class="section-headline">Bahadurgarh:<br>A City on the Rise</h2>
+        <p>Bahadurgarh is not a village on the edge of Delhi. It is the NCR's largest and most diversified industrial hub — home to over 2,800 registered manufacturing units spanning ceramics, glass, electronics, footwear, FMCG, automotive, steel, and chemicals.</p>
+        <p>Major brands anchored here include HNG Glass, Somany Ceramics, Parle Agro, Yokohama Tyres, and Relaxo Footwear — drawing a skilled, aspirational workforce that needs quality residential options. The 490-acre industrial zone generates continuous demand for real estate that local supply has never adequately served.</p>
+        <p>When a city has industrial depth, it doesn't just grow — it compounds. Employment attracts workforce. Workforce creates demand. Demand drives appreciation. The Heritage is positioned at the intersection of all three.</p>
+      </div>
+      <div class="location-right" style="text-align:center;padding-top:20px">
+        <div class="industries-counter" data-count="2800" data-suffix="+">0+</div>
+        <div class="industries-label">Registered Industries</div>
+        <div class="tag-cloud" style="justify-content:center">
+          <span class="tag-pill">Ceramics</span>
+          <span class="tag-pill">Glass</span>
+          <span class="tag-pill">Electronics</span>
+          <span class="tag-pill">Footwear</span>
+          <span class="tag-pill">FMCG</span>
+          <span class="tag-pill">Automotive</span>
+          <span class="tag-pill">Steel</span>
+          <span class="tag-pill">Chemicals</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & SOCIAL -->
+<section id="education" class="section-light">
+  <div class="section-inner">
+    <div class="edu-grid">
+      <div class="edu-left">
+        <div class="edu-stat-big">75+</div>
+        <div class="edu-stat-label">Schools within reach</div>
+        <div class="edu-list">
+          <div class="edu-item">
+            <div class="edu-item-icon">🎓</div>
+            <div class="edu-item-text"><strong>Delhi NCR Universities Nearby</strong><br>MDU Rohtak, Amity University, GD Goenka University, Manav Rachna University — all within a 30–45 minute radius for higher education.</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-item-icon">🏥</div>
+            <div class="edu-item-text"><strong>Medical Colleges</strong><br>PGIMS Rohtak (one of North India's premier medical institutions) and BPS Medical College for Women — both within 45 minutes. Complete healthcare infrastructure available.</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-item-icon">🔬</div>
+            <div class="edu-item-text"><strong>Engineering Colleges</strong><br>DCE (Delhi College of Engineering), YMCA Faridabad, and multiple NIT and private engineering campuses reachable from Bahadurgarh — a full spectrum of technical education.</div>
+          </div>
+        </div>
+      </div>
+      <div class="edu-right">
+        <span class="section-label">Growing Together</span>
+        <h2 class="section-headline">Raise your family in a city that's growing up too</h2>
+        <p>The Heritage is not just a real estate investment — it is a decision about where your family will spend its weekends, its summers, and eventually, its years. Bahadurgarh today is what Gurugram was in 2008: a city where infrastructure investment has outpaced residential supply, and where the families who move early will define its character.</p>
+        <div class="edu-bullet">
+          <div class="edu-bullet-dot"></div>
+          <div class="edu-bullet-text"><strong>Top-tier schooling ecosystem:</strong> 75+ schools including Delhi Public School, Ryan International, Cambridge Court, and Kendriya Vidyalayas within a 10-kilometre radius of The Heritage, ensuring your children never have to compromise on the quality of their education.</div>
+        </div>
+        <div class="edu-bullet">
+          <div class="edu-bullet-dot"></div>
+          <div class="edu-bullet-text"><strong>Complete healthcare access:</strong> General hospitals, multispecialty clinics, and national-level medical colleges all within reach — so that when your family grows, the city's infrastructure grows with it.</div>
+        </div>
+        <div class="edu-bullet">
+          <div class="edu-bullet-dot"></div>
+          <div class="edu-bullet-text"><strong>Next-generation infrastructure:</strong> Smart city planning, wide roads, metro connectivity, and upcoming commercial development are all converging in Bahadurgarh — making it a city that will look dramatically different 10 years from now. Be the family that was already there.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING & AVAILABILITY -->
+<section id="pricing" class="section-dark">
+  <div class="section-inner" style="text-align:center">
+    <span class="section-label">Price Architecture</span>
+    <h2 class="section-headline">The Window is<br>Still Open</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card pricing-card-outline">
+        <span class="pricing-badge">Pre-Launch</span>
+        <div class="pricing-type">Current Price</div>
+        <div class="pricing-amount">₹90,000</div>
+        <div class="pricing-unit">per sq.yd. · Pre-launch pricing</div>
+        <p class="pricing-desc">Lock this price before the public launch. Pre-launch buyers get priority plot selection, flexible payment plans, and direct developer access. This is the price we wish we had offered 5 years ago — today it is yours.</p>
+      </div>
+      <div class="pricing-card pricing-card-gold">
+        <span class="pricing-badge">Projected at Launch</span>
+        <div class="pricing-type">Expected Launch Price</div>
+        <div class="pricing-amount">₹1.12–1.25L</div>
+        <div class="pricing-unit">per sq.yd. · On public launch</div>
+        <p class="pricing-desc">Based on comparable plotted developments on metro-connected corridors in the NCR, analysts project a 25–38% appreciation from pre-launch to public launch. The gap between today's price and tomorrow's reality is where legacies are built.</p>
+      </div>
+    </div>
+    <p class="pricing-quote">"The gap between pre-launch and launch pricing is where legacies are built."</p>
+  </div>
+</section>
+
+<!-- LEAD CAPTURE FORM -->
+<section id="form" class="section-light">
+  <div class="section-inner">
+    <div class="form-inner">
+      <div class="form-header">
+        <span class="section-label">Get Started</span>
+        <h2 class="section-headline">Book Your Free<br>Site Visit</h2>
+        <p class="section-sub" style="margin:0 auto;text-align:center;">Our team will take you on a personal tour of The Heritage — no pressure, just the full picture.</p>
+      </div>
+      <form id="heritage-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-grid">
+          <div class="form-field">
+            <label class="form-label" for="f-name">Full Name *</label>
+            <input class="form-input" type="text" id="f-name" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-phone">Phone *</label>
+            <div class="phone-wrap">
+              <span class="phone-prefix">+91</span>
+              <input class="form-input" type="tel" id="f-phone" name="phone" placeholder="98765 43210" required maxlength="10" pattern="[0-9]{10}">
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-email">Email</label>
+            <input class="form-input" type="email" id="f-email" name="email" placeholder="you@example.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-plot">Plot Size Interest</label>
+            <select class="form-select" id="f-plot" name="plot_size">
+              <option value="">Select a size</option>
+              <option value="126">126 sq.yd. — ₹1.13 Cr</option>
+              <option value="136">136 sq.yd. — ₹1.22 Cr</option>
+              <option value="146">146 sq.yd. — ₹1.31 Cr</option>
+              <option value="162">162 sq.yd. — ₹1.46 Cr</option>
+              <option value="174">174 sq.yd. — ₹1.57 Cr</option>
+              <option value="176-177">176–177 sq.yd. — ₹1.58–1.59 Cr</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label class="form-label" for="f-source">How did you hear about us?</label>
+            <select class="form-select" id="f-source" name="source">
+              <option value="">Select an option</option>
+              <option value="friend">Friend / Family</option>
+              <option value="instagram">Instagram</option>
+              <option value="google">Google Search</option>
+              <option value="youtube">YouTube</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn-teal-full">Reserve My Site Visit</button>
+      </form>
+      <!-- Contact Tiles -->
+      <div class="contact-tiles">
+        <div class="contact-tile">
+          <div class="contact-tile-icon">📞</div>
+          <div class="contact-tile-label">Call / WhatsApp</div>
+          <div class="contact-tile-value"><a href="tel:+919654803560">+91 96548 03560</a></div>
+        </div>
+        <div class="contact-tile">
+          <div class="contact-tile-icon">✉️</div>
+          <div class="contact-tile-label">Email</div>
+          <div class="contact-tile-value"><a href="mailto:gaurav.sobti@homegramestate.com">gaurav.sobti@<br>homegramestate.com</a></div>
+        </div>
+        <div class="contact-tile">
+          <div class="contact-tile-icon">📍</div>
+          <div class="contact-tile-label">Office Address</div>
+          <div class="contact-tile-value"><a href="https://maps.app.goo.gl/v5cuPT7DoP5JsrWY8" target="_blank" rel="noopener">Sector 11, Bahadurgarh<br>Haryana, NCR</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer" class="section-dark">
+  <div class="footer-inner">
+    <div class="footer-logo-main">THE HERITAGE</div>
+    <div class="footer-logo-sub">By Homegram Estate</div>
+    <p class="footer-tagline">Premium Plotted Development · Sector 11, Bahadurgarh, Haryana</p>
+    <hr class="footer-divider">
+    <p class="footer-rera">
+      <strong>RERA Disclaimer:</strong> RERA registration for The Heritage, Sector 11, Bahadurgarh is currently pending. All dimensions, pricing, amenities, and specifications mentioned on this page are indicative and subject to change without prior notice. This website does not constitute an offer, booking, or agreement to sell. Buyers are advised to independently verify all information with the developer prior to making any purchase decision. Images shown are for representational purposes only and may not represent the final product. Homegram Estate is the brand of the developer and all rights are reserved. Pricing and availability are subject to change at the sole discretion of the developer.
+    </p>
+    <p class="footer-copy">© 2025 Homegram Estate. All Rights Reserved. · Sector 11, Bahadurgarh, Haryana · +91 96548 03560</p>
+  </div>
+</footer>
+
+<script>
+// ===== 1. CUSTOM CURSOR =====
+const cursorDot = document.getElementById('cursor-dot');
+const cursorRing = document.getElementById('cursor-ring');
+let ringX = 0, ringY = 0, dotX = 0, dotY = 0;
+document.addEventListener('mousemove', function(e) {
+  dotX = e.clientX; dotY = e.clientY;
+  gsap.set(cursorDot, {x: dotX - 4, y: dotY - 4});
+});
+function animRing() {
+  ringX += (dotX - ringX) * 0.12;
+  ringY += (dotY - ringY) * 0.12;
+  gsap.set(cursorRing, {x: ringX - 16, y: ringY - 16});
+  requestAnimationFrame(animRing);
+}
+animRing();
+document.querySelectorAll('a, button').forEach(function(el) {
+  el.addEventListener('mouseenter', function() { gsap.to(cursorRing, {scale: 1.6, opacity: 0.8, duration: 0.3}); });
+  el.addEventListener('mouseleave', function() { gsap.to(cursorRing, {scale: 1, opacity: 1, duration: 0.3}); });
+});
+
+// ===== 2. NAV SCROLL BEHAVIOR =====
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('main-nav');
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// ===== 3. COUNTER ANIMATION =====
+function animateCounter(el) {
+  var target = parseFloat(el.dataset.count);
+  var isDecimal = String(target).includes('.');
+  var prefix = el.dataset.prefix || '';
+  var suffix = el.dataset.suffix || '';
+  gsap.fromTo({val: 0}, {val: target}, {
+    duration: 2,
+    ease: 'power2.out',
+    onUpdate: function() {
+      el.textContent = prefix + (isDecimal ? this.targets()[0].val.toFixed(2) : Math.round(this.targets()[0].val).toLocaleString()) + suffix;
+    }
+  });
+}
+
+// ===== 4. GSAP SCROLLTRIGGER ANIMATIONS =====
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero content entrance
+gsap.fromTo('.hero-tag, .hero-h1, .hero-sub, .hero-btns, .hero-stats-bar',
+  {y: 40, opacity: 0},
+  {y: 0, opacity: 1, stagger: 0.15, duration: 1, ease: 'power2.out', delay: 0.3}
+);
+
+// Why Heritage cards
+gsap.fromTo('.why-card',
+  {x: 60, opacity: 0},
+  {x: 0, opacity: 1, stagger: 0.15, duration: 0.8, ease: 'power2.out',
+    scrollTrigger: {trigger: '#why', start: 'top 75%', once: true}
+  }
+);
+
+gsap.fromTo('.why-left',
+  {x: -50, opacity: 0},
+  {x: 0, opacity: 1, duration: 0.9, ease: 'power2.out',
+    scrollTrigger: {trigger: '#why', start: 'top 75%', once: true}
+  }
+);
+
+// Stats counters
+ScrollTrigger.create({
+  trigger: '#numbers',
+  start: 'top 75%',
+  once: true,
+  onEnter: function() {
+    document.querySelectorAll('.stat-num[data-count]').forEach(function(el) {
+      animateCounter(el);
+    });
+  }
+});
+
+// Location counter
+ScrollTrigger.create({
+  trigger: '#location',
+  start: 'top 75%',
+  once: true,
+  onEnter: function() {
+    var el = document.querySelector('.industries-counter[data-count]');
+    if (el) animateCounter(el);
+  }
+});
+
+// Connectivity cards
+gsap.fromTo('.conn-card',
+  {scale: 0.9, opacity: 0},
+  {scale: 1, opacity: 1, stagger: 0.1, duration: 0.6, ease: 'power2.out',
+    scrollTrigger: {trigger: '.connectivity-grid', start: 'top 80%', once: true}
+  }
+);
+
+// Plot bars animation
+ScrollTrigger.create({
+  trigger: '#plots',
+  start: 'top 70%',
+  once: true,
+  onEnter: function() {
+    document.querySelectorAll('.plot-bar-fill').forEach(function(bar) {
+      var targetW = bar.dataset.width + '%';
+      gsap.to(bar, {width: targetW, duration: 1.2, ease: 'power2.out', delay: 0.2});
+    });
+  }
+});
+
+// Amenity bento cards
+gsap.fromTo('.bento-card, .clubhouse-card',
+  {y: 50, opacity: 0},
+  {y: 0, opacity: 1, stagger: 0.08, duration: 0.7, ease: 'power2.out',
+    scrollTrigger: {trigger: '#amenities', start: 'top 75%', once: true}
+  }
+);
+
+// Education section
+gsap.fromTo('.edu-left, .edu-right',
+  {y: 40, opacity: 0},
+  {y: 0, opacity: 1, stagger: 0.2, duration: 0.8, ease: 'power2.out',
+    scrollTrigger: {trigger: '#education', start: 'top 75%', once: true}
+  }
+);
+
+// Pricing cards
+gsap.fromTo('.pricing-card',
+  {y: 40, opacity: 0},
+  {y: 0, opacity: 1, stagger: 0.2, duration: 0.8, ease: 'power2.out',
+    scrollTrigger: {trigger: '#pricing', start: 'top 75%', once: true}
+  }
+);
+
+// Form section
+gsap.fromTo('.form-inner',
+  {y: 40, opacity: 0},
+  {y: 0, opacity: 1, duration: 0.9, ease: 'power2.out',
+    scrollTrigger: {trigger: '#form', start: 'top 80%', once: true}
+  }
+);
+
+// Contact tiles
+gsap.fromTo('.contact-tile',
+  {y: 30, opacity: 0},
+  {y: 0, opacity: 1, stagger: 0.12, duration: 0.6, ease: 'power2.out',
+    scrollTrigger: {trigger: '.contact-tiles', start: 'top 85%', once: true}
+  }
+);
+
+// ===== 5. FORM SUBMIT HANDLER =====
+function handleFormSubmit(e) {
+  e.preventDefault();
+  var btn = e.target.querySelector('.btn-teal-full');
+  btn.textContent = '✓ Request Received! We will call you shortly.';
+  btn.style.background = '#0F766E';
+  btn.disabled = true;
+}
+
+// ===== 6. METRO ANIMATION IIFE =====
+(function(){
+  var stations = [
+    {name:'Kashmere Gate', x:100},
+    {name:'Inderlok', x:240},
+    {name:'Punjabi Bagh West', x:380},
+    {name:'Peera Garhi', x:520},
+    {name:'Nangloi', x:660},
+    {name:'Mundka', x:800},
+    {name:'Tikri Border', x:940},
+    {name:'Pt. Shree Ram Sharma', x:1100},
+    {name:'Bahadurgarh City Park', x:1260}
+  ];
+
+  var metroTL = null;
+  var metroPaused = false;
+  var statusEl = document.getElementById('hv3-status');
+
+  function setStatus(txt) {
+    if (statusEl) statusEl.textContent = txt;
+  }
+
+  function buildMetroTL() {
+    if (metroTL) metroTL.kill();
+
+    // Reset elements
+    gsap.set('#hv3-train', {x: 0});
+    gsap.set('#hv3-track-active', {attr: {x2: 80}, opacity: 0});
+    for (var i = 0; i < 9; i++) {
+      gsap.set('#hv3-st-' + i + ' .hv3-dot', {attr: {fill: 'rgba(201,148,58,0.3)'}});
+      gsap.set('#hv3-st-' + i + ' .hv3-ring', {opacity: 0, attr: {r: 8}});
+    }
+    gsap.set('#hv3-walk-orb', {opacity: 0, x: 0, y: 0});
+    gsap.set('#hv3-walk-trail', {opacity: 0, attr: {'stroke-dashoffset': 300}});
+    gsap.set('#hv3-dest-badge', {opacity: 0, y: 10});
+
+    setStatus('Starting journey from Kashmere Gate...');
+
+    metroTL = gsap.timeline({
+      onComplete: function() {
+        setStatus('Bahadurgarh City Park — You have arrived. The Heritage is 700m away.');
+        gsap.delayedCall(2.5, buildMetroTL);
+      }
+    });
+
+    // Light station 0
+    lightHV3Station(metroTL, 0, false, 0);
+
+    var t = 0.5;
+    for (var idx = 1; idx < 9; idx++) {
+      (function(i) {
+        var targetX = stations[i].x - stations[0].x;
+        var isLast = (i === 8);
+        var dur = isLast ? 1.2 : 0.75;
+        var ease = isLast ? 'power2.out' : 'power1.inOut';
+        var atT = t;
+
+        metroTL.to('#hv3-train', {x: targetX, duration: dur, ease: ease}, atT);
+        metroTL.to('#hv3-track-active', {attr: {x2: stations[i].x}, duration: dur, ease: ease, opacity: 1}, atT);
+        metroTL.add(function() { setStatus('Next stop: ' + stations[i].name + '...'); }, atT);
+        lightHV3Station(metroTL, i, isLast, atT + dur - 0.1);
+        t += dur;
+      })(idx);
+    }
+
+    // Walk trail + orb + badge after final station
+    var walkT = t + 0.3;
+    metroTL.to('#hv3-walk-trail', {opacity: 1, attr: {'stroke-dashoffset': 0}, duration: 1.4, ease: 'power1.inOut'}, walkT);
+    metroTL.to('#hv3-walk-orb', {opacity: 1, duration: 0.3}, walkT);
+    metroTL.to('#hv3-walk-orb', {x: -60, y: -85, duration: 1.4, ease: 'power1.inOut'}, walkT);
+    metroTL.to('#hv3-dest-badge', {opacity: 1, y: 0, duration: 0.6, ease: 'back.out(1.5)'}, walkT + 1.4);
+    metroTL.to({}, {duration: 2.5});
+  }
+
+  function lightHV3Station(tl, i, isFinal, at) {
+    var dotSel = '#hv3-st-' + i + ' .hv3-dot';
+    var ringSel = '#hv3-st-' + i + ' .hv3-ring';
+    tl.to(dotSel, {attr: {fill: '#C9943A'}, duration: 0.25}, at);
+    tl.fromTo(ringSel,
+      {opacity: 0.8, attr: {r: 8}},
+      {opacity: 0, attr: {r: isFinal ? 36 : 24}, duration: 0.9, ease: 'power2.out'},
+      at
+    );
+    if (isFinal) {
+      tl.to(dotSel, {attr: {r: 7}, duration: 0.3, ease: 'back.out(2)'}, at);
+    }
+  }
+
+  // IntersectionObserver trigger
+  var connectivitySection = document.getElementById('connectivity');
+  var metroStarted = false;
+
+  var metroObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !metroStarted) {
+        metroStarted = true;
+        buildMetroTL();
+      } else if (e.isIntersecting && metroTL && metroPaused) {
+        metroTL.resume();
+        metroPaused = false;
+      } else if (!e.isIntersecting && metroTL) {
+        metroTL.pause();
+        metroPaused = true;
+      }
+    });
+  }, {threshold: 0.2});
+
+  if (connectivitySection) {
+    metroObserver.observe(connectivitySection);
+  }
+
+  var replayBtn = document.getElementById('hv3-replay-btn');
+  if (replayBtn) {
+    replayBtn.addEventListener('click', function() {
+      metroStarted = true;
+      metroPaused = false;
+      buildMetroTL();
+    });
+  }
+})();
+</script>
+</body>
+</html>
