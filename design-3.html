@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heritage – Design 3 | Bold Contrast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#c9a84c;--gold-l:#e8c97a;--black:#050302;--dark:#0c0804;--cream:#f5f0e6;--dim:#b8a880}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:'Josefin Sans',sans-serif;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:rgba(5,3,2,.97);backdrop-filter:blur(20px);padding:14px 6%;border-bottom:1px solid rgba(201,168,76,.1)}
+.n-logo{font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--gold);letter-spacing:.12em}
+.n-cta{padding:12px 30px;background:var(--gold);color:var(--black);font-size:10px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:background .3s}
+.n-cta:hover{background:var(--gold-l)}
+
+/* Hero — full bleed comparison */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.hero-left{background:rgba(201,168,76,.04);display:flex;align-items:center;justify-content:center;padding:60px;border-right:1px solid rgba(201,168,76,.1)}
+.hero-right{display:flex;align-items:center;justify-content:center;padding:60px}
+.hero-col{max-width:380px}
+.h-tag{font-size:9px;letter-spacing:.5em;color:var(--dim);text-transform:uppercase;margin-bottom:14px}
+.h-city{font-family:'Cinzel',serif;font-size:clamp(1.5rem,3vw,2.4rem);color:var(--dim);margin-bottom:8px}
+.h-price{font-family:'Cinzel',serif;font-size:clamp(2.5rem,5vw,4rem);color:var(--gold);font-weight:900;line-height:1}
+.h-unit{font-size:10px;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;margin-top:6px}
+.h-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(184,168,128,.45);margin-top:20px;line-height:1.6}
+.hero-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;text-align:center;background:var(--black);padding:28px 36px;border:1px solid rgba(201,168,76,.3)}
+.hc-vs{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase}
+.hc-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.85rem;color:var(--dim);margin-top:6px}
+.hero-bottom{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;opacity:.6}
+
+section{padding:110px 7%}
+.si{max-width:1100px;margin:0 auto}
+.sl{font-size:9px;letter-spacing:.55em;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+.st{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:600;line-height:1.2;margin-bottom:18px}
+.st .g{color:var(--gold)}
+.sb{font-family:'Cormorant Garamond',serif;font-size:1.15rem;line-height:1.8;color:var(--dim);max-width:560px}
+.rv{opacity:0;transform:translateY(28px);transition:all .8s ease}
+.rv.on{opacity:1;transform:none}
+
+/* Comparison Rows */
+#compare{background:var(--dark)}
+.comp-rows{margin-top:50px}
+.comp-row{display:grid;grid-template-columns:1fr auto 1fr;gap:30px;align-items:center;padding:28px 0;border-bottom:1px solid rgba(201,168,76,.06)}
+.comp-row:last-child{border-bottom:none}
+.cr-left{text-align:right;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--dim)}
+.cr-vs{font-family:'Cinzel',serif;font-size:.7rem;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(201,168,76,.2)}
+.cr-right{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);font-weight:700}
+
+/* Metro (same as design-2, reuse) */
+#metro{background:var(--black)}
+.metro-stage{width:100%;max-width:1200px;margin:40px auto 0}
+.metro-svg{width:100%;height:auto}
+.metro-status{text-align:center;margin-top:20px;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--dim);font-size:1rem;min-height:24px}
+.metro-ctrls{display:flex;justify-content:center;gap:12px;margin-top:14px}
+.mc{padding:8px 20px;border:1px solid rgba(201,168,76,.2);background:transparent;color:var(--gold);font-size:9px;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Josefin Sans'}
+.mc:hover{background:rgba(201,168,76,.06);border-color:var(--gold)}
+
+/* Big numbers section */
+#numbers{background:var(--dark)}
+.num-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,.06);margin-top:50px}
+.num-card{background:var(--dark);padding:50px 30px;text-align:center}
+.nc-val{font-family:'Cinzel',serif;font-size:clamp(2.5rem,5vw,4rem);color:var(--gold);font-weight:900;line-height:1}
+.nc-lbl{font-size:10px;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;margin-top:10px}
+.nc-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;color:rgba(184,168,128,.4);margin-top:8px}
+
+/* CTA Strip */
+.cta-strip{background:var(--gold);padding:60px 7%;text-align:center}
+.cta-title{font-family:'Cinzel',serif;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--black);font-weight:700;margin-bottom:8px}
+.cta-sub{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(0,0,0,.55);font-style:italic;margin-bottom:24px}
+.cta-btn{display:inline-block;padding:14px 40px;background:var(--black);color:var(--gold);font-size:10px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;font-family:'Josefin Sans';transition:all .3s}
+.cta-btn:hover{background:#1a1108}
+
+/* Form */
+#enquire{background:var(--black)}
+.f-wrap{max-width:600px;margin:0 auto;text-align:center}
+.f-box{border:1px solid rgba(201,168,76,.1);padding:44px 40px;margin-top:36px}
+.fg{margin-bottom:16px;text-align:left}
+.fl{font-size:9px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;display:block}
+.fi{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,168,76,.12);padding:11px 0;color:var(--cream);font-family:'Josefin Sans';font-size:14px;outline:none;transition:border-color .3s}
+.fi:focus{border-color:var(--gold)}
+.fi::placeholder{color:rgba(184,168,128,.3)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fsub{width:100%;padding:16px;background:var(--gold);color:var(--black);border:none;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;margin-top:24px;transition:background .3s}
+.fsub:hover{background:var(--gold-l)}
+.f-ok{display:none;padding:36px;text-align:center}
+.f-ok.show{display:block}
+.f-ok h3{font-family:'Cinzel',serif;color:var(--gold);font-size:1.3rem}
+.f-ok p{font-family:'Cormorant Garamond',serif;color:var(--dim);font-style:italic;margin-top:8px}
+
+footer{padding:40px 7%;text-align:center;border-top:1px solid rgba(201,168,76,.06)}
+.ft{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold);letter-spacing:.12em}
+.fc{font-size:8px;letter-spacing:.2em;color:rgba(184,168,128,.15);text-transform:uppercase;margin-top:16px;max-width:500px;margin-left:auto;margin-right:auto;line-height:2}
+
+@media(max-width:960px){#hero{grid-template-columns:1fr}.hero-left{border-right:none;border-bottom:1px solid rgba(201,168,76,.1)}.hero-center{position:relative;top:auto;left:auto;transform:none;margin:-30px auto 0}.comp-row{grid-template-columns:1fr;gap:8px;text-align:center}.cr-left{text-align:center}.num-grid{grid-template-columns:1fr}.fr{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav id="navbar"><div class="n-logo">THE HERITAGE</div><a href="#enquire" class="n-cta">Book Visit</a></nav>
+
+<section id="hero">
+  <div class="hero-left"><div class="hero-col"><div class="h-tag">Dwarka, West Delhi</div><div class="h-city">3 BHK Flat</div><div class="h-price">₹3.8 Cr</div><div class="h-unit">1,200 sq.ft. · No land</div><div class="h-note">Congested. Polluted. Depreciating asset. 40-min commute.</div></div></div>
+  <div class="hero-right"><div class="hero-col"><div class="h-tag">The Heritage, Bahadurgarh</div><div class="h-city">Premium Plot</div><div class="h-price">₹1.14 Cr</div><div class="h-unit">126 sq.yd. · Own the land</div><div class="h-note">Gated. Green. 25K clubhouse. Same metro line. 5 min from Delhi.</div></div></div>
+  <div class="hero-center"><div class="hc-vs">Same Metro Line</div><div class="hc-tag">Different universe of value</div></div>
+  <div class="hero-bottom">Scroll to discover ↓</div>
+</section>
+<!-- COMPARISON SECTION -->
+<section id="compare">
+  <div class="si">
+    <div class="sl rv">The Math Speaks</div>
+    <h2 class="st rv">Delhi vs. <span class="g">The Heritage</span></h2>
+    <p class="sb rv">Same green line. Same commute radius. Wildly different economics.</p>
+    <div class="comp-rows rv">
+      <div class="comp-row"><div class="cr-left">₹3.5–5 Cr (Dwarka flat)</div><div class="cr-vs">VS</div><div class="cr-right">₹1.14 Cr (126 sq.yd. plot)</div></div>
+      <div class="comp-row"><div class="cr-left">No land ownership</div><div class="cr-vs">VS</div><div class="cr-right">Freehold land, build your villa</div></div>
+      <div class="comp-row"><div class="cr-left">AQI 350+ winters</div><div class="cr-vs">VS</div><div class="cr-right">Miyawaki forest + green zones</div></div>
+      <div class="comp-row"><div class="cr-left">40-min metro to Kashmere Gate</div><div class="cr-vs">VS</div><div class="cr-right">Same 50-min metro ride</div></div>
+      <div class="comp-row"><div class="cr-left">Maintenance: ₹8–15K/month</div><div class="cr-vs">VS</div><div class="cr-right">25,000 sq.ft. clubhouse included</div></div>
+      <div class="comp-row"><div class="cr-left">Appreciation: 3–5% p.a.</div><div class="cr-vs">VS</div><div class="cr-right">Pre-launch gap: 24% day one</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- METRO -->
+<section id="metro">
+  <div class="si" style="text-align:center">
+    <div class="sl rv">Delhi Metro Green Line</div>
+    <h2 class="st rv" style="text-align:center">Watch the <span class="g">journey home.</span></h2>
+    <div class="metro-stage rv">
+      <svg class="metro-svg" viewBox="0 0 1320 360" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="mTG" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="rgba(201,168,76,.15)"/><stop offset="100%" stop-color="rgba(201,168,76,.7)"/></linearGradient><linearGradient id="mTB" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#b8b8c0"/></linearGradient><linearGradient id="mTS" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5b800"/><stop offset="100%" stop-color="#d49800"/></linearGradient><radialGradient id="mHL" cx=".5" cy=".5" r=".5"><stop offset="0%" stop-color="rgba(255,235,180,.9)"/><stop offset="100%" stop-color="rgba(255,200,100,0)"/></radialGradient><linearGradient id="mPG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8c97a"/><stop offset="100%" stop-color="#8b6914"/></linearGradient></defs>
+        <line x1="80" y1="180" x2="1240" y2="180" stroke="rgba(201,168,76,.1)" stroke-width="2"/>
+        <line id="m-track-active" x1="80" y1="180" x2="80" y2="180" stroke="url(#mTG)" stroke-width="2.5" opacity="0"/>
+        <g id="m-stations">
+          <g class="m-st" data-i="0" transform="translate(120,180)"><circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" opacity="0"/><circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/><circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/><text class="mst-label" y="-24" text-anchor="middle" font-family="'Cinzel',serif" font-size="8.5" fill="#b8a880" letter-spacing="1.5" opacity=".5">KASHMERE GATE</text></g>
+          <g class="m-st" data-i="1" transform="translate(260,180)"><circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" opacity="0"/><circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/><circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/><text class="mst-label" y="-24" text-anchor="middle" font-family="'Cinzel',serif" font-size="8.5" fill="#b8a880" letter-spacing="1.5" opacity=".5">INDERLOK</text></g>
+          <g class="m-st" data-i="2" transform="translate(400,180)"><circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" opacity="0"/><circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/><circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/><text class="mst-label" y="-24" text-anchor="middle" font-family="'Cinzel',serif" font-size="8.5" fill="#b8a880" letter-spacing="1.5" opacity=".5">PUNJABI BAGH W.</text></g>
+          <g class="m-st" data-i="3" transform="translate(540,180)"><circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" opacity="0"/><circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/><circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/><text class="mst-label" y="-24" text-anchor="middle" font-family="'Cinzel',serif" font-size="8.5" fill="#b8a880" letter-spacing="1.5" opacity=".5">NANGLOI</text></g>
+          <g class="m-st" data-i="4" transform="translate(680,180)"><circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" opacity="0"/><circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/><circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/><text class="mst-label" y="-24" text-anchor="middle" font-family="'Cinzel',serif" font-size="8.5" fill="#b8a880" letter-spacing="1.5" opacity=".5">MUNDKA</text></g>
+          <g class="m-st" data-i="5" transform="translate(820,180)"><circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" opacity="0"/><circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/><circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/><text class="mst-label" y="-24" text-anchor="middle" font-family="'Cinzel',serif" font-size="8.5" fill="#b8a880" letter-spacing="1.5" opacity=".5">TIKRI BORDER</text><text y="36" text-anchor="middle" font-family="'Josefin Sans'" font-size="7" fill="rgba(201,168,76,.5)" letter-spacing="2" opacity="0" class="mst-sub">DELHI · HARYANA</text></g>
+          <g class="m-st" data-i="6" transform="translate(960,180)"><circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" opacity="0"/><circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/><circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/><text class="mst-label" y="-24" text-anchor="middle" font-family="'Cinzel',serif" font-size="8.5" fill="#b8a880" letter-spacing="1.5" opacity=".5">BRIG. HOSHIAR SINGH</text></g>
+          <g class="m-st" data-i="7" transform="translate(1100,180)"><circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" opacity="0"/><circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/><circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/><text class="mst-label" y="-24" text-anchor="middle" font-family="'Cinzel',serif" font-size="8.5" fill="#b8a880" letter-spacing="1.5" opacity=".5">PT. SHREE RAM SHARMA</text></g>
+          <g class="m-st m-st-final" data-i="8" transform="translate(1240,180)"><circle class="mst-halo" r="32" fill="none" stroke="rgba(201,168,76,.2)" opacity="0"/><circle class="mst-ring" r="22" fill="none" stroke="rgba(201,168,76,.35)" opacity="0"/><circle class="mst-outer" r="13" fill="none" stroke="rgba(201,168,76,.5)" stroke-width="2"/><circle class="mst-dot" r="6" fill="rgba(201,168,76,.45)"/><text class="mst-label" y="-32" text-anchor="middle" font-family="'Cinzel',serif" font-size="9.5" font-weight="700" fill="#b8a880" letter-spacing="2" opacity=".6">BAHADURGARH CITY PARK</text></g>
+        </g>
+        <g id="m-train" transform="translate(120,180)"><ellipse id="m-headlight" cx="65" cy="0" rx="40" ry="14" fill="url(#mHL)" opacity="0"/><g transform="translate(-110,0)"><rect x="0" y="-14" width="56" height="28" rx="4" fill="url(#mTB)" stroke="#3a3a40" stroke-width=".8"/><rect x="0" y="-4" width="56" height="3" fill="url(#mTS)"/><rect x="0" y="2" width="56" height="1.5" fill="#003d7a"/></g><g transform="translate(-50,0)"><rect x="0" y="-14" width="56" height="28" rx="4" fill="url(#mTB)" stroke="#3a3a40" stroke-width=".8"/><rect x="0" y="-4" width="56" height="3" fill="url(#mTS)"/><rect x="0" y="2" width="56" height="1.5" fill="#003d7a"/></g><g transform="translate(10,0)"><path d="M0-14L50-14Q60-14 62-8L64 0 62 8Q60 14 50 14L0 14Z" fill="url(#mTB)" stroke="#3a3a40" stroke-width=".8"/><path d="M0-4L56-4Q60-4 60-1L60 1 0 1Z" fill="url(#mTS)"/><rect x="0" y="2" width="58" height="1.5" fill="#003d7a"/><circle cx="60" cy="-6" r="1.6" fill="#fff8d0"/><circle cx="60" cy="6" r="1.6" fill="#fff8d0"/></g></g>
+        <g id="m-trail" opacity="0"><circle class="m-tdot" cx="1232" cy="200" r="2" fill="#c9a84c" opacity="0"/><circle class="m-tdot" cx="1224" cy="216" r="2.2" fill="#c9a84c" opacity="0"/><circle class="m-tdot" cx="1215" cy="230" r="2.4" fill="#c9a84c" opacity="0"/><circle class="m-tdot" cx="1206" cy="244" r="2.6" fill="#c9a84c" opacity="0"/><circle class="m-tdot" cx="1197" cy="257" r="2.8" fill="#c9a84c" opacity="0"/><circle class="m-tdot" cx="1190" cy="270" r="3" fill="#c9a84c" opacity="0"/><circle class="m-tdot" cx="1184" cy="282" r="3.2" fill="#c9a84c" opacity="0"/></g>
+        <g id="m-pin" transform="translate(1180,300)" opacity="0"><circle class="mpin-halo" r="40" fill="none" stroke="rgba(201,168,76,.15)" opacity="0"/><circle class="mpin-mid" r="28" fill="none" stroke="rgba(201,168,76,.3)" opacity="0"/><g class="mpin-emblem" transform="translate(-22,-22) scale(.36)"><rect x="10" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="2" fill="none"/><rect x="88" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="2" fill="none"/><path d="M32 110 L32 68 Q32 10 60 6 Q88 10 88 68 L88 110" stroke="url(#mPG)" stroke-width="2.5" fill="none"/><circle cx="60" cy="10" r="6" fill="none" stroke="#c9a84c" stroke-width="2"/><circle cx="60" cy="10" r="2.5" fill="#c9a84c"/></g></g>
+        <g id="m-badge" transform="translate(1180,346)" opacity="0"><rect x="-78" y="-14" width="156" height="28" fill="rgba(5,3,2,.96)" stroke="url(#mPG)" stroke-width="1.5"/><text x="0" y="-1" text-anchor="middle" font-family="'Cinzel',serif" font-size="11" font-weight="700" fill="#c9a84c" letter-spacing="3.5">WE ARE HERE</text><text x="0" y="11" text-anchor="middle" font-family="'Josefin Sans'" font-size="7.5" fill="#b8a880" letter-spacing="2.5">700 M · 2 MIN WALK</text></g>
+      </svg>
+    </div>
+    <div class="metro-status" id="m-status">Awaiting departure...</div>
+    <div class="metro-ctrls"><button class="mc" id="m-replay">↻ Replay</button><button class="mc" id="m-pause">⏸ Pause</button></div>
+  </div>
+</section>
+
+<!-- BIG NUMBERS -->
+<section id="numbers">
+  <div class="si"><div class="sl rv" style="text-align:center">By The Numbers</div><h2 class="st rv" style="text-align:center">The <span class="g">economic engine</span> behind your investment.</h2></div>
+  <div class="num-grid rv">
+    <div class="num-card"><div class="nc-val">2,800+</div><div class="nc-lbl">Industries</div><div class="nc-sub">NCR's largest industrial belt</div></div>
+    <div class="num-card"><div class="nc-val">490</div><div class="nc-lbl">Acres Industrial</div><div class="nc-sub">Parle · Yokohama · Somany · Relaxo</div></div>
+    <div class="num-card"><div class="nc-val">75+</div><div class="nc-lbl">Schools</div><div class="nc-sub">CBSE · ICSE · State Board</div></div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="cta-title">236 plots. One pre-launch window.</div>
+  <div class="cta-sub">₹90,000/sq.yd. today. ₹1.12L+ at launch. The math is simple.</div>
+  <a href="#enquire" class="cta-btn">Secure Your Plot →</a>
+</div>
+
+<!-- ENQUIRE -->
+<section id="enquire">
+  <div class="si"><div class="f-wrap">
+    <div class="sl rv" style="text-align:center">Take The First Step</div>
+    <h2 class="st rv" style="text-align:center">See it. <span class="g">Decide for yourself.</span></h2>
+    <div class="f-box rv">
+      <div id="f-main">
+        <div class="fr"><div class="fg"><label class="fl">Name *</label><input class="fi" placeholder="Your name" id="fname"></div><div class="fg"><label class="fl">Phone *</label><input class="fi" placeholder="+91" id="fphone"></div></div>
+        <div class="fr"><div class="fg"><label class="fl">Email</label><input class="fi" placeholder="Email" id="femail"></div><div class="fg"><label class="fl">Budget</label><select class="fi" style="cursor:pointer"><option style="background:#0c0804">Select range</option><option style="background:#0c0804">₹80L – 1.2 Cr</option><option style="background:#0c0804">₹1.2 – 1.6 Cr</option><option style="background:#0c0804">₹1.6 Cr+</option></select></div></div>
+        <button class="fsub" id="fsub">Book Site Visit — Free, No Pressure</button>
+      </div>
+      <div class="f-ok" id="f-ok"><h3>Thank You</h3><p>A Heritage Advisor will call within 24 hours.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<footer><div class="ft">THE HERITAGE</div><div class="fc">© 2026 HomeGram Estate Pvt Ltd. RERA Pending. Indicative pricing.</div></footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+gsap.registerPlugin(ScrollTrigger);
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>Array.from(c.querySelectorAll(s));
+window.addEventListener('scroll',()=>{$('#navbar').classList.toggle('scrolled',scrollY>60)});
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});$$('.rv').forEach(el=>ro.observe(el));
+
+// Metro (same logic)
+const stations=[{x:120},{x:260},{x:400},{x:540},{x:680},{x:820},{x:960},{x:1100},{x:1240}];
+const names=['Kashmere Gate','Inderlok','Punjabi Bagh West','Nangloi','Mundka','Tikri Border','Brig. Hoshiar Singh','Pt. Shree Ram Sharma','Bahadurgarh City Park'];
+const train=$('#m-train'),hl=$('#m-headlight'),ta=$('#m-track-active'),stEls=$$('.m-st'),trail=$('#m-trail'),dots=$$('.m-tdot'),pin=$('#m-pin'),badge=$('#m-badge'),mSt=$('#m-status');
+let tl;
+function lightSt(g,fin){const t=gsap.timeline();const d=g.querySelector('.mst-dot'),o=g.querySelector('.mst-outer'),r=g.querySelector('.mst-ring'),l=g.querySelector('.mst-label'),s=g.querySelector('.mst-sub'),h=g.querySelector('.mst-halo');t.to(d,{attr:{fill:'#c9a84c'},duration:.18},0).to(o,{attr:{stroke:'#c9a84c'},duration:.18},0).fromTo(g,{scale:1,transformOrigin:'center'},{scale:fin?1.5:1.3,duration:.3,ease:'back.out(2.5)',transformOrigin:'center'},0).to(g,{scale:1,duration:.4,ease:'elastic.out(1,.55)',transformOrigin:'center'},.3).fromTo(r,{opacity:.7,attr:{r:12}},{opacity:0,attr:{r:30},duration:.8},.05).to(l,{opacity:1,duration:.3},0);if(s)t.to(s,{opacity:1,duration:.3},.1);if(fin&&h)t.fromTo(h,{opacity:0,attr:{r:18}},{opacity:.5,attr:{r:32},duration:.5},.1).to(h,{opacity:.2,duration:.8,repeat:-1,yoyo:true},.6);return t}
+function build(){if(tl)tl.kill();gsap.set(train,{x:0});gsap.set(hl,{opacity:0});gsap.set(ta,{attr:{x2:80},opacity:0});stEls.forEach(s=>{gsap.set(s.querySelector('.mst-dot'),{attr:{fill:'rgba(201,168,76,.35)'}});gsap.set(s.querySelector('.mst-outer'),{attr:{stroke:'rgba(201,168,76,.4)'}});gsap.set(s.querySelector('.mst-ring'),{opacity:0,attr:{r:14}});gsap.set(s.querySelector('.mst-label'),{opacity:.5});const sub=s.querySelector('.mst-sub');if(sub)gsap.set(sub,{opacity:0});const halo=s.querySelector('.mst-halo');if(halo){gsap.killTweensOf(halo);gsap.set(halo,{opacity:0})}gsap.set(s,{scale:1,transformOrigin:'center'})});gsap.set(trail,{opacity:0});dots.forEach(d=>gsap.set(d,{opacity:0,scale:0,transformOrigin:'center'}));gsap.set(pin,{opacity:0,y:20});gsap.set(badge,{opacity:0,y:-20,scale:.7,transformOrigin:'center'});gsap.set('.mpin-halo,.mpin-mid',{opacity:0});gsap.set('.mpin-emblem',{scale:0,transformOrigin:'center'});
+tl=gsap.timeline({onComplete:()=>gsap.delayedCall(2.4,()=>tl.restart())});tl.add(lightSt(stEls[0],false),0).to(hl,{opacity:.85,duration:.4},.1).call(()=>{mSt.textContent='Departing Kashmere Gate...'},[],0.1);
+let c=.5;const sd=.78;for(let i=1;i<9;i++){const tx=stations[i].x-120,last=i===8,dur=last?sd*1.4:sd,ease=last?'power3.out':(i===1?'power2.in':'none');tl.to(train,{x:tx,duration:dur,ease},c).to(ta,{attr:{x2:stations[i].x},duration:dur,ease,opacity:1},c).call(()=>{mSt.textContent=last?'Arriving at Bahadurgarh...':'En route to '+names[i]+'...'},[],c+dur*.3).add(lightSt(stEls[i],last),c+dur-.1);c+=dur}
+tl.to(hl,{opacity:0,duration:.4},c);c+=.6;tl.set(trail,{opacity:1},c).call(()=>{mSt.textContent='700 metres from your gate...'},[],c);dots.forEach((d,i)=>{tl.to(d,{opacity:1,scale:1,duration:.18,ease:'back.out(2)'},c+i*.12)});c+=dots.length*.12+.2;tl.to(pin,{opacity:1,y:0,duration:.5,ease:'power2.out'},c).to('.mpin-emblem',{scale:1,duration:.7,ease:'back.out(1.6)'},c).fromTo('.mpin-halo',{opacity:0,attr:{r:18}},{opacity:.6,attr:{r:40},duration:.8},c+.2).to('.mpin-halo',{opacity:0,duration:.6},c+1).fromTo('.mpin-mid',{opacity:0,attr:{r:14}},{opacity:.4,attr:{r:28},duration:1.4,ease:'sine.inOut',repeat:-1,yoyo:true},c+.3);c+=.9;tl.to(badge,{opacity:1,y:0,scale:1,duration:.6,ease:'back.out(2)'},c).call(()=>{mSt.textContent='The Heritage · Sector 11, Bahadurgarh'},[],c+.3);tl.to({},{duration:2})}
+ScrollTrigger.create({trigger:'#metro',start:'top 70%',once:true,onEnter:build});
+let p=false;$('#m-pause').addEventListener('click',()=>{if(!tl)return;if(p){tl.resume();$('#m-pause').textContent='⏸ Pause'}else{tl.pause();$('#m-pause').textContent='▶ Resume'}p=!p});$('#m-replay').addEventListener('click',()=>{p=false;$('#m-pause').textContent='⏸ Pause';build()});
+const mio=new IntersectionObserver(es=>{es.forEach(e=>{if(!tl||p)return;if(e.isIntersecting)tl.resume();else tl.pause()})},{threshold:.2});mio.observe($('#metro'));
+
+// Form
+$('#fsub').addEventListener('click',()=>{const n=$('#fname').value.trim(),ph=$('#fphone').value.trim();if(!n||!ph){alert('Name and phone required.');return}$('#f-main').style.display='none';$('#f-ok').classList.add('show');$('#f-ok').style.display='block'});
+$$('.n-cta,.cta-btn').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();$('#enquire').scrollIntoView({behavior:'smooth'})})});
+});
+</script>
+</body>
+</html>

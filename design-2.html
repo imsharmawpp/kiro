@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heritage – Design 2 | Luxury Minimal</title>
+<meta name="description" content="Premium luxury plotted development in Sector 11, Bahadurgarh. 236 plots. Metro-connected. Pre-launch ₹90,000/sq.yd.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#c9a84c;--gold-light:#e8c97a;--gold-dark:#8b6914;--black:#070503;--dark:#0d0906;--cream:#f5f0e6;--cream-dim:#c4b99a;--white:#fff}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:'Josefin Sans',sans-serif;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:24px 7%;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:rgba(7,5,3,.97);backdrop-filter:blur(20px);padding:16px 7%;border-bottom:1px solid rgba(201,168,76,.12)}
+.logo{font-family:'Cinzel',serif;font-size:18px;font-weight:700;color:var(--gold);letter-spacing:.15em}
+.logo small{display:block;font-size:9px;font-weight:400;letter-spacing:.4em;color:var(--cream-dim);margin-top:2px}
+.nav-cta{padding:12px 32px;border:1px solid var(--gold);color:var(--gold);font-size:10px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.nav-cta:hover{background:var(--gold);color:var(--black)}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 24px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(201,168,76,.06) 0%,transparent 60%)}
+.hero-content{position:relative;z-index:10;max-width:800px}
+.hero-question{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.8vw,1.8rem);font-style:italic;color:var(--cream-dim);margin-bottom:28px;opacity:0;animation:fadeIn 1s ease 0.5s forwards}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(3rem,9vw,7rem);font-weight:900;line-height:.92;margin-bottom:24px;opacity:0;animation:fadeIn 1s ease 0.8s forwards}
+.hero-title .gold{color:var(--gold)}
+.hero-answer{font-size:13px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;opacity:0;animation:fadeIn 1s ease 1.2s forwards}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;max-width:700px;margin:50px auto 0;border:1px solid rgba(201,168,76,.15);opacity:0;animation:fadeIn 1s ease 1.5s forwards}
+.hs{padding:24px 16px;text-align:center;border-right:1px solid rgba(201,168,76,.1)}
+.hs:last-child{border-right:none}
+.hs-val{font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gold);font-weight:700}
+.hs-lbl{font-size:9px;letter-spacing:.3em;color:var(--cream-dim);text-transform:uppercase;margin-top:6px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ── SECTION SHARED ── */
+section{padding:120px 7%}
+.sec-inner{max-width:1140px;margin:0 auto}
+.sec-label{font-size:9px;letter-spacing:.6em;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+.sec-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:600;color:var(--cream);line-height:1.2;margin-bottom:20px}
+.sec-title .g{color:var(--gold)}
+.sec-body{font-family:'Cormorant Garamond',serif;font-size:1.15rem;line-height:1.85;color:var(--cream-dim);max-width:600px}
+.divider{width:60px;height:1px;background:var(--gold);margin:28px 0;opacity:.4}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(30px);transition:all .8s ease}
+.rv.on{opacity:1;transform:none}
+
+/* ── WHY SECTION (Icon grid) ── */
+#why{background:var(--dark)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:60px}
+.why-card{text-align:center;padding:32px 20px;border:1px solid rgba(201,168,76,.08);transition:all .4s}
+.why-card:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.02)}
+.why-icon{width:48px;height:48px;margin:0 auto 18px}
+.why-icon svg{width:100%;height:100%}
+.why-name{font-family:'Cinzel',serif;font-size:.85rem;color:var(--cream);letter-spacing:.06em;margin-bottom:8px}
+.why-desc{font-size:11px;letter-spacing:.12em;color:var(--cream-dim);line-height:1.7}
+.why-number{font-family:'Cinzel',serif;font-size:2rem;color:var(--gold);font-weight:900;margin-bottom:6px}
+
+/* ── METRO ── */
+#connectivity{background:var(--black)}
+.metro-stage{width:100%;max-width:1200px;margin:50px auto 0;overflow:visible}
+.metro-svg{width:100%;height:auto}
+.metro-status{text-align:center;margin-top:20px;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--cream-dim);font-size:1rem;min-height:24px}
+.metro-controls{display:flex;justify-content:center;gap:12px;margin-top:14px}
+.mc-btn{padding:8px 20px;border:1px solid rgba(201,168,76,.2);background:transparent;color:var(--gold);font-size:9px;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Josefin Sans',sans-serif}
+.mc-btn:hover{background:rgba(201,168,76,.06);border-color:var(--gold)}
+
+/* ── DISTANCE CARDS ── */
+.dist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,.06);margin-top:50px}
+.dist-card{background:var(--black);padding:28px 24px;display:flex;align-items:center;gap:16px;transition:all .3s}
+.dist-card:hover{background:rgba(201,168,76,.02)}
+.dist-icon{width:36px;height:36px;flex-shrink:0}
+.dist-icon svg{width:100%;height:100%;stroke:var(--gold);fill:none;stroke-width:1.5}
+.dist-name{font-family:'Cinzel',serif;font-size:.8rem;color:var(--cream)}
+.dist-val{font-size:10px;letter-spacing:.2em;color:var(--gold);margin-top:2px}
+
+/* ── AMENITIES ── */
+#amenities{background:var(--dark)}
+.am-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
+.am-card{background:var(--dark);padding:40px 20px;text-align:center;transition:all .4s;border-bottom:2px solid transparent}
+.am-card:hover{background:rgba(201,168,76,.03);border-bottom-color:var(--gold)}
+.am-icon{width:40px;height:40px;margin:0 auto 14px}
+.am-icon svg{width:100%;height:100%;stroke:var(--gold);fill:none;stroke-width:1.4}
+.am-name{font-family:'Cinzel',serif;font-size:.78rem;color:var(--cream);letter-spacing:.04em}
+.am-sub{font-size:9px;color:var(--cream-dim);letter-spacing:.15em;margin-top:4px;text-transform:uppercase}
+
+/* ── PRICING ── */
+#pricing{background:var(--black)}
+.price-compare{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:50px;max-width:900px}
+.price-card{padding:60px 44px;position:relative}
+.price-card.pre{background:rgba(201,168,76,.03);border:1px solid rgba(201,168,76,.15)}
+.price-card.launch{background:var(--gold)}
+.price-label{font-size:9px;letter-spacing:.4em;text-transform:uppercase;margin-bottom:14px}
+.price-card.pre .price-label{color:var(--gold)}
+.price-card.launch .price-label{color:rgba(0,0,0,.5)}
+.price-val{font-family:'Cinzel',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1}
+.price-card.pre .price-val{color:var(--gold)}
+.price-card.launch .price-val{color:var(--black)}
+.price-unit{font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-top:8px}
+.price-card.pre .price-unit{color:var(--cream-dim)}
+.price-card.launch .price-unit{color:rgba(0,0,0,.5)}
+.price-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;margin-top:22px;line-height:1.6}
+.price-card.pre .price-note{color:rgba(196,185,154,.5)}
+.price-card.launch .price-note{color:rgba(0,0,0,.55)}
+.price-quote{text-align:center;margin-top:36px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:rgba(196,185,154,.35)}
+
+/* ── CTA / FORM ── */
+#enquire{background:var(--dark);position:relative}
+.form-wrap{max-width:640px;margin:0 auto}
+.form-box{border:1px solid rgba(201,168,76,.12);padding:50px 44px;margin-top:40px}
+.fg{margin-bottom:18px}
+.fl{display:block;font-size:9px;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
+.fi{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,168,76,.15);padding:12px 0;color:var(--cream);font-family:'Josefin Sans',sans-serif;font-size:14px;outline:none;transition:border-color .3s}
+.fi:focus{border-color:var(--gold)}
+.fi::placeholder{color:rgba(196,185,154,.3)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fsub{width:100%;padding:18px;background:var(--gold);color:var(--black);border:none;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;cursor:pointer;margin-top:28px;transition:background .3s}
+.fsub:hover{background:var(--gold-light)}
+.form-success{display:none;text-align:center;padding:40px}
+.form-success.show{display:block}
+.fs-t{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold)}
+.fs-m{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--cream-dim);margin-top:10px}
+
+/* ── FOOTER ── */
+footer{padding:50px 7%;text-align:center;border-top:1px solid rgba(201,168,76,.08)}
+.ft-logo{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold);letter-spacing:.15em}
+.ft-copy{font-size:8px;letter-spacing:.2em;color:rgba(196,185,154,.2);text-transform:uppercase;margin-top:18px;line-height:2;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .why-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+  .am-grid{grid-template-columns:repeat(2,1fr)}
+  .dist-grid{grid-template-columns:1fr}
+  .price-compare{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .fr{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  section{padding:80px 5%}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .am-grid{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <div class="logo">THE HERITAGE<small>By HomeGram Estate</small></div>
+  <a href="#enquire" class="nav-cta">Enquire Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-question">What if your morning commute was 2 minutes to a metro station?</p>
+    <h1 class="hero-title">THE <span class="gold">HERITAGE</span></h1>
+    <p class="hero-answer">Sector 11, Bahadurgarh · Pre-Launch ₹90,000 / sq. yd.</p>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-val">15.83</div><div class="hs-lbl">Acres</div></div>
+      <div class="hs"><div class="hs-val">236</div><div class="hs-lbl">Plots Only</div></div>
+      <div class="hs"><div class="hs-val">2 KM</div><div class="hs-lbl">To Metro</div></div>
+      <div class="hs"><div class="hs-val">25K</div><div class="hs-lbl">Sq.Ft. Club</div></div>
+    </div>
+  </div>
+</section>
+<!-- WHY INVEST -->
+<section id="why">
+  <div class="sec-inner">
+    <div class="sec-label rv">Why This. Why Now.</div>
+    <h2 class="sec-title rv">What makes 236 families<br>choose <span class="g">The Heritage</span>?</h2>
+    <div class="divider rv"></div>
+    <div class="why-grid">
+      <div class="why-card rv"><div class="why-icon"><svg viewBox="0 0 48 48" stroke="#c9a84c" fill="none" stroke-width="1.5"><circle cx="24" cy="24" r="18"/><path d="M24 12v12l8 4"/></svg></div><div class="why-number">2 KM</div><div class="why-name">Metro Connected</div><div class="why-desc">Green Line. Kashmere Gate to your doorstep.</div></div>
+      <div class="why-card rv"><div class="why-icon"><svg viewBox="0 0 48 48" stroke="#c9a84c" fill="none" stroke-width="1.5"><rect x="8" y="18" width="32" height="22" rx="2"/><path d="M16 18V12a8 8 0 0116 0v6"/><circle cx="24" cy="30" r="3"/></svg></div><div class="why-number">2,800+</div><div class="why-name">Industries</div><div class="why-desc">NCR's largest industrial belt. Employment engine.</div></div>
+      <div class="why-card rv"><div class="why-icon"><svg viewBox="0 0 48 48" stroke="#c9a84c" fill="none" stroke-width="1.5"><path d="M6 38h36M10 38V20l14-12 14 12v18"/><rect x="19" y="26" width="10" height="12"/></svg></div><div class="why-number">25K</div><div class="why-name">Sq.Ft. Clubhouse</div><div class="why-desc">Gym. Banquet. Terrace Café. Cricket. Basketball.</div></div>
+      <div class="why-card rv"><div class="why-icon"><svg viewBox="0 0 48 48" stroke="#c9a84c" fill="none" stroke-width="1.5"><polyline points="6 36 16 22 26 28 42 12"/><polyline points="34 12 42 12 42 20"/></svg></div><div class="why-number">24%</div><div class="why-name">Price Gap</div><div class="why-desc">Pre-launch ₹90K vs launch ₹1.12L+. Early movers win.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="sec-inner">
+    <div class="sec-label rv">World-Class Amenities</div>
+    <h2 class="sec-title rv">What does <span class="g">₹90,000/sq.yd.</span><br>actually buy you?</h2>
+    <div class="am-grid rv">
+      <div class="am-card"><div class="am-icon"><svg viewBox="0 0 40 40" stroke="#c9a84c" fill="none" stroke-width="1.3"><circle cx="20" cy="14" r="8"/><path d="M8 38c0-7 5-12 12-12s12 5 12 12"/></svg></div><div class="am-name">Gymnasium</div><div class="am-sub">Fully Equipped</div></div>
+      <div class="am-card"><div class="am-icon"><svg viewBox="0 0 40 40" stroke="#c9a84c" fill="none" stroke-width="1.3"><rect x="6" y="10" width="28" height="20" rx="3"/><line x1="20" y1="10" x2="20" y2="30"/><line x1="6" y1="20" x2="34" y2="20"/></svg></div><div class="am-name">Cricket Pitch</div><div class="am-sub">Box Cricket</div></div>
+      <div class="am-card"><div class="am-icon"><svg viewBox="0 0 40 40" stroke="#c9a84c" fill="none" stroke-width="1.3"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="5"/><line x1="20" y1="6" x2="20" y2="15"/></svg></div><div class="am-name">Basketball</div><div class="am-sub">Full Court</div></div>
+      <div class="am-card"><div class="am-icon"><svg viewBox="0 0 40 40" stroke="#c9a84c" fill="none" stroke-width="1.3"><path d="M10 34 Q20 6 30 34"/><line x1="14" y1="26" x2="26" y2="26"/></svg></div><div class="am-name">Amphitheatre</div><div class="am-sub">Open Air</div></div>
+      <div class="am-card"><div class="am-icon"><svg viewBox="0 0 40 40" stroke="#c9a84c" fill="none" stroke-width="1.3"><path d="M8 32 Q14 20 20 28 Q26 18 32 32"/><path d="M12 32 Q20 14 28 32"/></svg></div><div class="am-name">Miyawaki Forest</div><div class="am-sub">Dense Greenery</div></div>
+      <div class="am-card"><div class="am-icon"><svg viewBox="0 0 40 40" stroke="#c9a84c" fill="none" stroke-width="1.3"><path d="M20 8 Q10 14 10 24 Q10 34 20 36 Q30 34 30 24 Q30 14 20 8Z"/></svg></div><div class="am-name">Flower Valley</div><div class="am-sub">Curated Gardens</div></div>
+      <div class="am-card"><div class="am-icon"><svg viewBox="0 0 40 40" stroke="#c9a84c" fill="none" stroke-width="1.3"><rect x="10" y="22" width="8" height="12"/><rect x="22" y="16" width="8" height="18"/><line x1="6" y1="34" x2="34" y2="34"/></svg></div><div class="am-name">Banquet Hall</div><div class="am-sub">Celebrations</div></div>
+      <div class="am-card"><div class="am-icon"><svg viewBox="0 0 40 40" stroke="#c9a84c" fill="none" stroke-width="1.3"><path d="M12 30 Q12 18 20 14 Q28 18 28 30"/><line x1="20" y1="14" x2="20" y2="8"/><circle cx="20" cy="6" r="2"/></svg></div><div class="am-name">Terrace Café</div><div class="am-sub">Sky Dining</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="sec-inner">
+    <div style="text-align:center">
+      <div class="sec-label rv">Investment Window</div>
+      <h2 class="sec-title rv" style="text-align:center">The early bird doesn't just<br>get the worm. It gets <span class="g">24% more.</span></h2>
+    </div>
+    <div class="price-compare rv">
+      <div class="price-card pre"><div class="price-label">Pre-Launch (Now)</div><div class="price-val">₹90,000</div><div class="price-unit">Per Sq. Yd.</div><div class="price-note">Lock in the lowest entry point. 236 plots. Once gone, gone.</div></div>
+      <div class="price-card launch"><div class="price-label">Launch Price</div><div class="price-val">₹1.12–1.25L</div><div class="price-unit">Per Sq. Yd.</div><div class="price-note">Market rate post-launch. Same plots. Higher price. Same metro.</div></div>
+    </div>
+    <div class="price-quote rv">The gap between pre-launch and launch pricing is where legacies are built.</div>
+  </div>
+</section>
+
+<!-- ENQUIRE -->
+<section id="enquire">
+  <div class="sec-inner">
+    <div class="form-wrap" style="text-align:center">
+      <div class="sec-label rv">One Step Away</div>
+      <h2 class="sec-title rv" style="text-align:center">Ready to see it<br><span class="g">for yourself?</span></h2>
+      <p class="sec-body rv" style="margin:10px auto 0;text-align:center">Book a site visit. No pressure. Just answers.</p>
+      <div class="form-box rv">
+        <div id="form-main">
+          <div class="fr"><div class="fg"><label class="fl">Full Name *</label><input class="fi" placeholder="Your name" id="fname"></div><div class="fg"><label class="fl">Phone *</label><input class="fi" placeholder="+91" id="fphone"></div></div>
+          <div class="fr"><div class="fg"><label class="fl">Email</label><input class="fi" placeholder="you@email.com" id="femail"></div><div class="fg"><label class="fl">City</label><input class="fi" placeholder="Your city" id="fcity"></div></div>
+          <div class="fg"><label class="fl">What interests you most?</label><select class="fi" id="fint" style="cursor:pointer"><option value="" style="background:#0d0906">Select...</option><option style="background:#0d0906">Plot sizes & pricing</option><option style="background:#0d0906">Location & connectivity</option><option style="background:#0d0906">Amenities & lifestyle</option><option style="background:#0d0906">Investment potential</option></select></div>
+          <button class="fsub" id="fsub-btn">Book Site Visit</button>
+        </div>
+        <div class="form-success" id="form-success"><div class="fs-t">Thank You</div><div class="fs-m">A Heritage Advisor will call you within 24 hours.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo">THE HERITAGE</div>
+  <div class="ft-copy">© 2026 HomeGram Estate Pvt Ltd. All Rights Reserved. RERA Registration Pending. Prices indicative and subject to change.</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+gsap.registerPlugin(ScrollTrigger);
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>Array.from(c.querySelectorAll(s));
+
+// Nav
+window.addEventListener('scroll',()=>{$('#navbar').classList.toggle('scrolled',scrollY>60)});
+
+// Reveal
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+$$('.rv').forEach(el=>ro.observe(el));
+
+// Metro
+const stations=[{x:120},{x:260},{x:400},{x:540},{x:680},{x:820},{x:960},{x:1100},{x:1240}];
+const names=['Kashmere Gate','Inderlok','Punjabi Bagh West','Nangloi','Mundka','Tikri Border','Brig. Hoshiar Singh','Pt. Shree Ram Sharma','Bahadurgarh City Park'];
+const train=$('#m-train'),hl=$('#m-headlight'),ta=$('#m-track-active'),stEls=$$('.m-st'),trail=$('#m-trail'),dots=$$('.m-tdot'),pin=$('#m-pin'),badge=$('#m-badge'),mSt=$('#m-status');
+let tl;
+
+function lightSt(g,fin){const t=gsap.timeline();const d=g.querySelector('.mst-dot'),o=g.querySelector('.mst-outer'),r=g.querySelector('.mst-ring'),l=g.querySelector('.mst-label'),s=g.querySelector('.mst-sub'),h=g.querySelector('.mst-halo');t.to(d,{attr:{fill:'#c9a84c'},duration:.18},0).to(o,{attr:{stroke:'#c9a84c'},duration:.18},0).fromTo(g,{scale:1,transformOrigin:'center'},{scale:fin?1.5:1.3,duration:.3,ease:'back.out(2.5)',transformOrigin:'center'},0).to(g,{scale:1,duration:.4,ease:'elastic.out(1,.55)',transformOrigin:'center'},.3).fromTo(r,{opacity:.7,attr:{r:12}},{opacity:0,attr:{r:30},duration:.8},.05).to(l,{opacity:1,duration:.3},0);if(s)t.to(s,{opacity:1,duration:.3},.1);if(fin&&h)t.fromTo(h,{opacity:0,attr:{r:18}},{opacity:.5,attr:{r:32},duration:.5},.1).to(h,{opacity:.2,duration:.8,repeat:-1,yoyo:true},.6);return t}
+
+function build(){if(tl)tl.kill();gsap.set(train,{x:0});gsap.set(hl,{opacity:0});gsap.set(ta,{attr:{x2:80},opacity:0});stEls.forEach(s=>{gsap.set(s.querySelector('.mst-dot'),{attr:{fill:'rgba(201,168,76,.35)'}});gsap.set(s.querySelector('.mst-outer'),{attr:{stroke:'rgba(201,168,76,.4)'}});gsap.set(s.querySelector('.mst-ring'),{opacity:0,attr:{r:14}});gsap.set(s.querySelector('.mst-label'),{opacity:.5});const sub=s.querySelector('.mst-sub');if(sub)gsap.set(sub,{opacity:0});const halo=s.querySelector('.mst-halo');if(halo){gsap.killTweensOf(halo);gsap.set(halo,{opacity:0})}gsap.set(s,{scale:1,transformOrigin:'center'})});gsap.set(trail,{opacity:0});dots.forEach(d=>gsap.set(d,{opacity:0,scale:0,transformOrigin:'center'}));gsap.set(pin,{opacity:0,y:20});gsap.set(badge,{opacity:0,y:-20,scale:.7,transformOrigin:'center'});gsap.set('.mpin-halo,.mpin-mid',{opacity:0});gsap.set('.mpin-emblem',{scale:0,transformOrigin:'center'});
+tl=gsap.timeline({onComplete:()=>gsap.delayedCall(2.4,()=>tl.restart())});tl.add(lightSt(stEls[0],false),0).to(hl,{opacity:.85,duration:.4},.1).call(()=>{mSt.textContent='Departing Kashmere Gate...'},[],0.1);
+let c=.5;const sd=.78;for(let i=1;i<9;i++){const tx=stations[i].x-120,last=i===8,dur=last?sd*1.4:sd,ease=last?'power3.out':(i===1?'power2.in':'none');tl.to(train,{x:tx,duration:dur,ease},c).to(ta,{attr:{x2:stations[i].x},duration:dur,ease,opacity:1},c).call(()=>{mSt.textContent=last?'Arriving at Bahadurgarh...':'En route to '+names[i]+'...'},[],c+dur*.3).add(lightSt(stEls[i],last),c+dur-.1);c+=dur}
+tl.to(hl,{opacity:0,duration:.4},c);c+=.6;tl.set(trail,{opacity:1},c).call(()=>{mSt.textContent='700 metres from your front gate...'},[],c);dots.forEach((d,i)=>{tl.to(d,{opacity:1,scale:1,duration:.18,ease:'back.out(2)'},c+i*.12)});c+=dots.length*.12+.2;tl.to(pin,{opacity:1,y:0,duration:.5,ease:'power2.out'},c).to('.mpin-emblem',{scale:1,duration:.7,ease:'back.out(1.6)'},c).fromTo('.mpin-halo',{opacity:0,attr:{r:18}},{opacity:.6,attr:{r:40},duration:.8},c+.2).to('.mpin-halo',{opacity:0,duration:.6},c+1).fromTo('.mpin-mid',{opacity:0,attr:{r:14}},{opacity:.4,attr:{r:28},duration:1.4,ease:'sine.inOut',repeat:-1,yoyo:true},c+.3);c+=.9;tl.to(badge,{opacity:1,y:0,scale:1,duration:.6,ease:'back.out(2)'},c).call(()=>{mSt.textContent='The Heritage · Sector 11, Bahadurgarh'},[],c+.3);tl.to({},{duration:2})}
+
+ScrollTrigger.create({trigger:'#connectivity',start:'top 70%',once:true,onEnter:build});
+let paused=false;$('#m-pause').addEventListener('click',()=>{if(!tl)return;if(paused){tl.resume();$('#m-pause').textContent='⏸ Pause'}else{tl.pause();$('#m-pause').textContent='▶ Resume'}paused=!paused});$('#m-replay').addEventListener('click',()=>{paused=false;$('#m-pause').textContent='⏸ Pause';build()});
+const mio=new IntersectionObserver(es=>{es.forEach(e=>{if(!tl||paused)return;if(e.isIntersecting)tl.resume();else tl.pause()})},{threshold:.2});mio.observe($('#connectivity'));
+
+// Form
+$('#fsub-btn').addEventListener('click',()=>{const n=$('#fname').value.trim(),p=$('#fphone').value.trim();if(!n||!p){alert('Name and phone are required.');return}$('#form-main').style.display='none';$('#form-success').classList.add('show');$('#form-success').style.display='block'});
+$('.nav-cta').addEventListener('click',e=>{e.preventDefault();$('#enquire').scrollIntoView({behavior:'smooth'})});
+});
+</script>
+</body>
+</html>
