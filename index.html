@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heritage – Bahadurgarh | Premium Luxury Plotted Development by HomeGram Estate</title>
+<meta name="description" content="Premium luxury plotted development in Sector 11, Bahadurgarh, Haryana. 236 plots on 15.83 acres. Metro-connected, 2800+ industries nearby. Pre-launch ₹90,000/sq.yd.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Josefin+Sans:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-emblem">
+    <svg viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="1.5" opacity=".9"/>
+      <rect x="88" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="1.5" opacity=".9"/>
+      <path d="M32 110 L32 68 Q32 10 60 6 Q88 10 88 68 L88 110" stroke="#c9a84c" stroke-width="2" fill="none" stroke-dasharray="300" stroke-dashoffset="300">
+        <animate attributeName="stroke-dashoffset" from="300" to="0" dur="1.8s" fill="freeze"/>
+      </path>
+      <circle cx="60" cy="10" r="6" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+      <circle cx="60" cy="10" r="2.5" fill="#c9a84c" opacity=".8"/>
+      <rect x="5" y="53" width="32" height="4" stroke="#c9a84c" stroke-width="1" opacity=".5"/>
+      <rect x="83" y="53" width="32" height="4" stroke="#c9a84c" stroke-width="1" opacity=".5"/>
+      <circle cx="21" cy="47" r="5" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity=".8"/>
+      <circle cx="99" cy="47" r="5" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity=".8"/>
+    </svg>
+  </div>
+  <div class="loader-text">The Heritage · Bahadurgarh</div>
+  <div class="loader-bar-wrap"><div class="loader-bar-fill"></div></div>
+</div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="nav-logo"><span>THE HERITAGE</span>By HomeGram Estate</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#connectivity">Location</a>
+    <a href="#industrial">Why Bahadurgarh</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#pricing">Pricing</a>
+  </div>
+  <a href="#lead-form" class="nav-cta">Book Site Visit</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Premium Luxury Plotted Development · Sector 11, Bahadurgarh, Haryana</div>
+    <h1 class="hero-title">THE<br><span class="g">HERITAGE</span></h1>
+    <div class="hero-sub">Where Delhi Ends, Growth Begins.</div>
+    <div class="hero-div"><div class="hdl"></div><div class="hdd"></div><div class="hdl r"></div></div>
+    <div class="hero-loc">Gateway of Haryana · Satellite Town of West Delhi</div>
+    <!-- Quick Stats Bar -->
+    <div class="hero-stats">
+      <div class="hs-item"><span class="hs-n">15.83</span><span class="hs-l">Acres</span></div>
+      <div class="hs-sep"></div>
+      <div class="hs-item"><span class="hs-n">236</span><span class="hs-l">Plots</span></div>
+      <div class="hs-sep"></div>
+      <div class="hs-item"><span class="hs-n">2 KM</span><span class="hs-l">Metro</span></div>
+      <div class="hs-sep"></div>
+      <div class="hs-item"><span class="hs-n">25K</span><span class="hs-l">Sq.Ft. Club</span></div>
+    </div>
+    <div class="hero-badge">
+      <span>Pre-Launch</span>
+      <span class="hb-sep">|</span>
+      <span>₹90,000 / Sq. Yd.</span>
+      <span class="hb-sep">|</span>
+      <span>Limited Plots</span>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Discover</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- ABOUT / GATEWAY -->
+<section id="about">
+  <div class="si">
+    <div class="gw-grid">
+      <div class="rv">
+        <svg id="gateway-arch" viewBox="0 0 400 320" class="gw-arch" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="pillarGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c9a84c" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#8b6914" stop-opacity=".6"/>
+            </linearGradient>
+          </defs>
+          <line x1="0" y1="308" x2="400" y2="308" stroke="#c9a84c" stroke-width="1" opacity=".3"/>
+          <rect class="arch-draw" x="52" y="118" width="58" height="190" fill="none" stroke="url(#pillarGrad)" stroke-width="1.5" stroke-dasharray="500" stroke-dashoffset="500"/>
+          <rect class="arch-draw" x="44" y="118" width="74" height="12" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-dasharray="200" stroke-dashoffset="200"/>
+          <rect class="arch-draw" x="290" y="118" width="58" height="190" fill="none" stroke="url(#pillarGrad)" stroke-width="1.5" stroke-dasharray="500" stroke-dashoffset="500"/>
+          <rect class="arch-draw" x="282" y="118" width="74" height="12" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-dasharray="200" stroke-dashoffset="200"/>
+          <rect class="arch-draw" x="36" y="106" width="90" height="14" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="220" stroke-dashoffset="220"/>
+          <rect class="arch-draw" x="274" y="106" width="90" height="14" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="220" stroke-dashoffset="220"/>
+          <circle class="arch-draw" cx="81" cy="96" r="11" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="70" stroke-dashoffset="70"/>
+          <circle cx="81" cy="96" r="4" fill="#c9a84c" opacity="0" class="arch-fill"/>
+          <circle class="arch-draw" cx="319" cy="96" r="11" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="70" stroke-dashoffset="70"/>
+          <circle cx="319" cy="96" r="4" fill="#c9a84c" opacity="0" class="arch-fill"/>
+          <path class="arch-draw" d="M110 308 L110 176 Q110 52 200 34 Q290 52 290 176 L290 308" fill="none" stroke="#c9a84c" stroke-width="2.2" stroke-dasharray="600" stroke-dashoffset="600"/>
+          <path class="arch-draw" d="M130 308 L130 180 Q130 76 200 60 Q270 76 270 180 L270 308" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".35" stroke-dasharray="550" stroke-dashoffset="550"/>
+          <circle class="arch-draw" cx="200" cy="38" r="16" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-dasharray="101" stroke-dashoffset="101"/>
+          <circle cx="200" cy="38" r="7" fill="#c9a84c" opacity="0" class="arch-fill"/>
+          <line x1="200" y1="22" x2="200" y2="8" stroke="#c9a84c" stroke-width="1.5" opacity="0" class="arch-fill"/>
+          <polygon points="200,4 203,10 197,10" fill="#c9a84c" opacity="0" class="arch-fill"/>
+          <text x="200" y="260" text-anchor="middle" font-family="'Cinzel',serif" font-size="11" fill="#c9a84c" letter-spacing="6" opacity="0" class="arch-fill">BAHADURGARH</text>
+        </svg>
+      </div>
+      <div>
+        <div class="slabel rv">About The Project</div>
+        <h2 class="stitle rv d1">Gateway of<br><span class="g">Haryana</span></h2>
+        <div class="gsep rv d2"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+        <p class="sbody rv d2">At the crossroads of UER-II, KMP, and Delhi Metro Green Line, The Heritage isn't just well-connected — it's future-proofed. A heritage-themed gated community on 15.83 acres in Sector 11, Bahadurgarh — where affordability and aspiration meet without compromise.</p>
+        <p class="sbody rv d3" style="margin-top:18px">With 2,800+ industries and global brands calling Bahadurgarh home, your investment sits at the center of an economic powerhouse. This is not merely a plot. It is a founding stake in NCR's fastest-growing corridor.</p>
+        <!-- Four Pillars -->
+        <div class="pillars rv d3">
+          <div class="pillar"><span class="p-ico">📍</span><span class="p-txt">Strategic Location</span></div>
+          <div class="pillar"><span class="p-ico">🏭</span><span class="p-txt">Strong Industry</span></div>
+          <div class="pillar"><span class="p-ico">🏛</span><span class="p-txt">Premium Lifestyle</span></div>
+          <div class="pillar"><span class="p-ico">📈</span><span class="p-txt">Assured Growth</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CONNECTIVITY (METRO ANIMATION) -->
+<section id="connectivity">
+  <div class="si">
+    <div style="text-align:center">
+      <div class="slabel rv">Metro & Road Connectivity</div>
+      <h2 class="stitle rv d1" style="text-align:center">Every Direction.<br><span class="g">Minutes Away.</span></h2>
+      <div class="gsep rv d2" style="justify-content:center;max-width:280px;margin:28px auto"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+      <p class="sbody rv d2" style="max-width:640px;margin:0 auto 50px;text-align:center">Delhi Metro Green Line delivers you from Central Delhi to your doorstep. Watch the journey unfold.</p>
+    </div>
+
+    <!-- Metro Animation SVG -->
+    <div class="metro-stage rv d2">
+      <svg class="metro-svg" viewBox="0 0 1320 360" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="mTrackGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="rgba(201,168,76,.15)"/>
+            <stop offset="50%" stop-color="rgba(201,168,76,.4)"/>
+            <stop offset="100%" stop-color="rgba(201,168,76,.7)"/>
+          </linearGradient>
+          <linearGradient id="mTrainBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fff"/><stop offset="50%" stop-color="#e8e8ec"/><stop offset="100%" stop-color="#b8b8c0"/>
+          </linearGradient>
+          <linearGradient id="mTrainStripe" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f5b800"/><stop offset="100%" stop-color="#d49800"/>
+          </linearGradient>
+          <radialGradient id="mHeadlight" cx=".5" cy=".5" r=".5">
+            <stop offset="0%" stop-color="rgba(255,235,180,.9)"/><stop offset="60%" stop-color="rgba(255,200,100,.25)"/><stop offset="100%" stop-color="rgba(255,200,100,0)"/>
+          </radialGradient>
+          <linearGradient id="mPinGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8c97a"/><stop offset="100%" stop-color="#8b6914"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Track -->
+        <line x1="80" y1="180" x2="1240" y2="180" stroke="rgba(201,168,76,.12)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="80" y1="172" x2="1240" y2="172" stroke="rgba(201,168,76,.06)" stroke-width=".5"/>
+        <line x1="80" y1="188" x2="1240" y2="188" stroke="rgba(201,168,76,.06)" stroke-width=".5"/>
+        <line id="m-track-active" x1="80" y1="180" x2="80" y2="180" stroke="url(#mTrackGrad)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+
+        <!-- Stations: Updated per master doc Green Line stations -->
+        <g id="m-stations">
+          <g class="m-st" data-i="0" transform="translate(120,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">KASHMERE GATE</text>
+          </g>
+          <g class="m-st" data-i="1" transform="translate(260,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">INDERLOK</text>
+          </g>
+          <g class="m-st" data-i="2" transform="translate(400,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">PUNJABI BAGH WEST</text>
+          </g>
+          <g class="m-st" data-i="3" transform="translate(540,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">NANGLOI</text>
+          </g>
+          <g class="m-st" data-i="4" transform="translate(680,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">MUNDKA</text>
+          </g>
+          <g class="m-st" data-i="5" transform="translate(820,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">TIKRI BORDER</text>
+            <text y="38" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="7.5" fill="rgba(201,168,76,.5)" letter-spacing="2" opacity="0" class="mst-sub">DELHI · HARYANA</text>
+          </g>
+          <g class="m-st" data-i="6" transform="translate(960,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">BRIG. HOSHIAR SINGH</text>
+          </g>
+          <g class="m-st" data-i="7" transform="translate(1100,180)">
+            <circle class="mst-ring" r="14" fill="none" stroke="rgba(201,168,76,.25)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="10" fill="none" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <circle class="mst-dot" r="5" fill="rgba(201,168,76,.35)"/>
+            <text class="mst-label" y="-26" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="#d4c9b0" letter-spacing="1.5" opacity=".5">PANDIT SHREE RAM SHARMA</text>
+          </g>
+          <g class="m-st m-st-final" data-i="8" transform="translate(1240,180)">
+            <circle class="mst-halo" r="32" fill="none" stroke="rgba(201,168,76,.2)" stroke-width="1" opacity="0"/>
+            <circle class="mst-ring" r="22" fill="none" stroke="rgba(201,168,76,.35)" stroke-width="1" opacity="0"/>
+            <circle class="mst-outer" r="13" fill="none" stroke="rgba(201,168,76,.5)" stroke-width="2"/>
+            <circle class="mst-dot" r="6" fill="rgba(201,168,76,.45)"/>
+            <text class="mst-label" y="-34" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" font-weight="700" fill="#d4c9b0" letter-spacing="2" opacity=".6">BAHADURGARH CITY PARK</text>
+          </g>
+        </g>
+
+        <!-- Train -->
+        <g id="m-train" transform="translate(120,180)">
+          <ellipse id="m-headlight" cx="65" cy="0" rx="40" ry="14" fill="url(#mHeadlight)" opacity="0"/>
+          <g transform="translate(-110,0)"><rect x="0" y="-14" width="56" height="28" rx="4" fill="url(#mTrainBody)" stroke="#3a3a40" stroke-width=".8"/><rect x="0" y="-4" width="56" height="3" fill="url(#mTrainStripe)"/><rect x="0" y="2" width="56" height="1.5" fill="#003d7a"/><rect x="6" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="18" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="30" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="42" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><circle cx="10" cy="14" r="3.5" fill="#222"/><circle cx="46" cy="14" r="3.5" fill="#222"/></g>
+          <g transform="translate(-50,0)"><rect x="0" y="-14" width="56" height="28" rx="4" fill="url(#mTrainBody)" stroke="#3a3a40" stroke-width=".8"/><rect x="0" y="-4" width="56" height="3" fill="url(#mTrainStripe)"/><rect x="0" y="2" width="56" height="1.5" fill="#003d7a"/><rect x="6" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="18" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="30" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="42" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><circle cx="10" cy="14" r="3.5" fill="#222"/><circle cx="46" cy="14" r="3.5" fill="#222"/></g>
+          <g transform="translate(10,0)"><path d="M0-14L50-14Q60-14 62-8L64 0 62 8Q60 14 50 14L0 14Z" fill="url(#mTrainBody)" stroke="#3a3a40" stroke-width=".8"/><path d="M0-4L56-4Q60-4 60-1L60 1 56 1 0 1Z" fill="url(#mTrainStripe)"/><rect x="0" y="2" width="58" height="1.5" fill="#003d7a"/><path d="M50-10L56-10Q60-8 60-3L60-1 50-1Z" fill="rgba(160,200,230,.85)"/><rect x="6" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="18" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="30" y="-10" width="8" height="6" rx="1" fill="rgba(180,210,235,.7)"/><rect x="42" y="-10" width="6" height="6" rx="1" fill="rgba(180,210,235,.7)"/><circle cx="60" cy="-6" r="1.6" fill="#fff8d0"/><circle cx="60" cy="6" r="1.6" fill="#fff8d0"/><circle cx="10" cy="14" r="3.5" fill="#222"/><circle cx="46" cy="14" r="3.5" fill="#222"/></g>
+          <rect x="-56" y="-3" width="6" height="6" fill="#1a1a1f"/><rect x="4" y="-3" width="6" height="6" fill="#1a1a1f"/>
+        </g>
+
+        <!-- Trail dots -->
+        <g id="m-trail" opacity="0">
+          <circle class="m-tdot" cx="1232" cy="200" r="2" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1224" cy="216" r="2.2" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1215" cy="230" r="2.4" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1206" cy="244" r="2.6" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1197" cy="257" r="2.8" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1190" cy="270" r="3" fill="#c9a84c" opacity="0"/>
+          <circle class="m-tdot" cx="1184" cy="282" r="3.2" fill="#c9a84c" opacity="0"/>
+        </g>
+
+        <!-- Project Pin -->
+        <g id="m-pin" transform="translate(1180,300)" opacity="0">
+          <circle class="mpin-halo" r="40" fill="none" stroke="rgba(201,168,76,.15)" stroke-width="1" opacity="0"/>
+          <circle class="mpin-mid" r="28" fill="none" stroke="rgba(201,168,76,.3)" stroke-width="1" opacity="0"/>
+          <g class="mpin-emblem" transform="translate(-22,-22) scale(.36)">
+            <rect x="10" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="2" fill="none"/>
+            <rect x="88" y="55" width="22" height="55" stroke="#c9a84c" stroke-width="2" fill="none"/>
+            <path d="M32 110 L32 68 Q32 10 60 6 Q88 10 88 68 L88 110" stroke="url(#mPinGrad)" stroke-width="2.5" fill="none"/>
+            <circle cx="60" cy="10" r="6" fill="none" stroke="#c9a84c" stroke-width="2"/>
+            <circle cx="60" cy="10" r="2.5" fill="#c9a84c"/>
+            <rect x="5" y="53" width="32" height="4" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+            <rect x="83" y="53" width="32" height="4" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+            <circle cx="21" cy="47" r="5" fill="none" stroke="#c9a84c" stroke-width="2"/>
+            <circle cx="99" cy="47" r="5" fill="none" stroke="#c9a84c" stroke-width="2"/>
+          </g>
+        </g>
+
+        <!-- WE ARE HERE badge -->
+        <g id="m-badge" transform="translate(1180,346)" opacity="0">
+          <rect x="-78" y="-14" width="156" height="28" fill="rgba(7,5,3,.96)" stroke="url(#mPinGrad)" stroke-width="1.5"/>
+          <path d="M-78-14L-72-14M-78-14L-78-8" stroke="#c9a84c" stroke-width="2"/>
+          <path d="M78 14L72 14M78 14L78 8" stroke="#c9a84c" stroke-width="2"/>
+          <text x="0" y="-1" text-anchor="middle" font-family="'Cinzel',serif" font-size="11" font-weight="700" fill="#c9a84c" letter-spacing="3.5">WE ARE HERE</text>
+          <text x="0" y="11" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="7.5" fill="#d4c9b0" letter-spacing="2.5">700 M · 2 MIN FROM STATION</text>
+        </g>
+      </svg>
+    </div>
+    <div class="metro-status" id="m-status">Awaiting departure...</div>
+    <div class="metro-controls">
+      <button class="mcbtn" id="m-replay">↻ Replay</button>
+      <button class="mcbtn" id="m-pause">⏸ Pause</button>
+    </div>
+
+    <!-- Road Connectivity Grid -->
+    <div class="road-grid rv d3">
+      <div class="road-card"><span class="rc-ico">🏟</span><div class="rc-info"><span class="rc-name">Bahadurgarh Stadium</span><span class="rc-dist">700 MTR · 1 Min</span></div></div>
+      <div class="road-card"><span class="rc-ico">🛣</span><div class="rc-info"><span class="rc-name">Rohtak Road Bypass</span><span class="rc-dist">1 KM</span></div></div>
+      <div class="road-card"><span class="rc-ico">🚧</span><div class="rc-info"><span class="rc-name">Delhi Border</span><span class="rc-dist">5 Mins</span></div></div>
+      <div class="road-card"><span class="rc-ico">🛤</span><div class="rc-info"><span class="rc-name">UER-II Expressway</span><span class="rc-dist">10 Mins</span></div></div>
+      <div class="road-card"><span class="rc-ico">✈️</span><div class="rc-info"><span class="rc-name">IGI Airport</span><span class="rc-dist">20-25 Mins</span></div></div>
+      <div class="road-card"><span class="rc-ico">🏙</span><div class="rc-info"><span class="rc-name">Gurugram</span><span class="rc-dist">25 Mins</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE INFRASTRUCTURE -->
+<section id="future-infra">
+  <div class="si">
+    <div style="text-align:center">
+      <div class="slabel rv">Growth Corridor</div>
+      <h2 class="stitle rv d1" style="text-align:center">Future<br><span class="g">Infrastructure</span></h2>
+      <div class="gsep rv d2" style="justify-content:center;max-width:280px;margin:28px auto"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+      <p class="sbody rv d2" style="max-width:640px;margin:0 auto 50px;text-align:center">Connecting Today. Powering Tomorrow.</p>
+    </div>
+    <div class="infra-grid rv d2">
+      <div class="infra-card">
+        <div class="ic-head">HORC</div>
+        <div class="ic-sub">Haryana Orbital Rail Corridor</div>
+        <p class="ic-body">Sonipat–Bahadurgarh–Manesar–Palwal. Future freight + passenger backbone passing near Bahadurgarh.</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-head">UER-II</div>
+        <div class="ic-sub">Urban Extension Road</div>
+        <p class="ic-body">Fastest access to Airport & West Delhi. Direct to Dwarka, IGI Airport, NH-44, NH-9, NH-48. Bahadurgarh to Airport in ~20 mins.</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-head">KMP</div>
+        <div class="ic-sub">Kundli–Manesar–Palwal Expressway</div>
+        <p class="ic-body">Direct access via NH-9. Connects Manesar, Sohna, Kundli & Delhi-Mumbai Expressway. Freight & industrial connectivity.</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-head">GATI SHAKTI</div>
+        <div class="ic-sub">Multimodal Hub</div>
+        <p class="ic-body">MMTS Hub along KMP. Integrated Road, Rail & Logistics Ecosystem. PM Gati Shakti Logistics Network.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- INDUSTRIAL -->
+<section id="industrial">
+  <div class="si">
+    <div class="ind-head">
+      <div class="slabel rv">Economic Strength</div>
+      <h2 class="stitle rv d1" style="text-align:center">Industrial<br><span class="g">Powerhouse</span></h2>
+      <div class="gsep rv d2" style="justify-content:center;max-width:280px;margin:28px auto"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+      <p class="sbody rv d2" style="max-width:640px;margin:0 auto;text-align:center">With 2,800+ industries and global brands like Parle, Yokohama, and Somany calling Bahadurgarh home, your investment sits at the center of an economic powerhouse.</p>
+    </div>
+    <div class="big-counter rv">
+      <div class="bc-num" data-target="2800" id="cnt1">0<span class="bc-plus">+</span></div>
+      <div class="bc-label">Industries · ~490 Acres Industrial Belt · 200 Large Scale</div>
+    </div>
+    <div class="tag-cloud" id="tag-cloud">
+      <div class="tag">Ceramics</div><div class="tag">Chemicals</div>
+      <div class="tag">Electronics</div><div class="tag">Engineering</div>
+      <div class="tag">Chinaware</div><div class="tag">Footwear</div>
+      <div class="tag">Steel Pipes</div><div class="tag">Glass</div>
+    </div>
+    <div class="brands-grid" id="brands-grid">
+      <div class="brand-cell"><span class="bt">Glass</span>Hindustan National Glass</div>
+      <div class="brand-cell"><span class="bt">Ceramics</span>Somany Ceramics</div>
+      <div class="brand-cell"><span class="bt">FMCG</span>Parle Products</div>
+      <div class="brand-cell"><span class="bt">Automotive</span>Yokohama</div>
+      <div class="brand-cell"><span class="bt">Footwear</span>Relaxo</div>
+      <div class="brand-cell"><span class="bt">Sanitaryware</span>Hindustan Sanitaryware</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="si">
+    <div class="gw-grid">
+      <div>
+        <div class="slabel rv">Social Infrastructure</div>
+        <h2 class="stitle rv d1">Education<br><span class="g">Ecosystem</span></h2>
+        <div class="gsep rv d2"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+        <p class="sbody rv d2">A thriving academic landscape surrounds The Heritage — premier universities, medical colleges, and over 75 schools ensure your family has access to excellence at every stage of life.</p>
+        <div style="margin-top:40px" class="rv d3">
+          <div class="spec-row"><span class="sk">Engineering</span><span class="sv">HIT Bahadurgarh</span></div>
+          <div class="spec-row"><span class="sk">University</span><span class="sv">PDM University</span></div>
+          <div class="spec-row"><span class="sk">Technical</span><span class="sv">Delhi Technical Campus</span></div>
+          <div class="spec-row"><span class="sk">Institute</span><span class="sv">BGS Institute</span></div>
+          <div class="spec-row"><span class="sk">Medical</span><span class="sv">Maharaja Agrasen Medical</span></div>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div class="edu-box">
+          <div class="edu-num" id="edu-counter">75<sup>+</sup></div>
+          <div class="edu-label">Schools Nearby</div>
+          <div class="gsep" style="margin:24px 0;justify-content:center"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+          <div class="edu-pills" id="edu-pills">
+            <div class="edu-pill">CBSE</div>
+            <div class="edu-pill">ICSE</div>
+            <div class="edu-pill">STATE BOARD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT DETAILS -->
+<section id="project">
+  <div class="si">
+    <div class="prj-layout">
+      <div>
+        <div class="slabel rv">Project Details</div>
+        <h2 class="stitle rv d1">The Heritage<br><span class="g">Specifications</span></h2>
+        <div class="gsep rv d2"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+        <div class="rv d2">
+          <div class="spec-row"><span class="sk">Theme</span><span class="sv">Heritage</span></div>
+          <div class="spec-row"><span class="sk">Land Parcel</span><span class="sv">15.83 Acres</span></div>
+          <div class="spec-row"><span class="sk">Total Plots</span><span class="sv">236</span></div>
+          <div class="spec-row"><span class="sk">Product</span><span class="sv">Villa Plots + Commercial</span></div>
+          <div class="spec-row"><span class="sk">Internal Roads</span><span class="sv">9 m & 12 m Wide</span></div>
+          <div class="spec-row"><span class="sk">Clubhouse</span><span class="sv">25,000 Sq. Ft.</span></div>
+          <div class="spec-row"><span class="sk">Developer</span><span class="sv">HomeGram Estate Pvt Ltd</span></div>
+        </div>
+        <div class="rv d3">
+          <div class="sz-title">Available Plot Sizes</div>
+          <div class="sz-bars" id="sz-bars">
+            <div class="sz-row"><span class="sz-lbl">126.73 sq. yd.</span><div class="sz-track"><div class="sz-fill" data-w="72"></div></div></div>
+            <div class="sz-row"><span class="sz-lbl">136 sq. yd.</span><div class="sz-track"><div class="sz-fill" data-w="77"></div></div></div>
+            <div class="sz-row"><span class="sz-lbl">146 sq. yd.</span><div class="sz-track"><div class="sz-fill" data-w="83"></div></div></div>
+            <div class="sz-row"><span class="sz-lbl">162 sq. yd.</span><div class="sz-track"><div class="sz-fill" data-w="92"></div></div></div>
+            <div class="sz-row"><span class="sz-lbl">174 sq. yd.</span><div class="sz-track"><div class="sz-fill" data-w="98"></div></div></div>
+            <div class="sz-row"><span class="sz-lbl">176–177 sq. yd. (PH1)</span><div class="sz-track"><div class="sz-fill" data-w="100"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="prj-visual rv d3">
+        <div class="mplan-box">
+          <div class="mplan-wm">THE HERITAGE</div>
+          <div style="font-size:9px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:20px">Conceptual Site Layout</div>
+          <div class="mplan-grid" id="plot-grid">
+            <div class="pc road" style="grid-column:span 8"></div>
+            <div class="pc"></div><div class="pc"></div><div class="pc club"></div><div class="pc"></div><div class="pc"></div><div class="pc"></div>
+            <div class="pc"></div><div class="pc"></div><div class="pc"></div><div class="pc"></div><div class="pc"></div><div class="pc"></div><div class="pc"></div><div class="pc"></div><div class="pc"></div><div class="pc"></div>
+            <div class="pc road" style="grid-column:span 3"></div><div class="pc road" style="grid-column:span 2"></div><div class="pc road" style="grid-column:span 3"></div>
+            <div class="pc"></div><div class="pc green"></div><div class="pc green"></div><div class="pc road"></div><div class="pc road"></div><div class="pc green"></div><div class="pc green"></div><div class="pc"></div>
+            <div class="pc"></div><div class="pc green"></div><div class="pc"></div><div class="pc road"></div><div class="pc road"></div><div class="pc"></div><div class="pc green"></div><div class="pc"></div>
+            <div class="pc"></div><div class="pc"></div><div class="pc"></div><div class="pc road"></div><div class="pc road"></div><div class="pc"></div><div class="pc"></div><div class="pc"></div>
+            <div class="pc"></div><div class="pc"></div><div class="pc"></div><div class="pc road"></div><div class="pc road"></div><div class="pc"></div><div class="pc"></div><div class="pc"></div>
+            <div class="pc road" style="grid-column:span 8"></div>
+            <div class="pc road" style="grid-column:span 3"></div><div class="pc" style="background:rgba(201,168,76,.5);border-color:var(--gold);grid-column:span 2"></div><div class="pc road" style="grid-column:span 3"></div>
+          </div>
+          <div class="mplan-legend">
+            <div class="ml-item"><div class="ml-swatch" style="background:rgba(201,168,76,.13);border:1px solid rgba(201,168,76,.18)"></div>Plot</div>
+            <div class="ml-item"><div class="ml-swatch" style="background:rgba(201,168,76,.38);border:1px solid var(--gold)"></div>Clubhouse</div>
+            <div class="ml-item"><div class="ml-swatch" style="background:rgba(60,130,60,.28);border:1px solid rgba(60,130,60,.38)"></div>Green Zones</div>
+          </div>
+        </div>
+        <div class="map-row">
+          <div class="icon">📍</div>
+          <div><div class="name">Sector 11, Bahadurgarh</div><div class="addr">HUDA · Haryana · NCR</div></div>
+          <a href="https://maps.app.goo.gl/v5cuPT7DoP5JsrWY8" target="_blank" class="map-btn">View on Map →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="si">
+    <div class="am-head">
+      <div class="slabel rv">World-Class Amenities</div>
+      <h2 class="stitle rv d1" style="text-align:center">Life Beyond<br><span class="g">the Ordinary</span></h2>
+      <div class="gsep rv d2" style="justify-content:center;max-width:280px;margin:28px auto"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+      <p class="sbody rv d2" style="max-width:620px;margin:0 auto 50px;text-align:center">A 25,000 sq. ft. clubhouse, Miyawaki forest, and heritage-themed architecture — because growth should feel like home.</p>
+    </div>
+    <!-- Clubhouse highlight -->
+    <div class="clubhouse-hl rv">
+      <div class="ch-num"><div class="n">25,000</div><div class="u">Sq. Ft. Grand Clubhouse</div></div>
+      <div>
+        <div style="font-family:'Cinzel',serif;font-size:1.15rem;color:var(--cream);margin-bottom:18px">The Grand Clubhouse</div>
+        <div class="ch-features">
+          <div class="ch-pill">Gymnasium</div><div class="ch-pill">Banquet Hall</div><div class="ch-pill">Lounge</div><div class="ch-pill">Waiting Areas</div><div class="ch-pill">Reception</div><div class="ch-pill">Table Tennis</div><div class="ch-pill">Billiards</div><div class="ch-pill">Pool Table</div><div class="ch-pill">Terrace Café</div>
+        </div>
+      </div>
+    </div>
+    <!-- Amenities Grid -->
+    <div class="am-grid" id="am-grid">
+      <div class="am-card"><span class="am-ico">🏏</span><div class="am-name">Cricket Pitch</div><div class="am-desc">Box Cricket</div></div>
+      <div class="am-card"><span class="am-ico">🏸</span><div class="am-name">Badminton Court</div><div class="am-desc">Professional</div></div>
+      <div class="am-card"><span class="am-ico">🏀</span><div class="am-name">Basketball Court</div><div class="am-desc">Full Size</div></div>
+      <div class="am-card"><span class="am-ico">🎾</span><div class="am-name">Pickleball</div><div class="am-desc">Trending Sport</div></div>
+      <div class="am-card"><span class="am-ico">🎭</span><div class="am-name">Amphitheatre</div><div class="am-desc">Open Air Stage</div></div>
+      <div class="am-card"><span class="am-ico">🌸</span><div class="am-name">Flower Valley</div><div class="am-desc">Curated Gardens</div></div>
+      <div class="am-card"><span class="am-ico">🌿</span><div class="am-name">Miyawaki Forest</div><div class="am-desc">Dense Urban Forest</div></div>
+      <div class="am-card"><span class="am-ico">🪨</span><div class="am-name">Rock Garden</div><div class="am-desc">Landscape Feature</div></div>
+      <div class="am-card"><span class="am-ico">🛝</span><div class="am-name">Kids' Play Area</div><div class="am-desc">Safe & Joyful</div></div>
+      <div class="am-card"><span class="am-ico">🪑</span><div class="am-name">Senior Citizen Park</div><div class="am-desc">Peaceful Retreat</div></div>
+      <div class="am-card"><span class="am-ico">🏋️</span><div class="am-name">Modern Gymnasium</div><div class="am-desc">Fully Equipped</div></div>
+      <div class="am-card"><span class="am-ico">☕</span><div class="am-name">Terrace Café</div><div class="am-desc">Sky Dining</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="si">
+    <div style="text-align:center">
+      <div class="slabel rv">Investment Opportunity</div>
+      <h2 class="stitle rv d1" style="text-align:center">Secure Your<br><span class="g">Legacy Plot</span></h2>
+      <div class="gsep rv d2" style="justify-content:center;max-width:280px;margin:28px auto"><div class="gsep-l"></div><div class="gsep-d"></div><div class="gsep-l"></div></div>
+    </div>
+    <div class="pr-layout rv d2">
+      <div class="pr-card pr-pre" id="pr-pre">
+        <div class="pr-label">Pre-Launch Price</div>
+        <div class="pr-amount">₹90,000</div>
+        <div class="pr-unit">Per Sq. Yd.</div>
+        <div class="pr-note">A rare window before the official launch — act now to lock in the lowest entry price and maximum upside on this landmark Bahadurgarh address.</div>
+        <div class="pr-btn">Available Now</div>
+      </div>
+      <div class="pr-card pr-launch" id="pr-launch">
+        <div class="pr-badge">LIMITED<br>OFFER</div>
+        <div class="pr-label">Launch Price</div>
+        <div class="pr-amount">₹1.12 – 1.25</div>
+        <div class="pr-unit">Lakh Per Sq. Yd.</div>
+        <div class="pr-note">Projected launch pricing reflects the infrastructure premium, industrial backbone, and rapid appreciation already underway in the Bahadurgarh corridor.</div>
+        <div class="pr-btn">Upcoming Launch</div>
+      </div>
+    </div>
+    <div class="pr-quote rv d3">The gap between pre-launch and launch pricing is where legacies are built.</div>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section id="lead-form">
+  <div class="si">
+    <div class="form-wrap">
+      <div class="slabel rv" style="text-align:center">Register Your Interest</div>
+      <h2 class="stitle rv d1" style="text-align:center">Own A Plot At<br><span class="g">The Heritage</span></h2>
+      <p class="sbody rv d2" style="text-align:center;margin-top:14px">Complete the form and a Heritage Advisor will connect with you within 24 hours.</p>
+      <div class="form-box rv d2">
+        <div id="form-main">
+          <div class="fr">
+            <div class="fg"><label class="fl">Full Name *</label><input type="text" class="fi" placeholder="Your full name" id="fname"></div>
+            <div class="fg"><label class="fl">Phone Number *</label><input type="tel" class="fi" placeholder="+91 00000 00000" id="fphone"></div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label class="fl">Email Address</label><input type="email" class="fi" placeholder="your@email.com" id="femail"></div>
+            <div class="fg"><label class="fl">City of Residence</label><input type="text" class="fi" placeholder="Your city" id="fcity"></div>
+          </div>
+          <div class="fr">
+            <div class="fg">
+              <label class="fl">Plot Size Interest</label>
+              <select class="fi" id="fsize" style="cursor:pointer">
+                <option value="" style="background:#0f0a05">Select preferred size</option>
+                <option value="126" style="background:#0f0a05">126.73 sq. yd.</option>
+                <option value="136" style="background:#0f0a05">136 sq. yd.</option>
+                <option value="146" style="background:#0f0a05">146 sq. yd.</option>
+                <option value="162" style="background:#0f0a05">162 sq. yd.</option>
+                <option value="174" style="background:#0f0a05">174 sq. yd.</option>
+                <option value="176" style="background:#0f0a05">176-177 sq. yd. (PH1)</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl">Purpose</label>
+              <select class="fi" id="fpurpose" style="cursor:pointer">
+                <option value="" style="background:#0f0a05">Select purpose</option>
+                <option value="investment" style="background:#0f0a05">Investment</option>
+                <option value="self-use" style="background:#0f0a05">Self-Use</option>
+                <option value="both" style="background:#0f0a05">Both</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg"><label class="fl">Message (Optional)</label><input type="text" class="fi" placeholder="Any specific questions or requirements" id="fmsg"></div>
+          <button class="fsub" id="fsub-btn">Book Site Visit</button>
+        </div>
+        <div class="form-success" id="form-success">
+          <span class="fs-icon">✦</span>
+          <div class="fs-title">Thank You</div>
+          <div class="fs-msg">Your interest has been registered. A Heritage Advisor will contact you within 24 hours. We look forward to welcoming you to The Heritage.</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-strip rv">
+      <div class="ct-item"><div class="ct-label">Call / WhatsApp</div><div class="ct-val"><a href="tel:+919654803560">+91 96548 03560</a></div></div>
+      <div class="ct-item"><div class="ct-label">Email</div><div class="ct-val"><a href="mailto:gaurav.sobti@homegramestate.com">gaurav.sobti@homegramestate.com</a></div></div>
+      <div class="ct-item"><div class="ct-label">Location</div><div class="ct-val"><a href="https://maps.app.goo.gl/v5cuPT7DoP5JsrWY8" target="_blank">Sector 11, Bahadurgarh, Haryana</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">THE HERITAGE</div>
+  <div class="ft-tag">By HomeGram Estate Pvt Ltd · Bahadurgarh, Haryana</div>
+  <div class="ft-sep"><div class="ft-sep-l"></div><div class="ft-sep-d"></div><div class="ft-sep-l"></div></div>
+  <div class="ft-links">
+    <a href="#about">About</a><a href="#connectivity">Location</a><a href="#amenities">Amenities</a><a href="#pricing">Pricing</a><a href="#lead-form">Contact</a>
+  </div>
+  <div class="ft-copy">© 2026 HomeGram Estate Pvt Ltd. All Rights Reserved. RERA Registration Pending.<br>This is a marketing collateral. Prices, specifications, and amenities are indicative and subject to change without notice. All images and renders are for representational purposes only.</div>
+  <div class="ft-tagline">Invest Today. Grow Tomorrow.</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
